@@ -17,38 +17,77 @@ sessions/
 
 ## 当前叙事
 
-**一句话：** 我是自己 app 的开发者和唯一用户，用自传式设计（autobiographical design）一代代迭代；真实使用推翻了我从文献得来的假设，让我得到一个新原则——*take resistance away, amplify feedback*——而这条路的终点是一个让用户逐渐不再需要它的系统，下一步是 AI 怎么当好这样一个 executive function coach。
+申请要两份 statement，正好对应两个故事：**Personal Statement 讲这个项目怎么长出来**（演化和那个 loop），**Statement of Objectives 讲想去研究的问题**（四幕的研究弧线）。
 
-骨架（四幕）：
+**候选的总论点**（owner 还没定）：*AI that amplifies a person's own intent, not replaces it.* 产品这边是 AI 帮用户养成**自己定的**习惯、最后撤掉；开发这边是 agent 写出「属于我、属于 Mars」的代码，而不是 agent 自己的代码——两条线问的是同一件事。
 
-1. **观察摩擦（Phase 1–2）。** 自己每天用，记下有日期的痛点（size 没人看、分数不是反馈、卡片上那排 dot 才有用、没有 reward 的感觉），逐条对到文献，形成设计假设。证据：Phase 2 spike。
-2. **真实使用推翻文献。** Spike 按文献推荐「安静的反馈、不做庆祝」；用下来发现完成的那一刻要响：真实场景是一天几次、一次一张，不是批量打勾，习惯化的前提不成立；spike 否定的其实是**分数**（抽象、累加、评判），不是当场的感官反馈——它自己引用的即时奖励、当场反馈的证据反而支持响。新原则：Calm ahead + Loud wins，随机的 Balatro 式 juice 对抗习惯化。证据：PR #115 的 mockup 和 review log 第 22–25 轮。
-3. **脚手架的弧线。** 强反馈是还没自动化的 habit 的脚手架，行为自动化之后脚手架要撤。Owner 跟着 app 养成去 gym 的习惯、逐渐不需要它，是第一个完整案例；habit lifecycle 的 Completed（已内化、不再跟踪）把这件事写进了系统。对照：streak 和 reminder 制造依赖，app 一停行为就停（Renfree et al. 2016，spike 引用）。
-4. **想去研究的问题。** AI 怎么当一个 executive function coach：了解一个人的习惯，什么时候推、什么时候放手、怎么让自己变得不必要（enable human）。需要更多用户数据和实验去 eval 现有 prompt；MCP 只能被动等用户开口、没有跨会话的用户模型，可能要自己做 agent。评估方法已经有雏形：仓库里测编码 agent 的 `experiments/`（对照、重复、盲审、数据集）可以迁移到 coach 的 eval。
+### Personal Statement：演化
+
+每一次转向都是在拿掉一处阻力；「take resistance away」不是 Phase 2 的新想法，是整段历史的方向。
+
+| 阶段 | 什么时候 | 遇到的问题 → 转向 |
+| --- | --- | --- |
+| 白板 | app 之前 | 和朋友在白板上手动记健身、吃饭、读书、戒烟，灵感来自 agile，两个人都变成了更好的人；那段时间失业、gap 很长，需要好好计划时间 |
+| ChatGPT 式 toy project | 2025-11 – 2026-02 | 展示 human–LLM 交互 UI 的能力：streaming、Zustand 状态管理、多会话 |
+| 类 Jira 的看板 | 2026-02 起 | 把白板做成 app：手动加 plan，模板自动生成任务（今天 habit 的前身） |
+| Priority matrix | 2026-02 设计，2026-07 实现 | 从 therapist 那里学到 Eisenhower matrix；没有 deadline 会忘（至今是痛点） |
+| 手机 / PWA | 2026-03 | 在外面不好用 → 做成可安装的手机 app |
+| App 内的 LLM planning wizard | 2026-06 | 懒得手动 plan → context + prompt engineering 生成草稿；但一轮出一次结果、要一轮轮自己调，而且不懂我 |
+| MCP planner | 2026-10 | Plan 是和 agent 一轮轮商量出来的 → 直接连我每天在协作的 Claude：在 Claude 那边商量、通过 MCP 写入；server instructions 带上我定的规则（3 个 habit、4 个 project）；app 内的 wizard 随后下线 |
+| Harness 和 engineering excellence | 2026-10 | 代码越来越臃肿、想 publish → 研究怎么让 agent 写出属于我的代码：提假设、做实验、调 setup；陷进完美主义卡了很久，和人交流后转向实践，一条条 review agent rule、和 designer 朋友谈 UX |
+| Phase 2 | 2026-10 起 | 真实使用的痛点：减少 habit tracking 的摩擦、放大完成的反馈；daily rhythm（开启一天、结束一天）、notification、widget |
+
+**贯穿的 loop：** 遇到问题 → 研究 → 研究卡住 → 实践 → 解决 → 再迭代。这也正是自传式设计的方法本身。
+
+### Statement of Objectives：研究弧线
+
+1. **观察摩擦。** 自己每天用，记下有日期的痛点（size 没人看、分数不是反馈、卡片上那排 dot 才有用、没有 reward 的感觉），逐条对到文献，形成设计假设。证据：Phase 2 spike。
+2. **真实使用推翻文献。** Spike 按文献推荐「安静的反馈、不做庆祝」；用下来发现完成那一刻要响：真实场景是一天几次、一次一张，习惯化的前提不成立；spike 否定的其实是**分数**（抽象、累加、评判），不是当场的感官反馈。新原则：Calm ahead + Loud wins，随机的 Balatro 式 juice 对抗习惯化。证据：PR #115。
+3. **脚手架的弧线。** 强反馈是还没自动化的 habit 的脚手架，自动化之后要撤。Owner 跟着 app 养成去 gym 的习惯、逐渐不需要它，是第一个完整案例；habit lifecycle 的 Completed（已内化）把这件事写进了系统。对照：streak 和 reminder 制造依赖，app 一停行为就停（Renfree et al. 2016，spike 引用）。
+4. **想去研究的问题。** AI 怎么当一个 executive function coach：了解一个人的习惯，什么时候推、什么时候放手、怎么让自己变得不必要。要更多用户数据和实验去 eval 现有 prompt；MCP 只能被动等用户开口、没有跨会话的用户模型，可能要自己做 agent。评估方法已有雏形：测编码 agent 的 `experiments/` 可以迁移到 coach 的 eval。
+
+### 候选的研究方向
+
+都来自自己用出来的问题；每条先记一个文献入口（待核对）。
+
+| 方向 | 问题 | 文献入口 |
+| --- | --- | --- |
+| Focus factor | 同时追几个 habit、几个 project 最合适；3 / 4 的上限作为干预有没有用 | 多目标追求（multiple goal pursuit）；kanban 的 WIP limit |
+| Notification | 太多烦、太少没用；在一堆 notification 里怎么突出；什么时候发 | Receptivity（Mehrotra et al., CHI 2016）；JITAI（Nahum-Shani et al. 2018）；alert fatigue（spike 引用 Sendelbach & Funk 2013） |
+| 零阻力的入口 | Widget、glanceable display：不打开 app 也能看到、能完成 | UbiFit 的 glanceable display（Consolvo et al. 2008） |
+| Daily rhythm | 开启一天、结束一天的 ritual | progress principle、日终反思（spike 已引用） |
+| 当场收集偏好 | MCP 的 feedback 入口，在用的当下记录用户的偏好 | Experience sampling method（ESM） |
+| 人和 agent 共同开发 | 怎么让 agent 写出符合我意图的代码；人的 review 抓到了什么 | `experiments/`、`reviews/` 是现成数据 |
 
 ### 英文草稿（会随叙事改）
 
-> *I built Mars Workbench to plan my own weeks with an AI agent, and have used it daily since October as its only user — an autobiographical design study. Each generation came from friction I logged in my own use. A month in, I noticed I never looked at the effort points the app asked me for, while the small row of dots on each habit card was the only feedback that felt like progress. The literature pointed me toward quiet feedback and away from scores; living with the design pointed the other way at one moment — finishing — where I wanted the reward to be loud. That tension became the product's core principle: take resistance away from what is still to do, amplify the feedback when it is done. Following the app, I built a gym habit to the point where I no longer needed the app for it. That is the system I want to study next: an AI coach for executive function that learns a person's habits well enough to know when to step in and when to step away.*
+> *I built Mars Workbench to plan my own weeks with an AI agent, and use it daily as its only user — an autobiographical design study. Each generation came from friction I logged in my own use. A month into its current form, I noticed I never looked at the effort points the app asked me for, while the small row of dots on each habit card was the only feedback that felt like progress. The literature pointed me toward quiet feedback and away from scores; living with the design pointed the other way at one moment — finishing — where I wanted the reward to be loud. That tension became the product's core principle: take resistance away from what is still to do, amplify the feedback when it is done. Following the app, I built a gym habit to the point where I no longer needed the app for it. That is the system I want to study next: an AI coach for executive function that learns a person's habits well enough to know when to step in and when to step away.*
 
 ## 证据索引
 
-| 证据 | 在哪 | 撑起哪一幕 |
+| 证据 | 在哪 | 撑起哪部分 |
 | --- | --- | --- |
-| Phase 2 痛点 spike：有日期的观察、对到文献、五个痛点的选项 | [`design/spike/week-model-phase2-pain-points.md`](https://github.com/Marsuu1994/mars-workbench/blob/main/design/spike/week-model-phase2-pain-points.md) | 1 |
-| Tap to complete mockup + design principles 的改写（Loud wins） | [PR #115](https://github.com/Marsuu1994/mars-workbench/pull/115)（`claude/board-tap-to-complete-mockup`） | 2 |
-| 推翻的过程，owner 的原话 | PR #115 分支上的 `reviews/pr-115.md`，第 22–25 轮 | 2 |
-| Plan with Claude：MCP server 和给 LLM 的规则（先提议再写入、聚焦上限） | [`src/mcp/prompts/`](https://github.com/Marsuu1994/mars-workbench/tree/main/src/mcp/prompts) | 4 |
-| 编码 agent 的对照实验（10 个 run、盲审、Mann–Whitney） | [`experiments/page-structure-parallel/try2/report.md`](https://github.com/Marsuu1994/mars-workbench/blob/main/experiments/page-structure-parallel/try2/report.md) | 4（方法） |
-| Subagent 委派试点（三轮 A / B） | [`design/spike/archived/subagent-delegation-pilot.md`](https://github.com/Marsuu1994/mars-workbench/blob/main/design/spike/archived/subagent-delegation-pilot.md) | 4（方法） |
-| 人工 review 抓到、CI 漏掉的问题，存成数据集 | [`reviews/`](https://github.com/Marsuu1994/mars-workbench/tree/main/reviews) | 4（方法） |
-| Gym 习惯的使用数据 | 还没导出 | 3 |
+| 演化的时间线（197 个 commit，2025-11-25 起） | `mars-workbench` 的 git history；关键节点见 `sessions/2026-11-06-media-lab-fit.md` Round 5 | Personal Statement |
+| App 内 LLM planning 下线、只走 MCP | [PR #69](https://github.com/Marsuu1994/mars-workbench/pull/69)（2026-10-17） | Personal Statement；研究弧线 4 |
+| MCP 五个 PR（server、planning tools、OAuth consent、token auth） | [PR #39](https://github.com/Marsuu1994/mars-workbench/pull/39)–[#45](https://github.com/Marsuu1994/mars-workbench/pull/45)（2026-10-05 – 10-07） | Personal Statement；研究弧线 4 |
+| Phase 2 痛点 spike：有日期的观察、对到文献、五个痛点的选项 | [`design/spike/week-model-phase2-pain-points.md`](https://github.com/Marsuu1994/mars-workbench/blob/main/design/spike/week-model-phase2-pain-points.md) | 研究弧线 1 |
+| Tap to complete mockup + design principles 的改写（Loud wins） | [PR #115](https://github.com/Marsuu1994/mars-workbench/pull/115)（`claude/board-tap-to-complete-mockup`） | 研究弧线 2 |
+| 推翻的过程，owner 的原话 | PR #115 分支上的 `reviews/pr-115.md`，第 22–25 轮 | 研究弧线 2 |
+| Plan with Claude：给 LLM 的规则（先提议再写入、聚焦上限） | [`src/mcp/prompts/`](https://github.com/Marsuu1994/mars-workbench/tree/main/src/mcp/prompts) | 研究弧线 4；focus factor |
+| 编码 agent 的对照实验（10 个 run、盲审、Mann–Whitney） | [`experiments/page-structure-parallel/try2/report.md`](https://github.com/Marsuu1994/mars-workbench/blob/main/experiments/page-structure-parallel/try2/report.md) | 研究弧线 4（方法）；Personal Statement 的 harness 阶段 |
+| Subagent 委派试点（三轮 A / B） | [`design/spike/archived/subagent-delegation-pilot.md`](https://github.com/Marsuu1994/mars-workbench/blob/main/design/spike/archived/subagent-delegation-pilot.md) | 同上 |
+| 人工 review 抓到、CI 漏掉的问题，存成数据集 | [`reviews/`](https://github.com/Marsuu1994/mars-workbench/tree/main/reviews) | 同上 |
+| Gym 习惯的使用数据 | 还没导出 | 研究弧线 3 |
 
 ## 还开着的
 
 - **新假设还没在真实 app 里活过。** Loud wins 现在来自点 mockup 的感受和对使用场景的推理；实现后要有有日期的记录（第 1 周 vs 第 4 周对 juice 的感受变没变）。
 - **「不需要 app」怎么量。** 候选：SRBAI（自动化程度，4 道题）、habit 进 Completed 之后行为是否还在、不打开 app 的日子做不做。
-- **随机奖励的伦理问题。** 评审会问「这不就是老虎机机制吗」；现在的回答是脚手架会撤（第 3 幕），要不要让 juice 的强度跟着 habit 的 lifecycle 走，还没想。
-- **只有一个用户。** 找不找人试用、什么时候、找几个——owner 的决定，还没定。
+- **随机奖励的伦理问题。** 评审会问「这不就是老虎机机制吗」；现在的回答是脚手架会撤（研究弧线 3），要不要让 juice 的强度跟着 habit 的 lifecycle 走，还没想。
+- **用户和平台。** 现在只有一个用户；publish 是为了拿到更多反馈和数据。事实：把产品的使用数据拿去做学术研究，一般要用户的知情同意和机构的 IRB 审查（或豁免认定）；收集时没有研究用途同意的数据，事后再用更难；上线时就设计好隐私政策和同意，能把这条路留着。
+- **哪些个人经历写进 Personal Statement**（白板和朋友、失业的 gap、therapist）——owner 的决定。
+- **总论点定不定**：「AI that amplifies a person's own intent」能不能同时罩住产品和 harness 两条线。
+- **英文草稿的时间说法**：app 每天用了多久，需要 owner 给一个准确的说法。
 - **「executive function」的 framing。** 这个词常和 ADHD 这类临床人群挂钩；以临床人群为对象会变成健康相关研究（IRB、招募门槛更高），一般人群的计划和自我调节范围更宽。
 - **Phase 2 的实现状态。** Spike 是 draft、tap to complete 是 mockup；写进申请时说「观察和设计完成，正在实现」。
 - **对准哪几个组。** 候选：Fluid Interfaces（人和 AI 的交互、认知增强）、Advancing Humans with AI；要读它们近一两年的论文再定，名额以各组 applicant information 页为准。
@@ -57,7 +96,7 @@ sessions/
 
 ## 方法和文献
 
-自传式设计和 research through design 是这条叙事的方法依据；第 2、3 幕的论证要用到下面几篇。标「待核对」的是 brainstorm 里凭记忆提到的，引用前要读原文。
+自传式设计和 research through design 是这条叙事的方法依据。标「待核对」的是 brainstorm 里凭记忆提到的，引用前要读原文。
 
 - Neustaedter & Sengers 2012, *Autobiographical design in HCI research*, DIS — 判断标准：真实需求、真实系统、长期使用、记录、快速迭代（待核对）
 - Desjardins & Ball 2018, *Revealing tensions in autobiographical design in HCI*, DIS — 这种方法的局限（待核对）
@@ -66,7 +105,10 @@ sessions/
 - Hicks et al.，game juiciness 的实证研究（CHI PLAY / DiGRA）（待核对）
 - Gardner et al. 2012，SRBAI（待核对）
 - Wood, Bruner & Ross 1976，scaffolding（待核对）
-- Spike 里已经调研过的：Etkin 2016、Harkin et al. 2016、Woolley & Fishbach 2017、Zuckerman & Gal-Oz 2014、Milkman et al. 2021、Renfree et al. 2016、Lally et al. 2010
+- Mehrotra et al. 2016，notification 的 receptivity（CHI）（待核对）
+- Nahum-Shani et al. 2018，just-in-time adaptive interventions（待核对）
+- Consolvo et al. 2008，UbiFit 的 glanceable display（待核对）
+- Spike 里已经调研过的：Etkin 2016、Harkin et al. 2016、Woolley & Fishbach 2017、Zuckerman & Gal-Oz 2014、Milkman et al. 2021、Renfree et al. 2016、Lally et al. 2010、Sendelbach & Funk 2013
 
 ## 申请的硬事实
 
