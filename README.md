@@ -63,6 +63,20 @@ sessions/
 
 > *I built Mars Workbench to plan my own weeks with an AI agent, and use it daily as its only user — an autobiographical design study. Each generation came from friction I logged in my own use. A month into its current form, I noticed I never looked at the effort points the app asked me for, while the small row of dots on each habit card was the only feedback that felt like progress. The literature pointed me toward quiet feedback and away from scores; living with the design pointed the other way at one moment — finishing — where I wanted the reward to be loud. That tension became the product's core principle: take resistance away from what is still to do, amplify the feedback when it is done. Following the app, I built a gym habit to the point where I no longer needed the app for it. That is the system I want to study next: an AI coach for executive function that learns a person's habits well enough to know when to step in and when to step away.*
 
+## 可能对接的导师
+
+来自 Media Lab 新闻、group 和 people 页的搜索摘要（2026-11-11）；applicant information 页当时打不开，招生状态和细节都待在官网确认。
+
+| 导师 · 组 | 现在的方向 | 对接点 | 状态 |
+| --- | --- | --- | --- |
+| Pat Pataranutaporn · Cyborg Psychology | AI 怎么增强或削弱人的学习、决策、思考；对 AI companion 的情感依赖；AHA co-director | 「让用户不需要的 app」回应依赖问题；n=1 的长期使用；coach 什么时候放手 | 2025-09 新任 Assistant Professor；搜索摘要说在招 2026–2027 的 MS / PhD；建议申请前先简短联系 PI 或组员 |
+| Pattie Maes · Fluid Interfaces | AI 支持而不是替代人的思考；productive friction；cognitive debt | MCP guide 的「ask before you assume, propose before you write」；wizard → 多轮商量；执行减阻力 vs 思考加摩擦的张力 | 一个缓存页写着暂不招新学生，待核对 |
+| Cynthia Breazeal · Personal Robots | Robotic positive psychology coach；coach 和 companion 的长期比较 | AI coach 的角色、长期关系、readiness to change | 待核对 |
+| Karrie Karahalios · Social Algorithms | Contestable systems：让人理解、质疑、塑造算法的决定 | 用户自己定的规则约束 AI；consent；用户能拒绝 AI 的计划 | 2025-09 回 Media Lab 任 Full Professor；待核对 |
+| Rosalind Picard · Affective Computing | Wellbeing、wearable | Notification 的时机、daily rhythm | FAQ：一年很少超过 1–2 人，有的年份不收 |
+| Ramesh Raskar · NANDA | 建在 MCP、A2A 之上的 agent 基础设施（发现、身份、信任） | 只在 MCP 的局限、自己做 agent 那条线 | 待核对 |
+| Paul Liang · Multisensory Intelligence | 多感官 AI、human-AI symbiosis、mental health | 从用户数据建模习惯；偏 ML | 待核对 |
+
 ## 证据索引
 
 | 证据 | 在哪 | 撑起哪部分 |
@@ -90,7 +104,8 @@ sessions/
 - **英文草稿的时间说法**：app 每天用了多久，需要 owner 给一个准确的说法。
 - **「executive function」的 framing。** 这个词常和 ADHD 这类临床人群挂钩；以临床人群为对象会变成健康相关研究（IRB、招募门槛更高），一般人群的计划和自我调节范围更宽。
 - **Phase 2 的实现状态。** Spike 是 draft、tap to complete 是 mockup；写进申请时说「观察和设计完成，正在实现」。
-- **对准哪几个组。** 候选：Fluid Interfaces（人和 AI 的交互、认知增强）、Advancing Humans with AI；要读它们近一两年的论文再定，名额以各组 applicant information 页为准。
+- **对准哪几个组**（最多填 3 个）：候选见「可能对接的导师」，每位的招生状态都要在官网当期页面确认。
+- **公开的套瓷材料。** 这个仓库是私有的；邮件需要附一个公开的英文页面（case study + 视频）。
 - **英文化。** Spike、实验报告是中文；评审要看的部分需要英文版（一页 case study、一页实验摘要）。
 - **演示。** App 要 Google 登录，评审进不去：一段 1–2 分钟的视频（Plan with Claude → board 更新 → 完成一张卡的 juice）。
 
@@ -108,6 +123,9 @@ sessions/
 - Mehrotra et al. 2016，notification 的 receptivity（CHI）（待核对）
 - Nahum-Shani et al. 2018，just-in-time adaptive interventions（待核对）
 - Consolvo et al. 2008，UbiFit 的 glanceable display（待核对）
+- Kosmyna et al. 2025，用 AI 助手写文章的 cognitive debt（Fluid Interfaces）（待核对）
+- 「Don't Just Tell Me, Ask Me: AI Systems that Intelligently Frame Explanations as Questions …」（Fluid Interfaces）（待核对）
+- Jeong et al.，robotic positive psychology coach：RO-MAN 2020；UMUAI 2022（35 人）；8 周、70 人的 assistant / coach / companion 比较（Personal Robots）（待核对）
 - Spike 里已经调研过的：Etkin 2016、Harkin et al. 2016、Woolley & Fishbach 2017、Zuckerman & Gal-Oz 2014、Milkman et al. 2021、Renfree et al. 2016、Lally et al. 2010、Sendelbach & Funk 2013
 
 ## 申请的硬事实

@@ -92,3 +92,23 @@
 - **个人经历**（白板和朋友、失业的 gap、therapist）写不写进申请，是 owner 的决定；这里只记录。
 
 **README:** 「当前叙事」改成两部分——Personal Statement 的演化表和 loop、Statement of Objectives 的研究弧线（原来的四幕）——加上候选总论点和候选研究方向表；证据索引加 git 时间线、#69、#39–#45；「还开着的」加用户和平台（IRB 的事实）、个人经历、总论点、英文草稿的时间说法；英文草稿去掉了没核实的「since October」；文献加 Mehrotra、Nahum-Shani、Consolvo。
+
+## Round 6 · 2026-11-11
+
+> 现在基本上把我的心路历程都写出来了，这对我申请写ps等等有很多优势，你能抽出来哪些值得我去和哪些professor套瓷的点？
+
+### Findings
+
+查的是 Media Lab 的新闻、group 和 people 页的搜索摘要；直接打开 applicant information 页时 Media Lab 的服务器返回 503，所以下面每一条都要在官网当期页面上再确认。
+
+- **Pat Pataranutaporn · Cyborg Psychology**（2025-09-01 起任 Assistant Professor，AHA program 的 co-director；Fluid Interfaces 的博士）：研究 AI 怎么增强或削弱人的学习、决策、批判性思考，实证工作包括对 AI companion 的情感依赖。搜索摘要说 applicant 页在招 2026–2027 的 MS / PhD，列了几个 track（其中一个是 long-term human-AI interaction）——另一次搜索没能确认 track 的说法，待核对。他给申请者的建议：申请前尽量和 PI 或组里的学生聊，第一次联系要短，可能不回。对接点：「让用户不需要的 app」正面回应依赖问题；n=1 的长期使用就是 long-term human-AI interaction；AI coach 的「什么时候放手」。
+- **Pattie Maes · Fluid Interfaces**：设计让 AI 支持而不是替代人的思考；主张 AI 有时要引入 productive friction（问问题、促发反思）；cognitive debt 的研究；「Don't Just Tell Me, Ask Me」（AI 用提问的方式解释，提高人的逻辑判断）。对接点：MCP guide 的规则「Ask before you assume, propose before you write」正是让 AI 问而不是替人定；wizard → 多轮商量让人留在思考里。一个有意思的张力：产品的原则是给**执行**减阻力，Maes 说的是给**思考**加摩擦——计划的商量是后者，打勾是前者。**状态待核对**：一个缓存的 group overview 写着「not currently accepting new students」。
+- **Cynthia Breazeal · Personal Robots**：robotic positive psychology coach（RO-MAN 2020 best paper；宿舍里 35 人的可行性研究；70 人、8 周比较 assistant / coach / companion 三种机器人，companion 式的 therapeutic alliance 最强，well-being 和 readiness to change 都更好）。对接点：AI coach 的角色设计、长期关系、「coach 还是 companion」。
+- **Karrie Karahalios · Social Algorithms**（2025-09 回到 Media Lab 任 Full Professor）：contestable systems，让人能理解、质疑、塑造算法的决定；algorithmic audits。对接点：用户自己定的规则（3 个 habit、4 个 project）约束 AI 的建议；consent 页；「propose before write」让用户能拒绝 AI 的计划。
+- **Rosalind Picard · Affective Computing**：wellbeing、wearable；FAQ 说一年很少收超过 1–2 个学生，有的年份不收。对接点：notification 的时机和情绪状态、daily rhythm。
+- **Ramesh Raskar · NANDA**（Camera Culture）：建在 MCP 和 A2A 之上的 agent 基础设施（发现、身份、信任）；论文认为 MCP、A2A 解决不了规模化的信任和协调。对接点只在「MCP 的局限、自己做 agent」那条线，偏基础设施，不在人的行为上。
+- **Paul Liang · Multisensory Intelligence**（2024-09 起）：多感官 AI、human-AI symbiosis，部署在 mental health 等问题上。对接点：从用户数据建模习惯；偏 ML。
+- **事实**：AHA（Advancing Humans with AI）是多位 faculty 的 program，目标是促进 human flourishing 的人机交互；发布会上有 Deb Roy、Andrew Lippman、Picard、Breazeal、Resnick、Machover、Maes、Pataranutaporn。申请表最多填 3 个组或导师。
+- **套瓷要用的材料**：私有仓库评审看不到；需要一个公开的英文页面（case study + 视频）给邮件附链接。
+
+**README:** 「还开着的」里「对准哪几个组」改写成新的一节「可能对接的导师」（每位一行：方向、对接点、状态）；文献加 Maes 组的两篇和 Breazeal 的 coach 研究（待核对）。
