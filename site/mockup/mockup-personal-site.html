@@ -1,0 +1,853 @@
+<title>Mars Chu Site Mockup</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600&family=Geist+Mono:wght@400;500&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;1,8..60,300;1,8..60,400&family=Noto+Serif+SC:wght@400;600&display=swap">
+<style>
+/* Layout: one quiet sheet of paper per view. The landscape sits beside or between the type, never under running text;
+   the only red on a page is the seal that closes it (and one small planet in the sky). */
+:root{
+  --paper:#f5f4ef; --paper-2:#eceae3;
+  /* 墨分五色 — five tones of one ink: 焦 浓 重 淡 清 */
+  --ink:#1b1f26; --ink-nong:#42454a; --ink-zhong:#606266; --ink-dan:#a8a8a6; --ink-qing:#d7d6d2;
+  /* 浅绛 — the two light tints of a pale-umber landscape, and the cinnabar of the seal */
+  --indigo:#3d5a6c; --umber:#8a5a3c; --seal:#b8322a; --on-seal:#f8f6f0;
+  --f-sans:"Geist","Helvetica Neue",Helvetica,Arial,"PingFang SC","Noto Sans SC",sans-serif;
+  --f-serif:"Source Serif 4","Noto Serif SC","Songti SC",Georgia,serif;
+  --f-song:"Noto Serif SC","Songti SC","STSong",serif;
+  --f-mono:"Geist Mono",ui-monospace,"SF Mono",Menlo,monospace;
+  --ease:cubic-bezier(.2,0,0,1);
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --paper:#13161b; --paper-2:#1b1f26;
+  --ink:#e9e6de; --ink-nong:#c3c0ba; --ink-zhong:#a09f9b; --ink-dan:#606161; --ink-qing:#313336;
+  --indigo:#9dbccd; --umber:#d1a283; --seal:#e8695a; --on-seal:#16110f; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --paper:#13161b; --paper-2:#1b1f26;
+  --ink:#e9e6de; --ink-nong:#c3c0ba; --ink-zhong:#a09f9b; --ink-dan:#606161; --ink-qing:#313336;
+  --indigo:#9dbccd; --umber:#d1a283; --seal:#e8695a; --on-seal:#16110f; color-scheme:dark}
+
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font:400 16px/1.6 var(--f-sans);-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--paper)}
+a{color:inherit;text-decoration-thickness:1px;text-underline-offset:.22em}
+a:focus-visible{outline:2px solid var(--indigo);outline-offset:3px;border-radius:2px}
+h1,h2,h3,p,figure,blockquote,dl,dd,ul,ol{margin:0}
+ul,ol{padding:0;list-style:none}
+.wrap{max-width:1160px;margin-inline:auto;padding-left:max(clamp(16px,4.5vw,56px),env(safe-area-inset-left,0px));padding-right:max(clamp(16px,4.5vw,56px),env(safe-area-inset-right,0px))}
+.mono{font:500 12px/1.5 var(--f-mono);letter-spacing:.06em;text-transform:uppercase;color:var(--ink-zhong)}
+.song{font-family:var(--f-song)}
+
+/* ── Mockup chrome (not part of any design) ─────────────────────────────── */
+.mk-bar{position:sticky;top:env(safe-area-inset-top,0px);z-index:9;background:var(--paper);border-bottom:1px dashed var(--ink-dan)}
+.mk-bar-in{display:flex;align-items:center;justify-content:space-between;gap:8px 20px;flex-wrap:wrap;padding-block:8px}
+.mk-tag{font:500 11px/1.3 var(--f-mono);letter-spacing:.08em;text-transform:uppercase;color:var(--ink-zhong)}
+.mk-tabs{display:flex;gap:2px;flex-wrap:wrap}
+.mk-tabs a{font:500 13px/1 var(--f-sans);padding:8px 11px;border-radius:6px;text-decoration:none;color:var(--ink-nong)}
+.mk-tabs a:hover{text-decoration:underline}
+.mk-tabs a[aria-current="page"]{background:var(--ink);color:var(--paper);text-decoration:none}
+
+/* ── Shared parts of the drawn site ─────────────────────────────────────── */
+.s-nav{display:flex;justify-content:space-between;align-items:baseline;gap:8px 24px;flex-wrap:wrap;padding-block:22px}
+.s-nav b{font-weight:600;letter-spacing:-.01em}
+.s-nav span{display:flex;gap:6px 22px;flex-wrap:wrap;color:var(--ink-nong);font-size:15px}
+.s-nav a{text-decoration:none}
+.s-nav a:hover,.go:hover{text-decoration:underline}
+.go{text-decoration:none;font-weight:500;white-space:nowrap}
+.go::after{content:" →";font-family:var(--f-sans)}
+
+.scape{position:relative;isolation:isolate}
+.scape>svg.scape-svg{position:absolute;inset:0;width:100%;height:100%;z-index:-1;pointer-events:none}
+
+.plate{display:grid;gap:8px;min-width:0}
+.plate svg{display:block;width:100%;height:auto;aspect-ratio:8/5;background:var(--paper-2);border:1px solid var(--ink-qing);border-radius:3px}
+.plate figcaption{font:400 12px/1.4 var(--f-mono);color:var(--ink-zhong)}
+.plate text{font-family:var(--f-mono);fill:var(--ink-nong)}
+.plate .t-dim{fill:var(--ink-zhong)}
+.plate .t-ink{fill:var(--ink)}
+.plate .t-say{font-family:var(--f-sans);fill:var(--ink)}
+.plate .t-hand{font-family:var(--f-serif);font-style:italic;fill:var(--ink)}
+
+.facets{display:inline-flex;gap:.5em;font:400 15px/1 var(--f-song);color:var(--ink-dan)}
+.facets i{font-style:normal}
+.facets .on{color:var(--ink)}
+.facets-en{display:inline-flex;gap:.9em;font:500 12px/1 var(--f-mono);letter-spacing:.06em;text-transform:uppercase;color:var(--ink-zhong)}
+
+.seal{display:inline-grid;place-items:center;width:46px;height:46px;background:var(--seal);color:var(--on-seal);font:600 27px/1 var(--f-song);border-radius:5px;transform:rotate(-2deg);filter:url(#seal-rough);flex:none}
+.seal.is-pressed{animation:press .42s var(--ease)}
+@keyframes press{from{transform:rotate(-7deg) scale(1.35);opacity:.25}to{transform:rotate(-2deg) scale(1);opacity:1}}
+@media (prefers-reduced-motion:reduce){.seal.is-pressed{animation:none}}
+
+.end-links{display:flex;gap:8px 22px;flex-wrap:wrap;font-size:15px}
+.colophon{font:400 12px/1.5 var(--f-mono);color:var(--ink-zhong)}
+
+/* ── A · 手卷 Handscroll: story first ───────────────────────────────────── */
+.a-open{padding-bottom:clamp(210px,27vw,320px)}
+.a-kicker{margin:clamp(20px,5vw,60px) 0 18px}
+.a-title{font:300 clamp(30px,4.5vw,56px)/1.12 var(--f-serif);letter-spacing:-.015em;max-width:16.5em;text-wrap:balance}
+.a-by{margin-top:22px;color:var(--ink-nong);max-width:34em}
+.a-scenes{display:grid;gap:clamp(56px,9vw,112px);padding-block:clamp(40px,7vw,88px)}
+.a-scene{display:grid;grid-template-columns:minmax(0,7rem) minmax(0,1fr) minmax(0,21rem);gap:18px clamp(20px,4vw,56px);align-items:start}
+.a-when{display:grid;gap:8px}
+/* The past is a far mountain in pale ink; the present is near and dark. --near runs 0 → 1 down the scroll. */
+.a-num{font:400 36px/1 var(--f-song);color:color-mix(in oklab,var(--ink) calc(28% + var(--near,0)*72%),var(--paper))}
+.a-what{display:grid;gap:12px;min-width:0}
+.a-what h2{font:400 clamp(22px,2.4vw,30px)/1.2 var(--f-serif);letter-spacing:-.01em}
+.a-what p{max-width:34em;color:var(--ink-nong)}
+.a-what .row{display:flex;gap:8px 20px;flex-wrap:wrap;align-items:baseline;font-size:15px}
+.a-band{min-height:clamp(210px,25vw,310px)}
+.a-band blockquote{font:italic 300 clamp(20px,2.6vw,30px)/1.3 var(--f-serif);max-width:20em;padding-top:6px;text-wrap:balance}
+.a-end{border-top:1px solid var(--ink-qing);padding-block:clamp(36px,6vw,64px) clamp(48px,7vw,80px);display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:32px clamp(24px,5vw,72px)}
+.a-end h2{font:400 clamp(22px,2.4vw,30px)/1.2 var(--f-serif);margin-bottom:16px}
+.a-next{display:grid;gap:12px;font:300 clamp(18px,1.9vw,22px)/1.35 var(--f-serif);max-width:26em}
+.a-sign{display:grid;gap:18px;align-content:start}
+.a-sign .who{display:flex;gap:14px;align-items:center}
+@media (max-width:860px){
+  .a-scene{grid-template-columns:minmax(0,1fr)}
+  .a-when{grid-auto-flow:column;justify-content:start;align-items:baseline;gap:14px}
+  .a-end{grid-template-columns:minmax(0,1fr)}
+}
+
+/* ── B · 册页 Album: works first ────────────────────────────────────────── */
+.b-head{display:grid;grid-template-columns:minmax(0,1.75fr) minmax(0,1fr);gap:28px clamp(24px,5vw,72px);align-items:end;padding-block:clamp(24px,5vw,72px) clamp(36px,6vw,72px)}
+.b-head h1{font:500 clamp(28px,4.1vw,52px)/1.08 var(--f-sans);letter-spacing:-.032em;text-wrap:balance}
+.b-side{display:grid;gap:14px}
+.b-vig{height:clamp(84px,11vw,128px);border-bottom:1px solid var(--ink)}
+.b-facts{display:grid;gap:3px;font:400 13px/1.5 var(--f-mono);color:var(--ink-nong)}
+.b-sec{padding-block:0 clamp(44px,7vw,84px)}
+.b-h{display:flex;justify-content:space-between;align-items:baseline;gap:12px;flex-wrap:wrap;border-top:2px solid var(--ink);padding-top:10px;margin-bottom:26px;font:500 12px/1.5 var(--f-mono);letter-spacing:.06em;text-transform:uppercase}
+.b-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:40px 28px}
+.leaf{display:grid;gap:10px;align-content:start;min-width:0}
+.leaf h3{font:500 19px/1.25 var(--f-sans);letter-spacing:-.015em}
+.leaf h3 a{text-decoration:none}
+.leaf h3 a:hover{text-decoration:underline}
+.leaf p{color:var(--ink-nong);font-size:15px;line-height:1.5}
+.leaf .meta{display:flex;justify-content:space-between;gap:8px 12px;flex-wrap:wrap;font:400 12px/1.4 var(--f-mono);color:var(--ink-zhong)}
+.b-two{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:40px clamp(24px,5vw,72px)}
+.b-list{display:grid}
+.b-list li{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:4px 16px;padding-block:11px;border-bottom:1px solid var(--ink-qing);align-items:baseline}
+.b-list small{font:400 12px/1.4 var(--f-mono);color:var(--ink-zhong)}
+.b-end{display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap;border-top:2px solid var(--ink);padding-block:22px clamp(40px,6vw,64px)}
+@media (max-width:900px){.b-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.b-head{grid-template-columns:minmax(0,1fr)}}
+@media (max-width:600px){.b-grid,.b-two{grid-template-columns:minmax(0,1fr)}}
+
+/* ── C · 远山 Far mountains: questions first ─────────────────────────────── */
+.c-far{padding-bottom:clamp(150px,17vw,220px)}
+.c-who{margin-top:clamp(20px,5vw,60px);font:400 clamp(17px,1.7vw,21px)/1.5 var(--f-sans);max-width:27em}
+.c-who b{font-weight:600}
+.c-lead{margin-top:clamp(28px,5vw,56px)}
+.c-q{display:grid;grid-template-columns:minmax(0,3.5rem) minmax(0,1fr) minmax(0,20rem);gap:16px clamp(20px,4vw,56px);padding-block:clamp(32px,5.5vw,64px);border-top:1px solid var(--ink-qing);align-items:start}
+.c-q-n{font:400 34px/1.1 var(--f-song);color:var(--ink-dan)}
+.c-q-body{display:grid;gap:22px;min-width:0}
+.c-q-text{font:300 clamp(26px,3.5vw,44px)/1.14 var(--f-serif);letter-spacing:-.015em;text-wrap:balance;max-width:15em}
+.c-rows{display:grid;gap:12px}
+.c-rows div{display:grid;grid-template-columns:4rem minmax(0,1fr);gap:14px;align-items:baseline}
+.c-rows dt{font:500 12px/1.5 var(--f-mono);letter-spacing:.06em;text-transform:uppercase;color:var(--ink-zhong)}
+.c-rows dd{color:var(--ink-nong);max-width:35em}
+.c-rows dd b{font-weight:500;color:var(--ink);font-family:var(--f-mono);font-size:.92em}
+.c-more{padding-block:20px clamp(36px,6vw,72px);border-top:1px solid var(--ink-qing);color:var(--ink-nong)}
+.c-more span{display:block;max-width:44em}
+.c-mid{padding-block:clamp(120px,15vw,200px) clamp(36px,6vw,64px)}
+.c-works{display:grid;margin-top:18px}
+.c-work{display:grid;grid-template-columns:6.5rem minmax(0,15rem) minmax(0,1fr) auto;gap:4px 24px;padding-block:13px;border-top:1px solid var(--ink-qing);align-items:baseline}
+.c-work time,.c-work .role{font:400 12px/1.5 var(--f-mono);color:var(--ink-zhong)}
+.c-work a{text-decoration:none;font-weight:500}
+.c-work a:hover{text-decoration:underline}
+.c-work p{color:var(--ink-nong);font-size:15px}
+.c-near{padding-block:clamp(40px,6vw,72px) clamp(150px,19vw,250px)}
+.c-about{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:28px clamp(24px,5vw,72px)}
+.c-about p{max-width:34em;color:var(--ink-nong)}
+.c-about p+p{margin-top:12px}
+@media (max-width:860px){
+  .c-q{grid-template-columns:minmax(0,1fr)}
+  .c-work{grid-template-columns:minmax(0,1fr) auto}
+  .c-work p{grid-column:1/-1}
+  .c-about{grid-template-columns:minmax(0,1fr)}
+}
+</style>
+<style>
+/* Where each landscape sits inside its host */
+.scape[data-scape="gaoyuan"]>.scape-svg{top:auto;height:min(100%,clamp(210px,46vw,620px))}
+.scape[data-scape="far"]>.scape-svg{top:auto;height:min(100%,clamp(170px,40vw,520px))}
+.scape[data-scape="mid"]>.scape-svg{bottom:auto;height:clamp(120px,15vw,200px)}
+.scape[data-scape="near"]>.scape-svg{top:auto;height:clamp(150px,19vw,250px)}
+</style>
+<style>
+/* ── 总览 (mockup notes, not a design) ─────────────────────────────────── */
+.ov{padding-block:clamp(28px,5vw,56px) 88px;line-height:1.7;text-autospace:normal}
+.ov h1{font:500 clamp(28px,3.8vw,46px)/1.1 var(--f-sans);letter-spacing:-.03em;margin-top:10px}
+.ov-lede{max-width:46em;color:var(--ink-nong);margin-top:16px}
+.ov code{font:400 .88em var(--f-mono);background:var(--paper-2);padding:.1em .35em;border-radius:3px}
+.ov-sec{margin-top:clamp(48px,7vw,84px)}
+.ov h3{font:500 18px/1.35 var(--f-sans);letter-spacing:-.01em;margin-bottom:10px}
+.ov h3 small{font:400 12px var(--f-mono);color:var(--ink-zhong);margin-left:.4em}
+.ov-gap{margin-top:clamp(32px,5vw,52px)}
+.ov-three{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:32px 28px}
+.ov-opt{display:grid;gap:14px;align-content:start;min-width:0}
+.wf{display:grid;gap:5px;padding:12px;background:var(--paper-2);border:1px solid var(--ink-qing);border-radius:3px;align-content:start;min-height:268px}
+.wf i,.wf-grid i,.wf-two i{display:block;font:400 10.5px/1.3 var(--f-mono);font-style:normal;color:var(--ink-nong);border:1px solid var(--ink-dan);border-radius:2px;padding:5px 7px;background:var(--paper)}
+.wf .tall{padding-block:16px}
+.wf .band{border-style:dashed;background:transparent}
+.wf .end{border-color:var(--seal)}
+.wf-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:5px}
+.wf-two{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:5px}
+.ov-kv{display:grid;gap:9px;font-size:15px}
+.ov-kv div{display:grid;grid-template-columns:2.6rem minmax(0,1fr);gap:10px;align-items:baseline}
+.ov-kv dt{font:500 12px/1.6 var(--f-mono);color:var(--ink-zhong)}
+.ov-kv dd{color:var(--ink-nong)}
+.ov-scroll{overflow-x:auto}
+.ov-t{width:100%;min-width:620px;border-collapse:collapse;font-size:14.5px;line-height:1.6}
+.ov-t th{font:500 12px/1.5 var(--f-mono);color:var(--ink-zhong);text-align:left;padding:0 16px 8px 0;border-bottom:1px solid var(--ink)}
+.ov-t td{vertical-align:top;padding:11px 16px 11px 0;border-bottom:1px solid var(--ink-qing);color:var(--ink-nong)}
+.ov-t td:first-child{color:var(--ink);font-weight:500;white-space:nowrap}
+.ov-t td:last-child,.ov-t th:last-child{padding-right:0}
+.ov-t small{font:400 12px var(--f-mono);color:var(--ink-zhong)}
+.ov-rec{margin-top:28px;padding:18px 20px;border:1px solid var(--ink);border-radius:3px;display:grid;gap:6px}
+.ov-rec p:last-child{max-width:54em;color:var(--ink-nong)}
+.ov-rec strong{color:var(--ink);font-weight:600}
+.ov-cols{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:32px clamp(24px,5vw,64px)}
+.ov-ul{display:grid;gap:8px;color:var(--ink-nong);font-size:15px}
+.ov-ul li{padding-left:1em;text-indent:-1em}
+.ov-ul li::before{content:"· ";color:var(--ink-zhong)}
+.ov-ul b,.ov-take strong{color:var(--ink);font-weight:600}
+.ov-take{margin-top:14px;padding-left:12px;border-left:2px solid var(--ink);font-size:15px;color:var(--ink-nong)}
+.src{margin-top:12px;font-size:13px;color:var(--ink-zhong);max-width:60em}
+.sw{display:grid;grid-template-columns:repeat(auto-fill,minmax(88px,1fr));gap:14px 12px}
+.sw div{display:grid;gap:3px;font-size:14px}
+.sw b{display:block;height:44px;border:1px solid var(--ink-dan);border-radius:3px}
+.sw small{font:400 11px/1.4 var(--f-mono);color:var(--ink-zhong)}
+.voices{display:grid;gap:2px}
+.voices p{margin-top:12px;color:var(--ink)}
+.voices small{font:400 12px/1.5 var(--f-mono);color:var(--ink-zhong)}
+.voices small b{font-family:var(--f-song);font-weight:600;color:var(--ink);font-size:14px}
+.v-serif{font:300 26px/1.2 var(--f-serif);letter-spacing:-.01em}
+.v-sans{font:500 22px/1.2 var(--f-sans);letter-spacing:-.02em}
+.v-mono{font:400 17px/1.3 var(--f-mono)}
+.anat{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0 28px;counter-reset:anat}
+.anat li{counter-increment:anat;display:grid;grid-template-columns:1.6rem minmax(0,1fr);gap:0 8px;padding-block:12px;border-top:1px solid var(--ink-qing);font-size:15px;align-content:start}
+.anat li::before{content:counter(anat);font:400 12px/1.9 var(--f-mono);color:var(--ink-zhong);grid-row:1/3}
+.anat b{font-weight:500}
+.anat span{color:var(--ink-nong);grid-column:2}
+.qs{display:grid;gap:0}
+.qs li{padding-block:13px;border-top:1px solid var(--ink-qing);color:var(--ink-nong);max-width:none}
+.qs b{color:var(--ink);font-weight:600}
+@media (max-width:900px){.ov-three,.ov-cols{grid-template-columns:minmax(0,1fr)}.anat{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:560px){.anat{grid-template-columns:minmax(0,1fr)}}
+</style>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><defs>
+  <filter id="seal-rough" x="-10%" y="-10%" width="120%" height="120%"><feTurbulence type="fractalNoise" baseFrequency=".85" numOctaves="2" seed="4" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="2.4" result="d"/><feColorMatrix in="n" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 -16 10.6" result="h"/><feComposite in="d" in2="h" operator="in"/></filter>
+</defs></svg>
+<header class="mk-bar">
+  <div class="wrap mk-bar-in">
+    <span class="mk-tag">Mockup · round 1 · 2026-11-11</span>
+    <nav class="mk-tabs" aria-label="Mockup views">
+      <a href="#overview">总览</a><a href="#handscroll">A 手卷</a><a href="#album">B 册页</a><a href="#far-mountains">C 远山</a>
+    </nav>
+  </div>
+</header>
+
+<!-- ═══ 总览 — the options side by side, the research, the language, the questions ═══ -->
+<section class="view ov" id="view-overview">
+  <div class="wrap">
+    <p class="mono">个人网站 · portfolio 入口 · 第 1 轮，等你 review</p>
+    <h1>三个首页，一套视觉语言</h1>
+    <p class="ov-lede">上面的 A、B、C 是三张完整的首页，可以直接滚动，手机上也能看。它们用同一套纸、墨、字和印，区别只在首页先给读者什么：一个故事、一组作品，还是几个问题。这一页把三者并排，后面是调研、视觉语言和要你拍板的问题。完整的推理在 spike（<code>site/spike/personal-site.md</code>）。</p>
+
+    <section class="ov-sec">
+      <h2 class="b-h"><span>三个方案并排</span></h2>
+      <div class="ov-three">
+        <article class="ov-opt">
+          <div class="wf" aria-hidden="true"><i class="tall">一句话 + 高远</i><i>scene 一</i><i>scene 二</i><i>scene 三</i><i class="band">平远 + 引文</i><i>scene 四 … 七</i><i class="end">接下来的问题 · 印</i></div>
+          <h3><a href="#handscroll">A · 手卷</a> <small>story first</small></h3>
+          <dl class="ov-kv">
+            <div><dt>先给</dt><dd>一条从 JPMorgan 到现在的路，七个 scene，读完约四分钟。过去是淡墨的远山，现在是浓墨的近山。</dd></div>
+            <div><dt>像谁</dt><dd>Bret Victor 按年代一卷到底；Matuschak 的 statement-first 单页。</dd></div>
+            <div><dt>强</dt><dd>叙事完整，是 Personal Statement 的可视版本。三面在同一个故事里自然出现。山水气质最足。</dd></div>
+            <div><dt>弱</dt><dd>只给 3–5 分钟的读者可能停在前两个 scene。第一个 scene 是银行的工作，研究问题在页尾。找某一件作品要翻。</dd></div>
+            <div><dt>适合</dt><dd>已经对你感兴趣、愿意读完的人：回了邮件的导师，面试前的面试官。</dd></div>
+          </dl>
+        </article>
+        <article class="ov-opt">
+          <div class="wf" aria-hidden="true"><i class="tall">一句话 ｜ 小山 + 履历</i><span class="wf-grid"><i>作品</i><i>作品</i><i>作品</i><i>作品</i><i>作品</i><i>作品</i></span><span class="wf-two"><i>Notes</i><i>Before this</i></span><i class="end">联系 · 印</i></div>
+          <h3><a href="#album">B · 册页</a> <small>works first</small></h3>
+          <dl class="ov-kv">
+            <div><dt>先给</dt><dd>一句身份，六张作品。每张是同一个结构：图、年份和角色、标题、一句话。</dd></div>
+            <div><dt>像谁</dt><dd>Cathy Fang、Joanne Leong、Pat Pataranutaporn 的作品索引。</dd></div>
+            <div><dt>强</dt><dd>三十秒看到全貌。加作品不用改版。最像 Media Lab 自己的版式：黑白、grotesk、粗横线。两类读者都不用学怎么读。</dd></div>
+            <div><dt>弱</dt><dd>和多数 portfolio 长得像。六张里五张出自同一个产品，要靠文案说清它们是一件事的不同切面。研究问题不在首页。</dd></div>
+            <div><dt>适合</dt><dd>只看一眼的人：招生初筛，recruiter。</dd></div>
+          </dl>
+        </article>
+        <article class="ov-opt">
+          <div class="wf" aria-hidden="true"><i class="tall">我是谁 + 远山</i><i>问题 一：Built / Seen / Open</i><i>问题 二</i><i>问题 三</i><i class="band">中景 + 作品清单</i><i class="end">近景：about · 印</i></div>
+          <h3><a href="#far-mountains">C · 远山</a> <small>questions first</small></h3>
+          <dl class="ov-kv">
+            <div><dt>先给</dt><dd>三个研究问题。每个问题下面三行：Built、Seen、Open。整页像一幅立轴，从远山走到近岸。</dd></div>
+            <div><dt>像谁</dt><dd>Geoffrey Litt 按研究主题分组；Wattenberger 的 “I'm thinking about…”。</dd></div>
+            <div><dt>强</dt><dd>一眼是 researcher。直接回答 Fluid Interfaces 问的 “What novel ideas would you bring”。套瓷时能把导师带到他关心的那一问。工程作为证据出现，数字用 mono 标出。</dd></div>
+            <div><dt>弱</dt><dd>hiring manager 要滑到 “The ground I stand on” 才看到做过什么。问题要够尖，方向一变首页要重写。每一问证据的厚薄会被看出来。</dd></div>
+            <div><dt>适合</dt><dd>导师和 research 读者。</dd></div>
+          </dl>
+        </article>
+      </div>
+
+      <h3 class="ov-gap">按你的六组 Principles 排</h3>
+      <div class="ov-scroll"><table class="ov-t">
+        <thead><tr><th>Principle</th><th>A 手卷</th><th>B 册页</th><th>C 远山</th><th>排序</th></tr></thead>
+        <tbody>
+          <tr><td>1 · Minimal<br><small>最少的步骤</small></td><td>到页尾要滑七屏</td><td>一屏见全部</td><td>三个问题，一屏半</td><td>B › C › A</td></tr>
+          <tr><td>2 · Calm ahead<br><small>还没读的不压人</small></td><td>一次只给一个 scene</td><td>六张并排是一个 pile，上限要守住 6</td><td>三个问题，数字小</td><td>A ≈ C › B</td></tr>
+          <tr><td>3 · Loud wins<br><small>只在完成时响</small></td><td>读完一卷才盖印，完成感最强</td><td>印在页脚</td><td>印在近景，和署名一起</td><td>A › C › B</td></tr>
+          <tr><td>4 · Hierarchy<br><small>重要的一眼看到</small></td><td>最重要的问题在最后</td><td>一眼看到广度</td><td>一眼看到想研究什么</td><td>C（research）或 B（广度）› A</td></tr>
+          <tr><td>5 · Consistent<br><small>一个结构</small></td><td>七个 scene 一个骨架</td><td>六张同一个 leaf</td><td>三问同一个 Built / Seen / Open</td><td>平</td></tr>
+          <tr><td>6 · Honest controls</td><td colspan="3">三版相同：链接有下划线或箭头；三面的标记是文字，不画成 pill 或圆圈；hover 只加下划线。</td><td>平</td></tr>
+        </tbody>
+      </table></div>
+
+      <div class="ov-rec">
+        <p class="mono">推荐</p>
+        <p><strong>C 做首页的骨架，B 的 leaf 做 Work 页，A 做成 About 里的一页故事。</strong>这个站的第一批读者是导师：套瓷邮件里的链接，Statement of Objectives 结尾的 portfolio URL。一位教授说自己每份申请看 3–5 分钟，感兴趣的话会去搜你的名字。C 把「我是谁、想研究什么、做了什么来问」放进第一屏半；A 的故事是 Personal Statement 的材料，放进 About 不浪费；B 的结构是 Work 页天然的样子。三者不互斥。这是推荐，不是决定，见 Q1。</p>
+      </div>
+    </section>
+
+    <section class="ov-sec">
+      <h2 class="b-h"><span>调研</span></h2>
+      <div class="ov-cols">
+        <div>
+          <h3>Media Lab 的字和颜色</h3>
+          <ul class="ov-ul">
+            <li>字是 Neue Haas Grotesk，Helvetica 的数字复刻，通过 Adobe Fonts 提供，fallback 是 Helvetica 和 Arial。<a href="https://www.media.mit.edu/posts/MLBrandPortal/">Brand Portal</a>（只看到搜索摘要）· <a href="https://mitadmissions.org/blogs/entry/fonts-of-mit/">MIT Admissions</a></li>
+            <li>Pentagram 2014 年的识别系统：“Helvetica … has been reinstated to support the overall system.” <a href="https://www.pentagram.com/work/mit-media-lab">Pentagram</a></li>
+            <li>颜色：“primary colors are black, white, and grey. Most designs should stick to this palette.” 辅助色 “one color at a time with black and white”。Brand Portal（搜索摘要）</li>
+            <li>没读到的：media.mit.edu 当天对抓取返回 503，网站 CSS 里的字号和 hex 没有核实。</li>
+          </ul>
+          <p class="ov-take"><strong>借什么：</strong>一种 grotesk 做主声；黑白灰为主；一次只用一个颜色。Mockup 用 Geist：同一路的瑞士系 grotesk，也是 Mars Workbench 自己的字。Neue Haas Grotesk 要 Adobe Fonts 授权，见 Q2。</p>
+        </div>
+        <div>
+          <h3>别人的站怎么处理三面</h3>
+          <ul class="ov-ul">
+            <li>首页那句话是「动词 + 主题」，不是 job title。Matuschak：“I'm an applied researcher, focused on creating user interfaces that expand what people can think and do.”</li>
+            <li>作品按主题或问题分组，不按媒介分。少数置顶，其余收起。</li>
+            <li>12 个站里只有一个给 art 单开一栏。其余把它混进同一张作品表，或者让站点自己的做工来说。</li>
+            <li>完成的和进行中的分开放：Essays 和 Notes，Projects 和 Working notes。</li>
+          </ul>
+          <p class="ov-take"><strong>所以：</strong>不分 Engineering、Research、Art 三个栏目。每件作品用同一个结构，标出它用了哪几面；artist 那一面主要由站点本身的做工和 Process 承担。</p>
+        </div>
+      </div>
+
+      <h3 class="ov-gap">山水画的概念，在页面上变成什么</h3>
+      <div class="ov-scroll"><table class="ov-t">
+        <thead><tr><th>概念</th><th>出处</th><th>在页面上</th></tr></thead>
+        <tbody>
+          <tr><td>留白 · 计白当黑</td><td>包世臣《艺舟双楫》引邓石如：“常计白以当黑，奇趣乃出。”</td><td>空白是版面的一部分。一屏一个主体，山水只占一角或一条，不垫在正文下面。</td></tr>
+          <tr><td>三远</td><td>郭熙《林泉高致》：“高遠之色清明，深遠之色重晦；平遠之色有明有晦。”</td><td>A 的开篇是高远，段间是平远。C 整页从远到近，墨色跟着变深。</td></tr>
+          <tr><td>墨分五色</td><td>张彦远《历代名画记》：“運墨而五色具。” 焦浓重淡清是后来的习惯说法。</td><td>一种墨的五个深浅做全部灰阶。正文只用前三档，后两档给线和远山。</td></tr>
+          <tr><td>手卷 · 册页 · 立轴</td><td>The Met：手卷 “shoulder-width section by section”，是私密的观看；册页是装订成册的小幅。</td><td>三个方案各取一种观看方式：一段一段展开，一张一张翻，从上到下一幅。都是竖向滚动，不做横向滚动。</td></tr>
+          <tr><td>题跋 · 印章</td><td>题跋写在画后；印是作者的署名，也用来平衡构图。</td><td>页尾是题跋的位置：接下来的问题，联系方式。印只盖一次，是全页唯一的红。</td></tr>
+          <tr><td>浅绛</td><td>以赭石为主的淡彩。花青那一半只见于通俗来源，未核实。</td><td>两个淡彩只用在最远的山和 plate 的小标记上。</td></tr>
+        </tbody>
+      </table></div>
+      <p class="src">横向滚动的证据：NN/g “consistently generate negative responses from users”。<a href="https://www.nngroup.com/articles/horizontal-scrolling/">NN/g</a> · <a href="https://zh.wikisource.org/wiki/林泉高致">林泉高致</a> · <a href="https://zh.wikisource.org/wiki/歷代名畫記/卷第二">历代名画记</a> · <a href="https://www.metmuseum.org/essays/chinese-handscrolls">The Met</a></p>
+
+      <h3 class="ov-gap">站上放什么，每一块做什么</h3>
+      <div class="ov-scroll"><table class="ov-t">
+        <thead><tr><th>内容</th><th>它的作用</th><th>给谁</th><th>你手里有什么</th></tr></thead>
+        <tbody>
+          <tr><td>一句身份</td><td>让只看几分钟的人把你归类。官方要求：“highlight who you are”。</td><td>所有人</td><td>三版各写了一句候选</td></tr>
+          <tr><td>Selected work，3–6 件</td><td>证明相关。官方要求按申请的组来 curate。</td><td>导师，hiring manager</td><td>Mars Workbench、Plan with Claude、Loud wins、agent 实验、review log、JPMorgan onboarding</td></tr>
+          <tr><td>作品页</td><td>你的角色、新在哪、结果、没走的路。Fluid Interfaces 逐条要求前三项。</td><td>看第二眼的人</td><td>spike、PR、实验报告都在；缺英文版和图</td></tr>
+          <tr><td>Research questions</td><td>避免 Pat 说的 “only vaguely related”；回答 “What novel ideas would you bring”。</td><td>导师</td><td>研究弧线和方向表</td></tr>
+          <tr><td>60 秒 demo</td><td>最快证明东西能用。</td><td>导师初筛</td><td>没有，要录</td></tr>
+          <tr><td>Notes</td><td>证明会写。Tangible Media：“strong communication skills, both oral and written”。</td><td>导师，同行</td><td>四篇有题目，没有正文</td></tr>
+          <tr><td>Process</td><td>展示怎么做出来的。NN/g：“Don't just show me the finished product.”</td><td>同行，工程师</td><td>PR #115 的 28 轮、<code>reviews/</code>、<code>experiments/</code>。artist 那一面住在这里</td></tr>
+          <tr><td>About · CV · Contact</td><td>回答搜你名字的人；让申请前的对话能发生。</td><td>所有人</td><td>简历有；个人经历写多少待定（Q7）</td></tr>
+          <tr><td>Colophon</td><td>把站点本身的做工说出来。Tangible Media 会评估网站的 “aesthetics and usability”。</td><td>同行，hiring manager</td><td>山是代码画的；对比度是量过的</td></tr>
+        </tbody>
+      </table></div>
+      <p class="src">来源：<a href="https://www.media.mit.edu/posts/academics-portfolio-requirements/">MAS portfolio requirements</a> · <a href="https://www.media.mit.edu/groups/fluid-interfaces/applicant-information/">Fluid Interfaces</a> · <a href="https://tangible.media.mit.edu/contact-admission">Tangible Media</a> · <a href="https://www.media.mit.edu/posts/my-media-lab-experience/">Pat Pataranutaporn 的建议</a> · <a href="https://pg.ucsd.edu/PhD-application-tips.htm">Philip Guo</a> · <a href="https://www.nngroup.com/articles/ux-design-portfolios/">NN/g</a>。Media Lab 的页面是通过翻译代理读到的，引用前请对原文。</p>
+    </section>
+
+    <section class="ov-sec">
+      <h2 class="b-h"><span>视觉语言</span></h2>
+      <h3>纸、墨、印</h3>
+      <div class="sw">
+        <div><b style="background:var(--paper)"></b><span>纸 paper</span><small>底</small></div>
+        <div><b style="background:var(--paper-2)"></b><span>纸 paper-2</span><small>plate 的底</small></div>
+        <div><b style="background:var(--ink)"></b><span>焦</span><small>标题 · 15.0 / 14.5</small></div>
+        <div><b style="background:var(--ink-nong)"></b><span>浓</span><small>正文 · 8.7 / 10.0</small></div>
+        <div><b style="background:var(--ink-zhong)"></b><span>重</span><small>注 · 5.5 / 6.8</small></div>
+        <div><b style="background:var(--ink-dan)"></b><span>淡</span><small>线，不作文字</small></div>
+        <div><b style="background:var(--ink-qing)"></b><span>清</span><small>细线，远山</small></div>
+        <div><b style="background:var(--indigo)"></b><span>花青</span><small>6.6 / 9.1</small></div>
+        <div><b style="background:var(--umber)"></b><span>赭石</span><small>5.3 / 7.9</small></div>
+        <div><b style="background:var(--seal)"></b><span>朱砂</span><small>印 · 5.4 / 5.7</small></div>
+      </div>
+      <p class="src">数字是对纸色的 WCAG 对比度，日间版 / 夜间版，按你 design language 的做法量出来。用作文字的颜色在两种纸上都不低于 4.5。色值为了对比度调暗过，不是颜料的本色。夜间版把纸和墨对调，像拓片；跟随系统主题。</p>
+
+      <div class="ov-cols ov-gap">
+        <div>
+          <h3>三种字，对应三面</h3>
+          <div class="voices">
+            <p class="v-serif">When should a coach step away?</p><small>Source Serif 4 配思源宋体 · <b>问</b>：问题和故事</small>
+            <p class="v-sans">An MCP server that asks first.</p><small>Geist · <b>造</b>：做了什么</small>
+            <p class="v-mono">13.8 min · 10 runs · n = 1</p><small>Geist Mono · 量出来的：日期、数字、角色</small>
+          </div>
+          <p class="ov-take">磨没有自己的字体。它出现在每一处都收拾干净这件事上。</p>
+        </div>
+        <div>
+          <h3>你的 Principles 在这里的样子</h3>
+          <ul class="ov-ul">
+            <li><b>Minimal</b>：一屏一个主体。没有图标、卡片阴影、渐变。山水只在页首、段间和页尾。</li>
+            <li><b>Calm ahead</b>：还没读到的用淡墨。Selected work 不超过 6 件。</li>
+            <li><b>Loud wins</b>：读到页尾，印盖下去，420 ms，只一次。画是盖了印才算画完。</li>
+            <li><b>Hierarchy</b>：墨色的深浅就是层级，不靠字号堆。</li>
+            <li><b>Consistent</b>：一个 leaf、一个 plate、一个 scene 骨架；手机和桌面同一条路。</li>
+            <li><b>Honest controls</b>：链接看得出是链接；状态标记不长成按钮。</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="ov-cols ov-gap">
+        <div>
+          <h3>三个小东西</h3>
+          <ul class="ov-ul">
+            <li><b>天上的一点红</b>：Mars。产品的主题叫 “dawn on Mars”，这里它只是山顶上的一颗星。</li>
+            <li><b>印</b>：现在是闲章「磨」，占位用。名章要你的中文名用字（Q4）。</li>
+            <li><b>三面的标记</b>：A 和 C 用 造 · 问 · 磨，B 用 build · ask · polish，可以对比着看（Q3）。</li>
+          </ul>
+        </div>
+        <div>
+          <h3>图是占位的</h3>
+          <p>每张 plate 是一张小墨线图，站在截图和视频的位置上，内容取自真实的东西：board 的 ring 和 dots，十个 run 的分钟数，review 的六种 kind。正式版换成真截图和 60 秒视频。</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="ov-sec">
+      <h2 class="b-h"><span>作品页的结构（三个方案共用）</span></h2>
+      <ol class="anat">
+        <li><b>标题 + 一句话</b><span>是什么，给谁用。</span></li>
+        <li><b>一行事实</b><span>年份 · 角色 · 状态 · 链接。用 mono。Fluid Interfaces 要每件作品写明 role。</span></li>
+        <li><b>60 秒 demo</b><span>导师初筛时最快的证明。</span></li>
+        <li><b>起因</b><span>是哪一处摩擦引出了它。两三句。</span></li>
+        <li><b>造 · Built</b><span>做出了什么，一张图，最难的那一处。</span></li>
+        <li><b>问 · Asked</b><span>问的是什么，看到了什么，数字，局限（n = 1）。</span></li>
+        <li><b>磨 · Polished</b><span>一组前后对比：一轮 review，和它留下的一条规则。</span></li>
+        <li><b>没走的路</b><span>放弃的方案和原因。NN/g 的 hiring 调查点名要这一项。</span></li>
+        <li><b>接下来</b><span>还开着的问题，连回首页对应的那一问。</span></li>
+      </ol>
+    </section>
+
+    <section class="ov-sec">
+      <h2 class="b-h"><span>待你拍板</span></h2>
+      <ol class="qs">
+        <li><b>Q1 · 首页走哪条路。</b>A、B、C，或者推荐的组合：C 的骨架，B 做 Work 页，A 做 About 里的故事。</li>
+        <li><b>Q2 · 字。</b>A 由 serif 领衔，B 是纯 grotesk，C 两种并用。哪个更像你。Grotesk 正式用 Geist 还是 Neue Haas Grotesk（Adobe Fonts，要授权）。</li>
+        <li><b>Q3 · 三面怎么标。</b>造 · 问 · 磨，build · ask · polish，或者不标。</li>
+        <li><b>Q4 · 印。</b>闲章「磨」留不留；要不要名章，用哪几个字。</li>
+        <li><b>Q5 · 山水的量。</b>A 最多（页首加两条），B 最少（一小块），C 居中（上、中、下三处）。</li>
+        <li><b>Q6 · 首页那句话。</b>三版各一句，选一句或者改。</li>
+        <li><b>Q7 · 对外说什么。</b>站上写不写正在申请 graduate program 或正在找工作：导师和 hiring manager 会看到同一句话。白板之外的个人经历写多少。</li>
+        <li><b>Q8 · 中文。</b>现在全站英文，中文只是点缀。要不要中文版。</li>
+        <li><b>Q9 · Mars 那一点红。</b>留，还是让印做唯一的红。</li>
+      </ol>
+    </section>
+  </div>
+</section>
+
+<!-- ═══ A · 手卷 Handscroll — story first ═══ -->
+<section class="view opt-a" id="view-handscroll" hidden>
+  <div class="a-open scape" data-scape="gaoyuan">
+    <div class="wrap">
+      <nav class="s-nav" aria-label="Site"><b>Mars Chu</b><span><a href="#" data-inert>Works</a><a href="#" data-inert>Notes</a><a href="#" data-inert>CV</a></span></nav>
+      <p class="a-kicker mono">Seven scenes · about four minutes</p>
+      <h1 class="a-title">I build tools that help people follow through on their own plans. The good ones are needed less over time.</h1>
+      <p class="a-by">Mars Chu. Engineer in San Jose, California. This page is the story of one tool I have used every day, and the questions it left me with.</p>
+    </div>
+  </div>
+
+  <div class="wrap a-scenes">
+    <article class="a-scene" style="--near:0">
+      <div class="a-when"><span class="a-num" aria-hidden="true">一</span><span class="mono">2021–2025</span></div>
+      <div class="a-what">
+        <h2>Milestones, for other people</h2>
+        <p>At JPMorgan Chase I led the onboarding flow of a new business-payments platform. It walks a small business through each milestone and shows live progress drawn from five services. I also built the team's component library on the company design system.</p>
+        <div class="row"><a class="go" href="#" data-inert>Merchant onboarding</a><span class="facets" role="img" aria-label="Build"><i class="on">造</i><i>问</i><i>磨</i></span></div>
+      </div>
+      <figure class="plate" data-plate="steps"><figcaption>Onboarding milestones, fed by five services</figcaption></figure>
+    </article>
+
+    <article class="a-scene" style="--near:.16">
+      <div class="a-when"><span class="a-num" aria-hidden="true">二</span><span class="mono">Before the app</span></div>
+      <div class="a-what">
+        <h2>A whiteboard and a friend</h2>
+        <p>A friend and I tracked workouts, meals and reading on a whiteboard, one sprint at a time. It worked. We both got better at the things we tracked, and I wanted to know why.</p>
+      </div>
+      <figure class="plate" data-plate="whiteboard"><figcaption>The whiteboard, redrawn from memory</figcaption></figure>
+    </article>
+
+    <article class="a-scene" style="--near:.33">
+      <div class="a-when"><span class="a-num" aria-hidden="true">三</span><span class="mono">Feb – Jul 2026</span></div>
+      <div class="a-what">
+        <h2>The whiteboard becomes a board</h2>
+        <p>I rebuilt the whiteboard as a weekly board. Each version removed one point of resistance: a phone layout for when I was out, a priority matrix for tasks with no deadline, a wizard to draft the week.</p>
+        <div class="row"><a class="go" href="#" data-inert>Mars Workbench</a><span class="facets" role="img" aria-label="Build, ask, polish"><i class="on">造</i><i class="on">问</i><i class="on">磨</i></span></div>
+      </div>
+      <figure class="plate" data-plate="board"><figcaption>The board: today's ring, and a dot for every run of a habit</figcaption></figure>
+    </article>
+  </div>
+
+  <div class="a-band scape" data-scape="pingyuan">
+    <div class="wrap"><blockquote>Every version took away one thing that stood between me and the plan.</blockquote></div>
+  </div>
+
+  <div class="wrap a-scenes">
+    <article class="a-scene" style="--near:.5">
+      <div class="a-when"><span class="a-num" aria-hidden="true">四</span><span class="mono">Oct 2026</span></div>
+      <div class="a-what">
+        <h2>Planning is a negotiation</h2>
+        <p>The wizard drafted a plan in one shot, and I kept correcting it. A plan is worked out over several turns, so I connected the board to the assistant I already talk to every day. Claude reads the week, asks what to change, and writes only after I agree.</p>
+        <div class="row"><a class="go" href="#" data-inert>Plan with Claude</a><span class="facets" role="img" aria-label="Build, ask"><i class="on">造</i><i class="on">问</i><i>磨</i></span></div>
+      </div>
+      <figure class="plate" data-plate="talk"><figcaption>Recap, ask, then write</figcaption></figure>
+    </article>
+
+    <article class="a-scene" style="--near:.66">
+      <div class="a-when"><span class="a-num" aria-hidden="true">五</span><span class="mono">Oct 2026</span></div>
+      <div class="a-what">
+        <h2>Whose code is it?</h2>
+        <p>Agents were writing most of the code, and it had stopped feeling like mine. I ran controlled experiments on how to direct them: ten runs, blind review. Serial work beat parallel work. The defects that kept coming back traced to rules I had never written down.</p>
+        <div class="row"><a class="go" href="#" data-inert>Serial vs. parallel agents</a><a class="go" href="#" data-inert>The review log</a><span class="facets" role="img" aria-label="Build, ask"><i class="on">造</i><i class="on">问</i><i>磨</i></span></div>
+      </div>
+      <figure class="plate" data-plate="runs"><figcaption>Minutes to an open pull request, ten runs</figcaption></figure>
+    </article>
+
+    <article class="a-scene" style="--near:.83">
+      <div class="a-when"><span class="a-num" aria-hidden="true">六</span><span class="mono">Nov 2026</span></div>
+      <div class="a-what">
+        <h2>Loud wins</h2>
+        <p>The literature told me to keep feedback quiet. A month of daily use disagreed at one moment: finishing. After 28 rounds of mockups, completing a task tosses its card into the day's ring.</p>
+        <div class="row"><a class="go" href="#" data-inert>Loud wins</a><span class="facets" role="img" aria-label="Ask, polish"><i>造</i><i class="on">问</i><i class="on">磨</i></span></div>
+      </div>
+      <figure class="plate" data-plate="toss"><figcaption>A finished card, tossed into today's ring</figcaption></figure>
+    </article>
+
+    <article class="a-scene" style="--near:1">
+      <div class="a-when"><span class="a-num" aria-hidden="true">七</span><span class="mono">Now</span></div>
+      <div class="a-what">
+        <h2>A tool you stop needing</h2>
+        <p>The board got me to the gym until I no longer needed the board to go. That is the tool I want to study: one that knows when to step in and when to step away.</p>
+      </div>
+    </article>
+  </div>
+
+  <div class="a-band scape" data-scape="near">
+    <div class="wrap"></div>
+  </div>
+
+  <div class="wrap">
+    <footer class="a-end">
+      <div>
+        <h2>What I want to ask next</h2>
+        <ol class="a-next">
+          <li>When should a coach step in, and when should it step away?</li>
+          <li>What makes finishing feel like something, without a score?</li>
+          <li>How does an agent write code that is mine, not its own?</li>
+        </ol>
+      </div>
+      <div class="a-sign">
+        <div class="who"><span class="seal" role="img" aria-label="Seal reading 磨, to polish">磨</span><span>Mars Chu<br><span class="colophon">San Jose, California</span></span></div>
+        <div class="end-links"><a href="#" data-inert>Works</a><a href="#" data-inert>Notes</a><a href="#" data-inert>CV</a><a href="#" data-inert>GitHub</a><a href="#" data-inert>Email</a></div>
+        <p class="colophon">Set in Source Serif and Geist. The mountains are drawn by code and never the same ridge twice across pages.</p>
+      </div>
+    </footer>
+  </div>
+</section>
+
+<!-- ═══ B · 册页 Album — works first ═══ -->
+<section class="view opt-b" id="view-album" hidden>
+  <div class="wrap">
+    <nav class="s-nav" aria-label="Site"><b>Mars Chu</b><span><a href="#" data-inert>Work</a><a href="#" data-inert>Research</a><a href="#" data-inert>Notes</a><a href="#" data-inert>About</a></span></nav>
+
+    <header class="b-head">
+      <h1>Mars Chu builds tools that help people follow through on their own plans, and studies how AI can coach without taking over.</h1>
+      <div class="b-side">
+        <div class="b-vig scape" data-scape="vignette"></div>
+        <ul class="b-facts">
+          <li>Engineer · San Jose, California</li>
+          <li>Lead engineer, JPMorgan Chase, 2021–2025</li>
+          <li>MS, Electrical &amp; Computer Engineering, Michigan</li>
+        </ul>
+      </div>
+    </header>
+
+    <section class="b-sec" aria-labelledby="b-work">
+      <h2 class="b-h" id="b-work"><span>Selected work</span><span class="facets-en" aria-hidden="true"><span>build</span><span>ask</span><span>polish</span></span></h2>
+      <div class="b-grid">
+        <article class="leaf">
+          <figure class="plate" data-plate="board"></figure>
+          <div class="meta"><span>2025 – now · solo</span><span>build · ask · polish</span></div>
+          <h3><a href="#" data-inert>Mars Workbench</a></h3>
+          <p>A weekly planner I use every day. Habits, projects and one-offs share one board.</p>
+        </article>
+        <article class="leaf">
+          <figure class="plate" data-plate="talk"></figure>
+          <div class="meta"><span>2026 · solo</span><span>build · ask</span></div>
+          <h3><a href="#" data-inert>Plan with Claude</a></h3>
+          <p>An MCP server that lets Claude plan the week with you. It asks first and writes only after you agree.</p>
+        </article>
+        <article class="leaf">
+          <figure class="plate" data-plate="toss"></figure>
+          <div class="meta"><span>2026 · design</span><span>ask · polish</span></div>
+          <h3><a href="#" data-inert>Loud wins</a></h3>
+          <p>A completion interaction decided over 28 review rounds, against the literature I started from.</p>
+        </article>
+        <article class="leaf">
+          <figure class="plate" data-plate="runs"></figure>
+          <div class="meta"><span>2026 · experiment</span><span>build · ask</span></div>
+          <h3><a href="#" data-inert>Serial vs. parallel agents</a></h3>
+          <p>A controlled experiment on coding-agent workflows. Ten runs, blind review. Serial won.</p>
+        </article>
+        <article class="leaf">
+          <figure class="plate" data-plate="log"></figure>
+          <div class="meta"><span>2026 – now · dataset</span><span>ask · polish</span></div>
+          <h3><a href="#" data-inert>The review log</a></h3>
+          <p>Every problem my review caught that CI let through, kept with the code as a dataset.</p>
+        </article>
+        <article class="leaf">
+          <figure class="plate" data-plate="steps"></figure>
+          <div class="meta"><span>2021–2025 · lead engineer</span><span>build</span></div>
+          <h3><a href="#" data-inert>Merchant onboarding, JPMorgan Chase</a></h3>
+          <p>Guiding small businesses through onboarding milestones, with live progress from five services.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="b-sec b-two">
+      <div>
+        <h2 class="b-h"><span>Notes</span></h2>
+        <ul class="b-list">
+          <li><a href="#" data-inert>Planning is a negotiation</a><small>Oct 2026</small></li>
+          <li><a href="#" data-inert>When daily use overturned the literature</a><small>Nov 2026</small></li>
+          <li><a href="#" data-inert>A tool you stop needing</a><small>Nov 2026</small></li>
+          <li><a href="#" data-inert>Stuck in research, unstuck by practice</a><small>Nov 2026</small></li>
+        </ul>
+      </div>
+      <div>
+        <h2 class="b-h"><span>Before this</span></h2>
+        <ul class="b-list">
+          <li><span>Team component library, JPMorgan Chase</span><small>2021–2025</small></li>
+          <li><span>Task-management app, Cerner</span><small>2021</small></li>
+          <li><span>Metrics platform, SLD Laser</span><small>2019</small></li>
+          <li><span>BS, Electrical Engineering, Colorado State</span><small>2018</small></li>
+        </ul>
+      </div>
+    </section>
+
+    <footer class="b-end">
+      <div class="end-links"><a href="#" data-inert>CV</a><a href="#" data-inert>GitHub</a><a href="#" data-inert>LinkedIn</a><a href="#" data-inert>Email</a></div>
+      <span class="seal" role="img" aria-label="Seal reading 磨, to polish">磨</span>
+    </footer>
+  </div>
+</section>
+
+<!-- ═══ C · 远山 Far mountains — questions first ═══ -->
+<section class="view opt-c" id="view-far-mountains" hidden>
+  <div class="c-far scape" data-scape="far">
+    <div class="wrap">
+      <nav class="s-nav" aria-label="Site"><b>Mars Chu</b><span><a href="#" data-inert>Questions</a><a href="#" data-inert>Work</a><a href="#" data-inert>About</a></span></nav>
+      <p class="c-who"><b>Mars Chu.</b> Engineer. I build tools that help people follow through on their own plans, and I use them to ask questions.</p>
+      <p class="c-lead mono">Three questions I am walking toward</p>
+    </div>
+  </div>
+
+  <div class="wrap">
+    <article class="c-q">
+      <div class="c-q-n" aria-hidden="true">一</div>
+      <div class="c-q-body">
+        <h2 class="c-q-text">When should a coach step in, and when should it step away?</h2>
+        <dl class="c-rows">
+          <div><dt>Built</dt><dd><a href="#" data-inert>Plan with Claude</a>, an MCP server that lets Claude plan my week with me. It recaps, asks, and writes only after I agree.</dd></div>
+          <div><dt>Seen</dt><dd>A one-shot planning wizard failed. Planning turned out to be a negotiation over several turns. The board got me to the gym, and then I stopped needing it for that.</dd></div>
+          <div><dt>Open</dt><dd>How do you measure a tool being needed less?</dd></div>
+        </dl>
+      </div>
+      <figure class="plate" data-plate="talk"><figcaption>Recap, ask, then write</figcaption></figure>
+    </article>
+
+    <article class="c-q">
+      <div class="c-q-n" aria-hidden="true">二</div>
+      <div class="c-q-body">
+        <h2 class="c-q-text">What makes finishing feel like something, without a score?</h2>
+        <dl class="c-rows">
+          <div><dt>Built</dt><dd><a href="#" data-inert>Loud wins</a>, a completion interaction for <a href="#" data-inert>Mars Workbench</a>, decided over <b>28</b> review rounds.</dd></div>
+          <div><dt>Seen</dt><dd>I never looked at the points. The row of dots on each habit was the only feedback that registered. The literature said quiet; daily use said loud, at the one moment of finishing.</dd></div>
+          <div><dt>Open</dt><dd>One user, one month. Does it hold in week four, and for anyone else?</dd></div>
+        </dl>
+      </div>
+      <figure class="plate" data-plate="toss"><figcaption>A finished card, tossed into today's ring</figcaption></figure>
+    </article>
+
+    <article class="c-q">
+      <div class="c-q-n" aria-hidden="true">三</div>
+      <div class="c-q-body">
+        <h2 class="c-q-text">How does an agent write code that is mine, not its own?</h2>
+        <dl class="c-rows">
+          <div><dt>Built</dt><dd><a href="#" data-inert>Serial vs. parallel agents</a>, a controlled experiment, and <a href="#" data-inert>the review log</a>, a dataset of what my review catches.</dd></div>
+          <div><dt>Seen</dt><dd>Serial opened a pull request in <b>13.8</b> min against <b>17.2</b>, at two thirds of the cost. Quality was the same. The recurring defects came from rules never written down.</dd></div>
+          <div><dt>Open</dt><dd>Can a reviewer agent learn from the log what the rules leave out?</dd></div>
+        </dl>
+      </div>
+      <figure class="plate" data-plate="runs"><figcaption>Minutes to an open pull request, ten runs</figcaption></figure>
+    </article>
+
+    <p class="c-more"><span>Further out: how many things a person can hold at once, and when a reminder helps instead of adding to the noise.</span></p>
+  </div>
+
+  <div class="c-mid scape" data-scape="mid">
+    <div class="wrap">
+      <p class="mono">The ground I stand on</p>
+      <div class="c-works">
+        <div class="c-work"><time>2025 – now</time><a href="#" data-inert>Mars Workbench</a><p>A weekly planner I use every day. Habits, projects and one-offs share one board.</p><span class="role">solo</span></div>
+        <div class="c-work"><time>2026</time><a href="#" data-inert>Plan with Claude</a><p>Claude plans the week with you over MCP. It asks first.</p><span class="role">solo</span></div>
+        <div class="c-work"><time>2026</time><a href="#" data-inert>Loud wins</a><p>A completion interaction, 28 review rounds.</p><span class="role">design</span></div>
+        <div class="c-work"><time>2026</time><a href="#" data-inert>Serial vs. parallel agents</a><p>Ten runs, blind review. Serial won.</p><span class="role">experiment</span></div>
+        <div class="c-work"><time>2021–2025</time><a href="#" data-inert>Merchant onboarding</a><p>JPMorgan Chase. Milestones and live progress across five services.</p><span class="role">lead engineer</span></div>
+        <div class="c-work"><time>2021–2025</time><a href="#" data-inert>Team component library</a><p>JPMorgan Chase. One library on the company design system.</p><span class="role">lead engineer</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="c-near scape" data-scape="near">
+    <div class="wrap c-about">
+      <div>
+        <p class="mono" style="margin-bottom:14px">Near at hand</p>
+        <p>I spent four years building payment software at JPMorgan Chase, then a year building one tool for myself and using it daily. I treat a pull request the way a printmaker treats a proof: it is done when nothing in it is there by accident.</p>
+        <p>I studied electrical and computer engineering at the University of Michigan and Colorado State.</p>
+      </div>
+      <div class="a-sign">
+        <div class="who"><span class="seal" role="img" aria-label="Seal reading 磨, to polish">磨</span><span>Mars Chu<br><span class="colophon">San Jose, California</span></span></div>
+        <div class="end-links"><a href="#" data-inert>CV</a><a href="#" data-inert>Notes</a><a href="#" data-inert>GitHub</a><a href="#" data-inert>Email</a></div>
+      </div>
+    </div>
+  </div>
+</section>
+<script>
+(() => {
+  /* ── Ink-wash ridges, drawn by code: asymmetric pointed peaks plus four octaves of roughness, seeded so a ridge is the same on every load. */
+  const prng = seed => () => { seed |= 0; seed = seed + 0x6D2B79F5 | 0; let t = Math.imul(seed ^ seed >>> 15, 1 | seed); t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t; return ((t ^ t >>> 14) >>> 0) / 4294967296; };
+  const noise = rand => { const grid = Array.from({length: 512}, rand), ease = t => t * t * (3 - 2 * t); return x => { const i = Math.floor(x), f = x - i; return grid[i & 511] + (grid[(i + 1) & 511] - grid[i & 511]) * ease(f); }; };
+  const W = 1600;
+  const ridge = (layer, height) => {
+    const wave = noise(prng(layer.seed)), points = [];
+    for (let x = -20; x <= W + 20; x += 4) {
+      let lift = 0;
+      for (const peak of layer.peaks) { const dx = x - peak.x * W, spread = (dx < 0 ? peak.wl ?? peak.w : peak.wr ?? peak.w) * W; lift += peak.h * Math.exp(-Math.pow(Math.abs(dx) / spread, peak.k ?? 1.5)); }
+      lift += layer.rough * ((wave(x * .006) - .5) + .5 * (wave(x * .021 + 40) - .5) + .22 * (wave(x * .07 + 90) - .5) + .08 * (wave(x * .2 + 130) - .5));
+      points.push(x + ' ' + (height * layer.base - height * layer.amp * lift).toFixed(1));
+    }
+    return 'M-20 ' + height + ' L' + points.join(' L') + ' L' + (W + 20) + ' ' + height + ' Z';
+  };
+  const INK = 'var(--ink)', INDIGO = 'var(--indigo)';
+  const SCAPES = {
+    /* 高远 — towering: look up from the foot of the mountain to its peak */
+    gaoyuan: { align: 'xMaxYMax', mars: [.955, .1], marsNarrow: [.955, .13], layers: [
+      {seed: 11, base: .80, amp: .62, rough: .10, a: .10, fade: .9, color: INDIGO, peaks: [{x: .80, h: 1, wl: .10, wr: .07, k: 1.3}, {x: .92, h: .55, w: .06}, {x: .62, h: .42, w: .09}]},
+      {seed: 23, base: .87, amp: .52, rough: .12, a: .22, fade: .8, peaks: [{x: .72, h: 1, wl: .06, wr: .045, k: 1.25}, {x: .84, h: .62, w: .05, k: 1.3}, {x: .55, h: .3, w: .08}]},
+      {seed: 37, base: .98, amp: .36, rough: .14, a: .5, fade: .75, peaks: [{x: .90, h: .9, wl: .07, wr: .06, k: 1.3}, {x: .99, h: .5, w: .05}, {x: .70, h: .25, w: .06}]}]},
+    /* 平远 — level: from a near bank across to far, low hills */
+    pingyuan: { align: 'xMidYMax', layers: [
+      {seed: 5, base: .78, amp: .30, rough: .25, a: .08, fade: .95, color: INDIGO, peaks: [{x: .3, h: .9, w: .16}, {x: .62, h: .6, w: .2}, {x: .9, h: .8, w: .12}]},
+      {seed: 9, base: .88, amp: .26, rough: .3, a: .18, fade: .9, peaks: [{x: .15, h: .9, w: .12}, {x: .5, h: .4, w: .18}, {x: .82, h: .7, w: .1}]},
+      {seed: 14, base: .99, amp: .2, rough: .3, a: .42, fade: .9, peaks: [{x: .05, h: .9, w: .1}, {x: .4, h: .3, w: .1}, {x: .97, h: .6, w: .07}]}]},
+    vignette: { align: 'xMidYMax', layers: [
+      {seed: 41, base: .92, amp: .62, rough: .2, a: .12, fade: .95, color: INDIGO, peaks: [{x: .2, h: .6, w: .1}, {x: .55, h: 1, w: .08, k: 1.3}, {x: .85, h: .55, w: .1}]},
+      {seed: 43, base: 1, amp: .5, rough: .24, a: .34, fade: .92, peaks: [{x: .1, h: .45, w: .08}, {x: .68, h: .9, w: .06, k: 1.3}, {x: .95, h: .65, w: .06}]}]},
+    /* C reads top to bottom as one hanging scroll: far peaks in the palest ink, a middle range, then the near bank in the darkest */
+    far: { align: 'xMaxYMax', mars: [.585, .13], marsNarrow: [.955, .2], layers: [
+      {seed: 61, base: .82, amp: .5, rough: .14, a: .06, fade: .95, color: INDIGO, peaks: [{x: .5, h: .6, w: .12}, {x: .7, h: 1, wl: .09, wr: .07, k: 1.3}, {x: .9, h: .7, w: .08}]},
+      {seed: 67, base: .9, amp: .6, rough: .12, a: .11, fade: .9, peaks: [{x: .64, h: .7, w: .05, k: 1.3}, {x: .8, h: 1, wl: .055, wr: .04, k: 1.25}, {x: .94, h: .6, w: .045, k: 1.3}]},
+      {seed: 71, base: 1, amp: .3, rough: .2, a: .16, fade: .9, peaks: [{x: .45, h: .5, w: .1}, {x: .72, h: .7, w: .08}, {x: .97, h: .9, w: .06}]}]},
+    mid: { align: 'xMidYMax', layers: [
+      {seed: 83, base: .8, amp: .55, rough: .22, a: .12, fade: 1, color: INDIGO, peaks: [{x: .12, h: .8, w: .1}, {x: .45, h: .5, w: .14}, {x: .8, h: 1, w: .1, k: 1.3}]},
+      {seed: 89, base: .95, amp: .5, rough: .26, a: .26, fade: 1, peaks: [{x: .3, h: .9, w: .08, k: 1.3}, {x: .6, h: .5, w: .12}, {x: .92, h: .7, w: .07}]}]},
+    near: { align: 'xMidYMax', layers: [
+      {seed: 97, base: .7, amp: .4, rough: .25, a: .16, fade: 1, color: INDIGO, peaks: [{x: .2, h: .7, w: .14}, {x: .6, h: .9, w: .12}, {x: .9, h: .6, w: .1}]},
+      {seed: 101, base: .86, amp: .42, rough: .3, a: .42, fade: 1, peaks: [{x: .08, h: .9, w: .09}, {x: .5, h: .45, w: .14}, {x: .86, h: .8, w: .08, k: 1.3}]},
+      {seed: 103, base: 1, amp: .3, rough: .34, a: .82, fade: 1.2, peaks: [{x: .0, h: .7, w: .08}, {x: .36, h: .5, w: .1}, {x: .74, h: .35, w: .12}, {x: 1, h: .9, w: .07}]}]},
+  };
+  const NS = 'http://www.w3.org/2000/svg';
+  let scapeCount = 0;
+  const paint = host => {
+    const scape = SCAPES[host.dataset.scape]; if (!scape) return;
+    let svg = host.querySelector(':scope > .scape-svg');
+    if (!svg) { svg = document.createElementNS(NS, 'svg'); svg.setAttribute('class', 'scape-svg'); svg.setAttribute('aria-hidden', 'true'); svg.dataset.uid = 's' + (++scapeCount); host.prepend(svg); }
+    const box = svg.getBoundingClientRect(); if (!box.width || !box.height) return;
+    const key = Math.round(box.width) + 'x' + Math.round(box.height); if (svg.dataset.key === key) return; svg.dataset.key = key;
+    const height = Math.round(W * box.height / box.width), uid = svg.dataset.uid;
+    svg.setAttribute('viewBox', '0 0 ' + W + ' ' + height); svg.setAttribute('preserveAspectRatio', scape.align + ' slice');
+    const edge = Math.max(6, Math.min(16, 9000 / box.width));
+    let defs = '<filter id="' + uid + 'r" x="-5%" y="-5%" width="110%" height="110%"><feTurbulence type="fractalNoise" baseFrequency=".012 .03" numOctaves="3" seed="7"/><feDisplacementMap in="SourceGraphic" scale="' + edge.toFixed(1) + '"/><feGaussianBlur stdDeviation=".7"/></filter>', body = '';
+    scape.layers.forEach((layer, i) => {
+      const color = layer.color || INK;
+      defs += '<linearGradient id="' + uid + 'g' + i + '" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="' + color + '" stop-opacity="' + layer.a + '"/><stop offset="' + Math.min(layer.fade, 1) + '" stop-color="' + color + '" stop-opacity="' + (layer.fade > 1 ? layer.a * (1 - 1 / layer.fade) : 0) + '"/></linearGradient>';
+      body += '<path d="' + ridge(layer, height) + '" fill="url(#' + uid + 'g' + i + ')" filter="url(#' + uid + 'r)"/>';
+    });
+    const mars = box.width < 600 && scape.marsNarrow || scape.mars;
+    if (mars) body += '<circle cx="' + mars[0] * W + '" cy="' + mars[1] * height + '" r="' + (W / box.width * 2.6).toFixed(1) + '" fill="var(--seal)"/>';
+    svg.innerHTML = '<defs>' + defs + '</defs>' + body;
+  };
+  const paintVisible = () => document.querySelectorAll('.view:not([hidden]) .scape').forEach(paint);
+
+  /* ── Plates: small ink drawings that stand in for screenshots and video until the real media exists. */
+  const dots = (x, y, filled, total) => Array.from({length: total}, (_, i) => '<circle cx="' + (x + i * 10) + '" cy="' + y + '" r="3" fill="' + (i < filled ? 'var(--ink)' : 'var(--paper)') + '" stroke="var(--ink)" stroke-width="1"/>').join('');
+  const card = (x, y, kind, title, body) => '<rect x="' + x + '" y="' + y + '" width="136" height="34" rx="3" fill="var(--paper)" stroke="var(--ink-dan)"/><rect x="' + x + '" y="' + y + '" width="3" height="34" fill="' + kind + '"/><rect x="' + (x + 12) + '" y="' + (y + 9) + '" width="' + title + '" height="4" fill="var(--ink-nong)"/>' + body;
+  const ring = (cx, cy, r, endX, endY) => '<circle cx="' + cx + '" cy="' + cy + '" r="' + r + '" fill="none" stroke="var(--ink-qing)" stroke-width="6"/><path d="M' + cx + ' ' + (cy - r) + 'A' + r + ' ' + r + ' 0 1 1 ' + endX + ' ' + endY + '" fill="none" stroke="var(--ink)" stroke-width="6" stroke-linecap="round"/>';
+  const say = (y, who, line) => '<text class="t-dim" x="34" y="' + y + '" font-size="7.5" letter-spacing=".6">' + who + '</text><text class="t-say" x="34" y="' + (y + 14) + '" font-size="10.5">' + line + '</text>';
+  const bars = (x, values, fill) => values.map((minutes, i) => '<rect x="' + (x + i * 17) + '" y="' + (120 - minutes * 4.5).toFixed(1) + '" width="12" height="' + (minutes * 4.5).toFixed(1) + '" fill="' + fill + '"/>').join('');
+  const tick = (x, y) => '<path d="M' + (x - 4) + ' ' + y + 'l3 4l6-9" fill="none" stroke="var(--ink)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>';
+  const miss = (x, y) => '<path d="M' + (x - 3) + ' ' + y + 'h6" stroke="var(--ink-dan)" stroke-width="1.4" stroke-linecap="round"/>';
+  const PLATES = {
+    board: () => ring(46, 52, 22, 26.9, 63) + '<text x="46" y="56" text-anchor="middle" font-size="11">4/6</text>'
+      + card(88, 14, 'var(--indigo)', 64, dots(103, 38, 3, 5)) + card(88, 58, 'var(--indigo)', 84, dots(103, 82, 1, 3)) + card(88, 102, 'var(--umber)', 52, '<rect x="100" y="124" width="30" height="3" fill="var(--ink-dan)"/>'),
+    talk: () => '<path d="M22 18V132" stroke="var(--ink-qing)"/>' + say(28, 'CLAUDE', '15 of 18 runs done. Keep all three?') + say(62, 'ME', 'Drop reading to three a week.') + say(96, 'CLAUDE', 'Here is the week. Write it?')
+      + '<rect x="146" y="120" width="78" height="17" rx="3" fill="var(--paper)" stroke="var(--ink-dan)"/><text x="185" y="131.5" text-anchor="middle" font-size="8">update_plan ✓</text>',
+    toss: () => ring(176, 54, 24, 155.2, 42) + '<path d="M124 90Q146 62 154 62" fill="none" stroke="var(--ink-zhong)" stroke-dasharray="2 4" stroke-linecap="round"/>'
+      + '<g transform="rotate(-14 80 102)">' + card(26, 86, 'var(--indigo)', 58, dots(41, 110, 4, 5)).replace('width="136"', 'width="100"') + '</g>'
+      + '<circle cx="212" cy="30" r="2.2" fill="var(--umber)"/><circle cx="216" cy="62" r="1.8" fill="var(--indigo)"/><circle cx="200" cy="88" r="2" fill="var(--umber)"/><circle cx="148" cy="24" r="1.8" fill="var(--indigo)"/><text class="t-ink" x="204" y="20" font-size="10">+1</text>',
+    runs: () => '<path d="M28 120H222" stroke="var(--ink)"/><path d="M28 75H222" stroke="var(--ink-qing)"/><text x="24" y="123" text-anchor="end" font-size="7.5">0</text><text x="24" y="78" text-anchor="end" font-size="7.5">10</text>'
+      + bars(36, [12.4, 15.1, 15.2, 12.4, 13.7], 'var(--ink)') + bars(136, [17.0, 15.4, 17.4, 16.9, 19.2], 'var(--ink-zhong)')
+      + '<text x="76" y="136" text-anchor="middle" font-size="8.5">serial · 13.8</text><text x="176" y="136" text-anchor="middle" font-size="8.5">parallel · 17.2</text>',
+    log: () => [['RULE', 110, 'fixed'], ['DESIGN', 84, 'decided'], ['BUG', 126, 'fixed'], ['DOCS', 70, 'fixed'], ['SCOPE', 98, 'open']].map(([kind, width, outcome], i) => '<text x="20" y="' + (30 + i * 24) + '" font-size="8" letter-spacing=".6">' + kind + '</text><rect x="62" y="' + (24 + i * 24) + '" width="' + width + '" height="4" fill="var(--ink-dan)"/><text x="222" y="' + (30 + i * 24) + '" class="t-dim" text-anchor="end" font-size="8">' + outcome + '</text>').join(''),
+    steps: () => '<text x="30" y="30" font-size="9">3 of 5</text><path d="M30 52H210" stroke="var(--ink-qing)" stroke-width="2"/><path d="M30 52H165" stroke="var(--ink)" stroke-width="2"/>'
+      + [30, 75, 120].map(x => '<circle cx="' + x + '" cy="52" r="6" fill="var(--ink)"/>').join('') + '<circle cx="165" cy="52" r="7" fill="var(--paper)" stroke="var(--ink)" stroke-width="2.5"/><circle cx="210" cy="52" r="6" fill="var(--paper)" stroke="var(--ink-dan)" stroke-width="1.5"/>'
+      + '<path d="M48 106V86H208V106M88 106V86M128 106V86M168 106V86M128 86V64" fill="none" stroke="var(--ink-dan)"/>' + [40, 80, 120, 160, 200].map(x => '<rect x="' + x + '" y="106" width="16" height="16" rx="2" fill="var(--paper)" stroke="var(--ink-zhong)"/>').join('')
+      + '<text x="128" y="138" text-anchor="middle" font-size="8">5 services</text>',
+    whiteboard: () => '<g transform="rotate(-1.5 120 75)"><rect x="24" y="16" width="192" height="118" rx="2" fill="var(--paper)" stroke="var(--ink)" stroke-width="1.5"/>'
+      + ['M', 'T', 'W', 'T', 'F', 'S', 'S'].map((day, i) => '<text x="' + (88 + i * 18) + '" y="34" text-anchor="middle" font-size="7.5">' + day + '</text>').join('')
+      + [['gym', '1010100'], ['meals', '1110110'], ['read', '1011011']].map(([habit, week], row) => '<text x="36" y="' + (61 + row * 27) + '" class="t-hand" font-size="12">' + habit + '</text>' + [...week].map((done, i) => (done === '1' ? tick : miss)(88 + i * 18, 58 + row * 27)).join('')).join('') + '</g>',
+  };
+  document.querySelectorAll('[data-plate]').forEach(figure => {
+    const draw = PLATES[figure.dataset.plate]; if (!draw) return;
+    figure.insertAdjacentHTML('afterbegin', '<svg viewBox="0 0 240 150" role="img" aria-label="Schematic: ' + figure.dataset.plate + '">' + draw() + '</svg>');
+  });
+
+  /* ── Views: one per hash; links drawn inside a design go nowhere. */
+  const VIEWS = ['overview', 'handscroll', 'album', 'far-mountains'];
+  const route = () => {
+    const wanted = location.hash.slice(1), view = VIEWS.includes(wanted) ? wanted : 'overview';
+    document.querySelectorAll('.view').forEach(section => { section.hidden = section.id !== 'view-' + view; });
+    document.querySelectorAll('.mk-tabs a').forEach(tab => { tab.getAttribute('href') === '#' + view ? tab.setAttribute('aria-current', 'page') : tab.removeAttribute('aria-current'); });
+    paintVisible(); window.scrollTo(0, 0);
+  };
+  document.addEventListener('click', event => { if (event.target.closest('[data-inert]')) event.preventDefault(); });
+  addEventListener('hashchange', route);
+  let resizeTimer; addEventListener('resize', () => { clearTimeout(resizeTimer); resizeTimer = setTimeout(paintVisible, 150); });
+  route();
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(paintVisible);
+
+  /* ── The seal is pressed once, when the end of a page comes into view: a painting is finished when it is sealed. */
+  if ('IntersectionObserver' in window) {
+    const press = new IntersectionObserver(entries => entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add('is-pressed'); press.unobserve(entry.target); } }), {threshold: .9});
+    document.querySelectorAll('.seal').forEach(seal => press.observe(seal));
+  }
+})();
+</script>

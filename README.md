@@ -13,6 +13,9 @@ README.md              # this page: the current narrative, evidence, open questi
 AGENTS.md              # rules for the agent that adds a session
 sessions/
 └── YYYY-MM-DD-<topic>.md   # one brainstorm session: the owner's words, the findings, what changed here
+site/                  # the personal site that fronts the portfolio: design only, no code
+├── spike/             #   point-in-time proposals, one per question
+└── mockup/            #   self-contained HTML mockups, viewed through their private artifact link
 ```
 
 ## 当前叙事
@@ -63,6 +66,14 @@ sessions/
 
 > *I built Mars Workbench to plan my own weeks with an AI agent, and use it daily as its only user — an autobiographical design study. Each generation came from friction I logged in my own use. A month into its current form, I noticed I never looked at the effort points the app asked me for, while the small row of dots on each habit card was the only feedback that felt like progress. The literature pointed me toward quiet feedback and away from scores; living with the design pointed the other way at one moment — finishing — where I wanted the reward to be loud. That tension became the product's core principle: take resistance away from what is still to do, amplify the feedback when it is done. Following the app, I built a gym habit to the point where I no longer needed the app for it. That is the system I want to study next: an AI coach for executive function that learns a person's habits well enough to know when to step in and when to step away.*
 
+## 个人网站（portfolio 的入口）
+
+设计第 1 轮，等 owner review：[spike](./site/spike/personal-site.md) · [mockup](https://claude.ai/artifact/7Bzr3cEb2k1jevHdi2hss5)（私有页面；源文件 `site/mockup/mockup-personal-site.html`）。
+
+- **视觉语言**：Media Lab 的用字和用色（一种 grotesk、黑白灰、一次一个颜色）加山水画的纸、墨、印；对比度量过，日间和夜间两版。
+- **三个首页方案**：A 手卷（先给故事）、B 册页（先给作品）、C 远山（先给研究问题）。推荐 C 做骨架、B 做 Work 页、A 做 About 里的故事；九个问题等 owner 拍板。
+- **三面**：不分 Engineering / Research / Art 三栏；每件作品同一个结构，标出用了 造、问、磨 哪几面。
+
 ## 可能对接的导师
 
 来自 Media Lab 新闻、group 和 people 页的搜索摘要（2026-11-11）；applicant information 页当时打不开，招生状态和细节都待在官网确认。
@@ -92,6 +103,7 @@ sessions/
 | Subagent 委派试点（三轮 A / B） | [`design/spike/archived/subagent-delegation-pilot.md`](https://github.com/Marsuu1994/mars-workbench/blob/main/design/spike/archived/subagent-delegation-pilot.md) | 同上 |
 | 人工 review 抓到、CI 漏掉的问题，存成数据集 | [`reviews/`](https://github.com/Marsuu1994/mars-workbench/tree/main/reviews) | 同上 |
 | Gym 习惯的使用数据 | 还没导出 | 研究弧线 3 |
+| 工作经历：JPMorgan Chase（Lead Software Engineer，2021-09 – 2025-10）、Cerner、SLD Laser；MS ECE（Michigan）、BS EE（Colorado State） | Owner 的简历（Drive，2026-03 版） | 个人网站的 Work / About / CV |
 
 ## 还开着的
 
@@ -105,7 +117,7 @@ sessions/
 - **「executive function」的 framing。** 这个词常和 ADHD 这类临床人群挂钩；以临床人群为对象会变成健康相关研究（IRB、招募门槛更高），一般人群的计划和自我调节范围更宽。
 - **Phase 2 的实现状态。** Spike 是 draft、tap to complete 是 mockup；写进申请时说「观察和设计完成，正在实现」。
 - **对准哪几个组**（最多填 3 个）：候选见「可能对接的导师」，每位的招生状态都要在官网当期页面确认。
-- **公开的套瓷材料。** 这个仓库是私有的；邮件需要附一个公开的英文页面（case study + 视频）。
+- **公开的套瓷材料 = 个人网站。** 设计在 `site/`，等 owner 答 spike 的 Q1–Q9；之后要准备的内容（真截图、60 秒 demo、三到四个作品页的英文文案）列在 spike 里。
 - **英文化。** Spike、实验报告是中文；评审要看的部分需要英文版（一页 case study、一页实验摘要）。
 - **演示。** App 要 Google 登录，评审进不去：一段 1–2 分钟的视频（Plan with Claude → board 更新 → 完成一张卡的 juice）。
 
@@ -132,10 +144,12 @@ sessions/
 
 以 Media Lab 官网的当期页面为准；有疑问发 mas@media.mit.edu。
 
-- 截止：官方 FAQ 写 **12 月 1 日**，一份旧 FAQ 写 12 月 15 日——以当期 admissions timeline 为准。
+- 截止：Apply 页写 9 月 15 日开放、**2026 年 12 月 15 日**截止（2026-11-11 经翻译代理读到）；官方 FAQ 写 12 月 1 日——两处不一致，以当期 Apply 页为准。
+- Students Offering Support：在读学生给 portfolio 或 Statement of Objectives 一轮反馈，表单 “will close November 13th, 2026”。
+- Portfolio：“Recommended formats: URL or PDF”；按申请的组 curate；“highlight who you are”；“provide context around your work”。旧版页面写 portfolio URL 放在 Statement of Objectives 结尾，当期是否适用待核对。
 - 材料：Statement of Objectives、Personal Statement、Portfolio、3 封推荐信、成绩单；不要 GRE。
 - 申请表里填最多 3 个研究组或导师，Statement of Objectives 开头列出、写给这几个组；建议 2 页以内。
 - Portfolio 的要求各组不同；Fluid Interfaces 要每个项目写清你的角色和结果或发表。
 - 所有 MAS 学生从硕士开始，第二年再申请 PhD。
 
-来源：[MAS FAQ](https://media.mit.edu/admissions/faqs.html) · [Application FAQs](https://www.media.mit.edu/posts/academics-faq/) · [Apply](https://www-prod.media.mit.edu/graduate-program/apply/) · [Fluid Interfaces applicant information](https://www.media.mit.edu/groups/fluid-interfaces/applicant-information/)
+来源：[Apply](https://www.media.mit.edu/graduate-program/apply/) · [Portfolio requirements](https://www.media.mit.edu/posts/academics-portfolio-requirements/) · [Students Offering Support](https://www.media.mit.edu/posts/students-offering-support-program/) · [MAS FAQ](https://media.mit.edu/admissions/faqs.html) · [Application FAQs](https://www.media.mit.edu/posts/academics-faq/) · [Apply](https://www-prod.media.mit.edu/graduate-program/apply/) · [Fluid Interfaces applicant information](https://www.media.mit.edu/groups/fluid-interfaces/applicant-information/)

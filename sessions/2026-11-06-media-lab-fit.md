@@ -112,3 +112,20 @@
 - **套瓷要用的材料**：私有仓库评审看不到；需要一个公开的英文页面（case study + 视频）给邮件附链接。
 
 **README:** 「还开着的」里「对准哪几个组」改写成新的一节「可能对接的导师」（每位一行：方向、对接点、状态）；文献加 Maes 组的两篇和 Breazeal 的 coach 研究（待核对）。
+
+## Round 7 · 2026-11-11
+
+> ok，我现在要给你一个大任务，基于我们聊天的内容，我们来构思一下我的个人网站作为portfolio入口这个新项目，visual style方面的话我想你直接去搜mit media lab的page，不是说布局而是typography，颜色使用这一类，淡雅，而且我希望融进我想要的山水画禅意风格。内容的话其实我对portfolio要做什么不了解，你结合我的background，research interest，还有之前上班的经历，帮我做个research，个人网站兼portfolio做什么，放什么内容，每个内容的话有什么用，怎么展示既有engineering的一面和researcher的一面还有甚至artist的一面—这也是最近挖掘出来的，工作中我把每一个pr当成艺术品来polish，对我产品也是精修细致打磨，engineering部分agent workflow也是同样理念。我觉得你要去看board tap complete那个pr，看那边列出来的design principle，虽然那个主要针对产品，但也能看出我的preference，以这个为基调，给我research然后做一份spike加上两到三份mockup，做不同option得portfolio high level mockup，不同考虑代码部分，咱们只做产品和design
+
+### Findings
+
+- **读了什么**：`mars-workbench` PR #115 分支上的 design principles（六组）、`ui-design` skill、mockup 和 spike 的规范、design language 的 typography 和 contrast 一节；owner 的简历（Drive 2026-03 版和 Indeed）；两路 web 调研（portfolio 内容和 12 个范例站点；Media Lab 的识别系统、山水画的概念、字体）。
+- **Media Lab 的字和颜色**：Neue Haas Grotesk（Helvetica 的复刻）；Brand Portal：“primary colors are black, white, and grey”，辅助色 “one color at a time”。media.mit.edu 对抓取返回 503，网站 CSS 的具体数值没读到。
+- **Portfolio 的官方要求**：URL 或 PDF；curated；“highlight who you are”；“provide context around your work”。Fluid Interfaces 逐条要 role、innovative、results。Tangible Media 评估网站本身的 aesthetics 和 usability。一位教授说每份申请看 3–5 分钟。
+- **范例站点的三种首页**：statement-first 的单页、作品索引、先说在想什么再给作品。Art 很少单开一栏。
+- **设计**：一套语言（纸、墨分五色、浅绛两个淡彩、一方朱印；Geist + Source Serif 4 / 思源宋体 + Geist Mono；山由代码画；印只在页尾盖一次，对应 Loud wins），三张首页（A 手卷、B 册页、C 远山），一个共用的作品页结构，三面用 造 · 问 · 磨 标在每件作品上。推荐 C 做骨架、B 做 Work 页、A 做 About。
+- **工作经历里的一条线**：JPMorgan 的 onboarding 是带别人走完 milestone，Cerner 做的是任务管理，Mars Workbench 是给自己做的同一件事。写进了 spike 和 A 的第一个 scene；是否进叙事由 owner 定。
+- **时间上的事实**：Apply 页写 12 月 15 日截止（和 FAQ 的 12 月 1 日不一致）；Students Offering Support 的表单 11 月 13 日关。
+- **产出**：`site/spike/personal-site.md`、`site/mockup/mockup-personal-site.html`、私有 artifact 链接。Q1–Q9 等 owner 答。
+
+**README:** 新增「个人网站（portfolio 的入口）」一节和 `site/` 的目录说明；「公开的套瓷材料」改成指向 `site/`；硬事实更新截止日期的两种说法、Students Offering Support、portfolio 的格式要求；证据索引加工作经历。`AGENTS.md` 加第 8 条（`site/` 的规则）。
