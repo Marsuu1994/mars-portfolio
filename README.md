@@ -13,6 +13,7 @@ README.md              # this page: the current narrative, evidence, open questi
 AGENTS.md              # rules for the agent that adds a session
 sessions/
 └── YYYY-MM-DD-<topic>.md   # one brainstorm session: the owner's words, the findings, what changed here
+materials/             # the owner's own source material, as given (drafts; the repo wins where they conflict on the project)
 site/                  # the personal site that fronts the portfolio: design only, no code
 ├── spike/             #   point-in-time proposals, one per question
 └── mockup/            #   self-contained HTML mockups, viewed through their private artifact link
@@ -104,7 +105,7 @@ site/                  # the personal site that fronts the portfolio: design onl
 | Subagent 委派试点（三轮 A / B） | [`design/spike/archived/subagent-delegation-pilot.md`](https://github.com/Marsuu1994/mars-workbench/blob/main/design/spike/archived/subagent-delegation-pilot.md) | 同上 |
 | 人工 review 抓到、CI 漏掉的问题，存成数据集 | [`reviews/`](https://github.com/Marsuu1994/mars-workbench/tree/main/reviews) | 同上 |
 | Gym 习惯的使用数据 | 还没导出 | 研究弧线 3 |
-| 工作经历：约 5 年在 WePay → JPMorgan Chase 一条线上（风控内部工具、Partner Center、Project Janus、Chase Commerce Center），14 个故事，每个是「背景 / 我做的 / 结果 / 品质落点」；年数、职位起始和可公开的数字待确认 | Owner 的申请素材粗稿（PDF，2026-11-05，不在仓库里）；它的项目部分不全，和本仓库冲突时以本仓库为准 | 个人网站的 Work / Engineering / About；Personal Statement |
+| 工作经历：约 5 年在 WePay → JPMorgan Chase 一条线上（风控内部工具、Partner Center、Project Janus、Chase Commerce Center），14 个故事，每个是「背景 / 我做的 / 结果 / 品质落点」；年数、职位起始和可公开的数字待确认 | Owner 的申请素材粗稿：[`materials/application-material-draft-2026-11-05.pdf`](./materials/application-material-draft-2026-11-05.pdf)（draft）；它的项目部分不全，和本仓库冲突时以本仓库为准 | 个人网站的 Work / Engineering / About；Personal Statement |
 | 教育和更早的经历：MS ECE（Michigan）、BS EE（Colorado State）；Cerner、SLD Laser | Owner 的简历（Drive，2026-03 版） | CV |
 
 ## 还开着的

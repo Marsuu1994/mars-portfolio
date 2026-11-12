@@ -156,3 +156,14 @@
 - **时间**：Students Offering Support 的表单 11 月 13 日关（Q13）。
 
 **README:** 「个人网站」一节改写为修订后的状态；证据索引里的工作经历改以 PDF 为来源，简历只留教育和更早的经历；「公开的套瓷材料」指向 Q1–Q13 和「拍板之后」。`AGENTS.md` 第 8 条写明 Principles 在 PR #115 的分支上，以及 spike 是唯一依据。
+
+## Round 9 · 2026-11-12
+
+> 把pdf以draft存在仓库吧，然后我们关于app的那些讨论，就是心路历程那一段，做portfolio之前，你帮我整理一下做成一个md，不用commit，我下载下来作为另一个session的素材
+
+### Findings
+
+- 申请素材粗稿存为 `materials/application-material-draft-2026-11-05.pdf`，标为 draft：它是 owner 给学术中介的原始素材，项目部分和本仓库冲突时以本仓库为准（Round 8）。
+- 心路历程（Round 2、3、5 的内容）另整理成一份 md 给 owner 下载，按 owner 的要求不进仓库。
+
+**README:** 目录说明加 `materials/`；证据索引里工作经历的来源改成指向仓库里的 PDF。
