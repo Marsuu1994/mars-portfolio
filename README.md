@@ -69,13 +69,13 @@ site/                  # the personal site that fronts the portfolio: design onl
 
 ## 个人网站（portfolio 的入口）
 
-设计第 3 轮（叙事版），等 owner review：[spike](./site/spike/personal-site.md) · [mockup](https://claude.ai/artifact/K7wABSdSQP8PJCKCFCofTn)（私有页面；源文件 `site/mockup/mockup-site-story.html`）。第 1、2 轮的 [mockup](https://claude.ai/artifact/7Bzr3cEb2k1jevHdi2hss5) 原样保留。
+叙事版第 4 轮，owner 选了 C（高光），等 approve：[spike](./site/spike/personal-site.md) · [mockup](https://claude.ai/artifact/K7wABSdSQP8PJCKCFCofTn)（私有页面；源文件 `site/mockup/mockup-site-story.html`）。第 1、2 轮的 [mockup](https://claude.ai/artifact/7Bzr3cEb2k1jevHdi2hss5) 原样保留。
 
 - **标准**：owner 的设计师朋友：讲清故事、找高光、不重要的少说，围绕解决什么问题、遇到什么困难、怎么思考和解决。
-- **两条线**：在 WePay 和 JPMorgan Chase 的三个阶段（internal tool → merchant-facing → platform 0 → 1），每个阶段一张表达问题复杂度的图；Mars Workbench。
-- **三种讲法**：A 一条线、B 两部分、C 高光（四个决定）。推荐 C 做首页、A 的桥（「告诉一个人他在哪一步、下一步做什么」）进 About；三者共用一个案例页骨架。
+- **首页**：四个决定，个人项目在前：一 Mars Workbench（“A plan is negotiated, not generated.”）→ 一座桥 “Before this”：同一件事，以前是给别人做 → 二 internal tool、三 merchant-facing、四 platform 0 → 1，每个配一张表达问题复杂度的图 → 全部作品，最新在前。
+- **案例页**：一个骨架三种讲法共用：标题写成问题、元数据、一张图、每节一句判断（问题 / 难点 / 怎么想 / 变化 / 留下了什么）。
 - **视觉语言**：不变：Media Lab 的用字和用色加山水画的纸、墨、印。
-- **公开前**：内部系统名和合作方换成泛称；数字、年数、职位确认后再上。
+- **公开**：owner 认为可以公开；站上没有内部系统名、合作方名和业务数字；以雇佣协议为准。
 
 ## 可能对接的导师
 

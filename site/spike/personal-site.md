@@ -1,6 +1,6 @@
 # Spike: 个人网站——portfolio 的入口
 
-**Status: awaiting owner review** · 第 3 轮 2026-11-12（叙事版） · Mockup：[claude.ai/artifact/K7wABSdSQP8PJCKCFCofTn](https://claude.ai/artifact/K7wABSdSQP8PJCKCFCofTn)（私有页面，源文件 `site/mockup/mockup-site-story.html`）· 上一轮的 mockup 原样保留：[claude.ai/artifact/7Bzr3cEb2k1jevHdi2hss5](https://claude.ai/artifact/7Bzr3cEb2k1jevHdi2hss5)（`site/mockup/mockup-personal-site.html`）· Owner 的原话：`sessions/2026-11-06-media-lab-fit.md` Round 7、8、10
+**Status: awaiting owner review** · 第 4 轮 2026-11-12（owner 选了 C，等 approve） · Mockup：[claude.ai/artifact/K7wABSdSQP8PJCKCFCofTn](https://claude.ai/artifact/K7wABSdSQP8PJCKCFCofTn)（私有页面，源文件 `site/mockup/mockup-site-story.html`）· 上一轮的 mockup 原样保留：[claude.ai/artifact/7Bzr3cEb2k1jevHdi2hss5](https://claude.ai/artifact/7Bzr3cEb2k1jevHdi2hss5)（`site/mockup/mockup-personal-site.html`）· Owner 的原话：`sessions/2026-11-06-media-lab-fit.md` Round 7、8、10、11
 
 > 语言约定：叙述用中文；站点自己的文案、产品名词和代码标识保留英文。**Case page** 是一个案例的详情页；**complexity figure** 是每个阶段那一张表达问题复杂度的图；**claim heading** 是写成一句判断的小标题（“I chose X over Y”），不是 “Problem / Solution” 这样的标签。
 
@@ -85,12 +85,19 @@ Owner 说第二阶段是「mature product 但是支线任务扩展到整条线 m
 - **好处**：最清楚；hiring manager 和导师都能直接找到自己要的那一半；个人经历可以只留在 About。
 - **代价**：两半像两份作品集，故事感最弱；朋友说的「高光」要靠每张卡的文案撑。
 
-### C · 高光：decisions first
+### C · 高光：decisions first（owner 选了这个，Round 11）
 
-- **结构**：一句话「四个决定，和让它们难的问题」 → 四段，每段一句引号里的决定、两句问题和理由、一张图，左右交替 → 全部作品按时间的索引 → About 和印。四个决定：“I didn't rewrite it all at once.”、“I questioned the design on paper.”、“One shell for every kind of merchant.”、“A plan is negotiated, not generated.”
+> c真的不错，不过还需要修一下文案，而且个人项目应该放最前面
+
+选了不等于定稿：等 owner 明确 approve。第 4 轮按这句话改了 mockup，只留 C 和案例页；A、B 在 mockup 文件的上一个版本里。
+
+
+- **结构**（第 4 轮）：一句话「四个决定，和让它们难的问题」，下面一行说清四个决定从哪来 → 一 Mars Workbench → 一座桥 “Before this”：同一件事，以前是给别人做 → 二、三、四 三个工作阶段，左右交替 → 全部作品，最新在前 → About 和印。
+- **四个决定**：“A plan is negotiated, not generated.”（Mars Workbench）· “I didn't rewrite it all at once.”（internal tool）· “I questioned the design on paper.”（merchant-facing）· “I locked the contracts before the APIs existed.”（platform；第 3 轮是 “One shell for every kind of merchant.”，更像结果，换成素材 #11 里 owner 自己的说法「在不确定中先定契约、把依赖拆开」）。
+- **每段文案**：先是问题和让它难的那一点，再是怎么想、结果是什么；每段不超过三句。
 - **像谁**：Zhao 案例页里的那串决定，提到首页这一层。
 - **好处**：最贴朋友的两条要求：高光先行，每段围绕一个问题和一次思考；一句话就能记住；三个在公司、一个在自己的产品，两条线自然并在一起。
-- **代价**：时间线和背景要靠索引和案例页补；每句引号都要站得住，说过头就是 Pat 提醒的 “flashy”；第三个决定（「一个 shell」）比另外三个更像结果，不像取舍，文案还要磨。
+- **代价**：时间线和背景要靠索引和案例页补；每句引号都要站得住，说过头就是 Pat 提醒的 “flashy”。
 
 ### 怎么比
 
@@ -139,24 +146,26 @@ Owner 说第二阶段是「mature product 但是支线任务扩展到整条线 m
 
 ## 公开前要处理的
 
-- **内部名称**：PDF 里的内部系统名和合作银行的名字，一律换成它做的事（「风控团队的内部看板」「第一家银行合作伙伴」）。Mockup 里已经这样做。
-- **数字**：图和文案里的「十几层」「二十多个 panel」「三个团队」「30 天」，能不能公开待确认。
-- **事实**：年数（约 5 年还是从 2021 年算）、Lead 从哪一段开始、Mars Workbench 只有 owner 一个用户。
-- **个人经历**：团队解散、白板和朋友，只在 A 的首页和 About 出现（Q4）。
-- **架构图**：抽象到只剩「做什么」，重画前对照雇主的保密规定。
+Owner（Round 11）：「这些公开应该也没问题吧」。下面是事实，判断是 owner 的。
+
+- **站上现在有的**：公司名（WePay、JPMorgan Chase）；团队的类型（风控团队、合作伙伴、商户）；问题和做法的描述；抽象的复杂度图，只画「做什么」，没有内部系统的样子；几个工程上的数字（十几层、二十多个 panel、三个团队、30 天）；owner 的角色。
+- **站上现在没有的**：内部系统名（素材 PDF 里的那些代号）、合作银行的名字、业务数字（例如开户的商户数）、截图、代码。
+- **决定能不能公开的是什么**：员工入职时签的保密协议和雇主的对外披露政策，通常覆盖不公开的信息，比如内部系统名、架构细节、内部指标和未公开的计划。某一条算不算，看具体的协议条文。
+- **调研里别人的做法**：要么不放现雇主的工作（Sin），要么写 Confidential 只画抽象的架构（Dessotti）；没有人用密码。
+- **还是事实层面要确认的**：年数（约 5 年还是从 2021 年算）、Lead 从哪一段开始；Mars Workbench 只有 owner 一个用户。
 
 ## 待拍板 · Open questions
 
 | # | 问题 | 选项 | 推荐 |
 | --- | --- | --- | --- |
-| Q1 | 首页用哪种讲法 | A 一条线 · B 两部分 · C 高光 | C，A 的桥进 About |
-| Q2 | 两条线之间的桥（「告诉一个人他在哪一步、下一步做什么」） | 用在首页 · 只在 About · 不用 | 只在 About |
-| Q3 | C 的四个决定 | 现在这四句 · 换掉第三句（更像结果） · 加第五个（删掉自己做的 wizard） | 先改第三句 |
+| Q1 | 首页用哪种讲法 | A 一条线 · B 两部分 · C 高光 | **Owner 选了 C**（Round 11），等 approve |
+| Q2 | 两条线之间的桥（「告诉一个人他在哪一步、下一步做什么」） | Mars Workbench 和工作之间（第 4 轮画的） · 只在 About · 不用 | 第 4 轮放在中间：个人项目放到最前面之后，它正好是从自己的产品转回工作经历的那一句 |
+| Q3 | C 的四个决定和文案 | 第 4 轮的四句 · 再改 | 第 4 轮改了一遍；owner 说的「还需要修一下文案」具体指哪里，等 owner 指出 |
 | Q4 | 个人经历（团队解散、白板和朋友）公开到哪 | 首页 · About · 都不放 | Owner 定 |
 | Q5 | 每个阶段的图对不对 | 现在三张 · 换 | Owner 看了再说 |
 | Q6 | 第二阶段的「process」 | 邮件流程（现在画的） · 文档本身 · 别的 | 要 owner 说明 |
 | Q7 | 案例页先写哪几个 | 三个阶段各一个 · 加 Mars Workbench 一个 | 四个都写，先写第三阶段 |
-| Q8 | 数字和名称 | 见「公开前要处理的」 | Owner 逐项确认 |
+| Q8 | 数字和名称 | 见「公开前要处理的」 | Owner 认为可以公开（Round 11）；以雇佣协议为准 |
 | Q9 | 首页那句话 | A：“I take a messy process and make it something people can get through.” · B：“I build end to end, and I build to be understood.” · C：“Four decisions, and the problems that made them hard.” | 看 Q1 |
 | Q10 | 研究的一面放哪 | 首页不放，只在 Mars Workbench 那条线和 About 里 · 加一个 Research 页 | 先不加：这一轮 owner 的重点是作品的叙事 |
 
@@ -187,3 +196,4 @@ Owner 说第二阶段是「mature product 但是支线任务扩展到整条线 m
 - **第 1 轮（2026-11-11）**：视觉语言，三张首页（先给故事、作品还是研究问题）。
 - **第 2 轮（2026-11-12）**：按申请素材和一次冷读 review 修订事实和推荐。
 - **第 3 轮（2026-11-12）**：owner 把问题换成叙事结构。新的调研（设计师作品集），两条线，每阶段一张复杂度图，三种讲法，共用的案例页；新 mockup，上一轮的 mockup 原样保留。
+- **第 4 轮（2026-11-12）**：owner 选了 C，要求个人项目放最前面、改文案。Mockup 只留 C 和案例页；Mars Workbench 放第一；桥移到它和工作经历之间；第四个决定换成「先定契约」；文案统一成两段；索引最新在前。

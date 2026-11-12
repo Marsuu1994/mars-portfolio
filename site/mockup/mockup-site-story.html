@@ -138,7 +138,7 @@ ul,ol{padding:0;list-style:none}
 .c-hero{padding-block:clamp(20px,5vw,56px) clamp(110px,14vw,180px)}
 .c-hero h1{font:300 clamp(32px,5vw,62px)/1.06 var(--f-serif);letter-spacing:-.02em;max-width:13em;text-wrap:balance}
 .moment{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.35fr);gap:24px clamp(28px,5vw,64px);padding-block:clamp(44px,7vw,88px);border-top:1px solid var(--ink-qing);align-items:start}
-.moment:nth-of-type(even) .figure{order:-1}
+.moment.flip .figure{order:-1}
 .moment .txt{display:grid;gap:14px;align-content:start}
 .moment .said{font:300 clamp(28px,3.6vw,46px)/1.08 var(--f-serif);letter-spacing:-.018em;text-wrap:balance}
 .moment p{color:var(--ink-nong);max-width:32em}
@@ -149,7 +149,7 @@ ul,ol{padding:0;list-style:none}
 .index a{font-weight:500;text-decoration:none}
 .index a:hover{text-decoration:underline}
 .index p{font-size:15px;color:var(--ink-nong)}
-@media (max-width:860px){.moment{grid-template-columns:minmax(0,1fr)}.moment:nth-of-type(even) .figure{order:0}.index li{grid-template-columns:minmax(0,1fr) auto}.index p{grid-column:1/-1}}
+@media (max-width:860px){.moment{grid-template-columns:minmax(0,1fr)}.moment.flip .figure{order:0}.index li{grid-template-columns:minmax(0,1fr) auto}.index p{grid-column:1/-1}}
 
 /* ── 案例页 Case page ───────────────────────────────────────────────── */
 .cs-top{display:grid;gap:16px;padding-block:clamp(20px,5vw,56px) clamp(24px,4vw,40px)}
@@ -273,286 +273,94 @@ ul,ol{padding:0;list-style:none}
 .fig .f-dot{fill:var(--ink)}
 .fig .f-dot-open{fill:var(--paper);stroke:var(--seal);stroke-width:2}
 </style>
+<style>.kicker .num{font:600 14px/1 var(--f-song);letter-spacing:0;color:var(--ink)}</style>
 <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><defs>
   <filter id="seal-rough" x="-10%" y="-10%" width="120%" height="120%"><feTurbulence type="fractalNoise" baseFrequency=".85" numOctaves="2" seed="4" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="2.4" result="d"/><feColorMatrix in="n" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 -16 10.6" result="h"/><feComposite in="d" in2="h" operator="in"/></filter>
 </defs></svg>
 <header class="mk-bar">
   <div class="wrap mk-bar-in">
-    <span class="mk-tag">Story mockup · round 1 · 2026-11-12</span>
+    <span class="mk-tag">Story mockup · round 2 · 2026-11-12</span>
     <nav class="mk-tabs" aria-label="Mockup views">
-      <a href="#overview">总览</a><a href="#one-story">A 一条线</a><a href="#two-parts">B 两部分</a><a href="#highlights">C 高光</a><a href="#case">案例页</a>
+      <a href="#home">首页 · C</a><a href="#case">案例页</a><a href="#notes">这一轮改了什么</a>
     </nav>
   </div>
 </header>
 
-<!-- ═══ 总览 — the three ways to tell the story side by side; the research, ranking and questions live in the spike ═══ -->
-<section class="view ov" id="view-overview">
-  <div class="wrap">
-    <p class="mono">个人网站 · 叙事版 · 第 1 轮，等你 review</p>
-    <h1>两条线，三种讲法</h1>
-    <p class="ov-lede">两条线：在 WePay 和 JPMorgan Chase 的三个阶段（internal tool → merchant-facing → platform 0 → 1），和 Mars Workbench。三种讲法的区别是两条线怎么接：A 接成一条，B 分成两部分，C 只挑转折的那一刻。每个阶段都配一张表达问题复杂度的图，案例页三个版本共用。调研、比较和问题在 spike（<code>site/spike/personal-site.md</code>），以那里为准。上一轮的三张首页留在原来的 mockup 里，没有改。</p>
-
-    <section class="ov-sec">
-      <h2 class="b-h"><span>三种讲法并排</span></h2>
-      <div class="ov-three">
-        <article class="ov-opt">
-          <div class="wf" aria-hidden="true"><i class="tall">一句话 + 三阶段的弧</i><i>一 internal：图 + 难 / 想 / 变</i><i>二 merchant-facing</i><i>三 platform</i><i class="band">桥：同一个问题，这次是给自己</i><i>四 Mars Workbench</i><i class="end">接下来的问题 · 印</i></div>
-          <h3><a href="#one-story">A · 一条线</a> <small>one story</small></h3>
-          <dl class="ov-kv">
-            <div><dt>怎么接</dt><dd>一卷到底。三个阶段之后有一座桥：它们都是「告诉一个人他在哪一步、下一步做什么」，后来的 app 是给自己做同一件事。</dd></div>
-            <div><dt>强</dt><dd>最像讲故事，两条线有机地连起来；每章都是 难 / 想 / 变 三格。</dd></div>
-            <div><dt>弱</dt><dd>最长；桥那一句要你认可；个人经历（团队解散、白板）放在首页中间。</dd></div>
-          </dl>
-        </article>
-        <article class="ov-opt">
-          <div class="wf" aria-hidden="true"><i class="tall">一句话</i><i>Part one：三个案例，文字 ｜ 图</i><i>案例</i><i>案例</i><i class="band">分隔</i><i>Part two：Mars Workbench 的弧 + 四条线</i><i class="end">About · 印</i></div>
-          <h3><a href="#two-parts">B · 两部分</a> <small>two shelves</small></h3>
-          <dl class="ov-kv">
-            <div><dt>怎么接</dt><dd>分开呈现：上半是公司里的三个案例，下半是自己的产品。连接只在 About 和一句开场白里。</dd></div>
-            <div><dt>强</dt><dd>最清楚；hiring manager 和导师都能直接找到自己要的那一半。Zhao 的 Work / AI Lab 就是这样分的。</dd></div>
-            <div><dt>弱</dt><dd>两半像两份作品集；故事感最弱。</dd></div>
-          </dl>
-        </article>
-        <article class="ov-opt">
-          <div class="wf" aria-hidden="true"><i class="tall">一句话：四个决定</i><i>“I didn't rewrite it all at once.” ｜ 图</i><i>图 ｜ “I questioned the design…”</i><i>“One shell for every…” ｜ 图</i><i>图 ｜ “A plan is negotiated…”</i><i>全部作品，按时间</i><i class="end">About · 印</i></div>
-          <h3><a href="#highlights">C · 高光</a> <small>decisions first</small></h3>
-          <dl class="ov-kv">
-            <div><dt>怎么接</dt><dd>不按时间，按转折：每段只讲那一个决定和让它难的问题。四个决定里三个在公司、一个在自己的产品。</dd></div>
-            <div><dt>强</dt><dd>最贴你朋友说的「找高光点、不平铺直叙」；每段一句话就能记住。</dd></div>
-            <div><dt>弱</dt><dd>时间线和背景要靠下面的索引补；一句引号要撑起一整段。</dd></div>
-          </dl>
-        </article>
-      </div>
-      <div class="ov-rec">
-        <p class="mono">推荐</p>
-        <p><strong>C 做首页，A 的桥放进 About，案例页按共用的骨架写。</strong>你朋友的两条要求是找高光、围绕问题和思考；C 的每一段正好是一个高光加它背后的问题，A 的那一座桥则是把两条线连起来最自然的一句话，放在 About 里不占首页。B 最稳，适合想把公司作品和自己的产品明确分开的时候。三者共用同一套图和案例页，换首页不用重做内页。</p>
-      </div>
-    </section>
-
-    <section class="ov-sec">
-      <h2 class="b-h"><span>每个阶段一张图</span></h2>
-      <div class="ov-three" style="grid-template-columns:repeat(2,minmax(0,1fr))">
-        <figure class="figure" data-fig="legacy"><figcaption><b>一 · Internal tool：</b>十几层嵌套、加一个 panel 要三个团队 → 扁平的树，从叶子往上迁移。</figcaption></figure>
-        <figure class="figure" data-fig="tangle"><figcaption><b>二 · Merchant-facing：</b>邮件散在几个仓库、依赖要退役的单体、没有 owner → 一条路、一个 schema、两步的指引。</figcaption></figure>
-        <figure class="figure" data-fig="platform"><figcaption><b>三 · Platform 0 → 1：</b>各类商户 → 一个 shell 按权限在运行时加载各部分，下面是共享组件库、BFF 和各个支付栈的服务。</figcaption></figure>
-        <figure class="figure" data-fig="resistance"><figcaption><b>Mars Workbench：</b>七个版本，每一版拿掉一处阻力。</figcaption></figure>
-      </div>
-      <p class="src">内部系统名都换成了它做的事。图上的每个数字（十几层、二十多个 panel）都待你确认能不能公开。</p>
-    </section>
-  </div>
-</section>
-
-<!-- ═══ A · 一条线 One story: the career and the app as one scroll, the bridge in the middle ═══ -->
-<section class="view" id="view-one-story" hidden>
-  <div class="scape" data-scape="gaoyuan">
-    <div class="wrap hero" style="padding-bottom:clamp(200px,26vw,320px)">
-      <nav class="s-nav" aria-label="Site"><b>Mars Chu</b><span><a href="#" data-inert>Cases</a><a href="#" data-inert>Notes</a><a href="#" data-inert>About</a></span></nav>
-      <h1>I'm a full-stack product engineer. I take a messy process and make it something people can get through.</h1>
-      <p class="lede">At WePay and JPMorgan Chase I built end to end, from an internal tool to a merchant-facing product to a merchant portal built from zero. Then I built one for myself.</p>
-      <p class="arc"><b>Internal tool</b><i>→</i><b>Merchant-facing</b><i>→</i><b>Platform, 0 → 1</b><i>→</i><b>My own product</b></p>
+<!-- ═══ C · 高光 Decisions first: my own product first, then three decisions from WePay and JPMorgan Chase; the chronology waits in an index ═══ -->
+<section class="view" id="view-home" hidden>
+  <div class="scape" data-scape="far">
+    <div class="wrap c-hero">
+      <nav class="s-nav" aria-label="Site"><b>Mars Chu</b><span><a href="#" data-inert>Work</a><a href="#" data-inert>About</a></span></nav>
+      <p class="kicker" style="margin-top:clamp(20px,5vw,56px)">Mars Chu · Full-stack product engineer</p>
+      <h1 style="margin-top:14px">Four decisions, and the problems that made them hard.</h1>
+      <p class="lede" style="margin-top:18px;max-width:34em;color:var(--ink-nong);font-size:17px">One from the product I build for myself. Three from WePay and JPMorgan Chase, where I built end to end.</p>
     </div>
   </div>
 
   <div class="wrap">
-    <article class="chapter" style="--near:.2">
-      <div class="ch-head"><span class="ch-num" aria-hidden="true">一</span><p class="kicker">Stage 1 · Internal tool · WePay</p><h2 class="ch-title">A legacy tool nobody wanted to touch</h2><p class="ch-hook">The risk team reviewed accounts in an Angular app built by contractors. Adding one panel took three teams.</p></div>
-      <figure class="figure" data-fig="legacy" data-label="Before: ten-plus nested layers. After: a flat tree migrated from the leaves up."></figure>
-      <div class="htd">
-        <div><p class="kicker">What was hard</p><p>A rewrite was the obvious answer and the riskiest one. The risk team could not lose a day, and managers had heard the rewrite pitch before.</p></div>
-        <div><p class="kicker">How I thought</p><p>Don't rewrite it all at once. Run React inside the old app and replace it from the leaves up. Pitch it as no UX change, no API change, shipped in small steps.</p></div>
-        <div><p class="kicker">What changed</p><p>UI changes stopped needing database scripts. Panels went out to teammates in parallel, and engineers started contributing to the tool again.</p></div>
+    <article class="moment">
+      <div class="txt">
+        <p class="kicker"><span class="num">一</span> · Mars Workbench · my own product, 2025 – now</p>
+        <p class="said">“A plan is negotiated, not generated.”</p>
+        <p>I turned a whiteboard a friend and I kept into a weekly planner. The AI wizard I built for it drafted the week in one shot, and I kept correcting it. It didn't know me.</p>
+        <p class="why">So I deleted my own wizard and connected the board to Claude, the assistant I already work with every day. It reads my week, asks what to change, and writes only after I agree.</p>
+        <a class="go" href="#" data-inert>The product story</a>
       </div>
-      <a class="go" href="#case" >Read the case</a>
-    </article>
-
-    <article class="chapter" style="--near:.45">
-      <div class="ch-head"><span class="ch-num" aria-hidden="true">二</span><p class="kicker">Stage 2 · Merchant-facing · WePay</p><h2 class="ch-title">A side quest that rerouted a whole flow</h2><p class="ch-hook">Large partners timed out downloading a month of transactions. The fix was to email a link, and the email flow had no owner.</p></div>
-      <figure class="figure" data-fig="tangle" data-label="Before: emails across services, repos and a retiring monolith. After: one path, one schema, a two-step guide."></figure>
-      <div class="htd">
-        <div><p class="kicker">What was hard</p><p>My first project on Kafka and email infrastructure, across three teams. The design on paper added a hop, and the old flow depended on a monolith being retired.</p></div>
-        <div><p class="kicker">How I thought</p><p>Question the spec instead of building it. Send what the email needs with the request, and give every email one schema instead of one each.</p></div>
-        <div><p class="kicker">What changed</p><p>Downloads became the new email service's first production use. A new email became configuration. Then my schema broke a shared pipeline, and I traced it to the root.</p></div>
-      </div>
-      <a class="go" href="#" data-inert>Read the case</a>
-    </article>
-
-    <article class="chapter" style="--near:.7">
-      <div class="ch-head"><span class="ch-num" aria-hidden="true">三</span><p class="kicker">Stage 3 · Platform, 0 → 1 · JPMorgan Chase</p><h2 class="ch-title">One portal for every kind of merchant</h2><p class="ch-hook">Several portals each served some merchants. The new one had to serve all of them, on top of the payment stacks the acquisition brought together.</p></div>
-      <figure class="figure" data-fig="platform" data-label="One shell loads each part at runtime from what a merchant is entitled to, over a shared library, a BFF and many domain services."></figure>
-      <div class="htd">
-        <div><p class="kicker">What was hard</p><p>Parts built and deployed on their own: types stop at the deployment boundary, late-loading parts miss events, and two copies of React break hooks. Onboarding state lived in many teams' services.</p></div>
-        <div><p class="kicker">How I thought</p><p>Lock the contracts first. Check them at runtime and derive the types from the same schema. Treat onboarding as one list of tasks that always says what comes next.</p></div>
-        <div><p class="kicker">What changed</p><p>The shell I built is the portal's foundation. When the first bank partner arrived, onboarding became the mandatory entry point with little rework.</p></div>
-      </div>
-      <a class="go" href="#" data-inert>Read the case</a>
+      <figure class="figure" data-fig="resistance" data-label="Seven versions, each removing one point of resistance"></figure>
     </article>
   </div>
 
   <div class="bridge scape" data-scape="pingyuan">
     <div class="wrap">
-      <p class="kicker">Between</p>
-      <blockquote>Every one of those was the same problem: show someone where they stand and what to do next.</blockquote>
-      <p>In 2025 the team was wound down. A friend and I had kept a whiteboard of workouts, meals and reading. I turned it into a tool, and this time the someone was me.</p>
+      <p class="kicker">Before this</p>
+      <blockquote>For years I built the same thing for other people: tools that show someone where they stand and what to do next.</blockquote>
+      <p>For a risk team, for partners, and for merchants, at WePay and JPMorgan Chase.</p>
     </div>
   </div>
 
   <div class="wrap">
-    <article class="chapter" style="--near:1">
-      <div class="ch-head"><span class="ch-num" aria-hidden="true">四</span><p class="kicker">My own product · 2025 – now</p><h2 class="ch-title">Mars Workbench: a planner that should need me less</h2><p class="ch-hook">A weekly board I use every day. Each version took away one thing between me and the plan.</p></div>
-      <figure class="figure" data-fig="resistance" data-label="Seven versions, each removing one point of resistance."></figure>
-      <div class="threads">
-        <div class="thread"><figure class="plate" data-plate="talk"></figure><h4>Planning is a negotiation</h4><p>A one-shot wizard kept getting it wrong, so Claude plans with me over MCP: it asks first and writes after I agree.</p></div>
-        <div class="thread"><figure class="plate" data-plate="toss"></figure><h4>Loud wins</h4><p>The literature said keep feedback quiet. My own use argued for loud, at the moment of finishing.</p><span class="state">Designed, not yet built</span></div>
-        <div class="thread"><figure class="plate" data-plate="runs"></figure><h4>Code that is mine</h4><p>Ten controlled runs of coding agents, reviewed blind. The defects that kept coming back were rules I had never written down.</p></div>
-        <div class="thread"><figure class="plate" data-plate="board"></figure><h4>A tool you stop needing</h4><p>The board got me to the gym until I no longer needed it for that. That is what I want to study.</p></div>
-      </div>
-    </article>
-  </div>
-
-  <div class="scape" data-scape="near" style="min-height:clamp(150px,19vw,250px)"></div>
-  <div class="wrap">
-    <footer class="coda">
-      <div><h2>What I want to ask next</h2><ol><li>When should a coach step in, and when should it step away?</li><li>What makes finishing feel like something, without a score?</li></ol></div>
-      <div class="sign"><div class="who"><span class="seal" role="img" aria-label="Seal reading 磨, to polish">磨</span><span>Mars Chu<br><span class="colophon">Full-stack product engineer</span></span></div><div class="end-links"><a href="#" data-inert>CV</a><a href="#" data-inert>GitHub</a><a href="#" data-inert>Email</a></div></div>
-    </footer>
-  </div>
-</section>
-
-<!-- ═══ B · 两部分 Two parts: the work, then my own product, each with its own shape ═══ -->
-<section class="view" id="view-two-parts" hidden>
-  <div class="wrap">
-    <nav class="s-nav" aria-label="Site"><b>Mars Chu</b><span><a href="#" data-inert>Work</a><a href="#" data-inert>Mars Workbench</a><a href="#" data-inert>About</a></span></nav>
-    <header class="hero" style="padding-bottom:0">
-      <h1>Full-stack product engineer. I build end to end, and I build to be understood.</h1>
-      <p class="lede">Two parts: the products I built at WePay and JPMorgan Chase, and the one I build for myself.</p>
-    </header>
-
-    <div class="part-h"><h2>Part one · At WePay and JPMorgan Chase</h2><span class="kicker">3 cases</span><p>From an internal tool, to a merchant-facing product, to a platform built from zero. Each case is a problem, what got hard, and how I worked it out.</p></div>
-
-    <article class="case-row">
+    <article class="moment flip">
       <div class="txt">
-        <p class="kicker">Internal tool · WePay</p>
-        <h3>A legacy tool nobody wanted to touch</h3>
-        <p>The risk team's review dashboard: an Angular app ten-plus layers deep, where adding one panel took three teams.</p>
-        <dl><div><dt>Problem</dt><dd>A rewrite was the obvious answer and the riskiest one.</dd></div><div><dt>Turn</dt><dd>Migrate from the leaves up, with both stacks in one app.</dd></div><div><dt>Role</dt><dd>Proposed it, designed the framework, led the migration</dd></div></dl>
+        <p class="kicker"><span class="num">二</span> · Internal tool · WePay</p>
+        <p class="said">“I didn't rewrite it all at once.”</p>
+        <p>The risk team's review dashboard was an Angular app more than ten layers deep. Adding one panel took a config change, a production database script and new backend rules. A full React rewrite had been floated and stalled.</p>
+        <p class="why">I grew React inside the old app instead, replacing it from the leaves up. No downtime, no UX change, no API change: that got managers to say yes, and let me hand panels out in parallel.</p>
         <a class="go" href="#case">Read the case</a>
       </div>
       <figure class="figure" data-fig="legacy" data-label="Before and after the migration"></figure>
     </article>
 
-    <article class="case-row">
+    <article class="moment">
       <div class="txt">
-        <p class="kicker">Merchant-facing · WePay</p>
-        <h3>A side quest that rerouted a whole flow</h3>
-        <p>A timeout fix for partners' transaction downloads ran into an email flow spread across repos, a retiring monolith, and no owner.</p>
-        <dl><div><dt>Problem</dt><dd>The design on paper added a hop and kept the old tangle.</dd></div><div><dt>Turn</dt><dd>Questioned the spec: one path, one schema for every email.</dd></div><div><dt>Role</dt><dd>Primary owner, across three teams</dd></div></dl>
+        <p class="kicker"><span class="num">三</span> · Merchant-facing · WePay</p>
+        <p class="said">“I questioned the design on paper.”</p>
+        <p>Large partners timed out downloading their transactions, so we moved to emailing a link. The planned design added a hop, and the email flow under it was spread across repos, tied to a retiring monolith, and owned by no one.</p>
+        <p class="why">I proposed one path and one schema for every email. A new email became configuration. When that schema later broke a shared pipeline, I traced it to the root and ran the review.</p>
         <a class="go" href="#" data-inert>Read the case</a>
       </div>
       <figure class="figure" data-fig="tangle" data-label="Before and after the email flow"></figure>
     </article>
 
-    <article class="case-row">
+    <article class="moment flip">
       <div class="txt">
-        <p class="kicker">Platform, 0 → 1 · JPMorgan Chase</p>
-        <h3>One portal for every kind of merchant</h3>
-        <p>Several portals each served some merchants. One shell now loads each part from what a merchant is entitled to.</p>
-        <dl><div><dt>Problem</dt><dd>Independently deployed parts, and onboarding state in many teams' services.</dd></div><div><dt>Turn</dt><dd>Contracts first, checked at runtime; onboarding as one list of tasks.</dd></div><div><dt>Role</dt><dd>Built the shell; owned onboarding front to back</dd></div></dl>
+        <p class="kicker"><span class="num">四</span> · Platform, 0 → 1 · JPMorgan Chase</p>
+        <p class="said">“I locked the contracts before the APIs existed.”</p>
+        <p>One new portal had to replace several, for every kind of merchant. Its parts were built and deployed by different teams, and the onboarding APIs were still changing.</p>
+        <p class="why">I built the shell that loads each part at runtime, checked every contract at runtime, and designed onboarding as one list of tasks that always says what comes next. When the first bank partner arrived, it needed little rework.</p>
         <a class="go" href="#" data-inert>Read the case</a>
       </div>
       <figure class="figure" data-fig="platform" data-label="The portal's structure"></figure>
-    </article>
-  </div>
-
-  <div class="b-band scape" data-scape="pingyuan"></div>
-
-  <div class="wrap">
-    <div class="part-h" style="margin-top:0"><h2>Part two · Mars Workbench</h2><span class="kicker">2025 – now · solo</span><p>A weekly planner from a whiteboard a friend and I kept, borrowing from agile and kanban. I use it every day, and each version took one thing away.</p></div>
-    <div class="case-row" style="grid-template-columns:minmax(0,1fr) minmax(0,1.45fr)">
-      <div class="txt">
-        <h3>A planner that should need me less</h3>
-        <p>The board got me to the gym until I no longer needed the board for it. The next step is an AI coach that knows when to step in and when to step away.</p>
-        <a class="go" href="#" data-inert>The product story</a>
-      </div>
-      <figure class="figure" data-fig="resistance" data-label="Seven versions"></figure>
-    </div>
-    <div class="threads" style="padding-block:clamp(28px,4vw,44px)">
-      <div class="thread"><figure class="plate" data-plate="talk"></figure><h4>Planning is a negotiation</h4><p>Claude plans the week with me over MCP. It asks first and writes after I agree.</p></div>
-      <div class="thread"><figure class="plate" data-plate="toss"></figure><h4>Loud wins</h4><p>Calm for the work ahead, loud at the moment of finishing.</p><span class="state">Designed, not yet built</span></div>
-      <div class="thread"><figure class="plate" data-plate="runs"></figure><h4>Code that is mine</h4><p>Controlled experiments on how to direct coding agents.</p></div>
-      <div class="thread"><figure class="plate" data-plate="log"></figure><h4>The review log</h4><p>What my review catches that CI lets through, kept as a dataset.</p></div>
-    </div>
-
-    <footer class="about-strip">
-      <div><p class="kicker" style="margin-bottom:10px">About</p><p>I studied electrical and computer engineering at Michigan and Colorado State. I write a design doc before code, turn every lesson into a rule, and delete my own features when they stop earning their place.</p></div>
-      <div class="sign"><div class="who"><span class="seal" role="img" aria-label="Seal reading 磨, to polish">磨</span><span>Mars Chu</span></div><div class="end-links"><a href="#" data-inert>CV</a><a href="#" data-inert>GitHub</a><a href="#" data-inert>Email</a></div></div>
-    </footer>
-  </div>
-</section>
-
-<!-- ═══ C · 高光 Highlights first: four decisions, each the turn of one story; the chronology waits in an index ═══ -->
-<section class="view" id="view-highlights" hidden>
-  <div class="scape" data-scape="far">
-    <div class="wrap c-hero">
-      <nav class="s-nav" aria-label="Site"><b>Mars Chu</b><span><a href="#" data-inert>Work</a><a href="#" data-inert>About</a></span></nav>
-      <p class="kicker" style="margin-top:clamp(20px,5vw,56px)">Full-stack product engineer · WePay, JPMorgan Chase, and my own product</p>
-      <h1 style="margin-top:14px">Four decisions, and the problems that made them hard.</h1>
-    </div>
-  </div>
-
-  <div class="wrap">
-    <article class="moment">
-      <div class="txt">
-        <p class="kicker">一 · Internal tool · WePay</p>
-        <p class="said">“I didn't rewrite it all at once.”</p>
-        <p>The risk team's dashboard was an Angular app ten-plus layers deep; adding one panel took three teams. A full React rewrite had been floated before.</p>
-        <p class="why">I migrated it from the leaves up instead, with React running inside the old app: no downtime, no UX change, no API change. That is what got managers to say yes.</p>
-        <a class="go" href="#case">Read the case</a>
-      </div>
-      <figure class="figure" data-fig="legacy" data-label="Before and after"></figure>
-    </article>
-
-    <article class="moment">
-      <div class="txt">
-        <p class="kicker">二 · Merchant-facing · WePay</p>
-        <p class="said">“I questioned the design on paper.”</p>
-        <p>A timeout fix for partners turned into an email flow spread across repos, a retiring monolith and no owner. The planned design added one more hop.</p>
-        <p class="why">One path, one schema for every email. A new email became configuration. When my schema later broke a shared pipeline, I traced it to the root and ran the review.</p>
-        <a class="go" href="#" data-inert>Read the case</a>
-      </div>
-      <figure class="figure" data-fig="tangle" data-label="Before and after"></figure>
-    </article>
-
-    <article class="moment">
-      <div class="txt">
-        <p class="kicker">三 · Platform, 0 → 1 · JPMorgan Chase</p>
-        <p class="said">“One shell for every kind of merchant.”</p>
-        <p>Several portals each served some merchants. The new portal had to serve all of them, built by many teams that deploy on their own.</p>
-        <p class="why">Contracts first, checked at runtime, types from the same schema. Onboarding as one list of tasks that always says what comes next, so the first bank partner needed little rework.</p>
-        <a class="go" href="#" data-inert>Read the case</a>
-      </div>
-      <figure class="figure" data-fig="platform" data-label="The portal's structure"></figure>
-    </article>
-
-    <article class="moment">
-      <div class="txt">
-        <p class="kicker">四 · Mars Workbench · my own</p>
-        <p class="said">“A plan is negotiated, not generated.”</p>
-        <p>I built a planner from a whiteboard a friend and I kept. A one-shot AI wizard kept getting my week wrong, and it didn't know me.</p>
-        <p class="why">I deleted my own wizard and connected the board to the assistant I already work with. Claude asks first and writes after I agree. Each version took one more thing away.</p>
-        <a class="go" href="#" data-inert>The product story</a>
-      </div>
-      <figure class="figure" data-fig="resistance" data-label="Seven versions"></figure>
     </article>
 
     <section style="padding-block:clamp(32px,5vw,56px)">
-      <p class="kicker">Everything, in order</p>
+      <p class="kicker">All work, newest first</p>
       <ul class="index">
-        <li><time>WePay</time><a href="#case">Legacy migration framework</a><p>Internal risk tool, migrated from the leaves up.</p><small>owner</small></li>
-        <li><time>WePay</time><a href="#" data-inert>Email flow, rerouted</a><p>Async downloads, one email schema, a pipeline incident traced to the root.</p><small>primary owner</small></li>
-        <li><time>JPMC</time><a href="#" data-inert>The portal shell</a><p>Micro-frontend container the portal runs on.</p><small>built the MVP</small></li>
+        <li><time>2025 – now</time><a href="#" data-inert>Mars Workbench</a><p>A weekly planner I use every day, planned with Claude.</p><small>solo</small></li>
+        <li><time>JPMC</time><a href="#" data-inert>The portal shell</a><p>The micro-frontend container the portal runs on.</p><small>built the MVP</small></li>
         <li><time>JPMC</time><a href="#" data-inert>Merchant onboarding</a><p>From a banner to the mandatory entry point.</p><small>front to back</small></li>
-        <li><time>JPMC</time><a href="#" data-inert>Design tokens and themes</a><p>With a designer: a new theme became one stylesheet.</p><small>with a designer</small></li>
-        <li><time>2025 – now</time><a href="#" data-inert>Mars Workbench</a><p>A planner I use every day, planned with Claude.</p><small>solo</small></li>
+        <li><time>JPMC</time><a href="#" data-inert>Design tokens and themes</a><p>With a designer, a new theme became one stylesheet.</p><small>with a designer</small></li>
+        <li><time>WePay</time><a href="#" data-inert>Email flow, rerouted</a><p>Async downloads, one schema for every email, a pipeline incident traced to the root.</p><small>primary owner</small></li>
+        <li><time>WePay</time><a href="#case">Legacy migration framework</a><p>The risk team's tool, migrated from the leaves up.</p><small>owner</small></li>
       </ul>
     </section>
   </div>
@@ -569,7 +377,7 @@ ul,ol{padding:0;list-style:none}
 <!-- ═══ 案例页 Case page: one shared skeleton, drawn with Stage 1 — problem, what got hard, how I thought, what changed ═══ -->
 <section class="view" id="view-case" hidden>
   <div class="wrap">
-    <nav class="s-nav" aria-label="Site"><b>Mars Chu</b><span><a href="#one-story">← All work</a></span></nav>
+    <nav class="s-nav" aria-label="Site"><b>Mars Chu</b><span><a href="#home">← All work</a></span></nav>
     <header class="cs-top">
       <p class="kicker">Case 1 of 3 · Internal tool · WePay</p>
       <h1>A legacy tool nobody wanted to touch</h1>
@@ -620,6 +428,25 @@ ul,ol{padding:0;list-style:none}
     </div></section>
 
     <nav class="cs-next" aria-label="Cases"><span class="kicker">Next</span><a class="go" href="#" data-inert>A side quest that rerouted a whole flow</a></nav>
+  </div>
+</section>
+
+<!-- ═══ 说明 — what this round changed; the reasoning and the open questions live in the spike ═══ -->
+<section class="view ov" id="view-notes" hidden>
+  <div class="wrap">
+    <p class="mono">个人网站 · 叙事版 · 第 2 轮，等你 review</p>
+    <h1>选了 C：四个决定</h1>
+    <p class="ov-lede">上一轮的三种讲法里你选了 C（高光）。这一轮只留 C 和案例页；A、B 在这个文件的上一个版本里。调研、取舍和问题在 spike（<code>site/spike/personal-site.md</code>），以那里为准。</p>
+    <section class="ov-sec">
+      <h2 class="b-h"><span>这一轮改了什么</span></h2>
+      <ul class="ov-ul">
+        <li><b>个人项目放最前面</b>：Mars Workbench 是第一个决定；首页那句话下面加了一行，说清四个决定从哪来。</li>
+        <li><b>一座桥接两条线</b>：Mars Workbench 和公司的三段之间加了一句 “Before this”：同一件事，以前是给别人做。来自上一轮 A 的桥，位置换到了中间。</li>
+        <li><b>第四个决定换了</b>：“One shell for every kind of merchant” 更像结果，换成 “I locked the contracts before the APIs existed”：这是素材里你自己的说法，「在不确定中先定契约、把依赖拆开」。</li>
+        <li><b>每段文案统一成两段</b>：先是问题和让它难的那一点，再是怎么想、结果是什么；每段不超过三句。</li>
+        <li><b>索引改成最新在前</b>，和首页的顺序一致。</li>
+      </ul>
+    </section>
   </div>
 </section>
 
@@ -802,9 +629,9 @@ ul,ol{padding:0;list-style:none}
   });
 
   /* ── Views: one per hash; links drawn inside a design go nowhere. */
-  const VIEWS = ['overview', 'one-story', 'two-parts', 'highlights', 'case'];
+  const VIEWS = ['home', 'case', 'notes'];
   const route = () => {
-    const wanted = location.hash.slice(1), view = VIEWS.includes(wanted) ? wanted : 'overview';
+    const wanted = location.hash.slice(1), view = VIEWS.includes(wanted) ? wanted : 'home';
     document.querySelectorAll('.view').forEach(section => { section.hidden = section.id !== 'view-' + view; });
     document.querySelectorAll('.mk-tabs a').forEach(tab => { tab.getAttribute('href') === '#' + view ? tab.setAttribute('aria-current', 'page') : tab.removeAttribute('aria-current'); });
     if (window.drawFigures) window.drawFigures(); paintVisible(); window.scrollTo(0, 0);

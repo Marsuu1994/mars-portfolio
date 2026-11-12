@@ -187,3 +187,16 @@
 - **产出**：spike 第 3 轮（同一个文件，旧问题留在上一个版本的链接里）；新 mockup `site/mockup/mockup-site-story.html`，新的私有 artifact；上一轮的 mockup 没有改。
 
 **README:** 「个人网站」一节改写为叙事版的状态：标准、两条线、三种讲法、推荐、两个 mockup 的链接。
+
+## Round 11 · 2026-11-12
+
+> c真的不错，不过还需要修一下文案，而且个人项目应该放最前面，这些公开应该也没问题吧
+
+### Findings
+
+- **选了 C**：按 mockup 规则，pick 不等于 approve；mockup 只留 C 和案例页，A、B 在文件的上一个版本里。
+- **个人项目放最前面**：Mars Workbench 成为第一个决定。上一轮 A 的那座桥（「告诉一个人他在哪一步、下一步做什么」）正好接在它和三个工作阶段之间，写成 “Before this: for years I built the same thing for other people”。
+- **文案**：四段统一成「问题和难点 / 怎么想和结果」两段；第四个决定从 “One shell for every kind of merchant”（像结果）换成 “I locked the contracts before the APIs existed”（素材 #11：「在不确定中先定契约、把依赖拆开」）；首页那句话下面加一行说清四个决定从哪来；索引改成最新在前。Owner 说的「还需要修一下文案」具体指哪里，还没说，列为 Q3。
+- **公开**：只陈述事实：站上有什么、没有什么（没有内部系统名、合作方名、业务数字、截图）；能不能公开由保密协议和雇主政策决定；判断是 owner 的。
+
+**README:** 「个人网站」一节改成 C 的状态：首页结构、案例页骨架、公开的事实。
