@@ -129,3 +129,30 @@
 - **产出**：`site/spike/personal-site.md`、`site/mockup/mockup-personal-site.html`、私有 artifact 链接。Q1–Q9 等 owner 答。
 
 **README:** 新增「个人网站（portfolio 的入口）」一节和 `site/` 的目录说明；「公开的套瓷材料」改成指向 `site/`；硬事实更新截止日期的两种说法、Students Offering Support、portfolio 的格式要求；证据索引加工作经历。`AGENTS.md` 加第 8 条（`site/` 的规则）。
+
+## Round 8 · 2026-11-12
+
+> https://www.media.mit.edu/groups/cyborg-psychology/projects/
+> 你来pickup fabel的没做完的工作，这个link是我想去的组的link，你看看能不能access，就看能不能fetch
+
+> @"…Application_Material_Draft.pdf" 我再给你工作的context，你重新review上个这个session的work，甚至我觉得你可以用subagent with zero context，然后类比mars workbench里面的rule，材料，再好好的修一下spike，我等你的结果
+
+> 有个要提醒的就是我给你的文件里面有project的部分，但那部分的信息很片面，如果有conflict你以我们这个branch上面积累的东西为主
+
+### Findings
+
+- **Cyborg Psychology 的项目页**：直接访问 media.mit.edu 返回 503；经 Google 翻译代理能读到，列了 11 个项目。和 owner 方向最贴的是 Future You（和未来的自己对话、自我反思和成长）和 AI Wrapped 2025（回顾一年的 AI 对话）；Atlas of Human-AI Interaction 是给研究问题定位的地图。描述是转述，引用前对原文。
+- **申请素材粗稿（PDF，2026-11-05）**：约 5 年在 WePay → JPMorgan Chase 一条线上，14 个工作故事；四个核心品质（钻研、Ownership、探索精神、出错就改）；工作方法（先设计后实现、文档是产品的一部分、把教训变成机制、敢于删掉自己做过的东西）。它的项目部分和本仓库有出入（MCP 的时间、是否有早期用户），按 owner 的话以本仓库为准。
+- **冷读 review**（一个没有本对话上下文的 subagent，按 `mars-workbench` 的 spike 和 mockup 规则、Principles、本仓库规则和 PDF 读 spike）的主要发现，核对后都成立：
+  - 工作经历只用了简历，PDF 里最能撑起 engineer 和 artist 两面的故事没进来：onboarding 编排层、micro-frontend shell、和设计师一起的 design token 主题化、第一个 BFF、静默丢数据之后的规则。
+  - 职业事实有误或未确认：Lead 只是 Commerce Center 那一段；「四年」抹掉了 WePay；「small business」应为各类商户；40% 和「5 个以上服务」PDF 说没有数字。
+  - 推荐建立在「第一批读者是导师」上，这是 owner 的取舍；排序表里没有一行支持 C。
+  - Loud wins 被拿来给站点外壳排序；把 pill 当成 Honest controls 禁止的东西，而 6.1 列了 pill。
+  - 「daily use said loud」说过头：Loud wins 还没实现。
+  - 公开站点上的敏感项（内部系统名、合作银行名、数字、个人信息）没有列出。
+  - 链接不是完整 URL；Q6 的三句候选其实是同一句；spike 和 mockup 总览重复，已经对不上。
+  - 做得好的：头部和语言约定、来源和局限的老实、对比度数值（16 个全对）、作品页九段、「没走的路」。
+- **改了什么**：spike 第 2 轮修订（以 PDF 为工作经历来源；七个工作故事按站点用途挑选；Design systems & tokens 作为 artist 一面的硬证据；推荐按 Q1 分情况；新增「公开前要处理的」「拍板之后」；Q1–Q13；完整 URL；术语定义；修订记录）。Mockup 改掉错的事实和说过头的文案，B 的 Before this 换成 Engineering；总览只留方案并排和视觉语言，其余指向 spike。
+- **时间**：Students Offering Support 的表单 11 月 13 日关（Q13）。
+
+**README:** 「个人网站」一节改写为修订后的状态；证据索引里的工作经历改以 PDF 为来源，简历只留教育和更早的经历；「公开的套瓷材料」指向 Q1–Q13 和「拍板之后」。`AGENTS.md` 第 8 条写明 Principles 在 PR #115 的分支上，以及 spike 是唯一依据。

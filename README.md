@@ -68,11 +68,12 @@ site/                  # the personal site that fronts the portfolio: design onl
 
 ## 个人网站（portfolio 的入口）
 
-设计第 1 轮，等 owner review：[spike](./site/spike/personal-site.md) · [mockup](https://claude.ai/artifact/7Bzr3cEb2k1jevHdi2hss5)（私有页面；源文件 `site/mockup/mockup-personal-site.html`）。
+设计第 1 轮已按 owner 的申请素材和一次冷读 review 修订，等 owner review：[spike](./site/spike/personal-site.md) · [mockup](https://claude.ai/artifact/7Bzr3cEb2k1jevHdi2hss5)（私有页面；源文件 `site/mockup/mockup-personal-site.html`）。
 
 - **视觉语言**：Media Lab 的用字和用色（一种 grotesk、黑白灰、一次一个颜色）加山水画的纸、墨、印；对比度量过，日间和夜间两版。
-- **三个首页方案**：A 手卷（先给故事）、B 册页（先给作品）、C 远山（先给研究问题）。推荐 C 做骨架、B 做 Work 页、A 做 About 里的故事；九个问题等 owner 拍板。
-- **三面**：不分 Engineering / Research / Art 三栏；每件作品同一个结构，标出用了 造、问、磨 哪几面。
+- **三个首页方案**：A 手卷（先给故事）、B 册页（先给作品）、C 远山（先给研究问题）。推荐按 Q1「首页先服务谁」分情况；13 个问题等 owner 拍板，其中 Q13（Students Offering Support）11 月 13 日截止。
+- **三面**：不分 Engineering / Research / Art 三栏；每件作品同一个结构，标出用了哪几面。Artist 那一面的硬证据是 Design systems & tokens（JPMC 和设计师一起的主题化，加 Mars Workbench 的三个主题）。
+- **公开前**：内部系统名和合作方换成泛称；年数、职位、数字等确认后再上。
 
 ## 可能对接的导师
 
@@ -103,7 +104,8 @@ site/                  # the personal site that fronts the portfolio: design onl
 | Subagent 委派试点（三轮 A / B） | [`design/spike/archived/subagent-delegation-pilot.md`](https://github.com/Marsuu1994/mars-workbench/blob/main/design/spike/archived/subagent-delegation-pilot.md) | 同上 |
 | 人工 review 抓到、CI 漏掉的问题，存成数据集 | [`reviews/`](https://github.com/Marsuu1994/mars-workbench/tree/main/reviews) | 同上 |
 | Gym 习惯的使用数据 | 还没导出 | 研究弧线 3 |
-| 工作经历：JPMorgan Chase（Lead Software Engineer，2021-09 – 2025-10）、Cerner、SLD Laser；MS ECE（Michigan）、BS EE（Colorado State） | Owner 的简历（Drive，2026-03 版） | 个人网站的 Work / About / CV |
+| 工作经历：约 5 年在 WePay → JPMorgan Chase 一条线上（风控内部工具、Partner Center、Project Janus、Chase Commerce Center），14 个故事，每个是「背景 / 我做的 / 结果 / 品质落点」；年数、职位起始和可公开的数字待确认 | Owner 的申请素材粗稿（PDF，2026-11-05，不在仓库里）；它的项目部分不全，和本仓库冲突时以本仓库为准 | 个人网站的 Work / Engineering / About；Personal Statement |
+| 教育和更早的经历：MS ECE（Michigan）、BS EE（Colorado State）；Cerner、SLD Laser | Owner 的简历（Drive，2026-03 版） | CV |
 
 ## 还开着的
 
@@ -117,7 +119,7 @@ site/                  # the personal site that fronts the portfolio: design onl
 - **「executive function」的 framing。** 这个词常和 ADHD 这类临床人群挂钩；以临床人群为对象会变成健康相关研究（IRB、招募门槛更高），一般人群的计划和自我调节范围更宽。
 - **Phase 2 的实现状态。** Spike 是 draft、tap to complete 是 mockup；写进申请时说「观察和设计完成，正在实现」。
 - **对准哪几个组**（最多填 3 个）：候选见「可能对接的导师」，每位的招生状态都要在官网当期页面确认。
-- **公开的套瓷材料 = 个人网站。** 设计在 `site/`，等 owner 答 spike 的 Q1–Q9；之后要准备的内容（真截图、60 秒 demo、三到四个作品页的英文文案）列在 spike 里。
+- **公开的套瓷材料 = 个人网站。** 设计在 `site/`，等 owner 答 spike 的 Q1–Q13；最小版本和准备顺序在 spike 的「拍板之后」。
 - **英文化。** Spike、实验报告是中文；评审要看的部分需要英文版（一页 case study、一页实验摘要）。
 - **演示。** App 要 Google 登录，评审进不去：一段 1–2 分钟的视频（Plan with Claude → board 更新 → 完成一张卡的 juice）。
 
