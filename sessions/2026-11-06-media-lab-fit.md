@@ -167,3 +167,23 @@
 - 心路历程（Round 2、3、5 的内容）另整理成一份 md 给 owner 下载，按 owner 的要求不进仓库。
 
 **README:** 目录说明加 `materials/`；证据索引里工作经历的来源改成指向仓库里的 PDF。
+
+## Round 10 · 2026-11-12
+
+> [截图：小红书帖子「从Senior到Principal的宝藏UX作品集」，列了 8 位设计师：Jiwon Lee（Meta）、Yanfeng Jin（Google DeepMind）、Oscar Nilsson（Figma）、Justin Cohen（Plaid）、Chris Goodhue（Stripe）、Natasha Tenggoro（Figma）、Yiqi Zhao（Meta）、Eric Sin（Netflix）]
+> 给你一份截图，上面是很厉害的designer的portfolio或者个人主页的GitHub，你现在给我做一个research，看看他们portfolio或者个人主页的叙事结构，先不管visual的部分吧，我想看的是框架，比如说如何present他们的work，公司里面的？自己做的东西？页面的布局长什么样？下面的是我的designer朋友的comment，你参考一下，重新写spike和阻止我的mockup，一条叙事主线就是 context我在wepay jpmorgan是做什么？full stack 产品sde，end 2 end，internal product，merchant facing product然后最后是large scale merchang portal 0-1 platform work这样，然后work的每个stage都选一张图能表达问题的复杂程度，internal的话是jarvis legacy没人用的产品，incremental migration，做到很好的user buy in实现prodict和engineering winwin，merchant facing就是mature product但是支线任务扩展到整条线migrate到新structure，大大优化process（需要用某种图来比如messy doc变成clear guidance），最后commerce center，所有东西融合各种payment stack，mfe container架构这种。然后第二条叙事线就是我的app，灵感来自agile kanban，你其实现在的mockup里面已经做得很好了，如何有机的串起来讲一个故事或者分成两部分分开呈现，这是你的任务。research然后根据我的需求，做不同的version，不要在已经有的mockup上面修改，重新做，保留山水禅意风格
+> ———————
+> 但是万变不离其中的是storytelling 怎么把故事讲清楚、不要平铺直叙、需要自己去想故事线的高光点、不重要的事情少说。
+>
+> 但是围绕的是我在解决什么问题、我中间遇到什么困难、我是怎么思考和解决的。
+
+### Findings
+
+- **调研**（subagent 读站点）：8 位里读到 4 位（Goodhue、Sin、Nilsson、Zhao），另读了 3 个工程师站点。规律：首页上方只有名字、一句定位、现在在哪；首页的卡很薄，故事在案例页；案例页开头一条元数据；最好的案例用判断句做小标题（Zhao：“I chose AI-native over AI-assisted creation”）；难点是一个有名字的转折（“The pipeline worked. The model wasn't ready for creators.”）；案例 300–900 字；用图讲复杂度的很少；保密的作品没人用密码，要么不放，要么写 Confidential 画抽象图。截图里的任职和站点上的有出入（Goodhue、Nilsson），待核对。
+- **两条线**：主线三个阶段按素材 PDF 写（#1 遗留系统迁移、#6 Email V2、#10 shell 和 #11 onboarding），每个阶段一张复杂度图：`legacy`（十几层嵌套 → 从叶子往上迁移的树）、`tangle`（散乱的邮件流程 → 一条路、一个 schema、两步指引）、`platform`（各类商户 → 按权限加载的 shell → 共享组件库 → BFF → 各支付栈）。第二条线 Mars Workbench 一张 `resistance`（七个版本各拿掉一处阻力）。
+- **一处措辞改正**：素材里迁移本身是 owner 推动的 React 重写，只是渐进的，所以 “I didn't rewrite it” 改成 “I didn't rewrite it all at once”。
+- **三种讲法**：A 一条线（中间一座桥：都是「告诉一个人他在哪一步、下一步做什么」）、B 两部分（Zhao 式两个书架）、C 高光（四个决定）。推荐 C 做首页、A 的桥进 About；共用一个案例页骨架，mockup 用第一阶段画了一页。
+- **「process」那张图**：owner 说的「messy doc 变成 clear guidance」按 Email V2 的事实画成了「散乱 → 一条路加两步指引」，是否就是 owner 指的那件事，列为 Q6。
+- **产出**：spike 第 3 轮（同一个文件，旧问题留在上一个版本的链接里）；新 mockup `site/mockup/mockup-site-story.html`，新的私有 artifact；上一轮的 mockup 没有改。
+
+**README:** 「个人网站」一节改写为叙事版的状态：标准、两条线、三种讲法、推荐、两个 mockup 的链接。
