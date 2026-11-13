@@ -1,6 +1,6 @@
 # Spike: 个人网站——portfolio 的入口
 
-**Status: awaiting owner review** · 第 4 轮 2026-11-12（owner 选了 C，等 approve） · Mockup：[claude.ai/artifact/K7wABSdSQP8PJCKCFCofTn](https://claude.ai/artifact/K7wABSdSQP8PJCKCFCofTn)（私有页面，源文件 `site/mockup/mockup-site-story.html`）· 上一轮的 mockup 原样保留：[claude.ai/artifact/7Bzr3cEb2k1jevHdi2hss5](https://claude.ai/artifact/7Bzr3cEb2k1jevHdi2hss5)（`site/mockup/mockup-personal-site.html`）· Owner 的原话：`sessions/2026-11-06-media-lab-fit.md` Round 7、8、10、11
+**Status: awaiting owner review** · 第 5 轮 2026-11-13（C 的缩略图首页） · 缩略图 mockup：[claude.ai/artifact/784YrxKCtc3g7iDGbKPgpy](https://claude.ai/artifact/784YrxKCtc3g7iDGbKPgpy)（`site/mockup/mockup-site-thumbnails.html`） · Mockup：[claude.ai/artifact/K7wABSdSQP8PJCKCFCofTn](https://claude.ai/artifact/K7wABSdSQP8PJCKCFCofTn)（私有页面，源文件 `site/mockup/mockup-site-story.html`）· 上一轮的 mockup 原样保留：[claude.ai/artifact/7Bzr3cEb2k1jevHdi2hss5](https://claude.ai/artifact/7Bzr3cEb2k1jevHdi2hss5)（`site/mockup/mockup-personal-site.html`）· Owner 的原话：`sessions/2026-11-06-media-lab-fit.md` Round 7、8、10、11、12
 
 > 语言约定：叙述用中文；站点自己的文案、产品名词和代码标识保留英文。**Case page** 是一个案例的详情页；**complexity figure** 是每个阶段那一张表达问题复杂度的图；**claim heading** 是写成一句判断的小标题（“I chose X over Y”），不是 “Problem / Solution” 这样的标签。
 
@@ -114,6 +114,26 @@ Owner 说第二阶段是「mature product 但是支线任务扩展到整条线 m
 
 **C 做首页，A 的桥放进 About，案例页按下面的骨架写。** 朋友的标准有两条：找高光，以及围绕问题和思考。C 的每一段正好是一个高光加它背后的问题；A 的桥是把两条线接起来最自然的一句，放进 About，首页就不用摆个人经历。B 最稳，适合 owner 想把公司作品和自己的产品明确分开的时候。三者共用图和案例页，换首页不用重做内页。
 
+## 缩略图首页（第 5 轮）
+
+Owner（Round 12）：
+
+> 先thumb nail做简略，现在东西少可以做dektop vertical留白，之后要做移动端。然后我觉得简略那部分可以一张图一段话，都是hook，比如说我们遇到什么问题？或者high level解决思路比如你画的前后架构对比？勾引人点进去看，里面就是详细内容
+
+所以首页只放缩略：每个项目一张 16:9 的图、一段话，详细内容在点进去的案例页。只做桌面端：一栏竖排（约 760 px），卡和卡之间大留白；移动端之后再做（页面在手机宽度不会坏，但没有设计）。顺序沿用 C：一 Mars Workbench，一句 “Before this” 的桥，二、三、四三个工作阶段。缩略图是复杂度图的简化版：每张只讲一个意思，几乎没有字；每个项目画了两张，一张只画问题，一张画前 → 后。
+
+三版的区别只在钩子：
+
+| | 版本一 · 问题钩子 | 版本二 · 前后对比 | 版本三 · 图给答案，话留问题 |
+| --- | --- | --- | --- |
+| 图 | 只画问题（乱的那一边） | 前 → 后 | 前 → 后 |
+| 话 | 问题和让它难的地方，常以问句收尾 | 高层的解法，一两句 | C 的那句决定，加一句让它难的问题 |
+| 只扫一眼的人拿到 | 问题 | 答案和思路 | 思路（从图）和高光（从引号） |
+| 点进去的理由 | 最强：想知道怎么解的 | 最弱：答案都给了 | 中：想知道「怎么做到」 |
+| 文案的难度 | 中 | 低 | 高：每句都短，要磨准 |
+
+调研里的规律是「首页的卡很薄，故事在案例页里」；导师给一份申请的时间是几分钟，不一定会点进去。所以 **推荐版本三**：不点的人从图和引号拿到思路和高光，那一句难点留给想知道怎么做到的人。版本一最勾人，适合更在意点击的时候；版本二最省力，适合不打算认真写案例页的时候。
+
 ## 案例页（三种讲法共用）
 
 骨架来自调研（Zhao 的决定式小标题、Dessotti 的工程案例、Goodhue 的元数据）加朋友的标准。每一节一个小标签加一句判断：
@@ -167,6 +187,8 @@ Owner（Round 11）：「这些公开应该也没问题吧」。下面是事实�
 | Q7 | 案例页先写哪几个 | 三个阶段各一个 · 加 Mars Workbench 一个 | 四个都写，先写第三阶段 |
 | Q8 | 数字和名称 | 见「公开前要处理的」 | Owner 认为可以公开（Round 11）；以雇佣协议为准 |
 | Q9 | 首页那句话 | A：“I take a messy process and make it something people can get through.” · B：“I build end to end, and I build to be understood.” · C：“Four decisions, and the problems that made them hard.” | 看 Q1 |
+| Q11 | 缩略图的钩子 | 版本一 问题 · 版本二 前后对比 · 版本三 图给答案、话留问题 | 版本三 |
+| Q12 | 缩略图本身 | 现在八张（每个项目「只画问题」和「前 → 后」各一张）· 换 | Owner 看了再说 |
 | Q10 | 研究的一面放哪 | 首页不放，只在 Mars Workbench 那条线和 About 里 · 加一个 Research 页 | 先不加：这一轮 owner 的重点是作品的叙事 |
 
 上一轮的问题里，首页先服务谁（原 Q1）、三面怎么标、印、山水的量、中文版、Mars 那一点红、Students Offering Support 仍然开着，在[上一个版本](https://github.com/Marsuu1994/mars-portfolio/blob/3b7140f/site/spike/personal-site.md)里。
@@ -196,4 +218,5 @@ Owner（Round 11）：「这些公开应该也没问题吧」。下面是事实�
 - **第 1 轮（2026-11-11）**：视觉语言，三张首页（先给故事、作品还是研究问题）。
 - **第 2 轮（2026-11-12）**：按申请素材和一次冷读 review 修订事实和推荐。
 - **第 3 轮（2026-11-12）**：owner 把问题换成叙事结构。新的调研（设计师作品集），两条线，每阶段一张复杂度图，三种讲法，共用的案例页；新 mockup，上一轮的 mockup 原样保留。
+- **第 5 轮（2026-11-13）**：owner 提出缩略图首页：一张图一段话、都是钩子、桌面端竖排留白。新 mockup 画了三版钩子和一页并排对比；缩略图是复杂度图的简化版。
 - **第 4 轮（2026-11-12）**：owner 选了 C，要求个人项目放最前面、改文案。Mockup 只留 C 和案例页；Mars Workbench 放第一；桥移到它和工作经历之间；第四个决定换成「先定契约」；文案统一成两段；索引最新在前。

@@ -69,13 +69,14 @@ site/                  # the personal site that fronts the portfolio: design onl
 
 ## 个人网站（portfolio 的入口）
 
-叙事版第 4 轮，owner 选了 C（高光），等 approve：[spike](./site/spike/personal-site.md) · [mockup](https://claude.ai/artifact/K7wABSdSQP8PJCKCFCofTn)（私有页面；源文件 `site/mockup/mockup-site-story.html`）。第 1、2 轮的 [mockup](https://claude.ai/artifact/7Bzr3cEb2k1jevHdi2hss5) 原样保留。
+第 5 轮：C（四个决定）的缩略图首页，等 owner review：[spike](./site/spike/personal-site.md) · [缩略图 mockup](https://claude.ai/artifact/784YrxKCtc3g7iDGbKPgpy)（`site/mockup/mockup-site-thumbnails.html`）。之前的 [C mockup](https://claude.ai/artifact/K7wABSdSQP8PJCKCFCofTn) 和第 1、2 轮的 [mockup](https://claude.ai/artifact/7Bzr3cEb2k1jevHdi2hss5) 原样保留。
 
 - **标准**：owner 的设计师朋友：讲清故事、找高光、不重要的少说，围绕解决什么问题、遇到什么困难、怎么思考和解决。
-- **首页**：四个决定，个人项目在前：一 Mars Workbench（“A plan is negotiated, not generated.”）→ 一座桥 “Before this”：同一件事，以前是给别人做 → 二 internal tool、三 merchant-facing、四 platform 0 → 1，每个配一张表达问题复杂度的图 → 全部作品，最新在前。
-- **案例页**：一个骨架三种讲法共用：标题写成问题、元数据、一张图、每节一句判断（问题 / 难点 / 怎么想 / 变化 / 留下了什么）。
+- **首页**：只放缩略，每个项目一张图、一段钩子，详细内容在案例页。桌面端一栏竖排、大留白；移动端之后再做。顺序：一 Mars Workbench → 一句 “Before this” → 二 internal tool、三 merchant-facing、四 platform 0 → 1。
+- **三版钩子**：问题；前后对比；图给答案、话留问题（推荐，保留 C 的决定引号）。
+- **案例页**：标题写成问题、元数据、一张复杂度图、每节一句判断（问题 / 难点 / 怎么想 / 变化 / 留下了什么）。
 - **视觉语言**：不变：Media Lab 的用字和用色加山水画的纸、墨、印。
-- **公开**：owner 认为可以公开；站上没有内部系统名、合作方名和业务数字；以雇佣协议为准。
+- **公开**：owner 认为可以公开，写得抽象一点；站上没有内部系统名、合作方名和业务数字。
 
 ## 可能对接的导师
 
