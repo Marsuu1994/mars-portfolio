@@ -29,6 +29,8 @@ Owner 先问能不能把作品集放进 `mars-workbench`（Round 13），然后�
 
 **推荐 A。**
 
+部署在 Vercel 的免费 Hobby plan 上没有问题：每个账号最多 200 个项目，同一个 Git 仓库最多连 25 个项目，所以站点是 `mars-workbench` 之外的第二个项目，用 Root Directory 指到 `site/` 即可。Hobby 只限个人、非商业用途；个人作品集符合，Mars Workbench 以后要收费就得换 Pro。（[Limits](https://vercel.com/docs/limits) · [Hobby](https://vercel.com/docs/plans/hobby) · [projects per repo](https://vercel.com/changelog/increased-limit-for-projects-per-git-repo) · [Terms](https://vercel.com/legal/terms)，2026-11-19 读到）
+
 ## 公开还是私有
 
 这是 owner 的决定，下面是事实：

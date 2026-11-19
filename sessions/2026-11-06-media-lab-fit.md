@@ -259,3 +259,14 @@
 - **第一个 PR 只做骨架**：首页的缩略图版本还没定，按「mockup 定了再实现」。
 
 **README:** 「托管在哪」一条改成「工程（还没开工）」：放在这个仓库、推荐 `site/` 做工程根、等骨架 spike 的 review。
+
+## Round 16 · 2026-11-19
+
+> before这些我有个问题，vercel免费可以部署两个项目吗？
+
+### Findings
+
+- Vercel Hobby：每个账号最多 200 个项目，同一个 Git 仓库最多连 25 个项目；只限个人、非商业用途（commercial use 的例子：收款、做广告、affiliate、接活）。来源：[Limits](https://vercel.com/docs/limits)、[Hobby](https://vercel.com/docs/plans/hobby)、[changelog](https://vercel.com/changelog/increased-limit-for-projects-per-git-repo)、[Terms](https://vercel.com/legal/terms)。
+- 写进了骨架 spike「代码放在哪」一节。
+
+**README:** nothing.
