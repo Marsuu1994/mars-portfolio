@@ -245,3 +245,17 @@
 - 新仓库要 owner 自己建；公开还是私有由 owner 定（事实：评审要看到 harness 就得公开；Vercel 两种都能部署；申请策略留在这个私有仓库）。
 
 **README:** 「托管在哪」一条写成两条路，加上下一步的 spike。
+
+## Round 15 · 2026-11-19
+
+> https://github.com/Marsuu1994/mars-portfolio 仓库已经有了啊
+
+### Findings
+
+- Owner 指定站点的代码放进这个仓库。按两边的规则先写 spike：`site/spike/site-scaffold.md`。
+- **代码放在哪**：推荐 `site/` 做工程根，现有的 `site/spike/`、`site/mockup/` 挪到 `site/design/`；brainstorm 留在仓库根。Vercel 的 Root Directory 设成 `site`，CI 只在 `site/**` 变化时跑。
+- **公开还是私有**（事实）：仓库私有，Vercel 照样能部署；评审要看到 harness 就得公开，而 `materials/` 的 PDF、`sessions/` 和站点 spike 里的申请策略不适合公开，所以以后要公开得先拆仓库。
+- **复制清单**：按 `mars-workbench`@`3f741cc` 的文件逐个列了复制、改写、不要；`next.config.ts`、`knip.jsonc`、CI 里和 Prisma、Supabase、next-intl 有关的部分逐条核过。
+- **第一个 PR 只做骨架**：首页的缩略图版本还没定，按「mockup 定了再实现」。
+
+**README:** 「托管在哪」一条改成「工程（还没开工）」：放在这个仓库、推荐 `site/` 做工程根、等骨架 spike 的 review。

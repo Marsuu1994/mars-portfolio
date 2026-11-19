@@ -77,7 +77,7 @@ site/                  # the personal site that fronts the portfolio: design onl
 - **案例页**：标题写成问题、元数据、一张复杂度图、每节一句判断（问题 / 难点 / 怎么想 / 变化 / 留下了什么）。
 - **视觉语言**：不变：Media Lab 的用字和用色加山水画的纸、墨、印。
 - **公开**：owner 认为可以公开，写得抽象一点；站上没有内部系统名、合作方名和业务数字。
-- **托管在哪（还没定）**：两条路。放进 `mars-workbench`（Round 13）；或者 owner 提的另起一个纯前端工程，把 `mars-workbench` 的 harness 复制过去（规则、设计文档的结构、mockup 和 spike 流程、CI、lint、page structure），不带数据库，需要时再接（Round 14）。下一步是写一份 spike：复制什么、改什么、不要什么。
+- **工程（还没开工）**：站点的代码放进这个仓库，纯前端，harness 从 `mars-workbench`@`3f741cc` 复制并改写，数据库以后要用再接（Round 13–15）。[骨架 spike](./site/spike/site-scaffold.md) 等 owner review：推荐 `site/` 做工程根，第一个 PR 只做骨架。
 
 ## 可能对接的导师
 
