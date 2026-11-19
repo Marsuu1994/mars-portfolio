@@ -305,3 +305,28 @@
 - 骨架 spike 记下 Decision 后归档到 `design/spike/archived/site-scaffold.md`。
 
 **README:** 搬到 `design/brainstorm/README.md`；「工程」一条改成已实现，指向归档的 spike。
+
+## Round 19 · 2026-11-19
+
+> 我们来做一下我的portfolio，现在还是brainstorm环节，你看看下一步
+
+### Findings
+
+- **站点现在在哪**：[PR #1](https://github.com/Marsuu1994/mars-portfolio/pull/1) 已合并（2026-11-19），`main` 上是骨架和一个 hello world 页面，没有开着的 PR。设计停在 Round 12：缩略图 mockup 第 1 轮（三版钩子）等 review；Round 13–18 都在定工程骨架，mockup 之后没有再收到回答。骨架的验收（公开 URL 打开是 hello world）从这边看不到 Vercel，没有核对。
+- **卡在哪**：站点的流程是 design → spec → implementation（root `AGENTS.md` › UI Workflow），spec 和实现都排在 mockup 定稿之后。定稿之前 `design/spike/personal-site.md` 里还开着的问题：
+  - Q11 钩子用哪一版；Q12 八张缩略图对不对。
+  - Q3：Round 11 说的「还需要修一下文案」指哪几句。
+  - Q5、Q6：三张复杂度图有没有讲错事实；第二阶段的「process」指邮件流程、文档还是别的。
+  - Q7：先写哪个案例页。Mockup 画的是第一阶段（internal tool），spike 推荐的是第三阶段。
+  - Q2、Q4、Q9：桥放哪、个人经历公开到哪、首页那句话。
+  - Tracker 另有一条：案例页正文用不用 MDX。
+  - 待确认的事实：年数、Lead 从哪一段开始、案例页元数据里的 “When”（mockup 写着 “To confirm”）。
+- **重新读了官网**（2026-11-19，六页都直接读到）：
+  - 截止日期两页一致。Apply 页：“The application opens on September 15th, 2026 and closes on December 15th, 2026.”；Application FAQs：“11:59pm ET on December 15 is the firm deadline for all applications.”，“Our admissions portal will be open September 15 - December 15, 2026.”
+  - Round 1 记的 12 月 1 日来自旧版 MAS FAQ（`media.mit.edu/admissions/faqs.html`）：“December 1 is the firm deadline for all applications.”，没有年份；页面没有日期，导航里是 2016 年的课程。
+  - Application FAQs：“Your personal statement should be 500 words maximum.”；Statement of Objectives：“We don't have a strict limit for the statement but recommend that you keep it to two pages or less if possible.”，开头列出申请的组或导师。
+  - Portfolio：当期的 requirements 页写 “Recommended formats: URL or PDF”、“Do not submit portfolio directly to faculty member(s)”，没有写 URL 放在哪；Apply 页写所有材料（包括 portfolio）通过在线申请系统提交。「URL 放在 Statement of Objectives 结尾」只在没有日期的旧版 portfolio 页（`media.mit.edu/admissions/how-to-apply/portfolio-requirements.html`）上。
+  - Students Offering Support：表单 “will close November 13th, 2026”，已经过了。
+- 三个 mockup 的私有 artifact 都还在；`Mars Chu Thumbnail Mockup` 最后更新是 2026-11-13。
+
+**README:** 「申请的硬事实」：截止日期写成两页一致的 12 月 15 日 11:59pm ET，说明 12 月 1 日出自哪一页；加 Personal Statement 的 500 词上限；Students Offering Support 写成已关；portfolio 的 URL 放哪改成当期页面的说法；来源里标出两份旧版页面。「还开着的」里个人网站一条指向的 “Q1–Q13” 和「拍板之后」在 spike 里已经没有了，改成现在等的问题。

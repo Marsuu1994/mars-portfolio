@@ -123,7 +123,7 @@ The repository's root is the site itself, a Next.js app; its design (spikes, moc
 - **「executive function」的 framing。** 这个词常和 ADHD 这类临床人群挂钩；以临床人群为对象会变成健康相关研究（IRB、招募门槛更高），一般人群的计划和自我调节范围更宽。
 - **Phase 2 的实现状态。** Spike 是 draft、tap to complete 是 mockup；写进申请时说「观察和设计完成，正在实现」。
 - **对准哪几个组**（最多填 3 个）：候选见「可能对接的导师」，每位的招生状态都要在官网当期页面确认。
-- **公开的套瓷材料 = 个人网站。** 设计在 `design/`，等 owner 答 spike 的 Q1–Q13；最小版本和准备顺序在 spike 的「拍板之后」。
+- **公开的套瓷材料 = 个人网站。** 设计在 `design/`：缩略图首页的 mockup 等 owner review，先是 spike 的 Q11（钩子用哪一版）和 Q12（缩略图），还有 Q2–Q7、Q9；mockup 定稿之后写 spec，再实现（`design/tracker.md`）。
 - **英文化。** Spike、实验报告是中文；评审要看的部分需要英文版（一页 case study、一页实验摘要）。
 - **演示。** App 要 Google 登录，评审进不去：一段 1–2 分钟的视频（Plan with Claude → board 更新 → 完成一张卡的 juice）。
 
@@ -150,12 +150,13 @@ The repository's root is the site itself, a Next.js app; its design (spikes, moc
 
 以 Media Lab 官网的当期页面为准；有疑问发 mas@media.mit.edu。
 
-- 截止：Apply 页写 9 月 15 日开放、**2026 年 12 月 15 日**截止（2026-11-11 经翻译代理读到）；官方 FAQ 写 12 月 1 日——两处不一致，以当期 Apply 页为准。
-- Students Offering Support：在读学生给 portfolio 或 Statement of Objectives 一轮反馈，表单 “will close November 13th, 2026”。
-- Portfolio：“Recommended formats: URL or PDF”；按申请的组 curate；“highlight who you are”；“provide context around your work”。旧版页面写 portfolio URL 放在 Statement of Objectives 结尾，当期是否适用待核对。
+- 截止：9 月 15 日开放，**2026 年 12 月 15 日 11:59pm ET** 截止。Apply 页和 Application FAQs 一致（2026-11-19 直接读到；FAQ：“11:59pm ET on December 15 is the firm deadline for all applications.”）。写 12 月 1 日的是旧版 MAS FAQ，那一页没有年份和日期。
+- Students Offering Support：在读学生给 portfolio 或 Statement of Objectives 一轮反馈；表单 “will close November 13th, 2026”，已经关了。
+- Portfolio：“Recommended formats: URL or PDF”；按申请的组 curate；“highlight who you are”；“provide context around your work”；“Do not submit portfolio directly to faculty member(s)”。Apply 页写所有材料（包括 portfolio）通过在线申请系统提交；「URL 放在 Statement of Objectives 结尾」只在没有日期的旧版 portfolio 页上，当期页面没有这句。
 - 材料：Statement of Objectives、Personal Statement、Portfolio、3 封推荐信、成绩单；不要 GRE。
 - 申请表里填最多 3 个研究组或导师，Statement of Objectives 开头列出、写给这几个组；建议 2 页以内。
+- Personal Statement：“500 words maximum”（Application FAQs）。
 - Portfolio 的要求各组不同；Fluid Interfaces 要每个项目写清你的角色和结果或发表。
 - 所有 MAS 学生从硕士开始，第二年再申请 PhD。
 
-来源：[Apply](https://www.media.mit.edu/graduate-program/apply/) · [Portfolio requirements](https://www.media.mit.edu/posts/academics-portfolio-requirements/) · [Students Offering Support](https://www.media.mit.edu/posts/students-offering-support-program/) · [MAS FAQ](https://media.mit.edu/admissions/faqs.html) · [Application FAQs](https://www.media.mit.edu/posts/academics-faq/) · [Apply](https://www-prod.media.mit.edu/graduate-program/apply/) · [Fluid Interfaces applicant information](https://www.media.mit.edu/groups/fluid-interfaces/applicant-information/)
+来源：[Apply](https://www.media.mit.edu/graduate-program/apply/) · [Portfolio requirements](https://www.media.mit.edu/posts/academics-portfolio-requirements/) · [Students Offering Support](https://www.media.mit.edu/posts/students-offering-support-program/) · [Application FAQs](https://www.media.mit.edu/posts/academics-faq/) · [Apply](https://www-prod.media.mit.edu/graduate-program/apply/) · [Fluid Interfaces applicant information](https://www.media.mit.edu/groups/fluid-interfaces/applicant-information/) · 旧版：[MAS FAQ](https://media.mit.edu/admissions/faqs.html)、[portfolio 页](https://www.media.mit.edu/admissions/how-to-apply/portfolio-requirements.html)
