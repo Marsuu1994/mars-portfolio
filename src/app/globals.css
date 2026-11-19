@@ -1,0 +1,77 @@
+@import 'tailwindcss';
+
+/*
+ * Two themes, one variable contract (AGENTS.md › Themes; `npm run check:themes`).
+ * paper is the light page, ink the dark one; with no data-theme on <html> the
+ * page follows the system. The values and their contrast come from the decided
+ * visual language (design/spike/personal-site.md › 视觉语言).
+ */
+:root,
+[data-theme='paper'] {
+  /* paper */
+  --paper: #f5f4ef;
+  --paper-2: #eceae3;
+  /* ink, in five tones: 焦 浓 重 淡 清 */
+  --ink: #1b1f26;
+  --ink-strong: #42454a;
+  --ink-mid: #606266;
+  --ink-light: #a8a8a6;
+  --ink-faint: #d7d6d2;
+  /* tints and the seal */
+  --indigo: #3d5a6c;
+  --umber: #8a5a3c;
+  --seal: #b8322a;
+  color-scheme: light;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme]) {
+    --paper: #13161b;
+    --paper-2: #1b1f26;
+    --ink: #e9e6de;
+    --ink-strong: #c3c0ba;
+    --ink-mid: #a09f9b;
+    --ink-light: #606161;
+    --ink-faint: #313336;
+    --indigo: #9dbccd;
+    --umber: #d1a283;
+    --seal: #e8695a;
+    color-scheme: dark;
+  }
+}
+
+[data-theme='ink'] {
+  --paper: #13161b;
+  --paper-2: #1b1f26;
+  --ink: #e9e6de;
+  --ink-strong: #c3c0ba;
+  --ink-mid: #a09f9b;
+  --ink-light: #606161;
+  --ink-faint: #313336;
+  --indigo: #9dbccd;
+  --umber: #d1a283;
+  --seal: #e8695a;
+  color-scheme: dark;
+}
+
+@theme inline {
+  --color-paper: var(--paper);
+  --color-paper-2: var(--paper-2);
+  --color-ink: var(--ink);
+  --color-ink-strong: var(--ink-strong);
+  --color-ink-mid: var(--ink-mid);
+  --color-ink-light: var(--ink-light);
+  --color-ink-faint: var(--ink-faint);
+  --color-indigo: var(--indigo);
+  --color-umber: var(--umber);
+  --color-seal: var(--seal);
+  --font-sans:
+    var(--font-geist-sans), 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  --font-serif: var(--font-source-serif), Georgia, serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, Menlo, monospace;
+}
+
+body {
+  background: var(--paper);
+  color: var(--ink);
+}

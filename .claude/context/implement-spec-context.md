@@ -1,0 +1,18 @@
+> Adapted from `mars-workbench`@`3f741cc`; the site has no Design Console, no data layer and no `check:spec` yet.
+
+# Implementation context
+
+What the `implement-spec` skill and the `implement-spec-reviewer` agent both read: the skill to build a page's spec items and their tests, the agent to check them. This file points to where each rule lives (AGENTS.md › Adding a rule) and lists the inputs; what the skill and the agent each do is in their own files.
+
+## The standard
+
+- `test/README.md`, in full: which layer tests an item, how every test is written, and how a test holds a spec ID.
+- AGENTS.md › Page structure, › Coding Conventions and › UI Workflow: where the code goes, how it is written, and how a decided mockup is built (exactly).
+- `design/specs/README.md` › Items and IDs: what the markers mean, and when an implementation PR is done.
+
+## The inputs
+
+- **The page's spec**, `design/specs/<page>.md`: its items still marked *(pending)* or *(removing)* are the change's scope.
+- **The decided mockup**, `design/mockup/mockup-<area>.html`, for what the spec leaves to it (`design/specs/README.md` › What a spec doesn't say): the layout, the copy, the spacing, the colours, the icons.
+- **The questions the spec left open**: the feature's item in `design/tracker.md`, and the review log of the PR that wrote the spec, `reviews/pr-<NNN>.md`.
+- **The change**: `git diff <base>`, where the base is usually `main`.
