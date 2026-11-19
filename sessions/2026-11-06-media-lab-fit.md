@@ -213,3 +213,17 @@
 - 案例页沿用上一份 mockup 的那一页，是点进去之后的样子；之后要打磨。
 
 **README:** 「个人网站」一节改成缩略图首页的状态和三个 mockup 的链接。
+
+## Round 13 · 2026-11-19
+
+> 其实你觉得我们这个portfolio是不是完全也可以host在mars-workbench里面作为一个publish page？还能用我们已经搭建好的infra
+
+### Findings
+
+- **`mars-workbench` 现状（`main`，3f741cc）**：除了 `/auth`、`/api/mcp`、`.well-known` 和静态文件，所有路径都要登录（`src/proxy.ts` → `updateSession`，没 session 就跳登录页）；`/` 直接跳 `/kanban`；根 layout 从 cookie 盖三个产品主题之一，加载 next-intl；规则要求一页一个主题、每个主题声明同一套变量（`check:themes`）、所有面向用户的文案进 `en.json`；CI 跑 format、lint、typecheck、knip、themes、Vitest 和 Playwright。
+- **可行**，要处理的是：一条公开路由（像 `/auth` 一样放行）；作品集自己的根 layout 和纸墨主题，而不是第四个产品主题（否则要声明产品的整套 `--fx-*` 变量）；长文案用内容文件而不是 `en.json`，要在 AGENTS.md 里写明例外；个人域名按 host 指到作品集，而不是跳 `/kanban`；`mars-workbench` 是公开仓库，所以 `site/` 里带申请策略的设计文档（读者是导师、套瓷）不能整份搬过去。
+- **好处**：同一套部署、CI、agent 规则和 mockup 流程；站点本身就是「用同一套 harness 做出来的」证据；案例页可以直接跑产品真实的组件（比如 Loud wins 的完成动画），不用另做 demo。
+- **代价**：作品集和产品绑在一起部署，产品构建坏了作品集也更新不了；改一句文案也要跑完整个 CI；产品以后改名、下线或有了真实用户，作品集要跟着动。
+- 按 `mars-workbench` 的规则，这种「新的路由面、有取舍的选择」要先写 spike。
+
+**README:** 「个人网站」一节加一条「托管在哪（还没定）」。

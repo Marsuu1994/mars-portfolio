@@ -77,6 +77,7 @@ site/                  # the personal site that fronts the portfolio: design onl
 - **案例页**：标题写成问题、元数据、一张复杂度图、每节一句判断（问题 / 难点 / 怎么想 / 变化 / 留下了什么）。
 - **视觉语言**：不变：Media Lab 的用字和用色加山水画的纸、墨、印。
 - **公开**：owner 认为可以公开，写得抽象一点；站上没有内部系统名、合作方名和业务数字。
+- **托管在哪（还没定）**：owner 提出放进 `mars-workbench`，复用它的 Vercel、CI 和规则。要在那边先写 spike：公开路由、独立的根 layout 和主题、正文不走 `en.json`、个人域名、设计文档里的申请策略留在这个私有仓库。
 
 ## 可能对接的导师
 
