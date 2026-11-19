@@ -1,0 +1,25 @@
+# Build output
+.next/
+out/
+build/
+dist/
+
+# Dependencies
+node_modules/
+
+# Lockfiles and generated data
+package-lock.json
+
+# Markdown docs & design assets are hand-authored; Prettier is scoped to code
+# only. The mockups in design/ are self-contained HTML drawn by hand.
+**/*.md
+/design/
+
+# Test reports
+coverage/
+playwright-report/
+test-results/
+
+# Misc
+*.tsbuildinfo
+next-env.d.ts

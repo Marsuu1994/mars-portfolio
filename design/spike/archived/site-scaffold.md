@@ -1,8 +1,28 @@
 # Spike: 站点的工程骨架——从 mars-workbench 复制 harness
 
-**Status: awaiting owner review** · 2026-11-19 · 起因和 owner 的原话：`sessions/2026-11-06-media-lab-fit.md` Round 13–15 · 设计本身见 [`personal-site.md`](./personal-site.md)
+**Status: decided · implemented** · 2026-11-19（owner 在 Round 17–18 回答；同一个 PR 搭好骨架后归档）· 起因和 owner 的原话：`design/brainstorm/sessions/2026-11-06-media-lab-fit.md` Round 13–18 · 设计本身见 [`personal-site.md`](../personal-site.md)
 
 > 语言约定：叙述用中文；文件名、命令和代码标识保留英文。**harness** 指让 agent 按规则把活干好的那一整套东西：规则文件、设计文档的结构、spike 和 mockup 流程、skills 和 agents、CI 检查、review log。
+
+## Decision
+
+Owner 的回答（Round 17、18）：
+
+> Q1，根目录，然后brainstorm挪到design下面，里面放materials和sessions，在design/readme里面加一条，这是brainstorm的东西和工程本身没关系，其他的按mars-workbench来，mockup spike都放design下面
+> Q4那就先定规则就好
+> Q5 直接用spec v2的写法就好。Q6 是的只做骨架，要求验收效果是能public点开看到然后有一个hello world示范页面。Q7 暂时不要
+
+| # | 决定 |
+| --- | --- |
+| Q1 | **仓库根就是 Next.js app**（下面「代码放在哪」的 B，不是推荐的 A）。brainstorm 挪进 `design/brainstorm/`（`README.md`、`AGENTS.md`、`sessions/`、`materials/`），`design/README.md` 写明它和工程无关；spike、mockup 照 `mars-workbench` 放在 `design/` 下 |
+| Q2 | 没定：仓库先保持私有，记在 tracker |
+| Q3 | 没定：骨架用不到，第一个案例页之前定，记在 tracker |
+| Q4 | 不用 daisyUI；**交互组件用 Radix Primitives** 写进 AGENTS.md › Styling，等第一个需要的组件再装 |
+| Q5 | 用 spec v2 的写法；`check:spec` 以后再复制（tracker） |
+| Q6 | 第一个 PR 只做骨架；验收：Vercel 的公开 URL 打开是一个 hello world 页面 |
+| Q7 | 不要 i18n |
+
+和下面正文的出入：正文按 A（`site/` 做工程根）写，实际按 Q1 的决定放在根目录，路径里的 `site/` 都去掉；`check:mockup-links` 照正文不复制；Vercel 部署照 Hobby plan 的限制（每个仓库最多 25 个项目），这个仓库只连一个项目。
 
 ## Trigger · 起因
 

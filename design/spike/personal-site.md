@@ -1,6 +1,6 @@
 # Spike: 个人网站——portfolio 的入口
 
-**Status: awaiting owner review** · 第 5 轮 2026-11-13（C 的缩略图首页） · 缩略图 mockup：[claude.ai/artifact/784YrxKCtc3g7iDGbKPgpy](https://claude.ai/artifact/784YrxKCtc3g7iDGbKPgpy)（`site/mockup/mockup-site-thumbnails.html`） · Mockup：[claude.ai/artifact/K7wABSdSQP8PJCKCFCofTn](https://claude.ai/artifact/K7wABSdSQP8PJCKCFCofTn)（私有页面，源文件 `site/mockup/mockup-site-story.html`）· 上一轮的 mockup 原样保留：[claude.ai/artifact/7Bzr3cEb2k1jevHdi2hss5](https://claude.ai/artifact/7Bzr3cEb2k1jevHdi2hss5)（`site/mockup/mockup-personal-site.html`）· Owner 的原话：`sessions/2026-11-06-media-lab-fit.md` Round 7、8、10、11、12
+**Status: awaiting owner review** · 第 5 轮 2026-11-13（C 的缩略图首页） · 缩略图 mockup：[claude.ai/artifact/784YrxKCtc3g7iDGbKPgpy](https://claude.ai/artifact/784YrxKCtc3g7iDGbKPgpy)（`design/mockup/mockup-site-thumbnails.html`） · Mockup：[claude.ai/artifact/K7wABSdSQP8PJCKCFCofTn](https://claude.ai/artifact/K7wABSdSQP8PJCKCFCofTn)（私有页面，源文件 `design/mockup/mockup-site-story.html`）· 上一轮的 mockup 原样保留：[claude.ai/artifact/7Bzr3cEb2k1jevHdi2hss5](https://claude.ai/artifact/7Bzr3cEb2k1jevHdi2hss5)（`design/mockup/mockup-personal-site.html`）· Owner 的原话：`design/brainstorm/sessions/2026-11-06-media-lab-fit.md` Round 7、8、10、11、12
 
 > 语言约定：叙述用中文；站点自己的文案、产品名词和代码标识保留英文。**Case page** 是一个案例的详情页；**complexity figure** 是每个阶段那一张表达问题复杂度的图；**claim heading** 是写成一句判断的小标题（“I chose X over Y”），不是 “Problem / Solution” 这样的标签。
 

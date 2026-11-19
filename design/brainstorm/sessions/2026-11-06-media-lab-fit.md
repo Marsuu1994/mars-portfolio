@@ -290,3 +290,18 @@
 - Q5 用 spec v2 的写法；Q6 只做骨架，验收是公开 URL 打开有一个 hello world 页面；Q7 不要。Q1、Q3、Q4 等 owner 看了回答再定。
 
 **README:** nothing.
+
+## Round 18 · 2026-11-19
+
+> Q1，根目录，然后brainstorm挪到design下面，里面放materials和sessions，在design/readme里面加一条，这是brainstorm的东西和工程本身没关系，其他的按mars-workbench来，mockup spike都放design下面
+> Q4那就先定规则就好
+
+### Findings
+
+- **搬家**：brainstorm（`README.md`、`AGENTS.md`、`CLAUDE.md`、`sessions/`、`materials/`）挪进 `design/brainstorm/`；spike、mockup 挪到 `design/spike/`、`design/mockup/`；`design/README.md` 写明 brainstorm 和工程无关。这个文件之前各轮里写的路径（`site/…`、`sessions/…`）是当时的路径，按规则不改。
+- **骨架**：仓库根是 Next.js 16 app；工具、CI、规则从 `mars-workbench`@`3f741cc` 复制并改写，每个复制来的文件开头写明来源；hello world 页面用纸墨两个主题，跟随系统。`format:check`、`lint`、`typecheck`、`knip`、`check:themes`、`npm test`、`build`、Playwright（桌面、手机、日间、夜间四个 project）都在本地通过。
+- **规则**：交互组件用 Radix Primitives（AGENTS.md › Styling），先不装；只用英文，不要 i18n；图写成 React SVG 组件。
+- **Vercel 的事实**：默认的 Deployment Protection（Standard Protection）让 preview 部署要登录 Vercel 才能看，production 域名公开；所以「公开 URL 打开」要等合并到 `main` 部署 production，或者在 Vercel 里改 production branch。来源：[Deployment Protection](https://vercel.com/academy/optimize-your-vercel-account/deployment-protection)、[Environments](https://vercel.com/docs/deployments/environments)。
+- 骨架 spike 记下 Decision 后归档到 `design/spike/archived/site-scaffold.md`。
+
+**README:** 搬到 `design/brainstorm/README.md`；「工程」一条改成已实现，指向归档的 spike。
