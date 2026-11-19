@@ -270,3 +270,23 @@
 - 写进了骨架 spike「代码放在哪」一节。
 
 **README:** nothing.
+
+## Round 17 · 2026-11-19
+
+> q1，为什么放在site下面，我觉得应该放在root下面就像一个正常的nextjs app，然后structure里面，那些复杂度的图不应该放在public asset里面吗还是你有别的想法？
+> Q3 MDX是什么，是jsx上面渲染md的东西吗？所以可以做mermaid这种？
+> Q4 不用daisy ui，但其实我想试试radix这种headless component你觉得怎么样，我可不想手搓组件还是你觉得从现在的mockup来看用不着上组件库？
+> Q5 直接用spec v2的写法就好。
+> Q6 是的只做骨架，要求验收效果是能public点开看到然后有一个hello world示范页面
+> Q7 暂时不要
+> 你先回答我的问题，咱们再来决定
+
+### Findings
+
+- **Q1 放在根目录**：可行，Next.js 会忽略和它无关的文件夹。要处理的是根目录现有的 `README.md`、`AGENTS.md` 是 brainstorm 的；干净的做法是把 brainstorm 挪进一个文件夹，根目录留给工程，站点的设计放 `design/`，和 `mars-workbench` 一个结构。
+- **复杂度图放哪**：`public/` 里的 SVG 以 `<img>` 加载时，拿不到页面的 CSS 变量和网页字体，跟不了站点的日间 / 夜间切换，图里的字也不是页面文字。写成 React SVG 组件（server component，零客户端 JS）能用同一套变量、字体和主题。`public/` 留给照片、录屏和分享图。
+- **Q3 MDX**：Markdown 里能直接写 React 组件，构建时编译成 React。Mermaid 能接，但要么在浏览器里加载它的库，要么构建时用无头浏览器渲染，样式也要另配；站点的图用自己的 SVG 组件，Mermaid 适合设计文档（GitHub 原生渲染 `.md` 里的 Mermaid）。
+- **Q4 Radix**：headless、按组件装、自带无障碍。现在的 mockup 几乎全是静态内容和链接；用得上的地方是以后的主题切换、手机导航、图的放大查看。
+- Q5 用 spec v2 的写法；Q6 只做骨架，验收是公开 URL 打开有一个 hello world 页面；Q7 不要。Q1、Q3、Q4 等 owner 看了回答再定。
+
+**README:** nothing.
