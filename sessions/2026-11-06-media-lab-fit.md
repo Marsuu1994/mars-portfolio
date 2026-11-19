@@ -227,3 +227,21 @@
 - 按 `mars-workbench` 的规则，这种「新的路由面、有取舍的选择」要先写 spike。
 
 **README:** 「个人网站」一节加一条「托管在哪（还没定）」。
+
+## Round 14 · 2026-11-19
+
+> emmm，或者我们copy现在mar-workbench里面关于harness那些部分，比如design这些，然后page structure，只是不要db那些因为本身就是个纯前端工程，之后有需要再连db你觉得呢？
+
+### Findings
+
+- **`mars-workbench` 里能复制的 harness**（`origin/main`）：
+  - 工具：`.prettierrc.json`、`eslint.config.mjs`、`tsconfig.json`、`knip.jsonc`、`next.config.ts`（React Compiler）。
+  - CI：`ci.yml` 的 format、lint、typecheck、knip、themes、单元测试和 Playwright，以及 `mockup-links.yml`、`review-log.yml` 和对应的 `scripts/check-*.mjs`。
+  - Agent：`.claude/skills/ui-design`、`write-spec`、`implement-spec`，`.claude/agents/ui-verifier`。
+  - 文档：`design/README.md`、`design/spike/README.md`、`design/design-language/README.md`（Principles、对比度的量法）、`design/specs/` 的写法；`reviews/` 的约定。
+- **不要的**：`prisma/`、`supabase/`、`src/proxy.ts`、MCP、actions / services / DAL、数据库和登录相关的脚本（`localDb`、`localAuth`、`seed`、`devSession`）、`test/integration`；依赖里的 Prisma、Supabase、`pg`、MCP、`@hello-pangea/dnd`。Zustand 和 next-intl 等用得到再加。
+- **要改写的**：AGENTS.md 的 Layers、Data & State 两节（纯前端没有写操作）；组件分层（ui / application / domain 换成站点的说法）；Themes 规则保留，纸墨主题按「一个变量契约」写，日间和夜间两个主题；正文用内容文件。
+- **和放进 `mars-workbench` 比**：部署、CI、域名独立，不用给产品的主题和 i18n 规则开例外；harness 能搬到第二个项目本身也是一条证据。代价是案例页跑不了产品的真组件（要用录屏或另做小 demo），以及两份规则会各自演变，要在复制来的文件里写明来源版本。
+- 新仓库要 owner 自己建；公开还是私有由 owner 定（事实：评审要看到 harness 就得公开；Vercel 两种都能部署；申请策略留在这个私有仓库）。
+
+**README:** 「托管在哪」一条写成两条路，加上下一步的 spike。
