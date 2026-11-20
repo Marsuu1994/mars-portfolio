@@ -78,7 +78,7 @@ The repository's root is the site itself, a Next.js app; its design (spikes, moc
 - **案例页**：标题写成问题、元数据、一张复杂度图、每节一句判断（问题 / 难点 / 怎么想 / 变化 / 留下了什么）。
 - **视觉语言**：不变：Media Lab 的用字和用色加山水画的纸、墨、印。
 - **公开**：owner 认为可以公开，写得抽象一点；站上没有内部系统名、合作方名和业务数字。
-- **工程**：站点的代码就在这个仓库的根目录，一个纯前端的 Next.js app，harness 从 `mars-workbench`@`3f741cc` 复制并改写，数据库以后要用再接。[骨架 spike](../spike/archived/site-scaffold.md)（Round 13–18，已定、已实现）：仓库根是 app，brainstorm 在 `design/brainstorm/`；第一个 PR 只做骨架，验收是公开 URL 上的 hello world。
+- **工程**：站点的代码就在这个仓库的根目录，一个纯前端的 Next.js app，harness 从 `mars-workbench`@`3f741cc` 复制并改写，数据库以后要用再接。[骨架 spike](../spike/archived/site-scaffold.md)（Round 13–18，已定、已实现）：仓库根是 app，brainstorm 在 `design/brainstorm/`；第一个 PR 只做骨架，验收是公开 URL 上的 hello world。2026-11-20 起首页是山水 Helvetica 那一页的静态拷贝（`public/home.html`），临时方案，等按 spec 做出来的页面替换它。
 
 ## 可能对接的导师
 

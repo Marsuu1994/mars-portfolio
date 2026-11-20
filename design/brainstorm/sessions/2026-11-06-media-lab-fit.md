@@ -389,3 +389,16 @@
 - **和缩略图首页的关系**：owner 选了「先并存，之后再定」，spike 记成 Q13，Q11、Q12 保持打开。
 
 **README:** 「个人网站」一节写成两个首页设计并存，加上山水 Helvetica 和它的 mockup；「还开着的」里个人网站一条跟着改。
+
+## Round 25 · 2026-11-20
+
+> 先直接host起来吧，内容不管，只要点进去能看到东西就行
+
+### Findings
+
+- **怎么上线**：问了 owner 三件事。上线方式选了「静态页先上线」；图注里的 “Jarvis” 和 “Commerce Center” 选了「上线版写成抽象的」；合并选了「CI 通过后你来合并」。
+- **做法**：`/` 通过 `next.config.ts` 的 rewrite 指到 `public/home.html`，是 mockup 里那一页的静态拷贝（`23564e3`）。它不是站点的 React 组件，是临时方案，tracker 里记了一条：按 spec 做出来的页面替换它。
+- **和 mockup 的三处不同**：没有评审用的外框，页面铺满窗口；导航的三个链接跳到对应的小节；两个图注写成 “Internal tool” 和 “Merchant platform”。
+- **事实**：production 只从 `main` 部署，所以上线要等这个 PR 合并。
+
+**README:** 「工程」一条加上首页现在是静态拷贝。
