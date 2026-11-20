@@ -69,10 +69,11 @@ The repository's root is the site itself, a Next.js app; its design (spikes, moc
 
 ## 个人网站（portfolio 的入口）
 
-第 5 轮：C（四个决定）的缩略图首页，等 owner review：[spike](../spike/personal-site.md) · [缩略图 mockup](https://claude.ai/artifact/784YrxKCtc3g7iDGbKPgpy)（`design/mockup/mockup-site-thumbnails.html`）。之前的 [C mockup](https://claude.ai/artifact/K7wABSdSQP8PJCKCFCofTn) 和第 1、2 轮的 [mockup](https://claude.ai/artifact/7Bzr3cEb2k1jevHdi2hss5) 原样保留。
+首页现在有两个设计并存，谁取代谁还没定（[spike](../spike/personal-site.md) Q13）。**山水 Helvetica**（第 6 轮）方向已定，内容在打磨：[mockup](https://claude.ai/artifact/JAc5q3WqeCEXKFXF2VhfTh)（`design/mockup/mockup-site-shanshui.html`）。**缩略图首页**（第 5 轮，C 的四个决定）等 owner review：[缩略图 mockup](https://claude.ai/artifact/784YrxKCtc3g7iDGbKPgpy)（`design/mockup/mockup-site-thumbnails.html`）。之前的 [C mockup](https://claude.ai/artifact/K7wABSdSQP8PJCKCFCofTn) 和第 1、2 轮的 [mockup](https://claude.ai/artifact/7Bzr3cEb2k1jevHdi2hss5) 原样保留。
 
 - **标准**：owner 的设计师朋友：讲清故事、找高光、不重要的少说，围绕解决什么问题、遇到什么困难、怎么思考和解决。
-- **首页**：只放缩略，每个项目一张图、一段钩子，详细内容在案例页。桌面端一栏竖排、大留白；移动端之后再做。顺序：一 Mars Workbench → 一句 “Before this” → 二 internal tool、三 merchant-facing、四 platform 0 → 1。
+- **山水 Helvetica**：一整页的首页。Hero 是一幅山水，标题在它左上角的留白里；全页 Helvetica；每节一张图，Mars Workbench 在前，工作经历在后；整页背景是一层很淡的蓝色水波；没有落墨。
+- **缩略图首页**：只放缩略，每个项目一张图、一段钩子，详细内容在案例页。桌面端一栏竖排、大留白；移动端之后再做。顺序：一 Mars Workbench → 一句 “Before this” → 二 internal tool、三 merchant-facing、四 platform 0 → 1。
 - **三版钩子**：问题；前后对比；图给答案、话留问题（推荐，保留 C 的决定引号）。
 - **案例页**：标题写成问题、元数据、一张复杂度图、每节一句判断（问题 / 难点 / 怎么想 / 变化 / 留下了什么）。
 - **视觉语言**：不变：Media Lab 的用字和用色加山水画的纸、墨、印。
@@ -123,7 +124,7 @@ The repository's root is the site itself, a Next.js app; its design (spikes, moc
 - **「executive function」的 framing。** 这个词常和 ADHD 这类临床人群挂钩；以临床人群为对象会变成健康相关研究（IRB、招募门槛更高），一般人群的计划和自我调节范围更宽。
 - **Phase 2 的实现状态。** Spike 是 draft、tap to complete 是 mockup；写进申请时说「观察和设计完成，正在实现」。
 - **对准哪几个组**（最多填 3 个）：候选见「可能对接的导师」，每位的招生状态都要在官网当期页面确认。
-- **公开的套瓷材料 = 个人网站。** 设计在 `design/`：缩略图首页的 mockup 等 owner review，先是 spike 的 Q11（钩子用哪一版）和 Q12（缩略图），还有 Q2–Q7、Q9；mockup 定稿之后写 spec，再实现（`design/tracker.md`）。
+- **公开的套瓷材料 = 个人网站。** 设计在 `design/`：山水 Helvetica 方向已定，内容在打磨；缩略图首页还等 owner review（spike 的 Q11、Q12，以及 Q2–Q7、Q9）；两者的关系是 Q13。Mockup 定稿之后写 spec，再实现（`design/tracker.md`）。
 - **英文化。** Spike、实验报告是中文；评审要看的部分需要英文版（一页 case study、一页实验摘要）。
 - **演示。** App 要 Google 登录，评审进不去：一段 1–2 分钟的视频（Plan with Claude → board 更新 → 完成一张卡的 juice）。
 
