@@ -305,3 +305,100 @@
 - 骨架 spike 记下 Decision 后归档到 `design/spike/archived/site-scaffold.md`。
 
 **README:** 搬到 `design/brainstorm/README.md`；「工程」一条改成已实现，指向归档的 spike。
+
+## Round 19 · 2026-11-19
+
+> 我们来做一下我的portfolio，现在还是brainstorm环节，你看看下一步
+
+### Findings
+
+- **站点现在在哪**：[PR #1](https://github.com/Marsuu1994/mars-portfolio/pull/1) 已合并（2026-11-19），`main` 上是骨架和一个 hello world 页面，没有开着的 PR。设计停在 Round 12：缩略图 mockup 第 1 轮（三版钩子）等 review；Round 13–18 都在定工程骨架，mockup 之后没有再收到回答。骨架的验收（公开 URL 打开是 hello world）从这边看不到 Vercel，没有核对。
+- **卡在哪**：站点的流程是 design → spec → implementation（root `AGENTS.md` › UI Workflow），spec 和实现都排在 mockup 定稿之后。定稿之前 `design/spike/personal-site.md` 里还开着的问题：
+  - Q11 钩子用哪一版；Q12 八张缩略图对不对。
+  - Q3：Round 11 说的「还需要修一下文案」指哪几句。
+  - Q5、Q6：三张复杂度图有没有讲错事实；第二阶段的「process」指邮件流程、文档还是别的。
+  - Q7：先写哪个案例页。Mockup 画的是第一阶段（internal tool），spike 推荐的是第三阶段。
+  - Q2、Q4、Q9：桥放哪、个人经历公开到哪、首页那句话。
+  - Tracker 另有一条：案例页正文用不用 MDX。
+  - 待确认的事实：年数、Lead 从哪一段开始、案例页元数据里的 “When”（mockup 写着 “To confirm”）。
+- **重新读了官网**（2026-11-19，六页都直接读到）：
+  - 截止日期两页一致。Apply 页：“The application opens on September 15th, 2026 and closes on December 15th, 2026.”；Application FAQs：“11:59pm ET on December 15 is the firm deadline for all applications.”，“Our admissions portal will be open September 15 - December 15, 2026.”
+  - Round 1 记的 12 月 1 日来自旧版 MAS FAQ（`media.mit.edu/admissions/faqs.html`）：“December 1 is the firm deadline for all applications.”，没有年份；页面没有日期，导航里是 2016 年的课程。
+  - Application FAQs：“Your personal statement should be 500 words maximum.”；Statement of Objectives：“We don't have a strict limit for the statement but recommend that you keep it to two pages or less if possible.”，开头列出申请的组或导师。
+  - Portfolio：当期的 requirements 页写 “Recommended formats: URL or PDF”、“Do not submit portfolio directly to faculty member(s)”，没有写 URL 放在哪；Apply 页写所有材料（包括 portfolio）通过在线申请系统提交。「URL 放在 Statement of Objectives 结尾」只在没有日期的旧版 portfolio 页（`media.mit.edu/admissions/how-to-apply/portfolio-requirements.html`）上。
+  - Students Offering Support：表单 “will close November 13th, 2026”，已经过了。
+- 三个 mockup 的私有 artifact 都还在；`Mars Chu Thumbnail Mockup` 最后更新是 2026-11-13。
+
+**README:** 「申请的硬事实」：截止日期写成两页一致的 12 月 15 日 11:59pm ET，说明 12 月 1 日出自哪一页；加 Personal Statement 的 500 词上限；Students Offering Support 写成已关；portfolio 的 URL 放哪改成当期页面的说法；来源里标出两份旧版页面。「还开着的」里个人网站一条指向的 “Q1–Q13” 和「拍板之后」在 spike 里已经没有了，改成现在等的问题。
+
+## Round 20 · 2026-11-19
+
+> 等一下再回答你的问题，你先看看artifact里面的mars portfolio directions，关于原版墨池的那个，落墨的效果做的很不好，我想要的是满满的晕染开，性状不规则，大小不规则，可以定一个最终大小范围和随机形状然后以点击中心，墨水满满的从中心晕染开，要有流体感，你去做一下
+
+### Findings
+
+- **`Mars Portfolio Directions`** 是另一个 session 做的评审页，一个 private artifact，源文件不在这个仓库里。它是一整页的首页：hero 是山水或墨池，下面每节一张图（Mars Workbench 六张，工作经历三张），和 Round 12 的缩略图首页不是同一个设计。Round 20–23 都是直接改这个 artifact，Round 24 才收进仓库。
+- **原来的落墨**：每滴墨是五圈半透明的轮廓，按同一个形状等比放大，1–2 秒停，所以像一张贴纸在变大。
+- **重写成晕染**：每滴墨是落点周围的一个场，每个像素记着墨要走多远才到它。最终形状随机（平均半径 24–150 px，几个不均匀的瓣，压扁和倾斜，毛边），前沿先快后慢地推过去，7–12 秒，轮廓一路在变。水走在墨前面留一圈淡晕，中心是不规则的浓心，墨丝从中心往外拉，停下后出一道水渍线。
+
+**README:** nothing.
+
+## Round 21 · 2026-11-19
+
+> 这个效果不错，压住字没事，只要初始不压住就好，但是我想红黑随机落墨，现在只有黑丝
+
+### Findings
+
+- **红黑**：红墨原来只占 16%，点五六下全是黑的很常见。改成红黑各半，同一个颜色最多连着出两滴。
+- **开场不压字**：开场的每滴墨落下前量 hero 里每一行字的位置，整块墨连淡晕都避开。点击没有限制。
+
+**README:** nothing.
+
+## Round 22 · 2026-11-19
+
+> 现在不错，一开始你不需要晕染的动画，直接在空白区域均匀选三四个点然后直接放晕染好的部分，只有点击才会晕染。然后背景我想做成淡淡的水的感觉，一点点可察觉的蓝色，模拟水波荡漾的感觉
+
+### Findings
+
+- **开场**：三滴或四滴已经晕好的墨，不带动画。先在空白处均匀选点（每个新点挑离字、离边缘、离已选的点都最远的位置），再按每个点周围的空间定墨的大小。
+- **水**：hero 里一层很淡的蓝（新变量 `--water`，平均不透明度约 4%），由两道长涌、三组横着往下推的细波和几处向外荡开的圆形涟漪叠成；滚出屏幕时停，系统设了减少动态效果时静止。
+
+**README:** nothing.
+
+## Round 23 · 2026-11-20
+
+> 很好看，不过红色墨水有一点扎眼然后前面的山也很好看，你再做一版用helvitica那版，也就第一版，不用带墨水效果，但是整体背景加上我们刚那一轮的水的部分我看看效果，然后现在字和山重叠在一起不好看，把字移动到空白的地方，左上角吧
+
+### Findings
+
+- **新的一版「山水 Helvetica」**：墨池 Helvetica 去掉落墨，同一套水铺满整页，标题挪到山水左上角的留白里。
+- **山让开字**：字下面的每一层山按比例整体压低，形状不变；字右边的高峰和红日不受影响。手机宽度下字在上、山在下。
+- 「红色墨水有一点扎眼」没有对应的改动：这一版没有墨。
+
+**README:** nothing.
+
+## Round 24 · 2026-11-20
+
+> 定档山水helvetica，接下来打磨内容，首先是左上角的Mars Chu不需要去掉吧，然后为什么这边你用artifacts而不是我们习惯的html呢？
+
+### Findings
+
+- **定档**：owner 定了山水 Helvetica 这个方向，内容接下来打磨。
+- **Mars Chu**：这句话有两种读法，问了 owner，owner 没有偏好，按推荐的做：导航栏保留 “Mars Chu”，标题上方的小字从 “Mars Chu · full-stack engineer” 改成 “Full-stack engineer”。
+- **为什么是 artifact**：这个页面当时只存在于 artifact，仓库里没有它的文件，所以 Round 20–23 在原处改；它本身就是 HTML。和 `design/README.md` › Mockups 的差别是源文件不在 `design/mockup/`，也没有走 PR。Owner 选了「收进仓库，只留山水」：完整页面（所有方向和落墨）先原样提交一次，留在 git 历史里（`a38698f`），再精简成 `design/mockup/mockup-site-shanshui.html`（`9899156`）；artifact 的链接不变，之后每轮改这个文件、走 PR。
+- **和缩略图首页的关系**：owner 选了「先并存，之后再定」，spike 记成 Q13，Q11、Q12 保持打开。
+
+**README:** 「个人网站」一节写成两个首页设计并存，加上山水 Helvetica 和它的 mockup；「还开着的」里个人网站一条跟着改。
+
+## Round 25 · 2026-11-20
+
+> 先直接host起来吧，内容不管，只要点进去能看到东西就行
+
+### Findings
+
+- **怎么上线**：问了 owner 三件事。上线方式选了「静态页先上线」；图注里的 “Jarvis” 和 “Commerce Center” 选了「上线版写成抽象的」；合并选了「CI 通过后你来合并」。
+- **做法**：`/` 通过 `next.config.ts` 的 rewrite 指到 `public/home.html`，是 mockup 里那一页的静态拷贝（`23564e3`）。它不是站点的 React 组件，是临时方案，tracker 里记了一条：按 spec 做出来的页面替换它。
+- **和 mockup 的三处不同**：没有评审用的外框，页面铺满窗口；导航的三个链接跳到对应的小节；两个图注写成 “Internal tool” 和 “Merchant platform”。
+- **事实**：production 只从 `main` 部署，所以上线要等这个 PR 合并。
+
+**README:** 「工程」一条加上首页现在是静态拷贝。

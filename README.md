@@ -27,4 +27,4 @@ Vercel imports this repository as a project with the default Next.js settings; t
 
 ## Current State
 
-- **Home**: a placeholder page in the site's paper and ink themes, following the system's light or dark setting. The real home page waits on its design (`design/tracker.md`).
+- **Home**: a stopgap, so the site has something to show. `/` serves `public/home.html`, the home page of the 山水 Helvetica mockup copied out as one static file (`next.config.ts` rewrites `/` to it): an ink landscape with the headline in its sky, a diagram for every section, faint water under the whole page, following the system's light or dark setting. It is not built from the site's components. The real page replaces it once its content is settled and its spec written (`design/tracker.md`).

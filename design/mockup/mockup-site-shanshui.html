@@ -1,0 +1,679 @@
+<title>Mars Portfolio Directions</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,600;1,8..60,300;1,8..60,400&family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&family=Noto+Serif+SC:wght@400;600;900&family=Ma+Shan+Zheng&family=Inter+Tight:wght@400;500;600&display=swap">
+<style>
+
+/* The home page in the direction the owner picked on 2026-11-20, 山水 Helvetica: an ink landscape in the hero with
+   the type in its blank sky, Helvetica throughout, every section an experiment with its diagram, and faint water
+   under the whole page. The directions it was picked from (墨池 in three faces, 手卷) and the click-to-drop ink are
+   in this file's history. */
+:root{
+  --paper:#f6f4ee; --paper-2:#ecE9e1; --paper-3:#e0dcd1;
+  --ink:#16181c; --ink-2:#3d4046; --ink-3:#5f6268; --ink-4:#a6a6a2; --ink-5:#d8d6cf;
+  --indigo:#3d5a6c; --umber:#8a5a3c;
+  --seal:#b3261e; --seal-soft:rgba(179,38,30,.08); --on-seal:#fbf8f2; --grain-op:.5; --water:#3f8fc4;
+  --f-serif:"Source Serif 4","Noto Serif SC",Georgia,serif;
+  --f-sans:"Geist","Helvetica Neue",Arial,"PingFang SC","Noto Sans SC",sans-serif;
+  --f-mono:"Geist Mono",ui-monospace,Menlo,monospace;
+  --f-song:"Noto Serif SC","Songti SC",serif;
+  --f-brush:"Ma Shan Zheng","Noto Serif SC",serif;
+  --f-cao:"Zhi Mang Xing","Ma Shan Zheng","Noto Serif SC",serif;
+  --f-inst:"Instrument Serif","Source Serif 4",Georgia,serif;
+  --f-gara:"EB Garamond","Source Serif 4",Georgia,serif;
+  --ease:cubic-bezier(.2,0,0,1);
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --paper:#121316; --paper-2:#1a1c20; --paper-3:#24262b;
+  --ink:#ece8df; --ink-2:#c7c3ba; --ink-3:#9d9b95; --ink-4:#5d5e60; --ink-5:#2d2f33;
+  --indigo:#9dbccd; --umber:#d1a283;
+  --seal:#e4574a; --seal-soft:rgba(228,87,74,.12); --on-seal:#160f0e; --grain-op:.18; --water:#6fb6e6; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --paper:#121316; --paper-2:#1a1c20; --paper-3:#24262b;
+  --ink:#ece8df; --ink-2:#c7c3ba; --ink-3:#9d9b95; --ink-4:#5d5e60; --ink-5:#2d2f33;
+  --indigo:#9dbccd; --umber:#d1a283;
+  --seal:#e4574a; --seal-soft:rgba(228,87,74,.12); --on-seal:#160f0e; --grain-op:.18; --water:#6fb6e6; color-scheme:dark}
+
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font:400 15px/1.55 var(--f-sans);-webkit-font-smoothing:antialiased}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:30;background:var(--paper)}
+h1,h2,h3,h4,p,figure,ul,ol,dl,dd{margin:0}
+ul,ol{padding:0;list-style:none}
+a{color:inherit;text-underline-offset:.2em}
+:focus-visible{outline:2px solid var(--seal);outline-offset:3px;border-radius:2px}
+.wrap{max-width:1180px;margin-inline:auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+@media (min-width:700px){.wrap{padding-left:max(32px,env(safe-area-inset-left,0px));padding-right:max(32px,env(safe-area-inset-right,0px))}}
+.mono{font:500 11.5px/1.5 var(--f-mono);letter-spacing:.07em;text-transform:uppercase;color:var(--ink-3)}
+.cap{font:400 13px/1.45 var(--f-sans);color:var(--ink-3)}
+.status{display:inline-flex;align-items:center;font:500 10.5px/1 var(--f-mono);letter-spacing:.08em;text-transform:uppercase;padding:4px 7px;border-radius:3px;border:1px solid currentColor;white-space:nowrap}
+.st-built{color:var(--ink)} .st-design{color:var(--seal);border-style:dashed} .st-explore{color:var(--ink-3);border-style:dotted}
+
+/* ── Review chrome ── */
+.bar{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:var(--paper);border-bottom:1px solid var(--ink-5)}
+.bar-in{display:flex;align-items:center;gap:6px 18px;flex-wrap:wrap;padding-block:10px}
+.bar-title{display:flex;align-items:center;gap:10px;font:600 14px/1.2 var(--f-sans)}
+.bar-title small{font:400 12px/1 var(--f-mono);color:var(--ink-3)}
+.tabs{display:flex;gap:2px;flex-wrap:wrap;margin-left:auto}
+.tabs a{font:500 13px/1 var(--f-sans);padding:8px 10px;border-radius:5px;text-decoration:none;color:var(--ink-2);white-space:nowrap}
+.tabs a:hover{text-decoration:underline}
+.tabs a[aria-current="page"]{background:var(--ink);color:var(--paper);text-decoration:none}
+.tabs .cn{font-family:var(--f-song);margin-right:4px}
+.chop{display:inline-grid;place-items:center;background:var(--seal);color:var(--on-seal);font:900 13px/1 var(--f-song);width:26px;height:26px;border-radius:3px;filter:url(#rough);transform:rotate(-3deg)}
+.view{padding-block:24px 72px}
+.brief{display:flex;flex-wrap:wrap;align-items:baseline;gap:8px 20px;padding-bottom:18px}
+.brief h1{font:400 clamp(26px,3.4vw,38px)/1.1 var(--f-serif)}
+.brief h1 .cn{font-family:var(--f-brush);color:var(--seal);margin-right:.3em}
+.brief p{color:var(--ink-2);flex:1 1 320px}
+.chips{display:flex;flex-wrap:wrap;gap:6px;width:100%}
+.chips span{font:400 12px/1 var(--f-mono);color:var(--ink-2);border:1px solid var(--ink-5);border-radius:999px;padding:6px 10px;background:var(--paper-2)}
+.chips b{font-weight:500;color:var(--ink)}
+.frame{border:1px solid var(--ink-5);border-radius:8px;overflow:hidden;background:var(--paper)}
+.frame-bar{display:flex;align-items:center;gap:8px;padding:8px 12px;border-bottom:1px solid var(--ink-5);background:var(--paper-2);font:400 12px/1 var(--f-mono);color:var(--ink-3)}
+.frame-bar i{width:9px;height:9px;border-radius:50%;background:var(--ink-5)}
+.frame-bar span{margin-left:6px}
+
+/* ── Figures (shared by every direction) ── */
+.fig-wrap{min-width:0;display:grid;gap:8px}
+.fig-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch}
+.fig-scroll svg{display:block;width:100%;height:auto;min-width:560px}
+.fig-wrap figcaption{font:400 14px/1.45 var(--f-sans);color:var(--ink-2);max-width:44em}
+.fig-wrap figcaption b{color:var(--ink);font-weight:600}
+.fig text{font:400 11.5px var(--f-sans);fill:var(--ink-2)}
+.fig .f-t{fill:var(--ink)} .fig .f-b{font-weight:600}
+.fig .f-d{fill:var(--ink-2)} .fig .f-dim{fill:var(--ink-3)}
+.fig .f-s{font:400 10.5px var(--f-mono);fill:var(--ink-3)}
+.fig .f-tag{font:500 10px var(--f-mono);letter-spacing:.08em;fill:var(--ink-3)}
+.fig .f-h{font:italic 300 15px var(--f-serif);fill:var(--ink)}
+.fig .f-q{font:italic 400 12px var(--f-serif);fill:var(--seal)}
+.fig .f-red{fill:var(--seal)}
+.fig .f-on{font:500 10.5px var(--f-sans);fill:var(--paper)}
+.fig .f-chip{font:500 10px var(--f-mono);fill:var(--seal)}
+.fig .f-box{fill:var(--paper);stroke:var(--ink-3);stroke-width:1}
+.fig .f-soft{fill:var(--paper);stroke:var(--ink-4)}
+.fig .f-dash{stroke-dasharray:3 3;stroke:var(--ink-4)}
+.fig .f-fill,.fig .f-fill-box{fill:var(--ink);stroke:none}
+.fig .f-fill-box+text{fill:var(--paper)}
+.fig .f-nest{fill:none;stroke:var(--ink-4);stroke-width:1}
+.fig .f-line{fill:none;stroke:var(--ink-3);stroke-width:1.2}
+.fig .f-strong{stroke:var(--ink);stroke-width:1.6}
+.fig .f-up{stroke:var(--indigo);stroke-dasharray:2 4;stroke-linecap:round}
+.fig .f-mess{stroke:var(--umber);stroke-width:1.1;opacity:.85}
+.fig .f-head{fill:none;stroke:var(--ink);stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.fig .f-card{fill:var(--paper);stroke:var(--ink)}
+.fig .f-col{fill:var(--paper-2);stroke:var(--ink-5)}
+.fig .f-shell{fill:none;stroke:var(--ink);stroke-width:1.6}
+.fig .f-svc{fill:var(--ink-5);stroke:var(--ink-4)}
+.fig .f-dot{fill:var(--ink)} .fig .f-dot-e{fill:none;stroke:var(--ink-4)}
+.fig .f-miss{stroke:var(--seal);stroke-width:1.4}
+.fig .f-rd{fill:none;stroke:var(--seal);stroke-width:1.4;stroke-dasharray:4 4}
+.fig .f-rs{fill:none;stroke:var(--seal);stroke-width:1.6;stroke-linecap:round}
+.fig .f-bar{fill:var(--ink)} .fig .f-bar-l{fill:var(--ink-4)} .fig .f-bar-r{fill:var(--seal)}
+.fig .f-chipbox{fill:var(--seal-soft);stroke:var(--seal);stroke-width:.8}
+.fig .f-faded{opacity:.5}
+
+/* Shared site layout inside each frame */
+.site .nav{display:flex;justify-content:space-between;align-items:center;padding:16px clamp(16px,4vw,44px);font-size:14px;color:var(--ink-2)}
+.site .nav b{font:600 15px/1 var(--f-serif);color:var(--ink)}
+.site .nav span{display:flex;gap:18px}
+.sec{padding:40px clamp(16px,4vw,44px);border-top:1px solid var(--ink-5)}
+.sec-h{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:20px}
+.sec-h h2{font:400 clamp(22px,2.6vw,30px)/1.15 var(--f-serif)}
+.pair{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:28px 32px}
+.stack{display:grid;gap:30px}
+@media (max-width:860px){.pair{grid-template-columns:minmax(0,1fr)}}
+.foot{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:24px clamp(16px,4vw,44px);border-top:1px solid var(--ink-5);font-size:14px;color:var(--ink-2)}
+
+
+/* ── The page ── */
+:root{--f-helv:"Helvetica Neue",Helvetica,"Inter Tight",Arial,sans-serif}
+.d3{position:relative;isolation:isolate;font-family:var(--f-helv)}
+.d3>*:not(.water-layer){position:relative;z-index:1}
+.water-layer{position:absolute;left:0;top:0;width:100%;height:100%;z-index:0;pointer-events:none}
+.d3 .nav b{font:500 17px/1 var(--f-helv);letter-spacing:-.01em}
+/* The hero: the type sits in the painting's blank sky, top left, and the ranges are kept below it (skyLimit in the script). */
+.d3 .hero{position:relative;min-height:clamp(470px,47vw,560px);display:grid;align-content:start;padding:30px clamp(16px,4vw,44px) 32px;overflow:hidden}
+.d3 .hero canvas.shan{position:absolute;inset:0;width:100%;height:100%}
+.d3 .hero .txt{position:relative;max-width:40em}
+.d3 .hero h1{font:500 clamp(32px,4.8vw,58px)/1.02 var(--f-helv);letter-spacing:-.025em;max-width:11.5em;text-wrap:balance}
+.d3 .hero h1 i{font-style:normal;color:var(--seal)}
+.d3 .sec{border-top-color:transparent;background:linear-gradient(var(--ink-5),var(--ink-5)) top/100% 1px no-repeat}
+.d3 .sec-h h2{font:500 clamp(24px,3vw,34px)/1.08 var(--f-helv);letter-spacing:-.018em}
+.d3 .exp{font:500 11.5px/1 var(--f-mono);letter-spacing:.08em;color:var(--seal)}
+.d3 .readout{display:flex;flex-wrap:wrap;gap:6px 20px;font:400 12px var(--f-mono);color:var(--ink-3);margin:-8px 0 18px}
+.d3 .readout b{color:var(--ink);font-weight:500}
+.d3 .fig-scroll svg{background:color-mix(in srgb,var(--paper-2) 82%,transparent);border:1px solid var(--ink-5);border-radius:4px}
+.d3 .fig-wrap figcaption{font:400 12.5px/1.5 var(--f-mono);color:var(--ink-3)}
+.d3 .fig-wrap figcaption b{color:var(--ink);font-weight:500}
+.d3 .fig text{font-family:var(--f-helv)}
+
+/* ── Notes tabs ── */
+.section-title{font:400 clamp(22px,2.8vw,30px)/1.2 var(--f-serif);margin-bottom:6px}
+.tbl-wrap{overflow-x:auto;margin-top:14px;border:1px solid var(--ink-5);border-radius:6px}
+table{border-collapse:collapse;width:100%;min-width:760px;font-size:13.5px}
+th,td{text-align:left;vertical-align:top;padding:10px 12px;border-bottom:1px solid var(--ink-5)}
+th{font:500 11px/1.4 var(--f-mono);letter-spacing:.06em;text-transform:uppercase;color:var(--ink-3);background:var(--paper-2)}
+td b{font-weight:600}
+tr.rec td:first-child{box-shadow:inset 3px 0 0 var(--seal)}
+.dots{letter-spacing:2px;font-family:var(--f-mono)} .dots i{color:var(--ink-5);font-style:normal}
+.rec-list{margin-top:18px;display:grid;gap:8px;counter-reset:r;max-width:52em}
+.rec-list li{display:grid;grid-template-columns:22px minmax(0,1fr);gap:8px;counter-increment:r;font-size:14px;color:var(--ink-2)}
+.rec-list li::before{content:counter(r);font:500 12px/1.6 var(--f-mono);color:var(--seal)}
+.rec-list b{color:var(--ink)}
+.q{display:grid;grid-template-columns:36px minmax(0,1fr);gap:6px 12px;padding:12px 0;border-bottom:1px solid var(--ink-5);font-size:14px;color:var(--ink-2)}
+.q span{font:500 12px/1.6 var(--f-mono);color:var(--seal)} .q b{color:var(--ink)}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <filter id="rough"><feTurbulence type="fractalNoise" baseFrequency=".9" numOctaves="2" seed="4"/><feDisplacementMap in="SourceGraphic" scale="3.2"/></filter>
+  <filter id="brush" x="-5%" y="-30%" width="110%" height="160%"><feTurbulence type="fractalNoise" baseFrequency=".04 .9" numOctaves="2" seed="7"/><feDisplacementMap in="SourceGraphic" scale="7"/></filter>
+  <filter id="wash" x="-10%" y="-10%" width="120%" height="120%"><feTurbulence type="fractalNoise" baseFrequency=".012" numOctaves="3" seed="2"/><feDisplacementMap in="SourceGraphic" scale="22"/><feGaussianBlur stdDeviation="1.4"/></filter>
+  <!-- Placeholder painting in fixed artwork colours: a real POC output replaces it -->
+  <symbol id="paint" viewBox="0 0 400 300">
+    <rect width="400" height="300" fill="#eaf0ee"/>
+    <g filter="url(#wash)">
+      <rect x="-20" y="-20" width="440" height="160" fill="#bcd3dc" opacity=".8"/>
+      <ellipse cx="200" cy="215" rx="230" ry="60" fill="#8fb3c4" opacity=".75"/>
+      <path d="M40 60 Q60 140 50 220" stroke="#6f8f5f" stroke-width="10" fill="none" opacity=".8"/>
+      <path d="M55 70 Q20 120 30 180 M55 80 Q100 130 90 190 M48 90 Q70 150 75 210" stroke="#97b47f" stroke-width="5" fill="none" opacity=".8"/>
+      <path d="M-20 250 Q120 230 220 250 T420 245 V320 H-20Z" fill="#a8c08f" opacity=".85"/>
+    </g>
+    <circle cx="310" cy="70" r="20" fill="#f4d9a8" opacity=".9"/>
+  </symbol>
+</svg>
+
+<header class="bar">
+  <div class="wrap bar-in">
+    <div class="bar-title"><span class="chop">磨</span> Home page <small>山水 Helvetica · 方向定于 2026-11-20，内容打磨中</small></div>
+    <nav class="tabs" aria-label="Views">
+      <a href="#shan-helv"><span class="cn">山水</span>Helvetica</a>
+      <a href="#demo">Demo</a>
+      <a href="#facts">待定</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+<section class="view wrap" data-view="shan-helv">
+  <div class="brief"><h1><span class="cn">山水</span>Helvetica</h1><p>首页。整页背景是一层很淡的水波；标题在山水左上角的留白里，山在下和右，不压字。</p>
+    <div class="chips"><span><b>字</b> Helvetica Neue → Inter Tight（免费替代）</span><span><b>首图</b> 山水，干笔皴擦；字在左上的天空里</span><span><b>背景</b> 整页淡蓝水波，一直在动</span><span><b>互动</b> 没有</span></div></div>
+  <div class="frame"><div class="frame-bar"><i></i><i></i><i></i><span>Mars Chu · portfolio</span></div>
+  <div class="site d3">
+    <div class="nav"><b>Mars Chu</b><span><a>Workbench</a><a>Work</a><a>About</a></span></div>
+    <div class="hero">
+      <canvas class="shan" data-seed="7" aria-label="An ink landscape of layered mountains"></canvas>
+      <div class="txt"><p class="mono">Full-stack engineer</p><h1>A planner that listens before it plans, <i>and is learning to paint.</i></h1></div>
+    </div>
+    <div class="sec">
+      <div class="sec-h"><span class="exp">EXP. 01</span><h2>Mars Workbench</h2><span class="status st-built">Built</span></div>
+      <p class="readout"><span>users <b>1</b></span><span>commits <b>210</b></span><span>pull requests <b>127</b></span><span>since <b>Nov 2025</b></span></p>
+      <div class="pair">
+        <figure class="fig-wrap" data-fig="board"><figcaption>fig. 1a · <b>board</b> · three kinds of work, one week</figcaption></figure>
+        <figure class="fig-wrap" data-fig="mcp"><figcaption>fig. 1b · <b>MCP</b> · recap → ask → write</figcaption></figure>
+      </div>
+    </div>
+    <div class="sec">
+      <div class="sec-h"><span class="exp">EXP. 02</span><h2>Every version took one thing away</h2></div>
+      <figure class="fig-wrap" data-fig="evolution"><figcaption>fig. 2 · <b>5 versions</b> · Dec 2025 → next</figcaption></figure>
+    </div>
+    <div class="sec">
+      <div class="sec-h"><span class="exp">EXP. 03</span><h2>Phase 2: take the score away</h2><span class="status st-design">Designed</span></div>
+      <figure class="fig-wrap" data-fig="phase2"><figcaption>fig. 3 · <b>points → counts</b> · 14 trackers reviewed</figcaption></figure>
+    </div>
+    <div class="sec">
+      <div class="sec-h"><span class="exp">EXP. 04</span><h2>The harness</h2></div>
+      <div class="pair">
+        <figure class="fig-wrap" data-fig="harness"><figcaption>fig. 4a · <b>commits per month</b> · milestones marked</figcaption></figure>
+        <figure class="fig-wrap" data-fig="experiment"><figcaption>fig. 4b · <b>serial vs parallel</b> · 10 runs, blind review</figcaption></figure>
+      </div>
+    </div>
+    <div class="sec">
+      <div class="sec-h"><span class="exp">EXP. 05</span><h2>Diary → painting</h2><span class="status st-explore">Exploring</span></div>
+      <figure class="fig-wrap" data-fig="pipeline"><figcaption>fig. 5 · <b>working proof of concept</b> · diary entry → painting, end to end · 5–6 s</figcaption></figure>
+    </div>
+    <div class="sec">
+      <div class="sec-h"><span class="exp">BEFORE</span><h2>Three jobs in payments</h2></div>
+      <div class="stack">
+        <figure class="fig-wrap" data-fig="legacy"><figcaption>fig. 6 · <b>Jarvis</b> · one app · 10+ layers → a flat tree</figcaption></figure>
+        <figure class="fig-wrap" data-fig="tangle"><figcaption>fig. 7 · <b>Email</b> · many services · no owner → one schema</figcaption></figure>
+        <figure class="fig-wrap" data-fig="platform"><figcaption>fig. 8 · <b>Commerce Center</b> · many organizations · 0 → 1</figcaption></figure>
+      </div>
+    </div>
+    <div class="foot"><span>Mars Chu · <a>CV</a> · <a>GitHub</a> · <a>Email</a></span><span class="cap">Every mark on this page is drawn by code.</span></div>
+  </div>
+  </div>
+</section>
+
+<section class="view wrap" data-view="demo" hidden>
+  <h2 class="section-title">Demo 怎么做</h2>
+  <p class="cap">读者几分钟、常用手机。点越多越好；成本一列点越多越便宜。</p>
+  <div class="tbl-wrap"><table>
+    <thead><tr><th>做法</th><th>给看什么</th><th>几秒看懂</th><th>手机</th><th>成本</th><th>风险</th></tr></thead>
+    <tbody>
+      <tr class="rec"><td><b>短循环 / 带字幕片段</b></td><td>看板、Projects、Priorities</td><td class="dots">●●●●●</td><td class="dots">●●●●●</td><td class="dots">●●●●<i>●</i></td><td>功能改了要重录</td></tr>
+      <tr class="rec"><td><b>MCP 对话回放</b></td><td>Plan with Claude</td><td class="dots">●●●●<i>●</i></td><td class="dots">●●●●<i>●</i></td><td class="dots">●●●●<i>●</i></td><td>从真实对话摘，删私人内容</td></tr>
+      <tr class="rec"><td><b>嵌入 Phase 2 mockup</b></td><td>Phase 2，标 Designed</td><td class="dots">●●●<i>●●</i></td><td class="dots">●●●<i>●●</i></td><td class="dots">●●●●●</td><td>mockup 里还有已去掉的 Daily</td></tr>
+      <tr class="rec"><td><b>Pipeline 回放</b></td><td>Diary → Painting，读 meta.json</td><td class="dots">●●●●<i>●</i></td><td class="dots">●●●●<i>●</i></td><td class="dots">●●●●<i>●</i></td><td>要几篇能公开的日记</td></tr>
+      <tr><td><b>截图轮播</b></td><td>静态界面</td><td class="dots">●●●<i>●●</i></td><td class="dots">●●●●●</td><td class="dots">●●●●●</td><td>看不出交互</td></tr>
+      <tr><td><b>站内可交互组件</b></td><td>tap 完成、扔进 ring</td><td class="dots">●●●●<i>●</i></td><td class="dots">●●●<i>●●</i></td><td class="dots">●<i>●●●●</i></td><td>要移植 daisyUI 组件</td></tr>
+      <tr><td><b>Live sandbox</b></td><td>整个 app</td><td class="dots">●●<i>●●●</i></td><td class="dots">●●●<i>●●</i></td><td class="dots">●<i>●●●●</i></td><td>登录、数据重置、滥用</td></tr>
+    </tbody>
+  </table></div>
+  <ol class="rec-list">
+    <li><b>App 顶上：</b>10 秒无声循环，tap 一张卡飞进今天的 ring。</li>
+    <li><b>做好的页面：</b>各一段 20–40 秒带字幕片段，放在上面的图旁边。</li>
+    <li><b>Plan with Claude：</b>真实对话回放，工具调用用红字。</li>
+    <li><b>Phase 2：</b>直接嵌 mockup，标 Designed。</li>
+    <li><b>Diary → Painting：</b>读 snapshot 一步步亮起，最后出图。不做 sandbox。</li>
+  </ol>
+</section>
+
+<section class="view wrap" data-view="facts" hidden>
+  <h2 class="section-title">图里的数据从哪来，哪些要你定</h2>
+  <div class="q"><span>字</span><div><b>Media Lab 的字体</b>出处：<a href="https://www.pentagram.com/work/mit-media-lab/story">Pentagram 的项目页</a>写着 “Helvetica … has been reinstated to support the overall system”；<a href="https://www.dezeen.com/2014/10/29/pentagram-mit-media-lab-rebrand-visual-identity/">Dezeen 2014</a> 说网格生成了一套自定义字形，但大部分文字用 Helvetica。现在网站正文用什么，我没读到它的 CSS，没法确认。</div></div>
+  <div class="q"><span>图</span><div><b>Work 三张</b>来自 mars-portfolio 的 mockup-site-thumbnails。<b>App 六张</b>是按 README、Phase 2 spike、git log 和 emotion-painting PR 画的示意图，不是截图。</div></div>
+  <div class="q"><span>Q1</span><div><b>Jarvis 是不是第一阶段那个风控内部工具？</b>legacy 那张图是按这个对上的。</div></div>
+  <div class="q"><span>Q2</span><div><b>POC 写 finished 还是 working proof of concept？</b>现在是后者。</div></div>
+  <div class="q"><span>Q3</span><div><b>真截图</b>还在等，你本机截了发我就换。</div></div>
+</section>
+</main>
+
+
+
+<script>
+
+/* Figure library: every direction calls the same drawings, so the substance is identical and only the frame differs. */
+(() => {
+  const box = (x, y, w, h, label, cls = '') => '<rect class="f-box ' + cls + '" x="' + x + '" y="' + y + '" width="' + w + '" height="' + h + '" rx="3"/>' + (label ? '<text class="f-t" x="' + (x + w / 2) + '" y="' + (y + h / 2 + 4) + '" text-anchor="middle">' + label + '</text>' : '');
+  const rect = (x, y, w, h, cls, rx = 3) => '<rect class="' + cls + '" x="' + x + '" y="' + y + '" width="' + w + '" height="' + h + '" rx="' + rx + '"/>';
+  const text = (x, y, s, cls = 'f-t', anchor = 'start') => '<text class="' + cls + '" x="' + x + '" y="' + y + '" text-anchor="' + anchor + '">' + s + '</text>';
+  const line = (d, cls = 'f-line') => '<path class="' + cls + '" d="' + d + '"/>';
+  const circle = (cx, cy, r, cls) => '<circle class="' + cls + '" cx="' + cx + '" cy="' + cy + '" r="' + r + '"/>';
+  const arrowHead = (x, y, dir = 'r') => { const m = {r: [-6, -4, -6, 4], d: [-4, -6, 4, -6], u: [-4, 6, 4, 6], l: [6, -4, 6, 4]}[dir]; return '<path class="f-head" d="M' + (x + m[0]) + ' ' + (y + m[1]) + 'L' + x + ' ' + y + 'L' + (x + m[2]) + ' ' + (y + m[3]) + '"/>'; };
+  const tag = (x, y, s) => text(x, y, s, 'f-tag');
+
+  /* A board card: its kind mark on the left, a title, a meta line. */
+  const kindMark = (x, y, kind, progress) => {
+    if (kind === 'habit') return [0, 1, 2].map(i => progress[i] === 'x' ? line('M' + (x + i * 11 - 3) + ' ' + (y - 3) + 'l6 6m0-6l-6 6', 'f-miss') : circle(x + i * 11, y, 3.6, progress[i] === '1' ? 'f-dot' : 'f-dot-e')).join('');
+    if (kind === 'step') return rect(x - 4, y - 3, 28, 6, 'f-dot-e', 3) + rect(x - 4, y - 3, 28 * progress, 6, 'f-dot', 3);
+    return rect(x - 4, y - 5, 10, 10, 'f-dot-e', 1) + rect(x + 7, y - 5, 10, 10, 'f-dot-e', 1) + rect(x - 4, y - 5, 10, 10, 'f-dot', 1);
+  };
+  const card = (x, y, w, kind, title, meta, progress, done) => '<g' + (done ? ' class="f-faded"' : '') + '>' + rect(x, y, w, 40, 'f-card') + kindMark(x + 14, y + 14, kind, progress) + text(x + 46, y + 18, title, 'f-t f-b') + text(x + 46, y + 32, meta, 'f-s') + (done ? line('M' + (x + w - 22) + ' ' + (y + 20) + 'l4 5l8 -10', 'f-head') : '') + '</g>';
+
+  const FIGS = {
+    board: () => {
+      let s = tag(20, 22, 'THIS WEEK · BOARD');
+      s += circle(38, 56, 16, 'f-dot-e') + '<path class="f-line f-strong" d="M38 40A16 16 0 1 1 22.8 61"/>' + text(64, 52, 'Today', 'f-t f-b') + text(64, 67, '3 of 5 done', 'f-s');
+      for (let i = 0; i < 7; i++) s += rect(190 + i * 28, 48, 22, 7, i < 4 ? 'f-dot' : 'f-dot-e', 1);
+      s += text(190, 72, 'day 4 of 7', 'f-s') + text(420, 56, 'habits 5 · steps 3 · one-offs 2', 'f-s');
+      s += rect(16, 88, 168, 236, 'f-col') + rect(196, 88, 216, 236, 'f-col') + rect(424, 88, 200, 236, 'f-col');
+      s += tag(28, 108, 'BACKLOG') + tag(208, 108, 'TODO') + tag(436, 108, 'DONE');
+      s += card(26, 118, 148, 'habit', 'Workout', '1 more left', '11 ') + card(26, 166, 148, 'step', 'Course', 'next: lecture 4', .3);
+      s += card(206, 118, 196, 'habit', 'LeetCode', '2 a week · one missed', '1x ') + card(206, 166, 196, 'step', 'Course · lecture 3', 'project step', .3) + card(206, 214, 196, 'one', 'Renew passport', 'one-off · priorities');
+      s += card(434, 118, 180, 'habit', 'Workout', 'today', '111', 1) + card(434, 166, 180, 'step', 'Course · lecture 2', 'yesterday', .2, 1);
+      s += text(220, 300, 'drag to Done', 'f-s') + line('M290 296H420', 'f-line f-up') + arrowHead(420, 296);
+      s += kindMark(36, 296, 'habit', '1  ') + text(64, 300, 'habit', 'f-s') + kindMark(36, 314, 'step', .5) + text(64, 318, 'step', 'f-s') + kindMark(108, 296, 'one') + text(128, 300, 'one-off', 'f-s');
+      return s;
+    },
+    mcp: () => {
+      const bubble = (y, me, s) => { const w = s.length * 6.1 + 24, x = me ? 340 - w : 20; return rect(x, y, w, 28, me ? 'f-fill' : 'f-card', 8) + text(x + 12, y + 18, s, me ? 'f-on' : 'f-t'); };
+      const chip = (y, s) => rect(20, y, s.length * 6.4 + 16, 18, 'f-chipbox', 9) + text(28, y + 12.5, s, 'f-chip');
+      let s = tag(20, 22, 'CLAUDE · OVER MCP');
+      s += chip(34, 'get_planning_context()');
+      s += bubble(60, 0, 'Last week: Workout 3 of 3, LeetCode 2 of 3.');
+      s += bubble(96, 1, 'Keep both. I travel Thursday.');
+      s += bubble(132, 0, 'Workout 3×, LeetCode 2×, two course steps.') + bubble(164, 0, 'Write it?');
+      s += bubble(200, 1, 'Go.');
+      s += chip(238, 'create_plan()');
+      s += line('M150 247H384', 'f-rd') + arrowHead(390, 247);
+      s += rect(400, 40, 220, 250, 'f-col') + tag(412, 60, 'THE BOARD, AFTER');
+      [['Workout', 'habit · 3×'], ['LeetCode', 'habit · 2×'], ['Course · lecture 3', 'step'], ['Course · lecture 4', 'step']].forEach(([title, meta], i) => { s += rect(412, 72 + i * 48, 196, 38, 'f-card') + text(424, 88 + i * 48, title, 'f-t f-b') + text(424, 101 + i * 48, meta, 'f-s'); });
+      s += text(20, 290, 'Nothing is written until I agree.', 'f-h');
+      return s;
+    },
+    evolution: () => {
+      const xs = [70, 196, 322, 448, 574], y = 92;
+      const glyph = [
+        x => rect(x - 34, y - 22, 46, 18, 'f-soft', 6) + rect(x - 8, y + 2, 44, 18, 'f-fill', 6),
+        x => rect(x - 40, y - 24, 80, 48, 'f-soft', 2) + line('M' + (x - 13) + ' ' + (y - 24) + 'V' + (y + 24) + 'M' + (x + 13) + ' ' + (y - 24) + 'V' + (y + 24), 'f-nest') + rect(x - 36, y - 18, 20, 9, 'f-fill', 1) + rect(x - 36, y - 5, 20, 9, 'f-fill', 1) + rect(x - 9, y - 18, 20, 9, 'f-fill', 1),
+        x => rect(x - 30, y - 26, 52, 40, 'f-soft', 2) + rect(x - 24, y - 20, 52, 40, 'f-soft', 2) + rect(x - 18, y - 14, 52, 40, 'f-card', 2) + line('M' + (x - 12) + ' ' + (y - 2) + 'H' + (x + 26) + 'M' + (x - 12) + ' ' + (y + 10) + 'H' + (x + 18), 'f-line f-mess'),
+        x => rect(x - 40, y - 24, 54, 16, 'f-card', 6) + rect(x - 10, y - 3, 50, 16, 'f-fill', 6) + rect(x - 40, y + 18, 44, 12, 'f-chipbox', 6),
+        x => circle(x, y, 26, 'f-rd') + rect(x - 14, y - 9, 28, 18, 'f-soft', 2),
+      ];
+      const nodes = [['Dec 2025', 'Chat app', ''], ['Feb 2026', 'Board', ['standing at', 'a whiteboard']], ['Jun 2026', 'Agent in the app', ['typing every', 'plan by hand']], ['Oct 2026', 'Plan with Claude', ['one-shot drafts', 'I fixed weekly']], ['Next', 'Phase 2', ['points nobody', 'looked at']]];
+      let s = tag(20, 22, 'EACH VERSION TOOK ONE THING AWAY');
+      s += line('M70 150H448', 'f-line f-strong') + line('M448 150H574', 'f-rd');
+      nodes.forEach(([date, name, removed], i) => {
+        const x = xs[i], last = i === 4;
+        s += text(x, 52, date, last ? 'f-s f-red' : 'f-s', 'middle') + glyph[i](x);
+        s += circle(x, 150, last ? 6 : 5, last ? 'f-dot-e' : 'f-dot') + (last ? circle(x, 150, 6, 'f-rd') : '');
+        s += text(x, 176, name, last ? 'f-t f-b f-red' : 'f-t f-b', 'middle');
+        if (removed) { s += text(x, 196, 'took away', 'f-s', 'middle') + text(x, 211, removed[0], 'f-d', 'middle') + text(x, 225, removed[1], 'f-d', 'middle'); }
+      });
+      s += text(322, 248, 'Oct 17: the agent inside the app is deleted. Planning goes through MCP only.', 'f-q', 'middle');
+      return s;
+    },
+    phase2: () => {
+      let s = tag(20, 22, 'TODAY') + tag(350, 22, 'PHASE 2 · DESIGNED');
+      s += rect(20, 36, 280, 28, 'f-soft') + text(32, 54, 'Week score', 'f-t f-b') + rect(120, 46, 120, 8, 'f-dot-e', 4) + rect(120, 46, 72, 8, 'f-dot', 4) + text(250, 54, '31 / 52 pts', 'f-s');
+      [['Workout', '5 pts'], ['Course · lecture 3', '3 pts'], ['Renew passport', '1 pt']].forEach(([title, pts], i) => { s += rect(20, 76 + i * 44, 280, 36, 'f-card') + text(34, 98 + i * 44, title, 'f-t') + rect(240, 84 + i * 44, 48, 20, 'f-chipbox', 10) + text(264, 98 + i * 44, pts, 'f-chip', 'middle'); });
+      s += text(20, 228, 'I never looked at these.', 'f-q') + line('M136 226Q220 210 258 188', 'f-rs') + arrowHead(258, 188, 'u');
+      s += line('M312 150H336', 'f-line f-strong') + arrowHead(338, 150);
+      s += text(350, 50, 'Capacity, learned from the last 4 weeks', 'f-t f-b');
+      [12, 9, 11, 10].forEach((v, i) => { s += rect(350 + i * 30, 104 - v * 4, 20, v * 4, 'f-bar-l', 1); });
+      s += text(476, 82, '≈ 10 done a week', 'f-d') + text(476, 98, 'Claude plans into that', 'f-s');
+      s += text(350, 132, 'Focus limits', 'f-t f-b') + text(350, 150, 'habits', 'f-s') + text(350, 172, 'projects', 'f-s');
+      [0, 1, 2].forEach(i => { s += rect(410 + i * 34, 140, 28, 14, i < 2 ? 'f-fill' : 'f-dot-e', 2); }); s += text(518, 151, '2 of 3', 'f-s');
+      [0, 1, 2, 3].forEach(i => { s += rect(410 + i * 34, 162, 28, 14, i < 3 ? 'f-fill' : 'f-dot-e', 2); }); s += text(552, 173, '3 of 4', 'f-s');
+      s += text(350, 206, 'Calm ahead, loud wins', 'f-t f-b');
+      s += rect(352, 220, 96, 32, 'f-card') + text(364, 240, 'Workout ✓', 'f-t');
+      s += line('M450 230Q510 190 548 238', 'f-rd') + arrowHead(551, 242, 'd') + circle(568, 262, 26, 'f-dot-e') + '<path class="f-line f-strong" d="M568 236A26 26 0 0 1 593 270"/>' + text(568, 266, 'today', 'f-s', 'middle');
+      s += text(350, 304, 'A finished card is tossed into today’s ring.', 'f-s');
+      return s;
+    },
+    harness: () => {
+      const months = [['N', 2], ['D', 15], ['J', 0], ['F', 41], ['M', 19], ['A', 0], ['M', 0], ['J', 33], ['J', 27], ['A', 0], ['S', 1], ['O', 53], ['N', 19]];
+      const base = 250, k = 3.2, x0 = 34, step = 46;
+      let s = tag(20, 22, 'COMMITS PER MONTH · NOV 2025 – NOV 19, 2026 · 210');
+      s += line('M' + x0 + ' ' + base + 'H' + (x0 + step * 13), 'f-line');
+      months.forEach(([m, n], i) => { const x = x0 + i * step + 8; s += rect(x, base - n * k, 30, Math.max(n * k, .5), i >= 11 ? 'f-bar' : 'f-bar-l', 1) + text(x + 15, base + 16, m, 'f-s', 'middle') + (n ? text(x + 15, base - n * k - 5, n, 'f-s', 'middle') : ''); });
+      const note = (i, y, a, b) => { const x = x0 + i * step + 23; return line('M' + x + ' ' + (y + 6) + 'V' + (base - months[i][1] * k - 18), 'f-rd') + text(x, y - 8, a, 'f-t f-b', 'middle') + text(x, y + 4, b, 'f-s', 'middle'); };
+      s += note(1, 120, 'CLAUDE.md', 'gone same day') + note(3, 50, 'first rules', 'layers, transactions') + note(11, 50, 'quality gate', 'CI · tests · experiment');
+      s += line('M' + (x0 + 12 * step + 23) + ' 112V' + (base - 19 * k - 18), 'f-rd') + text(x0 + 12 * step + 30, 100, 'Spec v2', 'f-t f-b', 'end') + text(x0 + 12 * step + 30, 112, 'reviewer agents', 'f-s', 'end');
+      s += text(20, 290, 'Bigger months came after the rules, not before.', 'f-h');
+      return s;
+    },
+    experiment: () => {
+      const bar = (y, label, minutes, dollars, cls) => text(20, y + 15, label, 'f-t f-b') + rect(100, y, minutes * 24, 22, cls, 1) + text(108 + minutes * 24, y + 15, minutes + ' min · $' + dollars, 'f-s');
+      let s = tag(20, 22, 'SAME TASK · 5 RUNS EACH · OCT 2026');
+      s += text(100, 50, 'time to an open pull request', 'f-s');
+      s += bar(62, 'Serial', 13.8, '6.29', 'f-bar') + bar(100, 'Parallel', 17.2, '9.39', 'f-bar-l');
+      s += text(20, 160, 'Quality in blind review', 'f-t f-b') + text(200, 160, 'the same', 'f-d');
+      s += text(20, 186, 'Defects that kept coming back', 'f-t f-b') + text(200, 186, 'rules nobody had written', 'f-q');
+      s += rect(20, 206, 600, 70, 'f-col') + tag(34, 226, 'WHAT CHANGED AFTER');
+      ['write the rule', 'spec item → test', 'reviewer agent'].forEach((label, i) => { s += box(34 + i * 196, 238, 170, 26, label) + (i < 2 ? line('M' + (204 + i * 196) + ' 251H' + (226 + i * 196)) + arrowHead(228 + i * 196, 251) : ''); });
+      s += text(20, 300, 'Measured, not guessed.', 'f-h');
+      return s;
+    },
+    pipeline: () => {
+      const stages = [['Diary entry', ['下班去公园走', '了一圈，湖边', '的柳树都绿了'], 'sample'], ['Chunks', ['split by', 'sentence', 'rules'], 'rule-based'], ['Emotion', ['开心'], 'mDeBERTa'], ['Imagery', ['公园', '湖边', '柳树'], 'jieba rules'], ['Prompt', ['picture book', 'water, willow', 'warm wash'], 'template']];
+      let s = tag(20, 22, 'ONE RUN · A REQUEST TAKES 5–6 S');
+      stages.forEach(([name, lines, how], i) => {
+        const x = 20 + i * 92;
+        s += rect(x, 40, 82, 118, i === 0 ? 'f-card' : 'f-box') + text(x + 8, 58, name, 'f-t f-b') + lines.map((lineText, row) => text(x + 8, 82 + row * 17, lineText, i === 2 ? 'f-t f-b' : 'f-d')).join('') + text(x + 8, 148, how, 'f-s');
+        s += line('M' + (x + 82) + ' 99H' + (x + 90)) + arrowHead(x + 91, 99);
+      });
+      s += '<svg x="482" y="40" width="148" height="111" viewBox="0 0 400 300"><use href="#paint"/></svg>' + rect(482, 40, 148, 111, 'f-rd', 0) + text(556, 168, 'placeholder painting', 'f-s', 'middle');
+      s += rect(20, 190, 610, 66, 'f-col');
+      s += text(34, 212, 'What the rules got wrong', 'f-t f-b') + text(34, 232, 'park, lake, willow gave water and greenery,', 'f-d') + text(34, 247, 'and a figure nobody asked for.', 'f-q');
+      s += text(330, 212, 'Next', 'f-t f-b') + text(330, 232, 'LLM extraction → my dataset → an agent', 'f-d') + text(330, 247, 'style: MoMA refs, after Nilima Sheikh', 'f-s');
+      s += text(20, 284, 'The LLM as the expert, for someone with taste and no painting skill.', 'f-h');
+      return s;
+    },
+    /* Work: the three Before → After figures, as drawn in mars-portfolio's mockup-site-thumbnails. */
+    legacy: () => {
+      let nest = '';
+      for (let i = 0; i < 11; i++) nest += '<rect class="f-nest" x="' + (24 + i * 9) + '" y="' + (44 + i * 8) + '" width="' + (236 - i * 18) + '" height="' + (178 - i * 16) + '" rx="2"/>';
+      nest += '<rect class="f-fill" x="123" y="124" width="38" height="18" rx="2"/>' + text(142, 137, 'panel', 'f-on', 'middle');
+      const panel = (x, done) => '<rect class="' + (done ? 'f-fill' : 'f-box f-dash') + '" x="' + x + '" y="196" width="40" height="24" rx="2"/>';
+      return tag(24, 26, 'BEFORE') + nest + text(24, 246, 'To add one panel:', 'f-t f-b')
+        + text(24, 266, '· a backend config change', 'f-d') + text(24, 284, '· a production database script, run by SRE', 'f-d') + text(24, 302, '· new access rules in the backend', 'f-d')
+        + text(24, 326, '10+ nested layers. Nobody wanted to touch it.', 'f-h')
+        + line('M300 170H340', 'f-line f-strong') + arrowHead(340, 170)
+        + tag(360, 26, 'AFTER') + box(440, 44, 110, 28, 'App') + box(372, 118, 110, 28, 'Dashboard') + box(508, 118, 110, 28, 'Dashboard')
+        + line('M495 72V95H427V118M495 95H563V118')
+        + line('M427 146V170H376V196M427 170H422V196M427 170H468V196') + line('M563 146V170H520V196M563 170H566V196M563 170H612V196')
+        + panel(356, 1) + panel(402, 1) + panel(448, 1) + panel(500, 1) + panel(546, 0) + panel(592, 0)
+        + line('M636 230V60', 'f-line f-up') + arrowHead(636, 60, 'u') + text(628, 250, 'leaves first', 'f-s', 'end')
+        + '<rect class="f-fill" x="360" y="272" width="12" height="12" rx="2"/>' + text(380, 283, 'React', 'f-d') + '<rect class="f-box f-dash" x="440" y="272" width="12" height="12" rx="2"/>' + text(460, 283, 'Angular, not yet', 'f-d')
+        + text(360, 312, 'Both run in one app. No downtime, no UX change,', 'f-d') + text(360, 330, 'no API change: panels handed out in parallel.', 'f-d');
+    },
+    tangle: () => {
+      const nodes = [[30, 52, 'Download service'], [176, 40, 'Partner service'], [100, 120, 'Monolith (retiring)'], [24, 196, 'Email code · repo A'], [168, 176, 'repo B'], [204, 238, 'repo C'], [70, 270, 'Third-party mailer']];
+      let tangle = nodes.map(([x, y, label]) => box(x, y, label.length * 6.4 + 18, 26, label, 'f-soft')).join('');
+      tangle += line('M90 78C120 140 60 150 130 120', 'f-line f-mess') + line('M220 66C260 120 140 110 170 120', 'f-line f-mess') + line('M150 146C120 190 60 170 70 196', 'f-line f-mess')
+        + line('M190 146C230 160 210 170 200 176', 'f-line f-mess') + line('M120 222C180 250 150 200 230 238', 'f-line f-mess') + line('M80 222C40 250 120 250 110 270', 'f-line f-mess') + line('M240 264C230 290 200 280 190 283', 'f-line f-mess') + line('M240 66C290 140 260 220 250 238', 'f-line f-mess');
+      tangle += text(268, 106, 'owner?', 'f-q') + text(30, 172, 'owner?', 'f-q');
+      const step = (y, label, last) => box(384, y, 196, 28, label) + (last ? '' : line('M482 ' + (y + 28) + 'V' + (y + 44)) + arrowHead(482, y + 44, 'd'));
+      return tag(24, 26, 'BEFORE') + tangle + text(24, 326, 'Three teams, several repos, one retiring monolith.', 'f-h')
+        + line('M318 170H352', 'f-line f-strong') + arrowHead(352, 170)
+        + tag(384, 26, 'AFTER') + step(40, 'A download request') + step(84, 'Download service') + step(128, 'One message, one schema') + step(172, 'Email service', 1)
+        + '<rect class="f-card" x="384" y="226" width="236" height="78" rx="3"/>' + text(398, 248, 'To add an email', 'f-t f-b') + text(398, 270, '1  Configure it.', 'f-d') + text(398, 290, '2  Write its business logic.', 'f-d')
+        + text(384, 326, 'A new email became configuration.', 'f-h');
+    },
+    platform: () => {
+      const segments = ['Small business', 'Mid-market', 'Enterprise', 'Several countries'];
+      let s = tag(24, 26, 'WHO IT SERVES') + segments.map((label, i) => box(24 + i * 152, 36, 140, 26, label, 'f-soft')).join('');
+      s += line('M320 62V80') + arrowHead(320, 80, 'd');
+      s += '<rect class="f-shell" x="24" y="84" width="592" height="118" rx="4"/>' + text(40, 106, 'Shell', 'f-t f-b') + text(84, 106, 'reads each merchant’s entitlements, loads each part at runtime', 'f-d');
+      ['Onboarding', 'Payments', 'Transactions', 'Dashboards', 'Users'].forEach((label, i) => { s += box(40 + i * 114, 122, 102, 30, label, i === 0 ? 'f-fill-box' : ''); });
+      s += text(40, 186, 'Onboarding: one entry point that says where you stand and what to do next', 'f-s');
+      s += '<rect class="f-card" x="24" y="216" width="592" height="28" rx="3"/>' + text(320, 235, 'Shared component library and design tokens', 'f-t', 'middle');
+      s += '<rect class="f-card" x="24" y="254" width="592" height="28" rx="3"/>' + text(320, 273, 'Backend-for-frontend', 'f-t', 'middle');
+      for (let i = 0; i < 26; i++) s += '<rect class="f-svc" x="' + (26 + i * 22.6) + '" y="294" width="16" height="16" rx="2"/>';
+      return s + text(24, 330, 'Domain services, across the payment stacks', 'f-h');
+    },
+  };
+  const HEIGHT = {board: 336, mcp: 304, evolution: 262, phase2: 316, harness: 304, experiment: 312, pipeline: 300, legacy: 340, tangle: 340, platform: 340};
+  const LABEL = {board: 'The weekly board: backlog, Todo and Done, with habit, project-step and one-off cards', mcp: 'A planning conversation with Claude over MCP, ending in a written plan', evolution: 'Five versions of the app from December 2025 to Phase 2', phase2: 'Phase 2: points replaced by counts, focus limits and a ring for wins', harness: 'Commits per month with harness milestones', experiment: 'Serial versus parallel agents: 13.8 versus 17.2 minutes', pipeline: 'Diary to painting pipeline with each stage output', legacy: 'Before: ten-plus nested layers. After: a flat tree migrated from the leaves up', tangle: 'Before: an email flow spread across repos with no owner. After: one path and one schema', platform: 'One shell that loads each part at runtime per merchant entitlement'};
+  window.drawFigures = root => root.querySelectorAll('[data-fig]').forEach(figure => {
+    if (figure.querySelector('svg.fig')) return;
+    const name = figure.dataset.fig, draw = FIGS[name]; if (!draw) return;
+    figure.insertAdjacentHTML('afterbegin', '<div class="fig-scroll"><svg class="fig" viewBox="0 0 640 ' + HEIGHT[name] + '" role="img" aria-label="' + LABEL[name] + '">' + draw() + '</svg></div>');
+  });
+})();
+
+
+(function(){
+  const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const css=name=>getComputedStyle(document.documentElement).getPropertyValue(name).trim();
+  const rgba=(hex,alpha)=>{const h=hex.replace('#','');const v=h.length===3?h.split('').map(c=>c+c).join(''):h;return 'rgba('+parseInt(v.slice(0,2),16)+','+parseInt(v.slice(2,4),16)+','+parseInt(v.slice(4,6),16)+','+alpha+')'};
+  const prng=seed=>()=>{seed|=0;seed=seed+0x6D2B79F5|0;let t=Math.imul(seed^seed>>>15,1|seed);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296};
+  const valueNoise=rand=>{const grid=Array.from({length:1024},rand),ease=t=>t*t*(3-2*t);return x=>{const i=Math.floor(x),f=x-i;return grid[i&1023]+(grid[(i+1)&1023]-grid[i&1023])*ease(f)}};
+  const fbm=(noise,x,octaves)=>{let value=0,amp=.5,freq=1;for(let i=0;i<octaves;i++){value+=amp*(noise(x*freq+i*37.3)-.5);amp*=.5;freq*=2.17}return value};
+
+  /* ── Shanshui: layered ridges in dry brush. Each layer gets an uneven wash, hemp-fibre texture strokes (披麻皴)
+     running down its slopes, a broken dry-brush contour, moss dots (点苔), and the near layer a few pines.
+     Seeded, so the painting is the same on every load. ── */
+  const LAYERS=[
+    {base:.56,amp:.36,alpha:.18,bristles:2,texture:.25,moss:0,peaks:[[.16,.75,.09,.07],[.38,.5,.07,.08],[.6,1,.1,.08]]},
+    {base:.74,amp:.42,alpha:.38,bristles:3,texture:.5,moss:.4,peaks:[[.06,.55,.06,.07],[.47,.95,.08,.06],[.82,.7,.07,.09]]},
+    {base:1.02,amp:.6,alpha:.9,bristles:5,texture:1,moss:1,trees:true,peaks:[[.72,1,.07,.05],[.9,.62,.05,.06],[.26,.42,.09,.1]]},
+  ];
+  /* The hero's type sits in the painting's sky, so the ranges must stay under it. This returns, for every x across
+     the painting, the height nothing may rise above: a margin below the lowest line of type over that x, easing back
+     to no limit at all to the right of the type, where the tall peaks stand. It also says how firmly the limit
+     holds at each x (1 under the type, 0 well clear of it) and where its lowest point is. */
+  const SKY_MARGIN=40,SKY_EASE=230;
+  function skyLimit(canvas,box,W){
+    const txt=canvas.parentElement.querySelector('.txt');if(!txt)return null;
+    const limit=new Float32Array(Math.ceil(W)+16),range=document.createRange(),walker=document.createTreeWalker(txt,NodeFilter.SHOW_TEXT);
+    while(walker.nextNode()){
+      if(!walker.currentNode.nodeValue.trim())continue;
+      range.selectNodeContents(walker.currentNode);
+      for(const line of range.getClientRects()){
+        const floor=line.bottom-box.top+SKY_MARGIN,right=line.right-box.left+24;
+        for(let i=0;i<limit.length;i++){const past=Math.min(1,Math.max(0,(i-8-right)/SKY_EASE)),hold=1-past*past*(3-2*past);limit[i]=Math.max(limit[i],floor*hold)}
+      }
+    }
+    const at=x=>limit[Math.min(limit.length-1,Math.max(0,Math.round(x+8)))],floor=limit.reduce((low,value)=>Math.max(low,value),0);
+    return floor?Object.assign(at,{floor,hold:x=>at(x)/floor}):null;
+  }
+  /* A soft ceiling: heights below the knee pass untouched, taller ones bend over and never reach `cap`. */
+  const bendUnder=(rise,cap)=>{const knee=cap*.6;return rise<=knee?rise:cap-(cap-knee)*Math.exp(-(rise-knee)/(cap-knee))};
+  function shanshui(canvas){
+    const box=canvas.getBoundingClientRect(); if(!box.width||!box.height)return;
+    const W=box.width,H=box.height,dpr=Math.min(2,devicePixelRatio||1),sky=skyLimit(canvas,box,W);
+    canvas.width=Math.round(W*dpr);canvas.height=Math.round(H*dpr);
+    const g=canvas.getContext('2d');g.setTransform(dpr,0,0,dpr,0,0);g.clearRect(0,0,W,H);
+    const rand=prng(+canvas.dataset.seed||7),ink=css('--ink'),paper=css('--paper'),seal=css('--seal');
+    g.lineCap='round';g.lineJoin='round';
+    /* red sun, rough-edged, behind the far range */
+    const sunX=W*.84,sunR=Math.max(10,H*.055),sunY=Math.max(H*.2,sky?sky(sunX)+sunR*.4:0),sunNoise=valueNoise(rand);
+    g.beginPath();for(let i=0;i<=60;i++){const a=i/60*Math.PI*2,rr=sunR*(1+.06*(sunNoise(i*.7)-.5));i?g.lineTo(sunX+Math.cos(a)*rr,sunY+Math.sin(a)*rr):g.moveTo(sunX+Math.cos(a)*rr,sunY+Math.sin(a)*rr)}
+    g.fillStyle=rgba(seal,.85);g.fill();
+    LAYERS.forEach((layer,layerIndex)=>{
+      const noise=valueNoise(rand),near=layerIndex/(LAYERS.length-1);
+      const riseAt=x=>{const t=x/W;let lift=0;for(const [px,ph,wl,wr] of layer.peaks){const dx=t-px,spread=dx<0?wl:wr;lift+=ph*Math.exp(-Math.pow(Math.abs(dx)/spread,1.25))}
+        lift+=.32*fbm(noise,t*7,3)+.07*fbm(noise,t*70+11,3);return Math.max(0,lift+.12)};
+      /* Under the type a range keeps its shape and is made lower as a whole, by whatever brings its tallest peak
+         there under the limit; the soft ceiling only catches what is left where the limit eases off. */
+      let lower=1;
+      if(sky){let tallest=.001;for(let x=0;x<=W;x+=4)if(sky.hold(x)>.5)tallest=Math.max(tallest,riseAt(x));lower=Math.min(1,Math.max(.05,(H*layer.base-sky.floor)/(H*layer.amp))/tallest)}
+      const ridgeAt=x=>{
+        const rise=riseAt(x);
+        return H*layer.base-H*layer.amp*(sky?bendUnder(rise*(1+(lower-1)*sky.hold(x)),Math.max(.03,(H*layer.base-sky(x))/(H*layer.amp))):rise)};
+      const points=[];for(let x=-6;x<=W+6;x+=2)points.push([x,ridgeAt(x)]);
+      const top=Math.min(...points.map(point=>point[1])),foot=Math.min(H,H*layer.base);
+      /* wash: two offset passes so the edge bleeds unevenly, fading into mist at the foot */
+      for(let pass=0;pass<2;pass++){
+        const grad=g.createLinearGradient(0,top,0,foot+H*.05);
+        grad.addColorStop(0,rgba(ink,layer.alpha*(pass?.35:.55)));grad.addColorStop(.45,rgba(ink,layer.alpha*(pass?.18:.3)));grad.addColorStop(1,rgba(ink,near===1?layer.alpha*.18:0));
+        g.beginPath();g.moveTo(-6,H);points.forEach(([x,y])=>g.lineTo(x,y+(pass?2+noise(x*.05)*5:0)));g.lineTo(W+6,H);g.closePath();g.fillStyle=grad;g.fill();
+      }
+      /* 披麻皴: texture strokes down the slopes, denser and darker near the ridge */
+      const strokeCount=Math.round(W/2.2*layer.texture);
+      for(let i=0;i<strokeCount;i++){
+        const x0=rand()*W,y0=ridgeAt(x0),depth=(foot-y0)*Math.pow(rand(),1.6)*.75,y1=y0+3+depth;
+        const slope=(ridgeAt(x0+4)-ridgeAt(x0-4))/8,length=8+rand()*30*(.5+near),bend=(rand()-.5)*6;
+        const alpha=layer.alpha*(.25+.6*rand())*(1-depth/(foot-y0+1)*.7);
+        const bristleCount=1+Math.floor(rand()*3);
+        for(let b=0;b<bristleCount;b++){
+          const off=(b-bristleCount/2)*1.3;
+          g.beginPath();g.moveTo(x0+off,y1);g.quadraticCurveTo(x0+off+slope*length*.3+bend,y1+length*.5,x0+off+slope*length*.65,y1+length);
+          g.setLineDash(rand()<.5?[]:[2+rand()*10,1+rand()*4]);
+          g.lineWidth=.35+rand()*(.6+near*.9);g.strokeStyle=rgba(ink,alpha);g.stroke();
+        }
+      }
+      g.setLineDash([]);
+      /* dry-brush contour: several bristles, broken where the brush runs dry */
+      for(let b=0;b<layer.bristles;b++){
+        const offsetSeed=rand()*100;
+        let drawing=false;g.beginPath();
+        points.forEach(([x,y])=>{
+          const pressure=.45+noise(x/W*6+3+b);
+          const offset=(b-(layer.bristles-1)/2)*(1+near*1.8)*pressure;
+          const dry=noise(x/W*55+offsetSeed)<(.3-near*.12);
+          if(dry){drawing=false;return}
+          if(!drawing){g.moveTo(x,y+offset);drawing=true}else g.lineTo(x,y+offset);
+        });
+        g.lineWidth=.5+rand()*.6+near*.9;g.strokeStyle=rgba(ink,Math.min(1,layer.alpha*(1.05+rand()*.4)));g.stroke();
+      }
+      /* 点苔: moss dots clustered just under the ridge, near the peaks */
+      const mossCount=Math.round(W/14*layer.moss);
+      for(let i=0;i<mossCount;i++){
+        const peak=layer.peaks[Math.floor(rand()*layer.peaks.length)],x=(peak[0]+(rand()-.5)*peak[2]*3.2)*W,y=ridgeAt(x)+1+rand()*6;
+        const dots=2+Math.floor(rand()*3);
+        for(let d=0;d<dots;d++){g.beginPath();g.ellipse(x+(rand()-.5)*7,y+(rand()-.5)*3,.8+rand()*1.8*(.5+near),.6+rand()*1.1,rand()*3,0,7);g.fillStyle=rgba(ink,Math.min(1,.55+near*.4));g.fill()}
+      }
+      /* pines on the near range */
+      if(layer.trees){
+        [[.66,1.1],[.69,.85],[.75,.95],[.24,.8],[.29,1]].forEach(([fx,scale])=>{
+          const x=fx*W,y=ridgeAt(x)+2,h=(16+rand()*10)*scale*Math.max(.7,H/320);
+          g.beginPath();g.moveTo(x,y);g.quadraticCurveTo(x+(rand()-.5)*5,y-h*.5,x+(rand()-.5)*3,y-h);g.lineWidth=1.3*scale;g.strokeStyle=rgba(ink,.92);g.stroke();
+          for(let k=0;k<6;k++){
+            const ky=y-h*(.3+k*.12),kw=(h*.42)*(1-k*.13);
+            for(let side=-1;side<=1;side+=2){g.beginPath();g.moveTo(x,ky);
+              for(let s=1;s<=4;s++)g.lineTo(x+side*kw*s/4,ky+(s%2?-1.6:1.2)+(rand()-.5));
+              g.lineWidth=.7;g.strokeStyle=rgba(ink,.85);g.stroke()}
+          }
+        });
+      }
+      /* mist band between ranges */
+      if(near<1){const mist=g.createLinearGradient(0,H*layer.base-H*.14,0,H*layer.base+H*.04);mist.addColorStop(0,rgba(paper,0));mist.addColorStop(.7,rgba(paper,.75));mist.addColorStop(1,rgba(paper,0));g.fillStyle=mist;g.fillRect(0,H*layer.base-H*.14,W,H*.18)}
+    });
+  }
+
+  /* ── Water under the whole page ──
+     A faint blue wash with ripples moving through it: two long swells, three
+     sets of ripples rolling slowly down the page with their crests lying across, and rings that keep widening from
+     points scattered down it, fainter the further they travel. A crest is a thin line where the wash deepens;
+     between crests it thins. It is worked out on a coarse grid that the browser scales up, and only the rows on
+     screen are worked out each frame, so a long page costs no more than a short one. It stops while the page is
+     off screen and stands still for reduced motion. */
+  const WATER={
+    tint:.058,    /* how blue still water is: the alpha of --water over the paper */
+    swing:.065,   /* how much the waves add to and take from that */
+    cell:6,       /* CSS px to one cell of the grid */
+    waves:[[420,68,6,.3],[270,120,8,.26],[108,97,10,.52],[74,79,13,.46],[52,106,16,.34]],   /* wavelength px, heading in degrees (90 = straight down), px a second, weight */
+    rings:{every:300,length:[50,70],speed:[13,18],weight:.8,reach:260},                     /* one ring source to this many px of page height; wavelength and speed ranges; weight; the distance at which a ring has lost half its height */
+  };
+  function water(site){
+    const cv=document.createElement('canvas'),g=cv.getContext('2d'),SINES=1024,crest=new Float32Array(SINES),sources=[];
+    cv.className='water-layer';cv.setAttribute('aria-hidden','true');site.prepend(cv);
+    /* One wave's profile: a narrow crest and a broad trough, like a ripple, balanced around zero. */
+    for(let i=0;i<SINES;i++)crest[i]=(Math.pow(.5+.5*Math.sin(i/SINES*Math.PI*2),2.4)-.33)*1.7;
+    const between=([low,high])=>low+Math.random()*(high-low),{cell,rings}=WATER,FADE_FROM=rings.reach*2.6,FADE_TO=rings.reach*3.8;
+    const total=WATER.waves.reduce((sum,wave)=>sum+wave[3],0)+rings.weight*1.8;
+    let cols=0,rows=0,width=0,image=null,swells=[],raf=null,seen=true,last=0;
+    function size(){
+      const W=site.clientWidth,H=site.offsetHeight;if(W<2||H<2)return false;
+      const nextCols=Math.ceil(W/cell)+1,nextRows=Math.ceil(H/cell)+1;if(nextCols===cols&&nextRows===rows)return true;
+      cols=cv.width=nextCols;rows=cv.height=nextRows;width=W;image=g.createImageData(cols,rows);
+      /* Ring sources keep their place as the page grows: each is so many px from the top, and a share of the way across. */
+      for(let wanted=Math.max(3,Math.round(H/rings.every));sources.length<wanted;)sources.push({across:.05+Math.random()*.9,down:(sources.length+Math.random())*rings.every,length:between(rings.length),speed:between(rings.speed),shift:Math.random()});
+      /* The swells and ripples, each as its phase at every cell, in turns, with a slow bend so crests are not ruled lines. */
+      swells=WATER.waves.map(([length,heading,speed,weight],index)=>{
+        const phase=new Float32Array(cols*rows),angle=heading*Math.PI/180,across=Math.cos(angle)/length,down=Math.sin(angle)/length;
+        for(let row=0;row<rows;row++)for(let col=0;col<cols;col++){
+          const x=col*cell,y=row*cell;
+          phase[row*cols+col]=x*across+y*down+.34*Math.sin(x/170+y/260+index*1.9)+.2*Math.sin(x/83-y/190+index*2.7);
+        }
+        return {phase,rate:speed/length,weight,shift:index*.37};
+      });
+      return true;
+    }
+    function draw(seconds,everyRow){
+      if(!image||!site.offsetParent)return;
+      const box=cv.getBoundingClientRect(),perRow=box.height/rows;
+      const first=everyRow?0:Math.max(0,Math.floor(-box.top/perRow)-2),end=everyRow?rows:Math.min(rows,Math.ceil((innerHeight-box.top)/perRow)+2);
+      if(end<=first)return;
+      const hex=css('--water').replace('#',''),data=image.data,red=parseInt(hex.slice(0,2),16),green=parseInt(hex.slice(2,4),16),blue=parseInt(hex.slice(4,6),16);
+      const turned=swells.map(swell=>seconds*swell.rate+swell.shift);
+      /* Rings are worked out as they are drawn, and only those close enough to the rows on screen to still show. */
+      const near=sources.filter(source=>source.down>first*cell-FADE_TO&&source.down<end*cell+FADE_TO).map(source=>({x:source.across*width,y:source.down,length:source.length,turned:seconds*source.speed/source.length+source.shift}));
+      for(let row=first;row<end;row++)for(let col=0;col<cols;col++){
+        const i=row*cols+col,x=col*cell,y=row*cell;let tilt=0;
+        for(let n=0;n<swells.length;n++){const turn=swells[n].phase[i]-turned[n];tilt+=crest[((turn-Math.floor(turn))*SINES)|0]*swells[n].weight}
+        for(let n=0;n<near.length;n++){
+          const ring=near[n],far=Math.hypot(x-ring.x,y-ring.y);if(far>=FADE_TO)continue;
+          const turn=far/ring.length-ring.turned,out=far<=FADE_FROM?1:(FADE_TO-far)/(FADE_TO-FADE_FROM);   /* a ring dies away to nothing before it is dropped */
+          tilt+=crest[((turn-Math.floor(turn))*SINES)|0]*rings.weight*out*out*(3-2*out)/(1+far/rings.reach);
+        }
+        data[i*4]=red;data[i*4+1]=green;data[i*4+2]=blue;data[i*4+3]=Math.max(0,WATER.tint+WATER.swing*tilt/total*2.2)*255;
+      }
+      g.putImageData(image,0,0,0,first,cols,end-first);
+    }
+    const tick=now=>{raf=null;if(!seen||document.hidden)return;if(now-last>32){last=now;draw(now/1000)}raf=requestAnimationFrame(tick)};
+    const run=()=>{if(reduce)draw(0,true);else if(!raf)raf=requestAnimationFrame(tick)};
+    new ResizeObserver(()=>{if(size()){draw(reduce?0:performance.now()/1000,true);run()}}).observe(site);
+    if('IntersectionObserver' in window)new IntersectionObserver(entries=>{seen=entries[entries.length-1].isIntersecting;run()}).observe(cv);
+    document.addEventListener('visibilitychange',run);
+    matchMedia('(prefers-color-scheme: dark)').addEventListener?.('change',()=>draw(reduce?0:performance.now()/1000,true));
+  }
+
+  /* ── Tabs ── */
+  const views=[...document.querySelectorAll('[data-view]')],links=[...document.querySelectorAll('.tabs a')],started={},HOME='shan-helv';
+  const repaint=()=>document.querySelectorAll('canvas.shan').forEach(canvas=>{if(canvas.offsetParent)shanshui(canvas)});
+  function start(name){
+    const root=document.querySelector('[data-view="'+name+'"]');
+    if(!started[name]){
+      started[name]=true;
+      window.drawFigures(root);
+      const site=root.querySelector('.site');if(site)water(site);
+    }
+    repaint();
+  }
+  function show(){
+    const name=(location.hash||'#'+HOME).slice(1),target=views.some(view=>view.dataset.view===name)?name:HOME;
+    views.forEach(view=>{view.hidden=view.dataset.view!==target});
+    links.forEach(link=>{if(link.getAttribute('href')==='#'+target)link.setAttribute('aria-current','page');else link.removeAttribute('aria-current')});
+    if(location.hash)window.scrollTo(0,0);
+    requestAnimationFrame(()=>start(target));
+  }
+  addEventListener('hashchange',show);
+  let resizeTimer;addEventListener('resize',()=>{clearTimeout(resizeTimer);resizeTimer=setTimeout(repaint,150)});
+  matchMedia('(prefers-color-scheme: dark)').addEventListener?.('change',repaint);
+  document.fonts?.ready.then(repaint);
+  show();
+})();
+
+</script>

@@ -11,9 +11,11 @@ node_modules/
 package-lock.json
 
 # Markdown docs & design assets are hand-authored; Prettier is scoped to code
-# only. The mockups in design/ are self-contained HTML drawn by hand.
+# only. The mockups in design/ are self-contained HTML drawn by hand, and so is
+# the stopgap home page copied out of one of them.
 **/*.md
 /design/
+/public/home.html
 
 # Test reports
 coverage/

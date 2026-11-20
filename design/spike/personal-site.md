@@ -1,6 +1,6 @@
 # Spike: 个人网站——portfolio 的入口
 
-**Status: awaiting owner review** · 第 5 轮 2026-11-13（C 的缩略图首页） · 缩略图 mockup：[claude.ai/artifact/784YrxKCtc3g7iDGbKPgpy](https://claude.ai/artifact/784YrxKCtc3g7iDGbKPgpy)（`design/mockup/mockup-site-thumbnails.html`） · Mockup：[claude.ai/artifact/K7wABSdSQP8PJCKCFCofTn](https://claude.ai/artifact/K7wABSdSQP8PJCKCFCofTn)（私有页面，源文件 `design/mockup/mockup-site-story.html`）· 上一轮的 mockup 原样保留：[claude.ai/artifact/7Bzr3cEb2k1jevHdi2hss5](https://claude.ai/artifact/7Bzr3cEb2k1jevHdi2hss5)（`design/mockup/mockup-personal-site.html`）· Owner 的原话：`design/brainstorm/sessions/2026-11-06-media-lab-fit.md` Round 7、8、10、11、12
+**Status: awaiting owner review** · 第 6 轮 2026-11-20（山水 Helvetica 方向已定，内容打磨中；和缩略图首页并存，Q13） · 山水 mockup：[claude.ai/artifact/JAc5q3WqeCEXKFXF2VhfTh](https://claude.ai/artifact/JAc5q3WqeCEXKFXF2VhfTh)（`design/mockup/mockup-site-shanshui.html`） · 缩略图 mockup：[claude.ai/artifact/784YrxKCtc3g7iDGbKPgpy](https://claude.ai/artifact/784YrxKCtc3g7iDGbKPgpy)（`design/mockup/mockup-site-thumbnails.html`） · Mockup：[claude.ai/artifact/K7wABSdSQP8PJCKCFCofTn](https://claude.ai/artifact/K7wABSdSQP8PJCKCFCofTn)（私有页面，源文件 `design/mockup/mockup-site-story.html`）· 上一轮的 mockup 原样保留：[claude.ai/artifact/7Bzr3cEb2k1jevHdi2hss5](https://claude.ai/artifact/7Bzr3cEb2k1jevHdi2hss5)（`design/mockup/mockup-personal-site.html`）· Owner 的原话：`design/brainstorm/sessions/2026-11-06-media-lab-fit.md` Round 7、8、10、11、12、20–24
 
 > 语言约定：叙述用中文；站点自己的文案、产品名词和代码标识保留英文。**Case page** 是一个案例的详情页；**complexity figure** 是每个阶段那一张表达问题复杂度的图；**claim heading** 是写成一句判断的小标题（“I chose X over Y”），不是 “Problem / Solution” 这样的标签。
 
@@ -134,6 +134,22 @@ Owner（Round 12）：
 
 调研里的规律是「首页的卡很薄，故事在案例页里」；导师给一份申请的时间是几分钟，不一定会点进去。所以 **推荐版本三**：不点的人从图和引号拿到思路和高光，那一句难点留给想知道怎么做到的人。版本一最勾人，适合更在意点击的时候；版本二最省力，适合不打算认真写案例页的时候。
 
+## 山水 Helvetica（第 6 轮）
+
+另一个首页设计，从评审页 `Mars Portfolio Directions` 来。那一页不在这个仓库里做，Round 24 才收进来；它比较过的方向（墨池的三种字体、手卷）和点击落墨在 mockup 文件的历史里（`a38698f`）。Owner（Round 24）：
+
+> 定档山水helvetica，接下来打磨内容
+
+定下来的是方向，内容还在打磨：
+
+- **一整页，不是缩略**：hero 下面每节一张图，按实验编号排：Mars Workbench（看板、Plan with Claude）、五个版本各拿掉什么、Phase 2、harness、diary → painting，最后是工作经历的三张复杂度图。详细内容就在首页上，不靠点进案例页。
+- **Hero**：一幅代码画的山水（三层山、干笔皴擦、红日）。标题在画的左上角留白里，字下面的山整体压低，高峰和红日在字的右边。
+- **字**：Helvetica Neue，没装的设备退到免费的 Inter Tight；实验编号和读数用等宽。和下面「视觉语言」一节写的 Geist 加 Source Serif 4 不同，哪一套算数跟着 Q13 走。
+- **背景**：整页一层很淡的蓝色水波（新变量 `--water`），一直在动；滚出屏幕时停，系统设了减少动态效果时静止。
+- **没有落墨**：评审页里的点击落墨没有带过来。
+
+和缩略图首页的关系 owner 选了「先并存，之后再定」（Q13）。
+
 ## 案例页（三种讲法共用）
 
 骨架来自调研（Zhao 的决定式小标题、Dessotti 的工程案例、Goodhue 的元数据）加朋友的标准。每一节一个小标签加一句判断：
@@ -189,6 +205,8 @@ Owner（Round 11）：「这些公开应该也没问题吧」。下面是事实�
 | Q9 | 首页那句话 | A：“I take a messy process and make it something people can get through.” · B：“I build end to end, and I build to be understood.” · C：“Four decisions, and the problems that made them hard.” | 看 Q1 |
 | Q11 | 缩略图的钩子 | 版本一 问题 · 版本二 前后对比 · 版本三 图给答案、话留问题 | 版本三 |
 | Q12 | 缩略图本身 | 现在八张（每个项目「只画问题」和「前 → 后」各一张）· 换 | Owner 看了再说 |
+| Q13 | 山水 Helvetica 和缩略图首页的关系 | 山水取代缩略图首页 · 并存 | **Owner：先并存，之后再定**（Round 24） |
+| Q14 | 山水 mockup「待定」页的三个内容问题 | Jarvis 是不是第一阶段那个风控内部工具 · POC 写 finished 还是 working proof of concept · 真截图 | 要 owner 回答 |
 | Q10 | 研究的一面放哪 | 首页不放，只在 Mars Workbench 那条线和 About 里 · 加一个 Research 页 | 先不加：这一轮 owner 的重点是作品的叙事 |
 
 上一轮的问题里，首页先服务谁（原 Q1）、三面怎么标、印、山水的量、中文版、Mars 那一点红、Students Offering Support 仍然开着，在[上一个版本](https://github.com/Marsuu1994/mars-portfolio/blob/3b7140f/site/spike/personal-site.md)里。
@@ -219,4 +237,5 @@ Owner（Round 11）：「这些公开应该也没问题吧」。下面是事实�
 - **第 2 轮（2026-11-12）**：按申请素材和一次冷读 review 修订事实和推荐。
 - **第 3 轮（2026-11-12）**：owner 把问题换成叙事结构。新的调研（设计师作品集），两条线，每阶段一张复杂度图，三种讲法，共用的案例页；新 mockup，上一轮的 mockup 原样保留。
 - **第 5 轮（2026-11-13）**：owner 提出缩略图首页：一张图一段话、都是钩子、桌面端竖排留白。新 mockup 画了三版钩子和一页并排对比；缩略图是复杂度图的简化版。
+- **第 6 轮（2026-11-20）**：owner 定了山水 Helvetica 这个方向（一整页的首页，山水 hero，Helvetica，整页水波），内容接下来打磨；它的 mockup 从 artifact 收进仓库，只留这一个方向。和缩略图首页先并存。
 - **第 4 轮（2026-11-12）**：owner 选了 C，要求个人项目放最前面、改文案。Mockup 只留 C 和案例页；Mars Workbench 放第一；桥移到它和工作经历之间；第四个决定换成「先定契约」；文案统一成两段；索引最新在前。
