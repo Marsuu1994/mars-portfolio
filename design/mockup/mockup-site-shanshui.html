@@ -1,10 +1,12 @@
 <title>Mars Portfolio Directions</title>
 <meta name="claude:viewport-fit-sides" content="cover">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,600;1,8..60,300;1,8..60,400&family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&family=Noto+Serif+SC:wght@400;600;900&family=Ma+Shan+Zheng&family=IBM+Plex+Mono:wght@400;500;600&family=Inter+Tight:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,600;1,8..60,300;1,8..60,400&family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&family=Noto+Serif+SC:wght@400;600;900&family=Ma+Shan+Zheng&family=Inter+Tight:wght@400;500;600&display=swap">
 <style>
 
-/* Round 2 of the review sheet. Every direction now carries the same diagrams (the real substance);
-   the Zen motifs only frame them: section marks, the figure's mount, the hero, and the growth line. */
+/* The home page in the direction the owner picked on 2026-11-20, 山水 Helvetica: an ink landscape in the hero with
+   the type in its blank sky, Helvetica throughout, every section an experiment with its diagram, and faint water
+   under the whole page. The directions it was picked from (墨池 in three faces, 手卷) and the click-to-drop ink are
+   in this file's history. */
 :root{
   --paper:#f6f4ee; --paper-2:#ecE9e1; --paper-3:#e0dcd1;
   --ink:#16181c; --ink-2:#3d4046; --ink-3:#5f6268; --ink-4:#a6a6a2; --ink-5:#d8d6cf;
@@ -42,12 +44,6 @@ a{color:inherit;text-underline-offset:.2em}
 @media (min-width:700px){.wrap{padding-left:max(32px,env(safe-area-inset-left,0px));padding-right:max(32px,env(safe-area-inset-right,0px))}}
 .mono{font:500 11.5px/1.5 var(--f-mono);letter-spacing:.07em;text-transform:uppercase;color:var(--ink-3)}
 .cap{font:400 13px/1.45 var(--f-sans);color:var(--ink-3)}
-.grain{position:relative;isolation:isolate}
-.grain::after{content:"";position:absolute;inset:0;pointer-events:none;z-index:0;opacity:var(--grain-op);mix-blend-mode:multiply;
-  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .45 0 0 0 0 .42 0 0 0 0 .36 0 0 0 .22 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
-.grain>*{position:relative;z-index:1}
-.seal{display:inline-grid;place-items:center;background:var(--seal);color:var(--on-seal);font:900 22px/1 var(--f-song);border-radius:4px;filter:url(#rough);flex:none}
-.seal.outline{background:transparent;color:var(--seal);border:2px dashed var(--seal);filter:none}
 .status{display:inline-flex;align-items:center;font:500 10.5px/1 var(--f-mono);letter-spacing:.08em;text-transform:uppercase;padding:4px 7px;border-radius:3px;border:1px solid currentColor;white-space:nowrap}
 .st-built{color:var(--ink)} .st-design{color:var(--seal);border-style:dashed} .st-explore{color:var(--ink-3);border-style:dotted}
 
@@ -127,92 +123,29 @@ a{color:inherit;text-underline-offset:.2em}
 .foot{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:24px clamp(16px,4vw,44px);border-top:1px solid var(--ink-5);font-size:14px;color:var(--ink-2)}
 
 
-/* ── Fonts under test ── */
-:root{--splat-white:#fbf8f2;--f-helv:"Helvetica Neue",Helvetica,"Inter Tight",Arial,sans-serif;--f-plex:"IBM Plex Mono",ui-monospace,Menlo,monospace}
-
-/* ════ 墨池 (two font variants share one page) ════ */
-.d3{position:relative;isolation:isolate;cursor:crosshair}
-.d3 a,.d3 button{cursor:pointer}
-.d3>*:not(.splat-layer):not(.water-layer){position:relative;z-index:1}
-.splat-layer{position:absolute;left:0;top:0;width:100%;z-index:0;pointer-events:none}
+/* ── The page ── */
+:root{--f-helv:"Helvetica Neue",Helvetica,"Inter Tight",Arial,sans-serif}
+.d3{position:relative;isolation:isolate;font-family:var(--f-helv)}
+.d3>*:not(.water-layer){position:relative;z-index:1}
 .water-layer{position:absolute;left:0;top:0;width:100%;height:100%;z-index:0;pointer-events:none}
-.d3 .hero{position:relative;min-height:380px;display:grid;align-content:end;padding:28px clamp(16px,4vw,44px) 32px;overflow:hidden}
+.d3 .nav b{font:500 17px/1 var(--f-helv);letter-spacing:-.01em}
+/* The hero: the type sits in the painting's blank sky, top left, and the ranges are kept below it (skyLimit in the script). */
+.d3 .hero{position:relative;min-height:clamp(470px,47vw,560px);display:grid;align-content:start;padding:30px clamp(16px,4vw,44px) 32px;overflow:hidden}
 .d3 .hero canvas.shan{position:absolute;inset:0;width:100%;height:100%}
-.d3 .hero .txt{position:relative;pointer-events:none;max-width:40em}
-.d3 .hint{position:absolute;right:clamp(16px,4vw,44px);top:14px;font:400 12px var(--f-mono);color:var(--ink-3)}
+.d3 .hero .txt{position:relative;max-width:40em}
+.d3 .hero h1{font:500 clamp(32px,4.8vw,58px)/1.02 var(--f-helv);letter-spacing:-.025em;max-width:11.5em;text-wrap:balance}
+.d3 .hero h1 i{font-style:normal;color:var(--seal)}
+.d3 .sec{border-top-color:transparent;background:linear-gradient(var(--ink-5),var(--ink-5)) top/100% 1px no-repeat}
+.d3 .sec-h h2{font:500 clamp(24px,3vw,34px)/1.08 var(--f-helv);letter-spacing:-.018em}
 .d3 .exp{font:500 11.5px/1 var(--f-mono);letter-spacing:.08em;color:var(--seal)}
 .d3 .readout{display:flex;flex-wrap:wrap;gap:6px 20px;font:400 12px var(--f-mono);color:var(--ink-3);margin:-8px 0 18px}
 .d3 .readout b{color:var(--ink);font-weight:500}
 .d3 .fig-scroll svg{background:color-mix(in srgb,var(--paper-2) 82%,transparent);border:1px solid var(--ink-5);border-radius:4px}
 .d3 .fig-wrap figcaption{font:400 12.5px/1.5 var(--f-mono);color:var(--ink-3)}
 .d3 .fig-wrap figcaption b{color:var(--ink);font-weight:500}
-.d3 .sec{border-top-color:transparent;background:linear-gradient(var(--ink-5),var(--ink-5)) top/100% 1px no-repeat}
+.d3 .fig text{font-family:var(--f-helv)}
 
-.v-helv{font-family:var(--f-helv)}
-.v-helv .nav b{font:500 17px/1 var(--f-helv);letter-spacing:-.01em}
-.v-helv .hero h1{font:500 clamp(32px,4.8vw,58px)/1.02 var(--f-helv);letter-spacing:-.025em;max-width:15em;text-wrap:balance}
-.v-helv .hero h1 i{font-style:normal;color:var(--seal)}
-.v-helv .sec-h h2{font:500 clamp(24px,3vw,34px)/1.08 var(--f-helv);letter-spacing:-.018em}
-.v-helv .fig text{font-family:var(--f-helv)}
-
-.v-mono{font-family:var(--f-plex)}
-.v-mono .nav b{font:600 15px/1 var(--f-plex)}
-.v-mono .nav{font:400 13px var(--f-plex)}
-.v-mono .hero h1{font:500 clamp(26px,3.6vw,44px)/1.12 var(--f-plex);letter-spacing:-.02em;max-width:18em;text-wrap:balance}
-.v-mono .hero h1::before{content:"> ";color:var(--ink-4)}
-.v-mono .hero h1 i{font-style:normal;color:var(--seal)}
-.v-mono .sec-h h2{font:500 clamp(19px,2.3vw,26px)/1.2 var(--f-plex);letter-spacing:-.01em}
-.v-mono .fig-wrap figcaption,.v-mono .readout,.v-mono .exp,.v-mono .hint,.v-mono .mono,.v-mono .status{font-family:var(--f-plex)}
-.v-mono .foot,.v-mono .cap{font-family:var(--f-plex);font-size:13px}
-
-/* ════ 山水: the Helvetica page with no ink. Water lies under the whole page, and the type sits in the blank sky,
-   top left, with the ranges kept below it. ════ */
-.v-sky{cursor:auto}
-.v-sky .hero{align-content:start;min-height:clamp(470px,47vw,560px);padding-top:30px}
-.v-sky .hero h1{max-width:11.5em}
-
-/* ════ 手卷 (kept for comparison) ════ */
-.d1 .hero{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:20px;padding:20px clamp(16px,4vw,44px) 0}
-.d1 .hero h1{font:300 clamp(28px,4vw,48px)/1.1 var(--f-serif);letter-spacing:-.015em;max-width:15em;text-wrap:balance}
-.d1 .hero h1 em{color:var(--ink-3)}
-.d1 .yinshou{writing-mode:vertical-rl;font:400 clamp(40px,5vw,64px)/1 var(--f-brush);display:flex;gap:12px}
-.d1 .yinshou .seal{writing-mode:horizontal-tb;width:40px;height:40px;font-size:18px}
-.d1 canvas.shan{display:block;width:100%;height:260px;grid-column:1/-1}
-.d1 .sec-h .num{font:400 30px/1 var(--f-brush);color:var(--seal)}
-.d1 .fig-wrap .fig-scroll{background:var(--paper-3);padding:10px;border-radius:2px}
-.d1 .fig-wrap .fig-scroll svg{background:var(--paper)}
-@media (max-width:820px){.d1 .hero{grid-template-columns:minmax(0,1fr)}.d1 .yinshou{writing-mode:horizontal-tb;font-size:36px}}
-
-.ov-thumb{height:170px}
-.ov-thumb canvas{position:absolute;inset:0;width:100%;height:100%}
-.ov-word{position:absolute;left:16px;bottom:14px;font-size:22px;color:var(--ink);letter-spacing:-.01em}
-.facts-mini{margin-top:18px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
-.facts-mini div{border-top:1px solid var(--ink);padding-top:8px;font-size:14px;color:var(--ink-2)}
-.facts-mini b{display:block;color:var(--ink);font-size:13px;margin-bottom:2px}
-@media (max-width:820px){.facts-mini{grid-template-columns:minmax(0,1fr)}}
-
-/* 墨池 原版: the round-2 page, unchanged, in a frame sized to its content */
-.orig{display:block;width:100%;height:2400px;border:0;margin:0}
-
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--splat-white:#f1ece2}}
-:root[data-theme="dark"]{--splat-white:#f1ece2}
-
-.ov-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
-.ov-card{display:grid;grid-template-rows:auto 1fr;border:1px solid var(--ink-5);border-radius:6px;overflow:hidden;text-decoration:none}
-.ov-card:hover h3{text-decoration:underline}
-.ov-thumb{height:140px;overflow:hidden;border-bottom:1px solid var(--ink-5);position:relative}
-.ov-body{padding:14px 16px 16px;display:grid;gap:6px;align-content:start}
-.ov-body h3{font:400 21px/1.2 var(--f-serif)}
-.ov-body h3 .cn{font-family:var(--f-brush);color:var(--seal);margin-right:8px}
-.ov-body p{font-size:14px;color:var(--ink-2)}
-.pick{margin-top:18px;padding:16px 18px;border:1.5px solid var(--seal);border-radius:6px;display:flex;gap:16px;align-items:center}
-.pick .seal{width:48px;height:48px;font-size:24px}
-.pick p{color:var(--ink-2);font-size:14.5px}
-.pick b{color:var(--ink)}
-.changes{margin-top:18px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
-.changes div{border-top:1px solid var(--ink);padding-top:8px;font-size:14px;color:var(--ink-2)}
-.changes b{display:block;color:var(--ink);font-size:13px;margin-bottom:2px}
-@media (max-width:820px){.ov-grid,.changes{grid-template-columns:minmax(0,1fr)}}
+/* ── Notes tabs ── */
 .section-title{font:400 clamp(22px,2.8vw,30px)/1.2 var(--f-serif);margin-bottom:6px}
 .tbl-wrap{overflow-x:auto;margin-top:14px;border:1px solid var(--ink-5);border-radius:6px}
 table{border-collapse:collapse;width:100%;min-width:760px;font-size:13.5px}
@@ -249,14 +182,9 @@ tr.rec td:first-child{box-shadow:inset 3px 0 0 var(--seal)}
 
 <header class="bar">
   <div class="wrap bar-in">
-    <div class="bar-title"><span class="chop">磨</span> Portfolio directions <small>11-20 · v4</small></div>
-    <nav class="tabs" aria-label="Directions">
-      <a href="#overview">总览</a>
+    <div class="bar-title"><span class="chop">磨</span> Home page <small>山水 Helvetica · 方向定于 2026-11-20，内容打磨中</small></div>
+    <nav class="tabs" aria-label="Views">
       <a href="#shan-helv"><span class="cn">山水</span>Helvetica</a>
-      <a href="#ink-helv"><span class="cn">墨池</span>Helvetica</a>
-      <a href="#ink-mono"><span class="cn">墨池</span>Mono</a>
-      <a href="#ink-orig"><span class="cn">墨池</span>原版</a>
-      <a href="#scroll"><span class="cn">手卷</span></a>
       <a href="#demo">Demo</a>
       <a href="#facts">待定</a>
     </nav>
@@ -264,109 +192,15 @@ tr.rec td:first-child{box-shadow:inset 3px 0 0 var(--seal)}
 </header>
 
 <main>
-<section class="view wrap" data-view="overview">
-  <div class="brief"><h1>墨池两版，换的只是字体</h1><p>印谱和朱批去掉了。首图改成山水笔触，墨池整页点哪里都滴一滴墨，像上一版那样在水里晕开（黑、红，少量白）。图沿用上一版。</p></div>
-  <div class="ov-grid">
-    <a class="ov-card" href="#ink-helv">
-      <div class="ov-thumb"><canvas class="ov-shan" data-seed="7"></canvas><span class="ov-word" style="font-family:var(--f-helv);font-weight:500">A planner that listens.</span></div>
-      <div class="ov-body"><h3><span class="cn">墨池</span>Helvetica</h3><p>Media Lab 的品牌字体。Mac 上显示真的 Helvetica Neue，别的设备退到免费的 Inter Tight。</p></div>
-    </a>
-    <a class="ov-card" href="#ink-mono">
-      <div class="ov-thumb"><canvas class="ov-shan" data-seed="7"></canvas><span class="ov-word" style="font-family:var(--f-plex)">A planner that listens.</span></div>
-      <div class="ov-body"><h3><span class="cn">墨池</span>Mono</h3><p>整页用 IBM Plex Mono，像终端和实验记录。标题也是等宽字。</p></div>
-    </a>
-  </div>
-  <div class="facts-mini">
-    <div><b>Media Lab 用的字体</b>Pentagram 2014 年给 Media Lab 做的品牌系统用 Helvetica（另有一套没公开名字的网格字形只用在标志上）。现在 media.mit.edu 的样式表我这边读不到，网站正文是不是还用 Helvetica 没法确认。</div>
-    <div><b>授权</b>Helvetica 是 Linotype 的商业字体，不能免费嵌进网页。这版的字体栈是 Helvetica Neue → Helvetica → Inter Tight：装了 Helvetica 的设备（Mac、iPhone）显示原字，其他退到 Inter Tight。</div>
-    <div><b>点击散墨</b>两版墨池的页面上，点空白处滴一滴墨，一圈圈晕开后停住，黑多、红少、偶尔白，越点越多。点链接和按钮不会落墨。</div>
-  </div>
-</section>
-
-<section class="view wrap" data-view="shan-helv" hidden>
-  <div class="brief"><h1><span class="cn">山水</span>Helvetica</h1><p>墨池 Helvetica 去掉落墨：整页背景是一层很淡的水波，标题挪到左上角的留白里，山让开字。</p>
-    <div class="chips"><span><b>字</b> Helvetica Neue → Inter Tight（免费替代）</span><span><b>首图</b> 山水在下和右，字在左上的天空里</span><span><b>背景</b> 整页淡蓝水波，一直在动</span><span><b>互动</b> 没有</span></div></div>
-  <div class="frame"><div class="frame-bar"><i></i><i></i><i></i><span>Mars Chu · portfolio</span></div><div class="slot" data-variant="v-helv v-sky" data-ink="off" data-water="on"></div></div>
-</section>
-
-<section class="view wrap" data-view="ink-helv" hidden>
-  <div class="brief"><h1><span class="cn">墨池</span>Helvetica</h1><p>Media Lab 的品牌字体，标题 500、正文 400，读数仍用等宽。</p>
-    <div class="chips"><span><b>字</b> Helvetica Neue → Inter Tight（免费替代）</span><span><b>首图</b> 山水，干笔皴擦</span><span><b>互动</b> 点页面任何空白处散墨</span></div></div>
-  <div class="frame"><div class="frame-bar"><i></i><i></i><i></i><span>Mars Chu · portfolio · click anywhere</span></div><div class="slot" data-variant="v-helv"></div></div>
-</section>
-
-<section class="view wrap" data-view="ink-mono" hidden>
-  <div class="brief"><h1><span class="cn">墨池</span>Mono</h1><p>同一页，整页换成 IBM Plex Mono。图里的字保持无衬线，好读。</p>
-    <div class="chips"><span><b>字</b> IBM Plex Mono（免费，OFL）</span><span><b>首图</b> 山水，干笔皴擦</span><span><b>互动</b> 点页面任何空白处散墨</span></div></div>
-  <div class="frame"><div class="frame-bar"><i></i><i></i><i></i><span>Mars Chu · portfolio · click anywhere</span></div><div class="slot" data-variant="v-mono"></div></div>
-</section>
-
-<section class="view wrap" data-view="ink-orig" hidden>
-  <iframe class="orig" src="ink-original.html#ink" title="墨池 original version"></iframe>
-</section>
-
-<section class="view wrap" data-view="scroll" hidden>
-  <div class="brief"><h1><span class="cn">手卷</span>The Handscroll</h1><p>保留做对照：同一张山水首图放在手卷版式里。</p></div>
+<section class="view wrap" data-view="shan-helv">
+  <div class="brief"><h1><span class="cn">山水</span>Helvetica</h1><p>首页。整页背景是一层很淡的水波；标题在山水左上角的留白里，山在下和右，不压字。</p>
+    <div class="chips"><span><b>字</b> Helvetica Neue → Inter Tight（免费替代）</span><span><b>首图</b> 山水，干笔皴擦；字在左上的天空里</span><span><b>背景</b> 整页淡蓝水波，一直在动</span><span><b>互动</b> 没有</span></div></div>
   <div class="frame"><div class="frame-bar"><i></i><i></i><i></i><span>Mars Chu · portfolio</span></div>
-  <div class="site d1 grain">
-    <div class="nav"><b>Mars Chu</b><span><a>Workbench</a><a>Work</a><a>About</a></span></div>
-    <div class="hero">
-      <div><p class="mono">Full-stack engineer · 2025 – 2026</p><h1>One tool I use every day, <em>and the three jobs that taught me to build it.</em></h1></div>
-      <div class="yinshou">一卷<span class="seal">磨</span></div>
-      <canvas class="shan" data-seed="7"></canvas>
-    </div>
-    <div class="sec"><div class="sec-h"><span class="num">壹</span><h2>Mars Workbench</h2><span class="status st-built">Built</span></div>
-      <div class="pair"><figure class="fig-wrap" data-fig="board"><figcaption><b>The board.</b> Habits, project steps and one-offs in one week.</figcaption></figure><figure class="fig-wrap" data-fig="mcp"><figcaption><b>Plan with Claude.</b> It recaps, asks, then writes, over MCP.</figcaption></figure></div></div>
-    <div class="sec"><div class="sec-h"><span class="num">贰</span><h2>How it changed</h2></div><figure class="fig-wrap" data-fig="evolution"><figcaption>Each version took one thing away.</figcaption></figure></div>
-    <div class="sec"><p class="cap">The rest of the page matches 墨池: Phase 2, the harness, diary → painting and the three jobs.</p></div>
-  </div></div>
-</section>
-
-
-<section class="view wrap" data-view="demo" hidden>
-  <h2 class="section-title">Demo 怎么做</h2>
-  <p class="cap">读者几分钟、常用手机。点越多越好；成本一列点越多越便宜。</p>
-  <div class="tbl-wrap"><table>
-    <thead><tr><th>做法</th><th>给看什么</th><th>几秒看懂</th><th>手机</th><th>成本</th><th>风险</th></tr></thead>
-    <tbody>
-      <tr class="rec"><td><b>短循环 / 带字幕片段</b></td><td>看板、Projects、Priorities</td><td class="dots">●●●●●</td><td class="dots">●●●●●</td><td class="dots">●●●●<i>●</i></td><td>功能改了要重录</td></tr>
-      <tr class="rec"><td><b>MCP 对话回放</b></td><td>Plan with Claude</td><td class="dots">●●●●<i>●</i></td><td class="dots">●●●●<i>●</i></td><td class="dots">●●●●<i>●</i></td><td>从真实对话摘，删私人内容</td></tr>
-      <tr class="rec"><td><b>嵌入 Phase 2 mockup</b></td><td>Phase 2，标 Designed</td><td class="dots">●●●<i>●●</i></td><td class="dots">●●●<i>●●</i></td><td class="dots">●●●●●</td><td>mockup 里还有已去掉的 Daily</td></tr>
-      <tr class="rec"><td><b>Pipeline 回放</b></td><td>Diary → Painting，读 meta.json</td><td class="dots">●●●●<i>●</i></td><td class="dots">●●●●<i>●</i></td><td class="dots">●●●●<i>●</i></td><td>要几篇能公开的日记</td></tr>
-      <tr><td><b>截图轮播</b></td><td>静态界面</td><td class="dots">●●●<i>●●</i></td><td class="dots">●●●●●</td><td class="dots">●●●●●</td><td>看不出交互</td></tr>
-      <tr><td><b>站内可交互组件</b></td><td>tap 完成、扔进 ring</td><td class="dots">●●●●<i>●</i></td><td class="dots">●●●<i>●●</i></td><td class="dots">●<i>●●●●</i></td><td>要移植 daisyUI 组件</td></tr>
-      <tr><td><b>Live sandbox</b></td><td>整个 app</td><td class="dots">●●<i>●●●</i></td><td class="dots">●●●<i>●●</i></td><td class="dots">●<i>●●●●</i></td><td>登录、数据重置、滥用</td></tr>
-    </tbody>
-  </table></div>
-  <ol class="rec-list">
-    <li><b>App 顶上：</b>10 秒无声循环，tap 一张卡飞进今天的 ring。</li>
-    <li><b>做好的页面：</b>各一段 20–40 秒带字幕片段，放在上面的图旁边。</li>
-    <li><b>Plan with Claude：</b>真实对话回放，工具调用用红字。</li>
-    <li><b>Phase 2：</b>直接嵌 mockup，标 Designed。</li>
-    <li><b>Diary → Painting：</b>读 snapshot 一步步亮起，最后出图。不做 sandbox。</li>
-  </ol>
-</section>
-
-
-
-<section class="view wrap" data-view="facts" hidden>
-  <h2 class="section-title">图里的数据从哪来，哪些要你定</h2>
-  <div class="q"><span>字</span><div><b>Media Lab 的字体</b>出处：<a href="https://www.pentagram.com/work/mit-media-lab/story">Pentagram 的项目页</a>写着 “Helvetica … has been reinstated to support the overall system”；<a href="https://www.dezeen.com/2014/10/29/pentagram-mit-media-lab-rebrand-visual-identity/">Dezeen 2014</a> 说网格生成了一套自定义字形，但大部分文字用 Helvetica。现在网站正文用什么，我没读到它的 CSS，没法确认。</div></div>
-  <div class="q"><span>图</span><div><b>Work 三张</b>来自 mars-portfolio 的 mockup-site-thumbnails。<b>App 六张</b>是按 README、Phase 2 spike、git log 和 emotion-painting PR 画的示意图，不是截图。</div></div>
-  <div class="q"><span>Q1</span><div><b>Jarvis 是不是第一阶段那个风控内部工具？</b>legacy 那张图是按这个对上的。</div></div>
-  <div class="q"><span>Q2</span><div><b>POC 写 finished 还是 working proof of concept？</b>现在是后者。</div></div>
-  <div class="q"><span>Q3</span><div><b>真截图</b>还在等，你本机截了发我就换。</div></div>
-</section>
-</main>
-
-<template id="ink-site">
   <div class="site d3">
-    <canvas class="splat-layer" aria-hidden="true"></canvas>
     <div class="nav"><b>Mars Chu</b><span><a>Workbench</a><a>Work</a><a>About</a></span></div>
     <div class="hero">
       <canvas class="shan" data-seed="7" aria-label="An ink landscape of layered mountains"></canvas>
-      <span class="hint">click anywhere to scatter ink</span>
-      <div class="txt"><p class="mono">Mars Chu · full-stack engineer</p><h1>A planner that listens before it plans, <i>and is learning to paint.</i></h1></div>
+      <div class="txt"><p class="mono">Full-stack engineer</p><h1>A planner that listens before it plans, <i>and is learning to paint.</i></h1></div>
     </div>
     <div class="sec">
       <div class="sec-h"><span class="exp">EXP. 01</span><h2>Mars Workbench</h2><span class="status st-built">Built</span></div>
@@ -405,7 +239,44 @@ tr.rec td:first-child{box-shadow:inset 3px 0 0 var(--seal)}
     </div>
     <div class="foot"><span>Mars Chu · <a>CV</a> · <a>GitHub</a> · <a>Email</a></span><span class="cap">Every mark on this page is drawn by code.</span></div>
   </div>
-</template>
+  </div>
+</section>
+
+<section class="view wrap" data-view="demo" hidden>
+  <h2 class="section-title">Demo 怎么做</h2>
+  <p class="cap">读者几分钟、常用手机。点越多越好；成本一列点越多越便宜。</p>
+  <div class="tbl-wrap"><table>
+    <thead><tr><th>做法</th><th>给看什么</th><th>几秒看懂</th><th>手机</th><th>成本</th><th>风险</th></tr></thead>
+    <tbody>
+      <tr class="rec"><td><b>短循环 / 带字幕片段</b></td><td>看板、Projects、Priorities</td><td class="dots">●●●●●</td><td class="dots">●●●●●</td><td class="dots">●●●●<i>●</i></td><td>功能改了要重录</td></tr>
+      <tr class="rec"><td><b>MCP 对话回放</b></td><td>Plan with Claude</td><td class="dots">●●●●<i>●</i></td><td class="dots">●●●●<i>●</i></td><td class="dots">●●●●<i>●</i></td><td>从真实对话摘，删私人内容</td></tr>
+      <tr class="rec"><td><b>嵌入 Phase 2 mockup</b></td><td>Phase 2，标 Designed</td><td class="dots">●●●<i>●●</i></td><td class="dots">●●●<i>●●</i></td><td class="dots">●●●●●</td><td>mockup 里还有已去掉的 Daily</td></tr>
+      <tr class="rec"><td><b>Pipeline 回放</b></td><td>Diary → Painting，读 meta.json</td><td class="dots">●●●●<i>●</i></td><td class="dots">●●●●<i>●</i></td><td class="dots">●●●●<i>●</i></td><td>要几篇能公开的日记</td></tr>
+      <tr><td><b>截图轮播</b></td><td>静态界面</td><td class="dots">●●●<i>●●</i></td><td class="dots">●●●●●</td><td class="dots">●●●●●</td><td>看不出交互</td></tr>
+      <tr><td><b>站内可交互组件</b></td><td>tap 完成、扔进 ring</td><td class="dots">●●●●<i>●</i></td><td class="dots">●●●<i>●●</i></td><td class="dots">●<i>●●●●</i></td><td>要移植 daisyUI 组件</td></tr>
+      <tr><td><b>Live sandbox</b></td><td>整个 app</td><td class="dots">●●<i>●●●</i></td><td class="dots">●●●<i>●●</i></td><td class="dots">●<i>●●●●</i></td><td>登录、数据重置、滥用</td></tr>
+    </tbody>
+  </table></div>
+  <ol class="rec-list">
+    <li><b>App 顶上：</b>10 秒无声循环，tap 一张卡飞进今天的 ring。</li>
+    <li><b>做好的页面：</b>各一段 20–40 秒带字幕片段，放在上面的图旁边。</li>
+    <li><b>Plan with Claude：</b>真实对话回放，工具调用用红字。</li>
+    <li><b>Phase 2：</b>直接嵌 mockup，标 Designed。</li>
+    <li><b>Diary → Painting：</b>读 snapshot 一步步亮起，最后出图。不做 sandbox。</li>
+  </ol>
+</section>
+
+<section class="view wrap" data-view="facts" hidden>
+  <h2 class="section-title">图里的数据从哪来，哪些要你定</h2>
+  <div class="q"><span>字</span><div><b>Media Lab 的字体</b>出处：<a href="https://www.pentagram.com/work/mit-media-lab/story">Pentagram 的项目页</a>写着 “Helvetica … has been reinstated to support the overall system”；<a href="https://www.dezeen.com/2014/10/29/pentagram-mit-media-lab-rebrand-visual-identity/">Dezeen 2014</a> 说网格生成了一套自定义字形，但大部分文字用 Helvetica。现在网站正文用什么，我没读到它的 CSS，没法确认。</div></div>
+  <div class="q"><span>图</span><div><b>Work 三张</b>来自 mars-portfolio 的 mockup-site-thumbnails。<b>App 六张</b>是按 README、Phase 2 spike、git log 和 emotion-painting PR 画的示意图，不是截图。</div></div>
+  <div class="q"><span>Q1</span><div><b>Jarvis 是不是第一阶段那个风控内部工具？</b>legacy 那张图是按这个对上的。</div></div>
+  <div class="q"><span>Q2</span><div><b>POC 写 finished 还是 working proof of concept？</b>现在是后者。</div></div>
+  <div class="q"><span>Q3</span><div><b>真截图</b>还在等，你本机截了发我就换。</div></div>
+</section>
+</main>
+
+
 
 <script>
 
@@ -607,14 +478,13 @@ tr.rec td:first-child{box-shadow:inset 3px 0 0 var(--seal)}
     {base:.74,amp:.42,alpha:.38,bristles:3,texture:.5,moss:.4,peaks:[[.06,.55,.06,.07],[.47,.95,.08,.06],[.82,.7,.07,.09]]},
     {base:1.02,amp:.6,alpha:.9,bristles:5,texture:1,moss:1,trees:true,peaks:[[.72,1,.07,.05],[.9,.62,.05,.06],[.26,.42,.09,.1]]},
   ];
-  /* In the 山水 layout the type sits in the sky, so the ranges must stay under it. This returns, for every x across
+  /* The hero's type sits in the painting's sky, so the ranges must stay under it. This returns, for every x across
      the painting, the height nothing may rise above: a margin below the lowest line of type over that x, easing back
      to no limit at all to the right of the type, where the tall peaks stand. It also says how firmly the limit
-     holds at each x (1 under the type, 0 well clear of it) and where its lowest point is. Elsewhere it returns
-     nothing. */
+     holds at each x (1 under the type, 0 well clear of it) and where its lowest point is. */
   const SKY_MARGIN=40,SKY_EASE=230;
   function skyLimit(canvas,box,W){
-    const txt=canvas.closest('.v-sky')?.querySelector('.hero .txt');if(!txt)return null;
+    const txt=canvas.parentElement.querySelector('.txt');if(!txt)return null;
     const limit=new Float32Array(Math.ceil(W)+16),range=document.createRange(),walker=document.createTreeWalker(txt,NodeFilter.SHOW_TEXT);
     while(walker.nextNode()){
       if(!walker.currentNode.nodeValue.trim())continue;
@@ -712,36 +582,8 @@ tr.rec td:first-child{box-shadow:inset 3px 0 0 var(--seal)}
     });
   }
 
-  /* ── Click anywhere: an ink drop that spreads in water (the round-2 pond), now over the whole page.
-     Each drop is five translucent, wobbling rings that grow out from the click and settle; most are black,
-     some red, a few white that lighten whatever ink is under them. Drops stay until the page reloads. ── */
-  const DROP_LIMIT=120;
-  function pond(site){
-    const cv=site.querySelector('.splat-layer'),dpr=Math.min(2,devicePixelRatio||1),drops=[];let W=0,H=0,g;
-    function size(){W=site.clientWidth;H=site.offsetHeight;cv.style.height=H+'px';cv.width=W*dpr;cv.height=H*dpr;g=cv.getContext('2d');g.setTransform(dpr,0,0,dpr,0,0)}
-    function add(x,y){const roll=Math.random();drops.push({x,y,max:30+Math.random()*60,tone:roll<.62?'ink':roll<.86?'seal':'white',age:0,seed:Math.random()*10});if(drops.length>DROP_LIMIT)drops.shift()}
-    function draw(){
-      g.clearRect(0,0,W,H);const color={ink:css('--ink'),seal:css('--seal'),white:css('--splat-white')},boost={ink:1,seal:1.4,white:2.2};
-      drops.forEach(drop=>{const progress=Math.min(1,drop.age/90),radius=drop.max*(1-Math.pow(1-progress,3));
-        for(let ring=0;ring<5;ring++){const ringRadius=radius*(1-ring*.16);g.beginPath();
-          for(let step=0;step<=40;step++){const angle=step/40*Math.PI*2,wobble=1+.12*Math.sin(angle*5+drop.seed+ring)+.06*Math.sin(angle*11+drop.seed),px=drop.x+Math.cos(angle)*ringRadius*wobble,py=drop.y+Math.sin(angle)*ringRadius*wobble*.82;step?g.lineTo(px,py):g.moveTo(px,py)}
-          g.closePath();g.globalAlpha=.1*(1-ring*.12)*boost[drop.tone];g.fillStyle=color[drop.tone];g.fill()}
-        drop.age++});
-      g.globalAlpha=1;
-    }
-    let raf=null;const loop=()=>{draw();raf=drops.some(drop=>drop.age<120)?requestAnimationFrame(loop):null};
-    const settle=()=>{drops.forEach(drop=>drop.age=200);draw()};
-    size();
-    site.addEventListener('pointerdown',event=>{
-      if(event.target.closest('a,button'))return;
-      const box=site.getBoundingClientRect();add(event.clientX-box.left,event.clientY-box.top);
-      if(reduce)settle();else if(!raf)loop();
-    });
-    new ResizeObserver(()=>{if(site.clientWidth!==W||site.offsetHeight!==H){size();settle()}}).observe(site);
-  }
-
-  /* ── Water under the whole page (the 山水 version) ──
-     A faint blue wash with ripples moving through it, the same water as the 墨池 原版 hero: two long swells, three
+  /* ── Water under the whole page ──
+     A faint blue wash with ripples moving through it: two long swells, three
      sets of ripples rolling slowly down the page with their crests lying across, and rings that keep widening from
      points scattered down it, fainter the further they travel. A crest is a thin line where the wash deepens;
      between crests it thins. It is worked out on a coarse grid that the browser scales up, and only the rows on
@@ -809,25 +651,19 @@ tr.rec td:first-child{box-shadow:inset 3px 0 0 var(--seal)}
   }
 
   /* ── Tabs ── */
-  const views=[...document.querySelectorAll('[data-view]')],links=[...document.querySelectorAll('.tabs a')],started={};
-  const repaint=()=>document.querySelectorAll('canvas.shan,canvas.ov-shan').forEach(canvas=>{if(canvas.offsetParent)shanshui(canvas)});
+  const views=[...document.querySelectorAll('[data-view]')],links=[...document.querySelectorAll('.tabs a')],started={},HOME='shan-helv';
+  const repaint=()=>document.querySelectorAll('canvas.shan').forEach(canvas=>{if(canvas.offsetParent)shanshui(canvas)});
   function start(name){
     const root=document.querySelector('[data-view="'+name+'"]');
     if(!started[name]){
       started[name]=true;
-      const slot=root.querySelector('.slot');
-      if(slot){
-        slot.append(document.getElementById('ink-site').content.cloneNode(true));
-        const site=slot.querySelector('.site');site.classList.add(...slot.dataset.variant.split(' '));
-        if(slot.dataset.ink==='off')site.querySelectorAll('.splat-layer,.hint').forEach(part=>part.remove());else pond(site);
-        if(slot.dataset.water==='on')water(site);
-      }
       window.drawFigures(root);
+      const site=root.querySelector('.site');if(site)water(site);
     }
     repaint();
   }
   function show(){
-    const name=(location.hash||'#overview').slice(1),target=views.some(view=>view.dataset.view===name)?name:'overview';
+    const name=(location.hash||'#'+HOME).slice(1),target=views.some(view=>view.dataset.view===name)?name:HOME;
     views.forEach(view=>{view.hidden=view.dataset.view!==target});
     links.forEach(link=>{if(link.getAttribute('href')==='#'+target)link.setAttribute('aria-current','page');else link.removeAttribute('aria-current')});
     if(location.hash)window.scrollTo(0,0);
@@ -837,10 +673,6 @@ tr.rec td:first-child{box-shadow:inset 3px 0 0 var(--seal)}
   let resizeTimer;addEventListener('resize',()=>{clearTimeout(resizeTimer);resizeTimer=setTimeout(repaint,150)});
   matchMedia('(prefers-color-scheme: dark)').addEventListener?.('change',repaint);
   document.fonts?.ready.then(repaint);
-  /* The original 墨池 is the round-2 page as it was, in a frame; the frame grows to that page's height. */
-  document.querySelectorAll('iframe.orig').forEach(frame=>frame.addEventListener('load',()=>{
-    try{const doc=frame.contentDocument,fit=()=>{frame.style.height=doc.documentElement.scrollHeight+'px'};fit();new ResizeObserver(fit).observe(doc.body)}catch(error){}
-  }));
   show();
 })();
 
