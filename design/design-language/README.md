@@ -2,6 +2,20 @@
 
 The site's visual language: two themes over one variable contract, its type and its few motifs, and the owner's Principles that every design is judged by. Implemented in `src/app/globals.css`. How it was chosen, with its research: `design/spike/personal-site.md` › 视觉语言.
 
+## Colour
+
+The owner's rules (2026-11-24), which every page and every theme follows:
+
+- The main colours are black, white and red.
+- Black and white are the background and the text, each the other's contrast.
+- Red is the accent.
+- Every other colour is only a small touch.
+- Details may be refined, such as the role words in About, but the body stays simple and keeps visual consistency.
+
+> 主体色是黑白红，黑白做背景和文字互为对比，红色是强调色。其他颜色只做点缀，细节可以精致比如那些role，但是主体要简单并且keep visual consistency。
+
+How the palette below maps onto the v1 page's colours is still open (`design/spike/page-skeleton.md` Q5).
+
 ## Themes
 
 Two themes, **paper** (light) and **ink** (dark), declaring the same variables (`npm run check:themes`). With no `data-theme` on `<html>`, the page follows the system. Colour is by role, never by palette: the body text is `ink-strong`, a note is `ink-mid`, a rule is `ink-faint`.
@@ -16,7 +30,7 @@ Two themes, **paper** (light) and **ink** (dark), declaring the same variables (
 | `--ink-faint` | `#d7d6d2` | 1.3 | `#313336` | 1.4 | hairlines, far mountains; never text |
 | `--indigo` | `#3d5a6c` | 6.6 | `#9dbccd` | 9.1 | far mountains; a figure's direction |
 | `--umber` | `#8a5a3c` | 5.3 | `#d1a283` | 7.9 | the messy side of a figure |
-| `--seal` | `#b8322a` | 5.4 | `#e8695a` | 5.7 | the seal, the one red on a page |
+| `--seal` | `#b8322a` | 5.4 | `#e8695a` | 5.7 | the red: the accent (Colour) |
 
 The five ink tones are 墨分五色 (焦 浓 重 淡 清); indigo and umber are the two tints of 浅绛. The values are darkened for contrast; they are not the pigments' own colours.
 
@@ -30,7 +44,7 @@ The five ink tones are 墨分五色 (焦 浓 重 淡 清); indigo and umber are 
 ## Motifs
 
 - **Mountains drawn by code**: layered ridges, dark at the top fading to paper; one set of parameters per distance (高远, 平远). Never behind running text.
-- **The seal**: the page's signature at its foot, the only red.
+- **The seal**: the page's signature, in the accent red.
 - **Complexity figures**: one per case, Before → After, drawn in the same ink as the page (React SVG components, not images, so they follow the theme and the fonts).
 
 ## Principles
