@@ -1,6 +1,6 @@
 # Design Language
 
-The site's visual language: two themes over one variable contract, its type and its few motifs, and the owner's Principles that every design is judged by. Implemented in `src/app/globals.css`. The page it serves is the v1 mockup (`design/spike/page-skeleton.md`); the palette and type below predate it. The palette gives way to v1's in the page's implementation (the spike's Q5, Q13); the fonts are still open there (Q7).
+The site's visual language: two themes over one variable contract, its type and its few motifs, and the owner's Principles that every design is judged by. Implemented in `src/app/globals.css`. The page it serves is the v1 mockup (`design/spike/page-skeleton.md`); the palette and type below predate it. The palette gives way to v1's in the page's implementation (the spike's Q5, Q13); for the skeleton, the owner chose Geist and Geist Mono throughout, section titles included, and the fonts of the later sections are decided when they are built (Q7).
 
 ## Colour
 

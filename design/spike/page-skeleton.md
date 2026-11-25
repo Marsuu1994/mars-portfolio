@@ -1,6 +1,6 @@
 # Spike: 整页骨架——header、五个 section 占位、滚动进度条、两套主题、背景烟花
 
-**Status: awaiting owner review** · 第 10 轮 2026-11-25（Q1–Q6、Q8–Q15 已答，滚动的行为已定；只剩 Q7）· 设计：v1 mockup（2026-11-24 定档），私有页面 [claude.ai/artifact/6ouKG7ihv9DbuUNAdVK95b](https://claude.ai/artifact/6ouKG7ihv9DbuUNAdVK95b)，还不在仓库里（Q3）
+**Status: awaiting owner review** · 第 11 轮 2026-11-25（Q1–Q15 都已答，等 owner 批准）· 设计：v1 mockup（2026-11-24 定档），私有页面 [claude.ai/artifact/6ouKG7ihv9DbuUNAdVK95b](https://claude.ai/artifact/6ouKG7ihv9DbuUNAdVK95b)，还不在仓库里（Q3）
 
 > 语言约定：叙述用中文；站点的文案、区块名和代码标识保留英文（header、section、rail、sheet、`data-theme`、`paper` / `ink`），和 mockup、spec、代码一一对应。**sheet** 是桌面端页面中间那张更亮的纸；**rail** 是右边的滚动进度条和它的点；**fireworks** 是背景里的铅笔烟花。
 
@@ -108,6 +108,16 @@ Section 后来变高（比如图片晚加载）时要不要重算点的位置，
 - **Q15**：只保证 360px 及以上的手机。比 360px 更窄的（比如 320px）不管，header 照 v1 不收紧，那里放不下也不改。Spec 里那条用 `Left open on purpose` 写明（`design/specs/README.md` › Ordinary use first），以后的 session 不再提。
 - **Q11**：系统打开「减弱动态效果」（`prefers-reduced-motion: reduce`）时，照 v1 画静止的烟花：数量按 section 的个数铺满整页，每个一次画完、不动，跟着页面一起滚。
 
+## Owner 的回答（第 11 轮，2026-11-25）
+
+> 全换geist，之后做其他的再看
+
+回的是 Q7「字体照 v1，还是全换 Geist」。
+
+- **Q7**：骨架全用 Geist，偏离 v1（owner 定）：header 的品牌、链接和 section 标题用 Geist，rail 的标签用 Geist Mono。v1 里各个 section 自己的字体（Source Serif、Nunito、Cormorant Garamond 等）等做到那些 section 时再定。
+- **唯一的例外是印章上的「墨」「纸」**：Geist 没有中文字形。Design language 本来就规定中文用宋体（Type），所以照 v1 用思源宋体（Noto Serif SC，最粗的 900），只带这两个字。做法见技术问题 8 › 印章的字。
+- Geist 的 header 也量过：390px 剩 13px，360px 剩 27px，都放得下（技术问题 7）。
+
 ## 用了哪些标准
 
 `mars-portfolio` 的 harness 本来就是从 `mars-workbench`@`3f741cc`（2026-11-19）复制改写的（`design/spike/archived/site-scaffold.md`）。这次对照 `mars-workbench` 的 `main`（`368bed5`）重读了：
@@ -174,7 +184,7 @@ Section 后来变高（比如图片晚加载）时要不要重算点的位置，
 1. **「印章是页面上唯一的红」**（Motifs、主题表 `--seal` 那一行）。v1 里红不只在印章上：品牌红点、当前链接的下划线、rail 的填充和点、焦点框。按 owner 的「红色是强调色」，本 PR 把这两处改成「红是强调色」，不再说唯一。
 2. **「backgrounds never move」**（Motion）。烟花就是会动的背景，是 v1 定下来的。Owner 第 4 轮定了措辞，本 PR 已改成「纸面不动，背景里只有 fireworks 会动」；reduced motion 下画静止的烟花（Q11，第 10 轮）。
 3. **现有调色板不是 v1 的颜色**。现在的 `paper` / `ink` 是上一版方向的「墨分五色 + 浅绛」，`ink` 主题偏蓝（`#13161b`）；v1 的是暖纸色，黑主题偏暖（`#1a1917`），还多了 desk（底）和 sheet（纸）两层。按 v1 换（Q5、Q13 已定）。
-4. **字体**。v1 的 header 用 Inter Tight，rail 标签用 IBM Plex Mono，section 标题用 Helvetica（About 用 Source Serif 4）；站点现在加载的是 Geist / Geist Mono / Source Serif 4。Q7。
+4. **字体**。v1 的 header 用 Inter Tight，rail 标签用 IBM Plex Mono，section 标题用 Helvetica（About 用 Source Serif 4）；站点现在加载的是 Geist / Geist Mono / Source Serif 4。Owner 定了骨架全用 Geist（Q7，第 11 轮）。
 
 ### v1 颜色的对比度
 
@@ -290,7 +300,7 @@ v1 用了三个断点：900px（以上是 sheet 版式，以下 sheet 铺满）�
 
 - **推荐**在 `globals.css` 的 `@theme` 里加两个有名字的断点：`--breakpoint-sheet: 56.25rem`（900px）和 `--breakpoint-phone: 35rem`（560px），写 `sheet:` 和 `max-phone:`。360px 那一档只有字号差一点，用 `max-[360px]:` 就地写，不单独起名。
 
-**Header 放不放得下**（第 9 轮，owner 要手机上完全不横向滑）：照 v1 的手机 header 量的（16px 边距、8px 红点、五个链接、32px 印章，各部分之间 16px）。字宽用字体文件实际量，Inter Tight 是 v1 的字体，Geist 是 Q7 的另一个选项：
+**Header 放不放得下**（第 9 轮，owner 要手机上完全不横向滑）：照 v1 的手机 header 量的（16px 边距、8px 红点、五个链接、32px 印章，各部分之间 16px）。字宽用字体文件实际量，Geist 是 owner 选的字体（Q7），Inter Tight 是 v1 的，留作对照：
 
 | 宽度 | 链接的字号和间距（v1） | 可用宽度 | 五个链接占 | 剩下（Inter Tight / Geist） |
 | --- | --- | --- | --- | --- |
@@ -316,10 +326,12 @@ v1 用了三个断点：900px（以上是 sheet 版式，以下 sheet 铺满）�
 
 | | 做法 | 好处 | 代价 |
 | --- | --- | --- | --- |
-| **A** · 照 v1 | header 用 Inter Tight，rail 标签用 IBM Plex Mono，section 标题用 Helvetica | 和 mockup 一样 | 再加载两个字体，页面上同时有五六种字体；mockup 自己也记着「标题风格还没统一」 |
-| **B** · 用站点已有的 ✓ | header 和 section 标题用 Geist（和 Inter Tight 同类的无衬线），rail 标签用 Geist Mono；Source Serif 4 留给以后 About 的 punchline | 一家字体，正合 owner 的「主体简单、keep visual consistency」；不多加载 | 和 mockup 有细微出入，要 owner 点头才算偏离 mockup |
+| A · 照 v1 | header 用 Inter Tight，rail 标签用 IBM Plex Mono，section 标题用 Helvetica | 和 mockup 一样 | 再加载两个字体，页面上同时有五六种字体；mockup 自己也记着「标题风格还没统一」 |
+| **B** · 用站点已有的 ✓（owner 选的） | header 和 section 标题用 Geist（和 Inter Tight 同类的无衬线），rail 标签用 Geist Mono；Source Serif 4 留给以后 About 的 punchline | 一家字体，正合 owner 的「主体简单、keep visual consistency」；不多加载 | 和 mockup 有细微出入，要 owner 点头才算偏离 mockup |
 
-v1 是 source of truth，所以**默认 A**。B 和 owner 的「keep visual consistency」更合，但它偏离 v1，只有 owner 说要才换（Q7）。
+**Owner 选了 B**（Q7，第 11 轮），所以这是偏离 v1 的地方。Source Serif 4 还在 `layout.tsx` 里加载，骨架用不到；实现 PR 不动它，等以后的 section 定字体时再看。
+
+**印章的字**：Geist 没有中文。v1 从 Google Fonts 只请求 Noto Serif SC 900 的「墨」「纸」两个字。建站时同样只带这两个字，做成站点自己的字体文件（几 KB），用 `next/font/local` 加载，不在运行时请求 Google；具体 API 实现时按装着的 Next.js 文档核对。另一种是把两个字转成 SVG 路径画在印章里（AGENTS.md 允许品牌标记自己画 SVG），完全不加载字体，但以后换字就要重新转。推荐前者。
 
 **标题**：五个 section 的标题这次用同一个样式（mockup 里 Workbench、Projects、Work 共用的那个：粗体，`clamp(28px, 5vw, 48px)`），文字就是 section 名。页面的 `<h1>` 是视觉上隐藏的 “Mars Chu”，五个标题是 `<h2>`。以后 About 有了 punchline，`<h1>` 换成它。
 
@@ -347,7 +359,7 @@ v1 是 source of truth，所以**默认 A**。B 和 owner 的「keep visual cons
 4. ~~同步 harness~~：已定，先同步，本 PR 已做。
 5. ~~对比度~~：已定，看着舒服就行，4.5:1 不是硬线；muted 用 `#6b665e`。
 6. ~~红用在哪~~：已定，照 v1。
-7. **字体**：默认照 v1（header Inter Tight、rail 标签 IBM Plex Mono、section 标题 Helvetica）。要不要改成站点已有的 Geist + Geist Mono，换一家字体的统一？
+7. ~~字体~~：已定，骨架全用 Geist 和 Geist Mono；印章的「墨」「纸」用只带这两个字的思源宋体。其他 section 的字体到时候再定。
 8. ~~主题按钮~~：已定，红印章，先放 header 最右边；spec 只写「在 header 里」。
 9. ~~记住主题~~：已定，不记住，和 v1 一样。
 10. ~~Radix~~：已定，主题按钮用 Radix 的 `Toggle`。
@@ -362,4 +374,4 @@ v1 是 source of truth，所以**默认 A**。B 和 owner 的「keep visual cons
 - **滚动和烟花都是常驻的 JS**：一个 scroll 监听加一个一直跑的 `requestAnimationFrame`。前者是 passive 加 rAF 节流；后者在手机上持续耗电，实现时量一次再说。
 - **iOS Safari 的视口**：地址栏收起展开会改视口高度。section 用 `100svh`（mockup 就是）不会跳；rail 的点位置在 resize 时重算，会有一帧的轻微移动。CI 只在 Chromium 里模拟手机宽度，真机上的效果需要 owner 截图确认。
 - **`backdrop-filter`** 在低端 Android 上可能卡。Header 只有 56px 高，影响小；不行就退成不透明的底。
-- **Header 在手机上没什么余量**：390px 剩 13–26px（技术问题 7）。以后 header 里再加东西、链接改名变长、或者换更宽的字体，都要重新量；印章换位置时也要重量。
+- **Header 在手机上没什么余量**：用 Geist，390px 只剩 13px（技术问题 7）。以后 header 里再加东西、链接改名变长、或者换更宽的字体，都要重新量；印章换位置时也要重量。
