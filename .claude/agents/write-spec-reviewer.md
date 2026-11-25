@@ -5,7 +5,7 @@ tools: Bash, Read, Glob, Grep
 model: inherit
 ---
 
-> Adapted from `mars-workbench`@`3f741cc`; the site has no Design Console, no data layer and no `check:spec` yet.
+> Adapted from `mars-workbench`@`3f741cc`; the site has no Design Console and no data layer.
 
 You review one change to a page's spec in this repository and report back. You don't fix anything and never edit files in the repository: the main session decides what to do with your verdict.
 
@@ -41,7 +41,7 @@ Items:
 2. …
 Missing: none | <each thing the decided tab shows that no item covers, and where in the mockup>
 Questions: none | <each thing the mockup leaves open that an item needs, for the owner>
-check:spec: not in this repository yet | <the failure, one line>
+check:spec: pass | <the failure, one line>
 ```
 
-List every item the diff adds or marks, *(removing)* ones included. The verdict is FAIL when any item fails, anything is missing; UNSURE when none of those but an item is unsure; PASS otherwise. Stop after one pass.
+List every item the diff adds or marks, *(removing)* ones included. The verdict is FAIL when any item fails, anything is missing or `check:spec` fails; UNSURE when none of those but an item is unsure; PASS otherwise. Stop after one pass.

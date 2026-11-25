@@ -46,4 +46,5 @@ A page with a spec (`design/specs/README.md`) has an ID on every item, and a tes
 - **Name the spec** on the test file's first line: `// Spec: design/specs/home.md`.
 - **Write it from the item's text**: the assertions are the outcomes the item states, read off the item, not off the code under test.
 - **A title names only what the test proves**: for each ID in its title, the test has an assertion that fails when that item breaks.
-- Until `check:spec` is copied (`design/tracker.md`), the reviewer agents check that every item is held by a test that names it.
+- **`npm run check:spec`** (CI) fails when an item no test holds, a `(bug)` item no `it.fails` holds, a title naming an ID its spec doesn't have or one still pending, an item that isn't a `(bug)` held only by an `it.fails`, an ID used twice, or a doc in `design/specs/` with no IDs. A skipped or commented-out test holds nothing, and a `describe.skip` fails the check, since the tests inside would still count.
+- **`npm run check:spec -- --list <page>`** prints the page's items, each with where it stands (held, pending, removing, bug) and the tests holding it. CI writes the same list for every spec into the job summary.

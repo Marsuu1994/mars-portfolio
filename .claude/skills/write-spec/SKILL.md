@@ -1,9 +1,9 @@
 ---
 name: write-spec
-description: Writing a page's spec v2 items from a decided mockup — the new behaviour marked *(pending)*, what it replaces marked *(removing)*, what the mockup leaves open listed for the owner — then reviewed by the write-spec-reviewer agent. Use once a design is decided and its spec isn't written yet, or when the owner asks to write or update the spec for a mockup (写 spec). Not for designing (ui-design), not for building the items (implement-spec), and not for a doc still in `design/specs/legacy.txt`, which is migrated to spec v2 first.
+description: Writing a page's spec v2 items from a decided mockup — the new behaviour marked *(pending)*, what it replaces marked *(removing)*, what the mockup leaves open listed for the owner — then reviewed by the write-spec-reviewer agent. Use once a design is decided and its spec isn't written yet, or when the owner asks to write or update the spec for a mockup (写 spec). Not for designing (ui-design), not for building the items (implement-spec).
 ---
 
-> Adapted from `mars-workbench`@`3f741cc`; the site has no Design Console, no data layer and no `check:spec` yet.
+> Adapted from `mars-workbench`@`3f741cc`; the site has no Design Console and no data layer.
 
 # Write spec — from a decided mockup to pending items
 
@@ -11,10 +11,7 @@ The spec is what the implementation is built and tested against, and the session
 
 ## 1. Read
 
-`.claude/context/write-spec-context.md`, and everything it points to: the standard and the inputs. Stop before writing anything, and tell the owner, when:
-
-- the page is listed in `design/specs/legacy.txt`: the doc is migrated to spec v2 first (`design/specs/README.md` › Legacy docs), a task of its own;
-- nothing in the mockup is marked decided.
+`.claude/context/write-spec-context.md`, and everything it points to: the standard and the inputs. Stop before writing anything, and tell the owner, when nothing in the mockup is marked decided.
 
 When the decided mockup leaves out a case the items need — a state it doesn't draw, such as an empty list, the last one of something or an error — the design isn't finished there. Tell the owner, and offer to draw it first with the `ui-design` skill, rather than writing the item from a guess or asking the owner to pick between behaviours in words.
 
@@ -22,7 +19,7 @@ When the decided mockup leaves out a case the items need — a state it doesn't 
 
 1. **List what the decided mockup shows**, section by section, as `design/specs/README.md` › Writing items from a design › Covers the design sorts it, and set each line beside today's spec. Each line ends up as a new item, a change to a built one, or a question for the owner.
 2. **Write the items** by `design/specs/README.md`: the markers and IDs by Items and IDs, the items themselves by Writing items from a design.
-3. **Check the IDs by hand** until `check:spec` is copied (`design/tracker.md`): every new item has an ID one above its area's highest, and every marker sits before its ID.
+3. **Run `npm run check:spec`**, and fix the spec until it passes.
 
 ## 3. Review
 

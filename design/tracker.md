@@ -16,7 +16,6 @@ Open items only. Finished work lives in the git history and PR descriptions.
 
 ## Harness
 
-- **Copy `check:spec`.** `mars-workbench`'s `scripts/checkSpec.ts` also compares legacy docs with `main`; take only the part that checks spec v2 IDs against test titles, once the first spec exists.
 - **Interactive components use Radix Primitives** (AGENTS.md › Styling); install the first one with the first widget that needs it (a theme toggle, the phone menu, a figure zoom).
 - **Keep the copied harness in sync.** Files copied from `mars-workbench` say which commit they came from; when the product's harness improves, port what applies here.
 

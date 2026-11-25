@@ -1,6 +1,6 @@
 # Spike: 整页骨架——header、五个 section 占位、滚动进度条、两套主题、背景烟花
 
-**Status: awaiting owner review** · 第 2 轮 2026-11-25（Q1–Q3、Q6 已答）· 设计：v1 mockup（2026-11-24 定档），私有页面 [claude.ai/artifact/6ouKG7ihv9DbuUNAdVK95b](https://claude.ai/artifact/6ouKG7ihv9DbuUNAdVK95b)，还不在仓库里（Q3）
+**Status: awaiting owner review** · 第 3 轮 2026-11-25（Q1–Q4、Q6 已答，header 的 Product 已定）· 设计：v1 mockup（2026-11-24 定档），私有页面 [claude.ai/artifact/6ouKG7ihv9DbuUNAdVK95b](https://claude.ai/artifact/6ouKG7ihv9DbuUNAdVK95b)，还不在仓库里（Q3）
 
 > 语言约定：叙述用中文；站点的文案、区块名和代码标识保留英文（header、section、rail、sheet、`data-theme`、`paper` / `ink`），和 mockup、spec、代码一一对应。**sheet** 是桌面端页面中间那张更亮的纸；**rail** 是右边的滚动进度条和它的点；**fireworks** 是背景里的铅笔烟花。
 
@@ -31,6 +31,15 @@ Owner 2026-11-24 把整页 mockup 定档为 v1，开了 portfolio-engineering �
 - **Q6**：v1 是 source of truth，红照 v1 用。
 - 因为 v1 是 source of truth，Q5 和 Q7 的默认都变成「照 v1」，只剩偏离 v1 的地方要问（见下）。
 
+## Owner 的回答（第 3 轮，2026-11-25）
+
+> 先同步
+
+> 把mars workbench那个条目在header上改成product
+
+- **Q4**：先同步。本 PR 已经把 `design/specs/README.md`（Motion、Ordinary use first）、`implement-spec` skill、它的 reviewer 和 context 对齐 `mars-workbench`@`368bed5`，并复制了 `check:spec` 里检查 spec v2 ID 的部分（`scripts/checkSpec.mts`，CI 的 Spec coverage）。`fx-*` 的说法改成「按播放它的组件命名，时长等交给 design language › Motion」，因为站点没有 `fx-*`。
+- **Header 的 Product**：header 里 “Mars Workbench” 那个链接改叫 “Product”，两个宽度都是，手机上不再缩成 “Workbench”。这是偏离 v1 的地方，owner 定的。“Product” 比 “Workbench” 短，390px 的 header 松一点（见风险）。Section 本身的标题 owner 没提，照 v1 仍是 “Mars Workbench”（Q12）。
+
 ## 用了哪些标准
 
 `mars-portfolio` 的 harness 本来就是从 `mars-workbench`@`3f741cc`（2026-11-19）复制改写的（`design/spike/archived/site-scaffold.md`）。这次对照 `mars-workbench` 的 `main`（`368bed5`）重读了：
@@ -45,7 +54,7 @@ Owner 2026-11-24 把整页 mockup 定档为 v1，开了 portfolio-engineering �
 | `.claude/skills/ui-design/SKILL.md` | 同名 | 落后，措辞上的；这次不用这个 skill |
 | `scripts/checkSpec.ts`（`check:spec`） | 没有，tracker 里记着「第一个 spec 出现时复制」 | 缺 |
 
-烟花是动效，正好落在那边新加的 *Motion* 规则上，所以 spec 之前要先同步（Q4）。
+烟花是动效，正好落在那边新加的 *Motion* 规则上，所以 spec 之前要先同步（Q4）。已在本 PR 同步（第 3 轮）。
 
 ## Scope · 范围
 
@@ -72,7 +81,7 @@ Owner 2026-11-24 把整页 mockup 定档为 v1，开了 portfolio-engineering �
 从 mockup 源码读出来的，spec 会逐条写成 item：
 
 - **版式**：一个纵向滚动，五个 section 各至少一屏高（`100svh`），`scroll-snap-type: y proximity`。桌面（≥900px）内容在居中的 sheet 上，宽 `clamp(560px, 50vw, 860px)`，比底色亮、有细边和很淡的阴影；手机 sheet 透明，铺满全宽。底色和 sheet 都有一层 SVG 噪点做纸纹。
-- **Header**：`position: fixed`，高 56px（≤560px 是 50px），半透明底色加 `backdrop-filter: blur(10px)`，底边一条细线；内容和 sheet 同宽。左边品牌：8px 红点 + “Mars”；右边五个链接，13px，灰色，当前 section 变深色、下面一条 1px 红线。≤560px：品牌只剩红点，“Mars Workbench” 显示成 “Workbench”，链接放不下就横向滚动。
+- **Header**：`position: fixed`，高 56px（≤560px 是 50px），半透明底色加 `backdrop-filter: blur(10px)`，底边一条细线；内容和 sheet 同宽。左边品牌：8px 红点 + “Mars”；右边五个链接，13px，灰色，当前 section 变深色、下面一条 1px 红线。≤560px：品牌只剩红点，“Mars Workbench” 显示成 “Workbench”，链接放不下就横向滚动。**偏离 v1（owner 定，第 3 轮）**：这个链接两个宽度都叫 “Product”，没有手机上的短名。
 - **Rail**：固定在右边，垂直居中，高 `min(44vh, 360px)`（≤560px `min(36vh, 280px)`），一条 1px 细线，红色的填充随滚动进度从上往下长。每个 section 一个点，位置按 section 在页面里的位置算（第一个在顶、最后一个在底）；走过的点填红，当前的点大一圈带红环；点是 24px 的点击区，点了平滑滚到那个 section；有 hover 的设备上 hover 或键盘聚焦时左边出一个标签 “01 About”。
 - **主题**：mockup 里是 About 角落的红印章（墨 / 纸）切换整页；这次按 owner 的话挪到 header。
 - **Fireworks**：一个铺满视口的 `<canvas>`，在 sheet 后面，不接收点击。参数（mockup 的 `TUNE`）：
@@ -132,7 +141,7 @@ src/
 │   ├── themeScript.ts                    # 那段内联脚本，一个字符串常量
 │   └── globals.css                       # 主题变量（Q5）、断点
 ├── content/
-│   └── sections.ts                       # 五个 section：id、label、手机上的 shortLabel
+│   └── sections.ts                       # 五个 section：id、标题、header 里的名字（Product）
 └── components/
     ├── ui/
     │   ├── theme-toggle/ThemeToggle.tsx  # 'use client'：切换 paper / ink
@@ -195,7 +204,7 @@ src/
 
 **按钮**：
 
-- 样子和位置（Q8）：沿用 mockup 的红印章，`paper` 下写「墨」（点了变黑），`ink` 下写「纸」，放在 header 最右边、链接后面。Owner 说位置还在想，所以 spec 只写「在 header 里」，不写具体在哪，以后挪位置不用改 spec 和测试。手机上 header 很挤：390px 宽，红点 + 五个链接 + 32px 的印章，链接可能要横向滚。
+- 样子和位置（Q8）：沿用 mockup 的红印章，`paper` 下写「墨」（点了变黑），`ink` 下写「纸」，放在 header 最右边、链接后面。Owner 说位置还在想，所以 spec 只写「在 header 里」，不写具体在哪，以后挪位置不用改 spec 和测试。手机上 header 很挤：390px 宽，红点 + 五个链接 + 32px 的印章，链接可能要横向滚；“Product” 比 “Workbench” 短，松一点。
 - 字随主题变，但服务端不知道主题：印章上的字用 CSS 按 `data-theme` 和系统主题显示（两个字都在 DOM 里，只露一个），不靠 JS，所以第一帧就对、不会 hydration 不一致；`aria-label`（“Switch to ink theme”）在 mount 之后由 JS 设。
 - 组件（Q10）：AGENTS.md › Styling 说交互组件用 Radix Primitives，不手写 toggle，tracker 里也记着「第一个 Radix 组件跟着主题按钮装」。Radix 的 `Toggle`（`@radix-ui/react-toggle`）给一个带 `aria-pressed` 的按钮；这里的语义是「按下 = `ink`」。另一种读法是这只是个普通按钮，标签说点了会怎样（mockup 就是这样），不算 toggle 组件，不用装 Radix。规则是 owner 的，所以问一下。
 
@@ -250,14 +259,13 @@ v1 是 source of truth，所以**默认 A**。B 和 owner 的「keep visual cons
 按 `test/README.md`：纯函数是单元测试，页面行为是 e2e，四个 project（两个宽度 × 两个主题）都跑。
 
 - **单元**：`scrollPosition.ts`（给定 section 位置和滚动位置，当前是哪个、进度多少、点在哪；滚到底是最后一个）；`fireworkGeometry.ts`（固定种子下：颜色的亮度规则、位置落在允许的区域里、不和文字块重叠、不和别的烟花挤在一起、一生的各阶段时长）。
-- **e2e**（新开 `e2e/v1.spec.ts`，`e2e/home.spec.ts` 留给临时页）：header 有五个链接，顺序对，手机上是 “Workbench”；五个 section 各有标题；点 rail 的点和 header 的链接，那个 section 滚进视口，链接和点带 `aria-current`；往下滚，当前跟着变，填充变长；点主题按钮，`<html data-theme>` 变，刷新后还在（Q9 选记住的话）；读者选过 `ink` 时第一帧就是 `ink`（`addInitScript` 先写 `localStorage`，在 `DOMContentLoaded` 时读 `data-theme`）；canvas 在、`aria-hidden`；reduced motion 下（`page.emulateMedia({reducedMotion: 'reduce'})`）没有平滑滚动；不横向滚动、控制台没有报错（现有的通用断言）。
+- **e2e**（新开 `e2e/v1.spec.ts`，`e2e/home.spec.ts` 留给临时页）：header 有五个链接，顺序对，第二个在两个宽度都是 “Product”；五个 section 各有标题；点 rail 的点和 header 的链接，那个 section 滚进视口，链接和点带 `aria-current`；往下滚，当前跟着变，填充变长；点主题按钮，`<html data-theme>` 变，刷新后还在（Q9 选记住的话）；读者选过 `ink` 时第一帧就是 `ink`（`addInitScript` 先写 `localStorage`，在 `DOMContentLoaded` 时读 `data-theme`）；canvas 在、`aria-hidden`；reduced motion 下（`page.emulateMedia({reducedMotion: 'reduce'})`）没有平滑滚动；不横向滚动、控制台没有报错（现有的通用断言）。
 - **浏览器检查**：新的版式和断点，按 AGENTS.md › UI Workflow 交给 `ui-verifier` 跑一次。
 
 ## 实施计划
 
-1. **本 PR**：这份 spike；`design/design-language/README.md` 加 Colour 一节（owner 的原话），改掉「唯一的红」；tracker 加一条。不动代码。
+1. **本 PR**：这份 spike；`design/design-language/README.md` 加 Colour 一节（owner 的原话），改掉「唯一的红」；tracker 加一条；同步 harness 和 `check:spec`（Q4）。不动页面代码。
 2. **Spec PR**（owner approve 本 spike 之后，从 `main` 开）：
-   - 先同步 harness（Q4）：`design/specs/README.md`、`implement-spec` skill、它的 reviewer 和 context 对齐 `mars-workbench` 的 `main`，复制 `check:spec` 里检查 spec v2 ID 的那部分。
    - 把 v1 mockup 放进仓库（Q3），标上 decided。
    - 用 `write-spec` 写 `design/specs/home.md`：States（第一次来跟系统主题 / 选过主题；reduced motion）、Header、Rail、Sections、Fireworks、Actions（点链接、点点、切主题）、Rules、Journeys（桌面一条，手机一条只写不同的步骤）；全部 *(pending)*。`write-spec-reviewer` 检查。
 3. **Implementation PR**（owner approve spec 之后）：`implement-spec`，测试先行；同步改 `globals.css` 和主题表、design language 的 Motion（Q11）、README Current State；`ui-verifier` 跑一次浏览器检查；删掉 mockup 里已经建好的部分（mockup 还有各 section 的内容没建，所以文件留着）。
@@ -267,7 +275,7 @@ v1 是 source of truth，所以**默认 A**。B 和 owner 的「keep visual cons
 1. ~~骨架放在哪~~：已定，`/v1`；`/` 的静态页留到 v1 做好。
 2. ~~旧的设计文档~~：已定，本 PR 已移除。
 3. ~~v1 mockup 进仓库~~：已定，v1 是 source of truth，spec PR 存进仓库并标 decided。
-4. **同步 harness**：spec PR 先把 `design/specs/README.md`、`implement-spec` skill、它的 reviewer 和 context 对齐 `mars-workbench` 的 `main`，并复制 `check:spec` 的 spec v2 部分？
+4. ~~同步 harness~~：已定，先同步，本 PR 已做。
 5. **对比度**：颜色照 v1。只有白主题的 muted 灰在底色上 3.9，不过 4.5 的线：加深到 `#6b665e`（4.66，肉眼几乎看不出），还是照 v1 原样？
 6. ~~红用在哪~~：已定，照 v1。
 7. **字体**：默认照 v1（header Inter Tight、rail 标签 IBM Plex Mono、section 标题 Helvetica）。要不要改成站点已有的 Geist + Geist Mono，换一家字体的统一？
@@ -275,10 +283,11 @@ v1 是 source of truth，所以**默认 A**。B 和 owner 的「keep visual cons
 9. **记住主题**：A 记住（`localStorage`，下次来还是选过的那套），还是 B 像 mockup 一样只对这一次有效？
 10. **Radix**：主题按钮用 Radix 的 `Toggle`（按规则，也是第一个 Radix 依赖），还是当作普通按钮、不装 Radix？
 11. **Reduced motion 和 Motion 规则**：reduced motion 下照 mockup 画静止的烟花（推荐），还是不画？Motion 里「backgrounds never move」改成「纸面不动，背景里只有 fireworks 会动」？
+12. **Workbench 这个 section 的名字**：header 链接已改成 “Product”。Section 的标题和 rail 的 hover 标签（“02 …”）照 v1 仍叫 “Mars Workbench”，还是也改成 “Product”？页内锚点的 id 读者看不见，默认照 v1，跟着 section 走；你要网址里是 `#product` 也可以改。
 
 ## 风险
 
 - **滚动和烟花都是常驻的 JS**：一个 scroll 监听加一个一直跑的 `requestAnimationFrame`。前者是 passive 加 rAF 节流；后者在手机上持续耗电，实现时量一次再说。
 - **iOS Safari 的视口**：地址栏收起展开会改视口高度。section 用 `100svh`（mockup 就是）不会跳；rail 的点位置在 resize 时重算，会有一帧的轻微移动。CI 只在 Chromium 里模拟手机宽度，真机上的效果需要 owner 截图确认。
 - **`backdrop-filter`** 在低端 Android 上可能卡。Header 只有 56px 高，影响小；不行就退成不透明的底。
-- **Header 在 390px 上很挤**：五个链接加印章，链接可能要横向滚动（mockup 已经允许）。印章以后换位置时这个问题会变。
+- **Header 在 390px 上很挤**：五个链接加印章，链接可能要横向滚动（mockup 已经允许）。“Product” 替掉 “Workbench” 后松一点；印章以后换位置时这个问题会变。

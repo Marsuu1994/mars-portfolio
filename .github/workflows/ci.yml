@@ -1,5 +1,6 @@
 # Adapted from mars-workbench@3f741cc .github/workflows/ci.yml: no Prisma, no
-# Postgres, no integration, component or spec-coverage jobs.
+# Postgres, no integration or component jobs; the spec-coverage job from
+# mars-workbench@368bed5, with no legacy docs to compare with main.
 name: CI
 on: push
 jobs:
@@ -61,6 +62,21 @@ jobs:
       # custom properties (see AGENTS.md → Themes).
       - name: Check theme variables
         run: npm run check:themes
+
+  spec:
+    name: Spec coverage
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Node and dependencies
+        uses: ./.github/actions/setup
+        with:
+          install: 'false'
+      # Dependency-free script, run by Node: every spec item is held by a test
+      # that names it (design/specs/README.md › Items and IDs).
+      - name: Check spec coverage
+        run: npm run check:spec
 
   test:
     name: Unit tests (Vitest)
