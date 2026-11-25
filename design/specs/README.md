@@ -2,7 +2,7 @@
 
 > Adapted from `mars-workbench`@`368bed5` `design/specs/README.md`: spec v2 only (the site has no legacy docs), and a motion is named by the component that plays it, since the site has no `fx-*` utilities. The examples below (the board, its server) are the product's; the rules hold the same here.
 
-One spec per page. None yet: the home page's comes with its design (`design/tracker.md`). A spec says what the page shows and what a reader can do on it, item by item, so a test can hold each item.
+One spec per page: `home.md` is the home page's, its skeleton only for now. A spec says what the page shows and what a reader can do on it, item by item, so a test can hold each item.
 
 This file is the one home of the rules for writing a spec. The `write-spec` skill and the `write-spec-reviewer` agent point here rather than restate them (AGENTS.md › Adding a rule); how a test holds an item is `test/README.md`'s.
 

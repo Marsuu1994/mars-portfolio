@@ -1,6 +1,6 @@
 # Spike: 整页骨架——header、五个 section 占位、滚动进度条、两套主题、背景烟花
 
-**Status: awaiting owner review** · 第 12 轮 2026-11-25（Q1–Q15 都已答，加了组件树，等 owner 批准）· 设计：v1 mockup（2026-11-24 定档），私有页面 [claude.ai/artifact/6ouKG7ihv9DbuUNAdVK95b](https://claude.ai/artifact/6ouKG7ihv9DbuUNAdVK95b)，还不在仓库里（Q3）
+**Status: decided** · 2026-11-25（owner 第 13 轮批准：「批准 spike」）· 设计：v1 mockup（2026-11-24 定档），已存进仓库 `design/mockup/mockup-home.html`，私有页面 [claude.ai/artifact/6ouKG7ihv9DbuUNAdVK95b](https://claude.ai/artifact/6ouKG7ihv9DbuUNAdVK95b)
 
 > 语言约定：叙述用中文；站点的文案、区块名和代码标识保留英文（header、section、rail、sheet、`data-theme`、`paper` / `ink`），和 mockup、spec、代码一一对应。**sheet** 是桌面端页面中间那张更亮的纸；**rail** 是右边的滚动进度条和它的点；**fireworks** 是背景里的铅笔烟花。
 
@@ -12,10 +12,10 @@ Owner 2026-11-24 把整页 mockup 定档为 v1，开了 portfolio-engineering �
 
 > ok，我要你去看mars- workbench，按那边的标准来做，包括spec相关的那两个skill。计划是先写spike，我approve之后你写spec，我approve之后，你再implement base on spec。然后第一步咱们要做的就是写spike，这次的scope是把整个页面的骨架做出来，heading，五个section的place holder，暂时只需要文字标题，右边的可点击的scroll进度条，然后黑白两色主题，切换主题的button放heading，随便找个空位就好，我还在想位置，还有背景的烟花。这次要做desktop和mobile的两个width。然后关于design language我想你加几条，主体色是黑白红，黑白做背景和文字互为对比，红色是强调色。其他颜色只做点缀，细节可以精致比如那些role，但是主体要简单并且keep visual consistency。去做吧
 
-所以三步，每步一个 PR，每步等 owner approve：
+所以三步，每步等 owner approve：
 
-1. **Spike**（本 PR）：这份文档，回答技术上的开放问题；design language 加上 owner 的颜色规则。
-2. **Spec**（`write-spec` skill，`write-spec-reviewer` 检查）：把骨架写进 `design/specs/home.md`，每条标 *(pending)*。
+1. **Spike**（PR #3）：这份文档，回答技术上的开放问题；design language 加上 owner 的颜色规则。
+2. **Spec**（`write-spec` skill，`write-spec-reviewer` 检查）：把骨架写进 `design/specs/home.md`，每条标 *(pending)*。落在同一个 PR #3 上（见实施计划）。
 3. **Implementation**（`implement-spec` skill，`implement-spec-reviewer` 检查）：按 spec 建，测试先行。
 
 ## Owner 的回答（第 2 轮，2026-11-25）
@@ -123,6 +123,31 @@ Section 后来变高（比如图片晚加载）时要不要重算点的位置，
 > 好没问题，你写完spike把你要做的组件按照page为root画一个component structure tree我看看
 
 - 技术问题 2 加了组件树：从 `app/v1/page.tsx` 往下，每个组件标了 Server 还是 Client、在 `ui/` 还是 `site/`、用不用 Radix。文件结构跟着更新（加了 `Tooltip`、`HeaderLink`、`RailDot`、`useSectionScroll`、`currentTheme` 和印章的字体文件）。
+
+## Decision · 结论（2026-11-25，owner 批准）
+
+> 批准 spike
+
+第 13 轮 owner 批准了这份 spike，Q1–Q15 都已答。从这里起 spike 不再改；以后的决定记在 tracker 和做出决定的 PR 里。
+
+- **范围**：整页骨架，建在 `/v1`（Q1）；`/` 的静态页留到 v1 做好（Q2）。v1 mockup 是 source of truth（Q3），存进仓库为 `design/mockup/mockup-home.html`，标 decided。
+- **Harness**：先同步 `mars-workbench` 的 spec 规则、`implement-spec` 和 `check:spec`（Q4），本 PR 已做。
+- **颜色**：照 v1。桌面两边 desk、中间 sheet，手机整页 sheet 色（Q13）；白主题的 muted 用 `#6b665e`，对比度看着舒服就行（Q5）；红照 v1 用作强调（Q6）。
+- **字体**：骨架全用 Geist / Geist Mono；印章的「墨」「纸」用只带这两个字的思源宋体（Q7）。
+- **主题**：红印章，放 header 里（先放最右，spec 只写「在 header 里」，Q8）；用 Radix `Toggle`（Q10）；不记住，刷新回到系统主题（Q9）。
+- **Rail**：滚动和点的位置照 v1（第 6 轮）；任何 section 尺寸一变就重算（第 7 轮）；hover 标签用 Radix `Tooltip`（Q14）。
+- **Fireworks**：纸面不动，只有 fireworks 动（第 4 轮）；reduced motion 下画静止的（Q11）。
+- **Workbench**：section 的标题、rail 标签和锚点照 v1（Q12）。
+- **手机**：完全不横向滑；只保证 360px 及以上（Q15）。
+- **技术做法**：一个 scroll 监听（技术问题 3 · A）、页内 `<a>` 链接加 CSS 平滑滚动（4）、一个 canvas 2D（6 · A）、两个有名字的断点（7）、v1 的调色板（8 · A），组件树见技术问题 2。
+
+**偏离 v1 的地方**，都是 owner 定的：
+
+1. Header 里 “Mars Workbench” 的链接叫 “Product”，两个宽度都是（第 3 轮）。
+2. 手机上 header 不横向滚，整页任何地方都不横向滑；比 360px 窄的不管（第 9、10 轮）。
+3. 骨架全用 Geist，不用 v1 的 Inter Tight、IBM Plex Mono 和 Helvetica（第 11 轮）。
+4. 除了 v1 的窗口缩放、加载完、字体加载完，任何 section 尺寸变了也重算 rail（第 7 轮）。
+5. 主题按钮从 About 的角落挪到 header（owner 第一轮的范围）；rail 的点是页内链接而不是按钮（技术问题 4）。
 
 ## 用了哪些标准
 
@@ -383,7 +408,7 @@ v1 用了三个断点：900px（以上是 sheet 版式，以下 sheet 铺满）�
 ## 实施计划
 
 1. **本 PR**：这份 spike；`design/design-language/README.md` 加 Colour 一节（owner 的原话，包括「黑白是对比」和信纸），改掉「唯一的红」，Motion 改成「只有 fireworks 会动」，对比度的线改成参照；tracker 加一条；同步 harness 和 `check:spec`（Q4）。不动页面代码。
-2. **Spec PR**（owner approve 本 spike 之后，从 `main` 开）：
+2. **Spec**（owner approve 本 spike 之后）：落在 PR #3 上，不另开 PR。这个 session 只能推这一个分支，而 `main` 还没有本 PR 同步的 spec 规则和 `check:spec`；`write-spec` 允许 spec 落在 design PR 上。
    - 把 v1 mockup 放进仓库（Q3），标上 decided。
    - 用 `write-spec` 写 `design/specs/home.md`：States（第一次来跟系统主题 / 选过主题；reduced motion）、Header、Rail、Sections、Fireworks、Actions（点链接、点点、切主题）、Rules、Journeys（桌面一条，手机一条只写不同的步骤）；全部 *(pending)*。`write-spec-reviewer` 检查。
 3. **Implementation PR**（owner approve spec 之后）：`implement-spec`，测试先行；同步改 `globals.css` 和主题表、README Current State；`ui-verifier` 跑一次浏览器检查；删掉 mockup 里已经建好的部分（mockup 还有各 section 的内容没建，所以文件留着）。
