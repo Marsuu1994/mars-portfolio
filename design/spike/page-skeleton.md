@@ -1,6 +1,6 @@
 # Spike: 整页骨架——header、五个 section 占位、滚动进度条、两套主题、背景烟花
 
-**Status: awaiting owner review** · 第 7 轮 2026-11-25（Q1–Q6、Q12、Q13 已答，滚动的行为已定，Q11 的规则措辞已定）· 设计：v1 mockup（2026-11-24 定档），私有页面 [claude.ai/artifact/6ouKG7ihv9DbuUNAdVK95b](https://claude.ai/artifact/6ouKG7ihv9DbuUNAdVK95b)，还不在仓库里（Q3）
+**Status: awaiting owner review** · 第 8 轮 2026-11-25（Q1–Q6、Q9、Q10、Q12、Q13 已答，滚动的行为已定，Q11 的规则措辞已定，新开 Q14）· 设计：v1 mockup（2026-11-24 定档），私有页面 [claude.ai/artifact/6ouKG7ihv9DbuUNAdVK95b](https://claude.ai/artifact/6ouKG7ihv9DbuUNAdVK95b)，还不在仓库里（Q3）
 
 > 语言约定：叙述用中文；站点的文案、区块名和代码标识保留英文（header、section、rail、sheet、`data-theme`、`paper` / `ink`），和 mockup、spec、代码一一对应。**sheet** 是桌面端页面中间那张更亮的纸；**rail** 是右边的滚动进度条和它的点；**fireworks** 是背景里的铅笔烟花。
 
@@ -77,6 +77,15 @@ Section 后来变高（比如图片晚加载）时要不要重算点的位置，
 
 - **加上**，这是比 v1 多的一步，owner 定的：除了 v1 的窗口缩放、页面加载完、字体加载完，任何一个 section 的尺寸变了也重算点的位置和可滚动的距离（`ResizeObserver` 看每个 section）。
 
+## Owner 的回答（第 8 轮，2026-11-25）
+
+> 不记住，用radix，同时你看看整个骨架里面除了这个theme的toggle还有没有什么交互可以用radix组件？然后你讲讲radix你准备怎么用？其实我不是很熟我只知道这是一个几乎没有style的组件
+
+- **Q9**：不记住，和 v1 一样。点一下只对这一次浏览有效，刷新回到系统主题；不用 `localStorage`。所以也不会闪：第一帧本来就是系统主题，不需要 `<head>` 里的脚本（技术问题 5 已改）。
+- **Q10**：主题按钮用 Radix 的 `Toggle`，它是站点的第一个 Radix 依赖。
+- **骨架里别的交互**（提议，等 owner 定，见 Q14）：rail 的点在 hover 和键盘聚焦时显示 “01 About” 这样的标签，正好是 Radix 的 `Tooltip`。Header 的链接和 rail 的点本身是页内链接，Radix 没有对应的组件，照旧用 `<a>`；手机上横向滚的链接条用浏览器自己的滚动，不用 Radix 的 `ScrollArea`。
+- **Radix 怎么用**：见技术问题 5 › 组件。
+
 ## 用了哪些标准
 
 `mars-portfolio` 的 harness 本来就是从 `mars-workbench`@`3f741cc`（2026-11-19）复制改写的（`design/spike/archived/site-scaffold.md`）。这次对照 `mars-workbench` 的 `main`（`368bed5`）重读了：
@@ -107,7 +116,7 @@ Section 后来变高（比如图片晚加载）时要不要重算点的位置，
 ## 现在有什么
 
 - **`/` 是一个临时页**：`public/home.html`，上一版设计拷出来的静态文件，`next.config.ts` 的 rewrite 把 `/` 指过去。它不用站点的组件，e2e（`e2e/home.spec.ts`）测的就是它。按 owner 的回答，它留到 v1 做好。
-- **主题**：`globals.css` 有 `paper`、`ink` 两套变量和「没有 `data-theme` 就跟系统」的默认；没有切换按钮，没有 `localStorage`。
+- **主题**：`globals.css` 有 `paper`、`ink` 两套变量和「没有 `data-theme` 就跟系统」的默认；没有切换按钮。
 - **字体**：`layout.tsx` 加载 Geist、Geist Mono、Source Serif 4。
 - **组件**：还没有，`src/components/` 不存在。交互组件按规则用 Radix Primitives，一个都没装。
 - **测试**：Vitest 单元测试（还没有一个），Playwright 四个 project：`desktop` 1280×800、`mobile` 390×844，各有 dark 版（`colorScheme: 'dark'`）。
@@ -174,14 +183,12 @@ Section 后来变高（比如图片晚加载）时要不要重算点的位置，
 src/
 ├── app/
 │   ├── v1/page.tsx                       # 读 sections，渲染骨架（Server Component）
-│   ├── layout.tsx                        # 加 no-flash 脚本、suppressHydrationWarning
-│   ├── themeScript.ts                    # 那段内联脚本，一个字符串常量
 │   └── globals.css                       # 主题变量（Q5）、断点
 ├── content/
 │   └── sections.ts                       # 五个 section：id、标题、header 里的名字（Product）
 └── components/
     ├── ui/
-    │   ├── theme-toggle/ThemeToggle.tsx  # 'use client'：切换 paper / ink
+    │   ├── theme-toggle/ThemeToggle.tsx  # 'use client'：Radix Toggle，切换 paper / ink
     │   └── fireworks/
     │       ├── Fireworks.tsx             # 'use client'：canvas、rAF 循环
     │       ├── fireworkGeometry.ts       # 纯函数：形状、颜色、能放在哪；单元测试
@@ -219,31 +226,24 @@ src/
 - Header 的链接和 rail 的点都是 `<a href="#about">` 这样的页内链接，不是 `<button>`：语义就是导航，没有 JS 也能跳，URL 带上 hash，可以直接分享到某个 section。
 - 平滑滚动用 CSS：`html { scroll-behavior: smooth }`，只在 `prefers-reduced-motion: no-preference` 时生效；reduced motion 下直接跳。
 - 当前那个链接和点带 `aria-current="true"`，测试也靠它断言。
-- Rail 的点没有可见文字，`aria-label` 是 “Go to About”；hover 标签只在 `(hover: hover)` 的设备上出现，手机上没有。
+- Rail 的点没有可见文字，`aria-label` 是 “Go to About”；hover 标签只在 `(hover: hover)` 的设备上出现，手机上没有。提议用 Radix 的 `Tooltip` 做这个标签（Q14）：它在 hover 和键盘聚焦时打开、触摸时不打开，正好是 v1 的行为，延迟设成 0 就和 v1 一样立刻出现。
 - Section 从页面顶开始，标题区上面留出 header 的高度（mockup 是 `padding-top: nav-h + 40px`），所以不用 `scroll-padding-top`。
 - `scroll-snap-type: y proximity` 照 mockup 保留：靠近 section 开头时吸过去，滚到中间不强拽。
 
-### 5. 主题：机制、不闪、切换按钮
+### 5. 主题：机制、切换按钮
 
 **机制**沿用现有的：主题只在 `<html data-theme>` 上，`paper` 或 `ink`；没有就跟系统（`prefers-color-scheme`）。
 
-**不闪**：静态页在服务端不知道读者选过什么，第一帧会按系统画，读者选过另一套就会闪一下。三种办法：
-
-| | 做法 | 好处 | 代价 |
-| --- | --- | --- | --- |
-| **A** · 手写一段内联脚本 ✓ | `layout.tsx` 的 `<head>` 里一段几行的同步脚本：读 `localStorage`，是 `paper` 或 `ink` 就写到 `<html data-theme>`，在第一帧之前；`<html>` 加 `suppressHydrationWarning`（服务端渲染的 `<html>` 没有这个属性） | 不加依赖；页面保持全静态；行为全在眼前 | 自己写 try/catch（隐私模式下 `localStorage` 会抛错）；实现前要读一遍 Next 16 关于 root layout 里 `<script>` 的文档（AGENTS.md › Session start） |
-| B · `next-themes` | 库做同一件事，外加系统主题变化的监听 | 少写几行 | 多一个依赖；它默认的属性和值要配成 `data-theme`、`paper` / `ink` |
-| C · cookie + 服务端读 | 服务端按 cookie 输出 `data-theme` | 一点都不闪 | 页面变成动态渲染，违反「every page static」；Vercel 每次请求都要跑函数 |
-
-**推荐 A。**
-
-**记不记住**（Q9）：mockup 里点一下只对这一次浏览有效，刷新回到系统主题。站点通常会记住（`localStorage`），下次来还是读者选的那套；代价是读者点过一次以后，系统切换深浅色不再影响这个站。
+**不记住**（Q9，已定）：和 v1 一样，点一下只对这一次浏览有效；刷新或下次来，`<html>` 没有 `data-theme`，按系统主题画。所以第一帧永远是对的，不会闪，不需要内联脚本、`suppressHydrationWarning` 或 `localStorage`。
 
 **按钮**：
 
 - 样子和位置（Q8）：沿用 mockup 的红印章，`paper` 下写「墨」（点了变黑），`ink` 下写「纸」，放在 header 最右边、链接后面。Owner 说位置还在想，所以 spec 只写「在 header 里」，不写具体在哪，以后挪位置不用改 spec 和测试。手机上 header 很挤：390px 宽，红点 + 五个链接 + 32px 的印章，链接可能要横向滚；“Product” 比 “Workbench” 短，松一点。
-- 字随主题变，但服务端不知道主题：印章上的字用 CSS 按 `data-theme` 和系统主题显示（两个字都在 DOM 里，只露一个），不靠 JS，所以第一帧就对、不会 hydration 不一致；`aria-label`（“Switch to ink theme”）在 mount 之后由 JS 设。
-- 组件（Q10）：AGENTS.md › Styling 说交互组件用 Radix Primitives，不手写 toggle，tracker 里也记着「第一个 Radix 组件跟着主题按钮装」。Radix 的 `Toggle`（`@radix-ui/react-toggle`）给一个带 `aria-pressed` 的按钮；这里的语义是「按下 = `ink`」。另一种读法是这只是个普通按钮，标签说点了会怎样（mockup 就是这样），不算 toggle 组件，不用装 Radix。规则是 owner 的，所以问一下。
+- 字随主题变，但服务端不知道系统主题：印章上的字用 CSS 按 `data-theme` 和系统主题显示（两个字都在 DOM 里，只露一个），不靠 JS，所以第一帧就对、不会 hydration 不一致；`aria-pressed` 和 `aria-label`（“Switch to ink theme”）在 mount 之后由 JS 按 `matchMedia` 设。
+- 组件（Q10，已定）：Radix 的 `Toggle`（`@radix-ui/react-toggle`）。
+  - Radix Primitives 是什么：只管行为和无障碍的组件，几乎不带样式。它负责键盘操作、`aria-*` 属性、焦点，样子全由我们写。
+  - 怎么用：`Toggle` 渲染一个 `<button>`，按下状态（`pressed`，这里「按下 = `ink`」）由组件自己管 `aria-pressed` 和 `data-state="on" | "off"`。我们只传 `pressed` 和 `onPressedChange`（点了就改 `<html data-theme>`），样式用 Tailwind 写在 `className` 上，按状态变的用 `data-[state=on]:` 这样的写法，颜色照旧用主题变量。印章的样子、「墨」「纸」两个字照 mockup。
+  - 装：每个组件单独装一个包（`@radix-ui/react-toggle`，以后的 `Tooltip` 是 `@radix-ui/react-tooltip`），在第一个用到它的 implementation PR 里装。
 
 ### 6. Fireworks：怎么画、性能、reduced motion
 
@@ -296,7 +296,7 @@ v1 是 source of truth，所以**默认 A**。B 和 owner 的「keep visual cons
 按 `test/README.md`：纯函数是单元测试，页面行为是 e2e，四个 project（两个宽度 × 两个主题）都跑。
 
 - **单元**：`scrollPosition.ts`（给定 section 位置和滚动位置，当前是哪个、进度多少、点在哪；滚到底是最后一个）；`fireworkGeometry.ts`（固定种子下：颜色的亮度规则、位置落在允许的区域里、不和文字块重叠、不和别的烟花挤在一起、一生的各阶段时长）。
-- **e2e**（新开 `e2e/v1.spec.ts`，`e2e/home.spec.ts` 留给临时页）：header 有五个链接，顺序对，第二个在两个宽度都是 “Product”；五个 section 各有标题；点 rail 的点和 header 的链接，那个 section 滚进视口，链接和点带 `aria-current`；往下滚，当前跟着变，填充变长；点主题按钮，`<html data-theme>` 变，刷新后还在（Q9 选记住的话）；读者选过 `ink` 时第一帧就是 `ink`（`addInitScript` 先写 `localStorage`，在 `DOMContentLoaded` 时读 `data-theme`）；canvas 在、`aria-hidden`；reduced motion 下（`page.emulateMedia({reducedMotion: 'reduce'})`）没有平滑滚动；不横向滚动、控制台没有报错（现有的通用断言）。
+- **e2e**（新开 `e2e/v1.spec.ts`，`e2e/home.spec.ts` 留给临时页）：header 有五个链接，顺序对，第二个在两个宽度都是 “Product”；五个 section 各有标题；点 rail 的点和 header 的链接，那个 section 滚进视口，链接和点带 `aria-current`；往下滚，当前跟着变，填充变长；点主题按钮，`<html data-theme>` 变，按钮的 `aria-pressed` 跟着变，刷新后回到系统主题（Q9）；canvas 在、`aria-hidden`；reduced motion 下（`page.emulateMedia({reducedMotion: 'reduce'})`）没有平滑滚动；不横向滚动、控制台没有报错（现有的通用断言）。
 - **浏览器检查**：新的版式和断点，按 AGENTS.md › UI Workflow 交给 `ui-verifier` 跑一次。
 
 ## 实施计划
@@ -317,11 +317,12 @@ v1 是 source of truth，所以**默认 A**。B 和 owner 的「keep visual cons
 6. ~~红用在哪~~：已定，照 v1。
 7. **字体**：默认照 v1（header Inter Tight、rail 标签 IBM Plex Mono、section 标题 Helvetica）。要不要改成站点已有的 Geist + Geist Mono，换一家字体的统一？
 8. **主题按钮**：先用红印章（`paper` 下「墨」、`ink` 下「纸」），放在 header 最右边，spec 只写「在 header 里」？
-9. **记住主题**：A 记住（`localStorage`，下次来还是选过的那套），还是 B 像 mockup 一样只对这一次有效？
-10. **Radix**：主题按钮用 Radix 的 `Toggle`（按规则，也是第一个 Radix 依赖），还是当作普通按钮、不装 Radix？
+9. ~~记住主题~~：已定，不记住，和 v1 一样。
+10. ~~Radix~~：已定，主题按钮用 Radix 的 `Toggle`。
 11. **Reduced motion**：reduced motion 下照 mockup 画静止的烟花（推荐），还是不画？（Motion 的措辞已定，本 PR 已改。）
 12. ~~Workbench 这个 section 的名字~~：已定，照 v1：标题、rail 标签仍是 “Mars Workbench”，锚点 `#workbench`；只有 header 链接叫 “Product”。
 13. ~~纸的颜色~~：已定，照 v1：桌面两边 `#ece8df`、中间 `#fbfaf6`；手机整页是 sheet 色，不要两边的对比。
+14. **Rail 的 hover 标签用 Radix `Tooltip`**：推荐。它在 hover 和键盘聚焦时出现、触摸时不出现，和 v1 一样；代价是多一个包（`@radix-ui/react-tooltip`），标签放在 portal 里。不用的话照 v1 用 CSS 的 `:hover` / `:focus-visible` 手写。
 
 ## 风险
 
