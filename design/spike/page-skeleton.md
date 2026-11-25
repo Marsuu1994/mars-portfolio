@@ -1,6 +1,6 @@
 # Spike: 整页骨架——header、五个 section 占位、滚动进度条、两套主题、背景烟花
 
-**Status: awaiting owner review** · 第 8 轮 2026-11-25（Q1–Q6、Q9、Q10、Q12、Q13 已答，滚动的行为已定，Q11 的规则措辞已定，新开 Q14）· 设计：v1 mockup（2026-11-24 定档），私有页面 [claude.ai/artifact/6ouKG7ihv9DbuUNAdVK95b](https://claude.ai/artifact/6ouKG7ihv9DbuUNAdVK95b)，还不在仓库里（Q3）
+**Status: awaiting owner review** · 第 9 轮 2026-11-25（Q1–Q6、Q8–Q10、Q12–Q14 已答，滚动的行为已定，Q11 的规则措辞已定，新开 Q15）· 设计：v1 mockup（2026-11-24 定档），私有页面 [claude.ai/artifact/6ouKG7ihv9DbuUNAdVK95b](https://claude.ai/artifact/6ouKG7ihv9DbuUNAdVK95b)，还不在仓库里（Q3）
 
 > 语言约定：叙述用中文；站点的文案、区块名和代码标识保留英文（header、section、rail、sheet、`data-theme`、`paper` / `ink`），和 mockup、spec、代码一一对应。**sheet** 是桌面端页面中间那张更亮的纸；**rail** 是右边的滚动进度条和它的点；**fireworks** 是背景里的铅笔烟花。
 
@@ -83,8 +83,19 @@ Section 后来变高（比如图片晚加载）时要不要重算点的位置，
 
 - **Q9**：不记住，和 v1 一样。点一下只对这一次浏览有效，刷新回到系统主题；不用 `localStorage`。所以也不会闪：第一帧本来就是系统主题，不需要 `<head>` 里的脚本（技术问题 5 已改）。
 - **Q10**：主题按钮用 Radix 的 `Toggle`，它是站点的第一个 Radix 依赖。
-- **骨架里别的交互**（提议，等 owner 定，见 Q14）：rail 的点在 hover 和键盘聚焦时显示 “01 About” 这样的标签，正好是 Radix 的 `Tooltip`。Header 的链接和 rail 的点本身是页内链接，Radix 没有对应的组件，照旧用 `<a>`；手机上横向滚的链接条用浏览器自己的滚动，不用 Radix 的 `ScrollArea`。
+- **骨架里别的交互**（当时是提议，第 9 轮定了，见 Q14）：rail 的点在 hover 和键盘聚焦时显示 “01 About” 这样的标签，正好是 Radix 的 `Tooltip`。Header 的链接和 rail 的点本身是页内链接，Radix 没有对应的组件，照旧用 `<a>`；手机上的链接条不用 Radix 的 `ScrollArea`（第 9 轮 owner 定了手机上根本不横向滑）。
 - **Radix 怎么用**：见技术问题 5 › 组件。
+
+## Owner 的回答（第 9 轮，2026-11-25）
+
+> ok没问题，手机哪里要横向滑？我希望手机端完全不要横向滑
+
+回的是「rail 的标签用 Radix Tooltip」和「红印章先放 header 最右，可以吗」。
+
+- **Q14**：rail 的 hover 标签用 Radix 的 `Tooltip`。这次装两个 Radix 包：`Toggle` 和 `Tooltip`。
+- **Q8**：主题按钮是红印章，先放在 header 最右边，链接后面。
+- **手机上完全不横向滑**（偏离 v1，owner 定）：v1 在 ≤560px 让 header 的链接条放不下就横向滚，这条不要了。页面任何地方在手机上都不能横向滑。
+- 量过了，按现在的 header 放得下，不用改版式（技术问题 7 › Header 放不放得下）。只有比 360px 更窄的手机要定（Q15）。
 
 ## 用了哪些标准
 
@@ -127,7 +138,7 @@ Section 后来变高（比如图片晚加载）时要不要重算点的位置，
 从 mockup 源码读出来的，spec 会逐条写成 item：
 
 - **版式**：一个纵向滚动，五个 section 各至少一屏高（`100svh`），`scroll-snap-type: y proximity`。桌面（≥900px）内容在居中的 sheet 上，宽 `clamp(560px, 50vw, 860px)`，比底色亮、有细边和很淡的阴影；手机 sheet 透明，铺满全宽。颜色：两边的 desk 是 `#ece8df`，sheet 是 `#fbfaf6`，手机整页是 sheet 色；照 v1（Q13，第 5 轮定）。底色和 sheet 都有一层 SVG 噪点做纸纹。
-- **Header**：`position: fixed`，高 56px（≤560px 是 50px），半透明底色加 `backdrop-filter: blur(10px)`，底边一条细线；内容和 sheet 同宽。左边品牌：8px 红点 + “Mars”；右边五个链接，13px，灰色，当前 section 变深色、下面一条 1px 红线。≤560px：品牌只剩红点，“Mars Workbench” 显示成 “Workbench”，链接放不下就横向滚动。**偏离 v1（owner 定，第 3 轮）**：这个链接两个宽度都叫 “Product”，没有手机上的短名。
+- **Header**：`position: fixed`，高 56px（≤560px 是 50px），半透明底色加 `backdrop-filter: blur(10px)`，底边一条细线；内容和 sheet 同宽。左边品牌：8px 红点 + “Mars”；右边五个链接，13px，灰色，当前 section 变深色、下面一条 1px 红线。≤560px：品牌只剩红点，“Mars Workbench” 显示成 “Workbench”，链接放不下就横向滚动。**偏离 v1（owner 定）**：这个链接两个宽度都叫 “Product”，没有手机上的短名（第 3 轮）；链接条不横向滚，手机上整页都不横向滑（第 9 轮）。
 - **Rail**：固定在右边，垂直居中，高 `min(44vh, 360px)`（≤560px `min(36vh, 280px)`），一条 1px 细线，红色的填充随滚动进度从上往下长。每个 section 一个点，位置按 section 在页面里的位置算（第一个在顶、最后一个在底）；走过的点填红，当前的点大一圈带红环；点是 24px 的点击区，点了平滑滚到那个 section；有 hover 的设备上 hover 或键盘聚焦时左边出一个标签 “01 About”。
 - **主题**：mockup 里是 About 角落的红印章（墨 / 纸）切换整页；这次按 owner 的话挪到 header。
 - **Fireworks**：一个铺满视口的 `<canvas>`，在 sheet 后面，不接收点击。参数（mockup 的 `TUNE`）：
@@ -226,7 +237,7 @@ src/
 - Header 的链接和 rail 的点都是 `<a href="#about">` 这样的页内链接，不是 `<button>`：语义就是导航，没有 JS 也能跳，URL 带上 hash，可以直接分享到某个 section。
 - 平滑滚动用 CSS：`html { scroll-behavior: smooth }`，只在 `prefers-reduced-motion: no-preference` 时生效；reduced motion 下直接跳。
 - 当前那个链接和点带 `aria-current="true"`，测试也靠它断言。
-- Rail 的点没有可见文字，`aria-label` 是 “Go to About”；hover 标签只在 `(hover: hover)` 的设备上出现，手机上没有。提议用 Radix 的 `Tooltip` 做这个标签（Q14）：它在 hover 和键盘聚焦时打开、触摸时不打开，正好是 v1 的行为，延迟设成 0 就和 v1 一样立刻出现。
+- Rail 的点没有可见文字，`aria-label` 是 “Go to About”；hover 标签只在 `(hover: hover)` 的设备上出现，手机上没有。这个标签用 Radix 的 `Tooltip`（Q14，已定）：它在 hover 和键盘聚焦时打开、触摸时不打开，正好是 v1 的行为，延迟设成 0 就和 v1 一样立刻出现。
 - Section 从页面顶开始，标题区上面留出 header 的高度（mockup 是 `padding-top: nav-h + 40px`），所以不用 `scroll-padding-top`。
 - `scroll-snap-type: y proximity` 照 mockup 保留：靠近 section 开头时吸过去，滚到中间不强拽。
 
@@ -238,7 +249,7 @@ src/
 
 **按钮**：
 
-- 样子和位置（Q8）：沿用 mockup 的红印章，`paper` 下写「墨」（点了变黑），`ink` 下写「纸」，放在 header 最右边、链接后面。Owner 说位置还在想，所以 spec 只写「在 header 里」，不写具体在哪，以后挪位置不用改 spec 和测试。手机上 header 很挤：390px 宽，红点 + 五个链接 + 32px 的印章，链接可能要横向滚；“Product” 比 “Workbench” 短，松一点。
+- 样子和位置（Q8，已定）：沿用 mockup 的红印章，`paper` 下写「墨」（点了变黑），`ink` 下写「纸」，先放在 header 最右边、链接后面。Owner 说位置还在想，所以 spec 只写「在 header 里」，不写具体在哪，以后挪位置不用改 spec 和测试。手机上放得下，不横向滚（技术问题 7）。
 - 字随主题变，但服务端不知道系统主题：印章上的字用 CSS 按 `data-theme` 和系统主题显示（两个字都在 DOM 里，只露一个），不靠 JS，所以第一帧就对、不会 hydration 不一致；`aria-pressed` 和 `aria-label`（“Switch to ink theme”）在 mount 之后由 JS 按 `matchMedia` 设。
 - 组件（Q10，已定）：Radix 的 `Toggle`（`@radix-ui/react-toggle`）。
   - Radix Primitives 是什么：只管行为和无障碍的组件，几乎不带样式。它负责键盘操作、`aria-*` 属性、焦点，样子全由我们写。
@@ -267,6 +278,16 @@ src/
 v1 用了三个断点：900px（以上是 sheet 版式，以下 sheet 铺满）、560px（header 变紧凑、rail 变短）、360px（链接再缩一点）。Tailwind 默认的断点是 640 / 768 / 1024，对不上。
 
 - **推荐**在 `globals.css` 的 `@theme` 里加两个有名字的断点：`--breakpoint-sheet: 56.25rem`（900px）和 `--breakpoint-phone: 35rem`（560px），写 `sheet:` 和 `max-phone:`。360px 那一档只有字号差一点，用 `max-[360px]:` 就地写，不单独起名。
+
+**Header 放不放得下**（第 9 轮，owner 要手机上完全不横向滑）：照 v1 的手机 header 量的（16px 边距、8px 红点、五个链接、32px 印章，各部分之间 16px）。字宽用字体文件实际量，Inter Tight 是 v1 的字体，Geist 是 Q7 的另一个选项：
+
+| 宽度 | 链接的字号和间距（v1） | 可用宽度 | 五个链接占 | 剩下（Inter Tight / Geist） |
+| --- | --- | --- | --- | --- |
+| 390px | 12.5px，间距 16px | 286px | 260 / 273px | 26 / 13px |
+| 360px | 11.5px，间距 11px | 256px | 218 / 229px | 38 / 27px |
+| 320px | 11.5px，间距 11px | 216px | 218 / 229px | **−2 / −13px** |
+
+360px 和以上都放得下，不用改版式，也不用菜单。320px（第一代 iPhone SE 那样的老手机）放不下，要定（Q15）。e2e 里现有的「不横向滚动」断言在 390px 跑；spec 写成「手机上任何宽度都不横向滑」。
 - 测试的两个宽度用现成的 Playwright project：`desktop` 1280×800（sheet 宽 640px，两边各 320px 放烟花）和 `mobile` 390×844（紧凑 header、sheet 铺满）。900px 到 1280px 之间、560px 到 900px 之间只要「不坏」，不单独测。
 
 ### 8. 调色板和字体怎么对上 v1
@@ -316,17 +337,18 @@ v1 是 source of truth，所以**默认 A**。B 和 owner 的「keep visual cons
 5. ~~对比度~~：已定，看着舒服就行，4.5:1 不是硬线；muted 用 `#6b665e`。
 6. ~~红用在哪~~：已定，照 v1。
 7. **字体**：默认照 v1（header Inter Tight、rail 标签 IBM Plex Mono、section 标题 Helvetica）。要不要改成站点已有的 Geist + Geist Mono，换一家字体的统一？
-8. **主题按钮**：先用红印章（`paper` 下「墨」、`ink` 下「纸」），放在 header 最右边，spec 只写「在 header 里」？
+8. ~~主题按钮~~：已定，红印章，先放 header 最右边；spec 只写「在 header 里」。
 9. ~~记住主题~~：已定，不记住，和 v1 一样。
 10. ~~Radix~~：已定，主题按钮用 Radix 的 `Toggle`。
 11. **Reduced motion**：reduced motion 下照 mockup 画静止的烟花（推荐），还是不画？（Motion 的措辞已定，本 PR 已改。）
 12. ~~Workbench 这个 section 的名字~~：已定，照 v1：标题、rail 标签仍是 “Mars Workbench”，锚点 `#workbench`；只有 header 链接叫 “Product”。
 13. ~~纸的颜色~~：已定，照 v1：桌面两边 `#ece8df`、中间 `#fbfaf6`；手机整页是 sheet 色，不要两边的对比。
-14. **Rail 的 hover 标签用 Radix `Tooltip`**：推荐。它在 hover 和键盘聚焦时出现、触摸时不出现，和 v1 一样；代价是多一个包（`@radix-ui/react-tooltip`），标签放在 portal 里。不用的话照 v1 用 CSS 的 `:hover` / `:focus-visible` 手写。
+14. ~~Rail 的 hover 标签~~：已定，用 Radix 的 `Tooltip`。
+15. **比 360px 更窄的手机**：320px 时五个链接比可用宽度多 2px（Inter Tight），用 Geist 多 13px。推荐：≤360px 时链接间距从 11px 收到 8px，Inter Tight 在 320px 就剩 10px；如果 Q7 选了 Geist，320px 还要再把字号收到 11px。另一种是只保证 360px 及以上，320px 不管（这么窄的手机现在很少见）。
 
 ## 风险
 
 - **滚动和烟花都是常驻的 JS**：一个 scroll 监听加一个一直跑的 `requestAnimationFrame`。前者是 passive 加 rAF 节流；后者在手机上持续耗电，实现时量一次再说。
 - **iOS Safari 的视口**：地址栏收起展开会改视口高度。section 用 `100svh`（mockup 就是）不会跳；rail 的点位置在 resize 时重算，会有一帧的轻微移动。CI 只在 Chromium 里模拟手机宽度，真机上的效果需要 owner 截图确认。
 - **`backdrop-filter`** 在低端 Android 上可能卡。Header 只有 56px 高，影响小；不行就退成不透明的底。
-- **Header 在 390px 上很挤**：五个链接加印章，链接可能要横向滚动（mockup 已经允许）。“Product” 替掉 “Workbench” 后松一点；印章以后换位置时这个问题会变。
+- **Header 在手机上没什么余量**：390px 剩 13–26px（技术问题 7）。以后 header 里再加东西、链接改名变长、或者换更宽的字体，都要重新量；印章换位置时也要重量。
