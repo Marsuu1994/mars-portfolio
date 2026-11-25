@@ -1,6 +1,6 @@
 # Design Language
 
-The site's visual language: two themes over one variable contract, its type and its few motifs, and the owner's Principles that every design is judged by. Implemented in `src/app/globals.css`. The page it serves is the v1 mockup (`design/spike/page-skeleton.md`); the palette and type below predate it. The palette gives way to v1's in the page's implementation (the spike's Q5); the paper's two colours and the fonts are still open there (Q13, Q7).
+The site's visual language: two themes over one variable contract, its type and its few motifs, and the owner's Principles that every design is judged by. Implemented in `src/app/globals.css`. The page it serves is the v1 mockup (`design/spike/page-skeleton.md`); the palette and type below predate it. The palette gives way to v1's in the page's implementation (the spike's Q5, Q13); the fonts are still open there (Q7).
 
 ## Colour
 
@@ -17,11 +17,14 @@ The owner's rules (2026-11-24), which every page and every theme follows:
 What "black and white" means (the owner, 2026-11-25):
 
 - Black and white name the contrast between the background and the text, not the page's literal colours.
-- The background of the sections is like letter paper, above all on desktop: the sheet in the middle is a letter-paper colour, and the two sides are white.
+- The sections sit on paper, above all on desktop, in v1's two layers: the desk at the sides is the warmer, darker paper, and the sheet in the middle is the brighter one.
+- A phone has no sides, so the whole page is the sheet, with no contrast between layers.
 
 > 我说黑白，但其实section的背景是类似信纸那样尤其是在desktop，中间是信纸那种颜色，两边白
 
-The v1 mockup draws the two layers the other way round: its sides are the warmer, darker paper and its sheet the brighter one. Which colours the paper takes is still open (`design/spike/page-skeleton.md` Q13).
+> 照v1来吧，手机的话就不需要两边的对比
+
+The owner's first description had a letter-paper sheet between white sides; the v1 mockup draws the layers the other way round, and the owner chose v1's (`design/spike/page-skeleton.md` Q13).
 
 ## Themes
 

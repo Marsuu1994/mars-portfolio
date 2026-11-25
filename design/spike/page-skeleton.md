@@ -1,6 +1,6 @@
 # Spike: 整页骨架——header、五个 section 占位、滚动进度条、两套主题、背景烟花
 
-**Status: awaiting owner review** · 第 4 轮 2026-11-25（Q1–Q6、Q12 已答，Q11 的规则措辞已定，新开 Q13）· 设计：v1 mockup（2026-11-24 定档），私有页面 [claude.ai/artifact/6ouKG7ihv9DbuUNAdVK95b](https://claude.ai/artifact/6ouKG7ihv9DbuUNAdVK95b)，还不在仓库里（Q3）
+**Status: awaiting owner review** · 第 5 轮 2026-11-25（Q1–Q6、Q12、Q13 已答，Q11 的规则措辞已定）· 设计：v1 mockup（2026-11-24 定档），私有页面 [claude.ai/artifact/6ouKG7ihv9DbuUNAdVK95b](https://claude.ai/artifact/6ouKG7ihv9DbuUNAdVK95b)，还不在仓库里（Q3）
 
 > 语言约定：叙述用中文；站点的文案、区块名和代码标识保留英文（header、section、rail、sheet、`data-theme`、`paper` / `ink`），和 mockup、spec、代码一一对应。**sheet** 是桌面端页面中间那张更亮的纸；**rail** 是右边的滚动进度条和它的点；**fireworks** 是背景里的铅笔烟花。
 
@@ -46,8 +46,14 @@ Owner 2026-11-24 把整页 mockup 定档为 v1，开了 portfolio-engineering �
 
 - **Q11 的规则措辞**：Motion 那句改成「纸面不动，背景里只有 fireworks 会动」，本 PR 已改。Reduced motion 下画不画静止的烟花还没定，留在 Q11。
 - **Q5**：对比度看着舒服就可以，4.5:1 不是硬线。Design language › Contrast method & bars 已改成「4.5:1 是参照，读着舒服由 owner 判断」。白主题的 muted 用 `#6b665e`：肉眼和 v1 的 `#77726a` 几乎一样，读着更稳，保留；黑主题的红照 v1。
-- **黑白是对比，不是页面的颜色**：section 的背景像信纸，尤其桌面，中间是信纸色、两边白。已写进 design language › Colour。这和 v1 对不上，见 Q13，等 owner 选。
+- **黑白是对比，不是页面的颜色**：section 的背景像信纸，尤其桌面，中间是信纸色、两边白。已写进 design language › Colour。这和 v1 对不上，问了 Q13（第 5 轮定：照 v1）。
 - **Q12**：Workbench 这个 section 照 v1 不动：标题和 rail 的 hover 标签仍是 “Mars Workbench”，锚点仍是 `#workbench`；只有 header 的链接叫 “Product”。
+
+## Owner 的回答（第 5 轮，2026-11-25）
+
+> 照v1来吧，手机的话就不需要两边的对比
+
+- **Q13**：纸照 v1。桌面两边的 desk 是 `#ece8df`，中间的 sheet 是 `#fbfaf6`；黑主题照 v1 的 `#1a1917` / `#232220`。手机没有两边，整页就是 sheet 色，没有两层的对比，和 v1 一样。Design language › Colour 已改成这样。
 
 ## 用了哪些标准
 
@@ -89,7 +95,7 @@ Owner 2026-11-24 把整页 mockup 定档为 v1，开了 portfolio-engineering �
 
 从 mockup 源码读出来的，spec 会逐条写成 item：
 
-- **版式**：一个纵向滚动，五个 section 各至少一屏高（`100svh`），`scroll-snap-type: y proximity`。桌面（≥900px）内容在居中的 sheet 上，宽 `clamp(560px, 50vw, 860px)`，比底色亮、有细边和很淡的阴影；手机 sheet 透明，铺满全宽。颜色：两边的 desk 是 `#ece8df`，sheet 是 `#fbfaf6`，手机整页是 sheet 色；和 owner 说的「中间信纸色、两边白」对不上（Q13）。底色和 sheet 都有一层 SVG 噪点做纸纹。
+- **版式**：一个纵向滚动，五个 section 各至少一屏高（`100svh`），`scroll-snap-type: y proximity`。桌面（≥900px）内容在居中的 sheet 上，宽 `clamp(560px, 50vw, 860px)`，比底色亮、有细边和很淡的阴影；手机 sheet 透明，铺满全宽。颜色：两边的 desk 是 `#ece8df`，sheet 是 `#fbfaf6`，手机整页是 sheet 色；照 v1（Q13，第 5 轮定）。底色和 sheet 都有一层 SVG 噪点做纸纹。
 - **Header**：`position: fixed`，高 56px（≤560px 是 50px），半透明底色加 `backdrop-filter: blur(10px)`，底边一条细线；内容和 sheet 同宽。左边品牌：8px 红点 + “Mars”；右边五个链接，13px，灰色，当前 section 变深色、下面一条 1px 红线。≤560px：品牌只剩红点，“Mars Workbench” 显示成 “Workbench”，链接放不下就横向滚动。**偏离 v1（owner 定，第 3 轮）**：这个链接两个宽度都叫 “Product”，没有手机上的短名。
 - **Rail**：固定在右边，垂直居中，高 `min(44vh, 360px)`（≤560px `min(36vh, 280px)`），一条 1px 细线，红色的填充随滚动进度从上往下长。每个 section 一个点，位置按 section 在页面里的位置算（第一个在顶、最后一个在底）；走过的点填红，当前的点大一圈带红环；点是 24px 的点击区，点了平滑滚到那个 section；有 hover 的设备上 hover 或键盘聚焦时左边出一个标签 “01 About”。
 - **主题**：mockup 里是 About 角落的红印章（墨 / 纸）切换整页；这次按 owner 的话挪到 header。
@@ -114,7 +120,7 @@ Owner 2026-11-24 把整页 mockup 定档为 v1，开了 portfolio-engineering �
 
 1. **「印章是页面上唯一的红」**（Motifs、主题表 `--seal` 那一行）。v1 里红不只在印章上：品牌红点、当前链接的下划线、rail 的填充和点、焦点框。按 owner 的「红色是强调色」，本 PR 把这两处改成「红是强调色」，不再说唯一。
 2. **「backgrounds never move」**（Motion）。烟花就是会动的背景，是 v1 定下来的。Owner 第 4 轮定了措辞，本 PR 已改成「纸面不动，背景里只有 fireworks 会动」；reduced motion 下画不画还在 Q11。
-3. **现有调色板不是 v1 的颜色**。现在的 `paper` / `ink` 是上一版方向的「墨分五色 + 浅绛」，`ink` 主题偏蓝（`#13161b`）；v1 的是暖纸色，黑主题偏暖（`#1a1917`），还多了 desk（底）和 sheet（纸）两层。按 v1 换（Q5 已定）；纸本身的颜色是 Q13。
+3. **现有调色板不是 v1 的颜色**。现在的 `paper` / `ink` 是上一版方向的「墨分五色 + 浅绛」，`ink` 主题偏蓝（`#13161b`）；v1 的是暖纸色，黑主题偏暖（`#1a1917`），还多了 desk（底）和 sheet（纸）两层。按 v1 换（Q5、Q13 已定）。
 4. **字体**。v1 的 header 用 Inter Tight，rail 标签用 IBM Plex Mono，section 标题用 Helvetica（About 用 Source Serif 4）；站点现在加载的是 Geist / Geist Mono / Source Serif 4。Q7。
 
 ### v1 颜色的对比度
@@ -250,7 +256,7 @@ v1 用了三个断点：900px（以上是 sheet 版式，以下 sheet 铺满）�
 | **A** · 换成 v1 的颜色 ✓ | 变量按角色重排成 v1 的：`--desk`（底）、`--sheet`（纸）、`--ink`（字和黑）、`--ink-muted`（次要的字）、`--hairline`、`--red`（强调）；值用 mockup 的，muted 用 `#6b665e`；`--indigo`、`--umber` 留着给以后的图做点缀；`--ink-strong`、`--ink-light`、`--ink-faint` 等 section 真用到再加 | 和 v1 一模一样；名字直接对应 owner 的「黑白做背景和文字、红色强调」 | 改名要改 `globals.css` 三处、主题表、`icon.svg` 的红（Sync points）；主题表整张重量 |
 | B · 保留现在的颜色 | v1 的 desk 用 `--paper-2`、sheet 用 `--paper`，红用 `--seal` | 不动现有变量 | 看起来和 v1 不一样：白主题的 sheet 更灰，黑主题偏蓝；违反 Build it exactly |
 
-**按 v1，A。**Muted 用 `#6b665e`，owner 第 4 轮定的（Q5）。desk 和 sheet 的值等 Q13。主题名照旧叫 `paper` / `ink`（mockup 里是 `light` / `dark`，只是草稿里的名字）。
+**按 v1，A。**Muted 用 `#6b665e`，owner 第 4 轮定的（Q5）。desk 和 sheet 照 v1（Q13）。主题名照旧叫 `paper` / `ink`（mockup 里是 `light` / `dark`，只是草稿里的名字）。
 
 **字体**（Q7）：
 
@@ -293,10 +299,7 @@ v1 是 source of truth，所以**默认 A**。B 和 owner 的「keep visual cons
 10. **Radix**：主题按钮用 Radix 的 `Toggle`（按规则，也是第一个 Radix 依赖），还是当作普通按钮、不装 Radix？
 11. **Reduced motion**：reduced motion 下照 mockup 画静止的烟花（推荐），还是不画？（Motion 的措辞已定，本 PR 已改。）
 12. ~~Workbench 这个 section 的名字~~：已定，照 v1：标题、rail 标签仍是 “Mars Workbench”，锚点 `#workbench`；只有 header 链接叫 “Product”。
-13. **纸的颜色**：你说 section 的背景像信纸，桌面上中间是信纸色、两边白。v1 正好反过来：两边的 desk 是 `#ece8df`（暖纸色，偏深），中间的 sheet 是 `#fbfaf6`（接近白，更亮）；手机整页是 `#fbfaf6`。v1 里另一处信纸色是 Contact 那张信的 `#f4eddf`。按哪个？
-    - **A · 照 v1**：两边 `#ece8df`，中间 `#fbfaf6`。
-    - **B · 照你说的**：两边白 `#ffffff`，中间信纸色（比如 `#f4eddf`）。那 Contact 的信和 sheet 同色，要再分开；手机整页用信纸色还是白也要定。
-    - 黑主题 v1 是两边 `#1a1917`、中间 `#232220`（中间稍亮）。选 B 的话，黑主题要不要也跟着改？
+13. ~~纸的颜色~~：已定，照 v1：桌面两边 `#ece8df`、中间 `#fbfaf6`；手机整页是 sheet 色，不要两边的对比。
 
 ## 风险
 
