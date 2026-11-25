@@ -1,6 +1,6 @@
 # Spike: 整页骨架——header、五个 section 占位、滚动进度条、两套主题、背景烟花
 
-**Status: awaiting owner review** · 第 11 轮 2026-11-25（Q1–Q15 都已答，等 owner 批准）· 设计：v1 mockup（2026-11-24 定档），私有页面 [claude.ai/artifact/6ouKG7ihv9DbuUNAdVK95b](https://claude.ai/artifact/6ouKG7ihv9DbuUNAdVK95b)，还不在仓库里（Q3）
+**Status: awaiting owner review** · 第 12 轮 2026-11-25（Q1–Q15 都已答，加了组件树，等 owner 批准）· 设计：v1 mockup（2026-11-24 定档），私有页面 [claude.ai/artifact/6ouKG7ihv9DbuUNAdVK95b](https://claude.ai/artifact/6ouKG7ihv9DbuUNAdVK95b)，还不在仓库里（Q3）
 
 > 语言约定：叙述用中文；站点的文案、区块名和代码标识保留英文（header、section、rail、sheet、`data-theme`、`paper` / `ink`），和 mockup、spec、代码一一对应。**sheet** 是桌面端页面中间那张更亮的纸；**rail** 是右边的滚动进度条和它的点；**fireworks** 是背景里的铅笔烟花。
 
@@ -118,6 +118,12 @@ Section 后来变高（比如图片晚加载）时要不要重算点的位置，
 - **唯一的例外是印章上的「墨」「纸」**：Geist 没有中文字形。Design language 本来就规定中文用宋体（Type），所以照 v1 用思源宋体（Noto Serif SC，最粗的 900），只带这两个字。做法见技术问题 8 › 印章的字。
 - Geist 的 header 也量过：390px 剩 13px，360px 剩 27px，都放得下（技术问题 7）。
 
+## Owner 的回答（第 12 轮，2026-11-25）
+
+> 好没问题，你写完spike把你要做的组件按照page为root画一个component structure tree我看看
+
+- 技术问题 2 加了组件树：从 `app/v1/page.tsx` 往下，每个组件标了 Server 还是 Client、在 `ui/` 还是 `site/`、用不用 Radix。文件结构跟着更新（加了 `Tooltip`、`HeaderLink`、`RailDot`、`useSectionScroll`、`currentTheme` 和印章的字体文件）。
+
 ## 用了哪些标准
 
 `mars-portfolio` 的 harness 本来就是从 `mars-workbench`@`3f741cc`（2026-11-19）复制改写的（`design/spike/archived/site-scaffold.md`）。这次对照 `mars-workbench` 的 `main`（`368bed5`）重读了：
@@ -207,38 +213,69 @@ Section 后来变高（比如图片晚加载）时要不要重算点的位置，
 
 骨架建在 `src/app/v1/page.tsx`，`robots: noindex`；`/` 继续是临时页。所有 section 做完的那个 PR 把页面挪到 `/`，并删掉临时页（`public/home.html`、`next.config.ts` 的 rewrite、`.prettierignore` 那一行、`e2e/home.spec.ts`、`HOME_HEADLINE`）。每个 section 的 PR 都能在 `/v1` 上看，preview 和 production 都行。下面的路径按 `/v1` 写；`page.tsx` 指 `src/app/v1/page.tsx`。
 
-### 2. 文件结构
+### 2. 组件树和文件结构
 
 按 AGENTS.md › Page structure：内容在 `src/` 下的文件里，组件按「有没有 import 内容类型」分 `ui/` 和 `site/`，`'use client'` 只放在最小的需要交互的组件上。
+
+**组件树**（第 12 轮，owner 要看），从页面往下：
+
+```text
+app/v1/page.tsx                        Server · 路由：读 sections.ts，渲染整页
+├── <h1>Mars Chu</h1>                  视觉上隐藏
+├── Fireworks                          ui   · Client 边界 · 背景的 canvas
+├── PageChrome                         site · Client 边界 · 唯一的滚动监听
+│   ├── SiteHeader                     site · Client（在 PageChrome 里）
+│   │   ├── 品牌：红点 + “Mars”        SiteHeader 里的 render 函数
+│   │   ├── HeaderLink × 5             site · Client（在 PageChrome 里）
+│   │   └── ThemeToggle                ui   · Client · Radix Toggle · 红印章
+│   └── ProgressRail                   site · Client（在 PageChrome 里）· 线和红色填充
+│       └── RailDot × 5                site · Client（在 PageChrome 里）
+│           └── Tooltip                ui   · Client · Radix Tooltip · “01 About”
+└── <main>
+    └── SectionPlaceholder × 5         site · Server · 一屏高，只有标题
+```
+
+- **Server / Client**：页面和五个 section 是 Server Component，在服务端渲染成 HTML。Client 边界只有两处：`PageChrome`（要听滚动）和 `Fireworks`（要画 canvas）。`PageChrome` import 的组件跟着在浏览器里运行，不用各自写 `'use client'`。`ThemeToggle` 和 `Tooltip` 是 `ui/` 里包着 Radix 的组件，自己带 `'use client'`，以后从任何 Server Component 里直接用也行。
+- **ui / site**：`Fireworks`、`ThemeToggle`、`Tooltip` 不知道有哪些 section，放 `ui/`，换一个站也能用。Header、链接、rail、点和 section 都要 `sections.ts` 的类型，放 `site/`。
+- **Radix**：只有两处，`ThemeToggle` 里的 `Toggle` 和 `Tooltip` 里的 `Tooltip`（Q10、Q14）。
+- **没有 Provider 和 Context**：主题只在 `<html data-theme>` 上，`ThemeToggle` 直接改它，`Fireworks` 用 `MutationObserver` 看它，两者用同一个 `currentTheme.ts` 读当前主题。滚动的结果只有 `PageChrome` 一个地方算，用 props 传给 header 和 rail。
+- **为什么 header 和 rail 在一个父组件里**：两者都要知道「现在在哪个 section」，一个滚动监听算一次，两边一起更新。五个 section 不进 `PageChrome`，留在 Server Component 里，作为 `page.tsx` 的直接子元素。
+- **以后**：每个 section 有了内容，`SectionPlaceholder` 换成各自的组件（`site/about/`、`site/workbench/`……），树的上半部分不用动。
+
+**文件**：
 
 ```text
 src/
 ├── app/
-│   ├── v1/page.tsx                       # 读 sections，渲染骨架（Server Component）
-│   └── globals.css                       # 主题变量（Q5）、断点
+│   ├── layout.tsx                        # 加载 Geist、Geist Mono（Q7）
+│   ├── v1/page.tsx                       # 上面的树的根（Server Component）
+│   └── globals.css                       # 主题变量（Q5、Q13）、断点
 ├── content/
-│   └── sections.ts                       # 五个 section：id、标题、header 里的名字（Product）
+│   └── sections.ts                       # 五个 section：id、标题、header 里的名字（Product）、rail 的序号
 └── components/
     ├── ui/
-    │   ├── theme-toggle/ThemeToggle.tsx  # 'use client'：Radix Toggle，切换 paper / ink
+    │   ├── theme-toggle/
+    │   │   ├── ThemeToggle.tsx           # 'use client'：Radix Toggle，切换 paper / ink
+    │   │   ├── currentTheme.ts           # 读当前主题（data-theme，没有就看系统）；Fireworks 也用
+    │   │   └── seal-glyphs.woff2         # 只有「墨」「纸」两个字的思源宋体，只有印章用（Q7，技术问题 8）
+    │   ├── tooltip/Tooltip.tsx           # 'use client'：Radix Tooltip，站点的样式
     │   └── fireworks/
-    │       ├── Fireworks.tsx             # 'use client'：canvas、rAF 循环
+    │       ├── Fireworks.tsx             # 'use client'：canvas、rAF 循环、reduced motion 下画一次
     │       ├── fireworkGeometry.ts       # 纯函数：形状、颜色、能放在哪；单元测试
     │       └── constants.ts              # 大小、上限、时长（mockup 的 TUNE）
     └── site/
         ├── page-shell/
-        │   ├── PageChrome.tsx            # 'use client'：一个滚动监听，渲染 header 和 rail
-        │   ├── SiteHeader.tsx            # 品牌、五个链接、ThemeToggle
-        │   ├── ProgressRail.tsx          # 线、填充、点
-        │   ├── scrollPosition.ts         # 纯函数：当前 section、进度、点的位置；单元测试
-        │   └── constants.ts
+        │   ├── PageChrome.tsx            # 'use client'：滚动监听，渲染 header 和 rail
+        │   ├── useSectionScroll.ts       # 滚动、resize、ResizeObserver → 当前 section、进度、点的位置
+        │   ├── scrollPosition.ts         # 纯函数：上面那三样怎么算；单元测试
+        │   ├── SiteHeader.tsx
+        │   ├── HeaderLink.tsx
+        │   ├── ProgressRail.tsx
+        │   ├── RailDot.tsx
+        │   └── constants.ts              # 45% 那条线、到底的 2px 等
         └── sections/
             └── SectionPlaceholder.tsx    # 一个全屏 section，只有标题（Server Component）
 ```
-
-- `ThemeToggle` 和 `Fireworks` 不知道有哪些 section，放 `ui/`；header、rail、section 都吃 `sections.ts` 的类型，放 `site/`。
-- Header 和 rail 都要知道「现在在哪个 section」，所以由一个 client 组件 `PageChrome` 持有唯一的滚动监听，把结果传给两者；五个 section 留在 Server Component 里，作为 `page.tsx` 的直接子元素。
-- 将来每个 section 有了内容，`SectionPlaceholder` 换成各自的组件（`site/about/`、`site/workbench/`……），骨架不用动。
 
 ### 3. 怎么知道在哪个 section、进度多少
 
