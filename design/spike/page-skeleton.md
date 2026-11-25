@@ -1,6 +1,6 @@
 # Spike: 整页骨架——header、五个 section 占位、滚动进度条、两套主题、背景烟花
 
-**Status: awaiting owner review** · 第 6 轮 2026-11-25（Q1–Q6、Q12、Q13 已答，滚动的行为照 v1 已定，Q11 的规则措辞已定）· 设计：v1 mockup（2026-11-24 定档），私有页面 [claude.ai/artifact/6ouKG7ihv9DbuUNAdVK95b](https://claude.ai/artifact/6ouKG7ihv9DbuUNAdVK95b)，还不在仓库里（Q3）
+**Status: awaiting owner review** · 第 7 轮 2026-11-25（Q1–Q6、Q12、Q13 已答，滚动的行为已定，Q11 的规则措辞已定）· 设计：v1 mockup（2026-11-24 定档），私有页面 [claude.ai/artifact/6ouKG7ihv9DbuUNAdVK95b](https://claude.ai/artifact/6ouKG7ihv9DbuUNAdVK95b)，还不在仓库里（Q3）
 
 > 语言约定：叙述用中文；站点的文案、区块名和代码标识保留英文（header、section、rail、sheet、`data-theme`、`paper` / `ink`），和 mockup、spec、代码一一对应。**sheet** 是桌面端页面中间那张更亮的纸；**rail** 是右边的滚动进度条和它的点；**fireworks** 是背景里的铅笔烟花。
 
@@ -67,7 +67,15 @@ Owner 2026-11-24 把整页 mockup 定档为 v1，开了 portfolio-engineering �
 - 当前 section 是开头已经过了视口 45% 那条线的最后一个；离页底 2px 以内时是最后一个。
 - 所以：跳到一个 section，填充正好停在它的点上；在比一屏高的 section 里往下读，填充从它的点慢慢走向下一个点；最后一个 section 比一屏高时，点亮了但填充要滚到底才连上，不到一屏高时跳过去就停在页底，填充是满的。
 
-Section 后来变高（比如图片晚加载）时要不要重算点的位置，还没定。
+Section 后来变高（比如图片晚加载）时要不要重算点的位置，当时还没定（第 7 轮定了）。
+
+## Owner 的回答（第 7 轮，2026-11-25）
+
+> 加上
+
+回的是「要不要比 mockup 多做一步，section 尺寸一变就重算点的位置」。
+
+- **加上**，这是比 v1 多的一步，owner 定的：除了 v1 的窗口缩放、页面加载完、字体加载完，任何一个 section 的尺寸变了也重算点的位置和可滚动的距离（`ResizeObserver` 看每个 section）。
 
 ## 用了哪些标准
 
@@ -197,7 +205,7 @@ src/
 
 | | 做法 | 好处 | 代价 |
 | --- | --- | --- | --- |
-| **A** · 一个 scroll 监听 ✓ | `passive` 的 scroll 事件，`requestAnimationFrame` 节流；每帧算 `scrollY / (scrollHeight − innerHeight)` 当进度，用视口 45% 高度那条线落在哪个 section 定当前（mockup 的算法）；滚到底时当前是最后一个。section 的位置在 resize、字体加载完时重算 | 一套代码管进度和当前两件事；就是 mockup 的行为，一模一样；算法是纯函数，好测 | 要记得在布局变化时重算位置（section 以后有图片、高度会变；要不要加 `ResizeObserver` 看 `main`，还没定） |
+| **A** · 一个 scroll 监听 ✓ | `passive` 的 scroll 事件，`requestAnimationFrame` 节流；每帧算 `scrollY / (scrollHeight − innerHeight)` 当进度，用视口 45% 高度那条线落在哪个 section 定当前（mockup 的算法）；滚到底时当前是最后一个。section 的位置在 resize、页面和字体加载完、任何 section 尺寸变化时重算 | 一套代码管进度和当前两件事；就是 mockup 的行为，一模一样；算法是纯函数，好测 | 要在布局变化时重算位置：section 以后有图片、高度会变，所以加 `ResizeObserver` 看每个 section（比 v1 多的一步，第 7 轮 owner 定） |
 | B · IntersectionObserver 管当前，scroll 管进度 | 每个 section 一个 observer，`rootMargin` 切出 45% 那条线 | 当前 section 不用自己算位置 | 进度条还是要 scroll 监听，两套机制做一件事；「滚到底算最后一个」要另外处理 |
 | C · 纯 CSS | 进度用 scroll-driven animations（`animation-timeline: scroll()`），当前用 `scroll-target-group` / `:target-current` | 零 JS | `:target-current` 只有新版 Chromium 支持，Safari、Firefox 不行，还得写一套 JS 兜底；进度点的「走过 / 当前」样式也做不了 |
 
