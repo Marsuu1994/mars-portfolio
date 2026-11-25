@@ -1,6 +1,6 @@
 # Spike: 整页骨架——header、五个 section 占位、滚动进度条、两套主题、背景烟花
 
-**Status: awaiting owner review** · 第 3 轮 2026-11-25（Q1–Q4、Q6 已答，header 的 Product 已定）· 设计：v1 mockup（2026-11-24 定档），私有页面 [claude.ai/artifact/6ouKG7ihv9DbuUNAdVK95b](https://claude.ai/artifact/6ouKG7ihv9DbuUNAdVK95b)，还不在仓库里（Q3）
+**Status: awaiting owner review** · 第 4 轮 2026-11-25（Q1–Q6、Q12 已答，Q11 的规则措辞已定，新开 Q13）· 设计：v1 mockup（2026-11-24 定档），私有页面 [claude.ai/artifact/6ouKG7ihv9DbuUNAdVK95b](https://claude.ai/artifact/6ouKG7ihv9DbuUNAdVK95b)，还不在仓库里（Q3）
 
 > 语言约定：叙述用中文；站点的文案、区块名和代码标识保留英文（header、section、rail、sheet、`data-theme`、`paper` / `ink`），和 mockup、spec、代码一一对应。**sheet** 是桌面端页面中间那张更亮的纸；**rail** 是右边的滚动进度条和它的点；**fireworks** 是背景里的铅笔烟花。
 
@@ -38,7 +38,16 @@ Owner 2026-11-24 把整页 mockup 定档为 v1，开了 portfolio-engineering �
 > 把mars workbench那个条目在header上改成product
 
 - **Q4**：先同步。本 PR 已经把 `design/specs/README.md`（Motion、Ordinary use first）、`implement-spec` skill、它的 reviewer 和 context 对齐 `mars-workbench`@`368bed5`，并复制了 `check:spec` 里检查 spec v2 ID 的部分（`scripts/checkSpec.mts`，CI 的 Spec coverage）。`fx-*` 的说法改成「按播放它的组件命名，时长等交给 design language › Motion」，因为站点没有 `fx-*`。
-- **Header 的 Product**：header 里 “Mars Workbench” 那个链接改叫 “Product”，两个宽度都是，手机上不再缩成 “Workbench”。这是偏离 v1 的地方，owner 定的。“Product” 比 “Workbench” 短，390px 的 header 松一点（见风险）。Section 本身的标题 owner 没提，照 v1 仍是 “Mars Workbench”（Q12）。
+- **Header 的 Product**：header 里 “Mars Workbench” 那个链接改叫 “Product”，两个宽度都是，手机上不再缩成 “Workbench”。这是偏离 v1 的地方，owner 定的。“Product” 比 “Workbench” 短，390px 的 header 松一点（见风险）。Section 本身的标题当时 owner 没提（Q12，第 4 轮已定）。
+
+## Owner 的回答（第 4 轮，2026-11-25）
+
+> 背景的话只有烟花动，对比度这个看着舒服就可以，我说黑白，但其实section的背景是类似信纸那样尤其是在desktop，中间是信纸那种颜色，两边白，workbench这个section照v1不动
+
+- **Q11 的规则措辞**：Motion 那句改成「纸面不动，背景里只有 fireworks 会动」，本 PR 已改。Reduced motion 下画不画静止的烟花还没定，留在 Q11。
+- **Q5**：对比度看着舒服就可以，4.5:1 不是硬线。Design language › Contrast method & bars 已改成「4.5:1 是参照，读着舒服由 owner 判断」。白主题的 muted 用 `#6b665e`：肉眼和 v1 的 `#77726a` 几乎一样，读着更稳，保留；黑主题的红照 v1。
+- **黑白是对比，不是页面的颜色**：section 的背景像信纸，尤其桌面，中间是信纸色、两边白。已写进 design language › Colour。这和 v1 对不上，见 Q13，等 owner 选。
+- **Q12**：Workbench 这个 section 照 v1 不动：标题和 rail 的 hover 标签仍是 “Mars Workbench”，锚点仍是 `#workbench`；只有 header 的链接叫 “Product”。
 
 ## 用了哪些标准
 
@@ -80,7 +89,7 @@ Owner 2026-11-24 把整页 mockup 定档为 v1，开了 portfolio-engineering �
 
 从 mockup 源码读出来的，spec 会逐条写成 item：
 
-- **版式**：一个纵向滚动，五个 section 各至少一屏高（`100svh`），`scroll-snap-type: y proximity`。桌面（≥900px）内容在居中的 sheet 上，宽 `clamp(560px, 50vw, 860px)`，比底色亮、有细边和很淡的阴影；手机 sheet 透明，铺满全宽。底色和 sheet 都有一层 SVG 噪点做纸纹。
+- **版式**：一个纵向滚动，五个 section 各至少一屏高（`100svh`），`scroll-snap-type: y proximity`。桌面（≥900px）内容在居中的 sheet 上，宽 `clamp(560px, 50vw, 860px)`，比底色亮、有细边和很淡的阴影；手机 sheet 透明，铺满全宽。颜色：两边的 desk 是 `#ece8df`，sheet 是 `#fbfaf6`，手机整页是 sheet 色；和 owner 说的「中间信纸色、两边白」对不上（Q13）。底色和 sheet 都有一层 SVG 噪点做纸纹。
 - **Header**：`position: fixed`，高 56px（≤560px 是 50px），半透明底色加 `backdrop-filter: blur(10px)`，底边一条细线；内容和 sheet 同宽。左边品牌：8px 红点 + “Mars”；右边五个链接，13px，灰色，当前 section 变深色、下面一条 1px 红线。≤560px：品牌只剩红点，“Mars Workbench” 显示成 “Workbench”，链接放不下就横向滚动。**偏离 v1（owner 定，第 3 轮）**：这个链接两个宽度都叫 “Product”，没有手机上的短名。
 - **Rail**：固定在右边，垂直居中，高 `min(44vh, 360px)`（≤560px `min(36vh, 280px)`），一条 1px 细线，红色的填充随滚动进度从上往下长。每个 section 一个点，位置按 section 在页面里的位置算（第一个在顶、最后一个在底）；走过的点填红，当前的点大一圈带红环；点是 24px 的点击区，点了平滑滚到那个 section；有 hover 的设备上 hover 或键盘聚焦时左边出一个标签 “01 About”。
 - **主题**：mockup 里是 About 角落的红印章（墨 / 纸）切换整页；这次按 owner 的话挪到 header。
@@ -104,13 +113,13 @@ Owner 2026-11-24 把整页 mockup 定档为 v1，开了 portfolio-engineering �
 和现有文档对不上的地方：
 
 1. **「印章是页面上唯一的红」**（Motifs、主题表 `--seal` 那一行）。v1 里红不只在印章上：品牌红点、当前链接的下划线、rail 的填充和点、焦点框。按 owner 的「红色是强调色」，本 PR 把这两处改成「红是强调色」，不再说唯一。
-2. **「backgrounds never move」**（Motion）。烟花就是会动的背景，是 v1 定下来的。建议改成「纸面不动；背景里只有 fireworks 会动，reduced motion 下静止」（Q11）。这句是规则的改动，等 owner 点头再改。
-3. **现有调色板不是 v1 的颜色**。现在的 `paper` / `ink` 是上一版方向的「墨分五色 + 浅绛」，`ink` 主题偏蓝（`#13161b`）；v1 的是暖纸色，黑主题偏暖（`#1a1917`），还多了 desk（底）和 sheet（纸）两层。怎么对上是 Q5。
+2. **「backgrounds never move」**（Motion）。烟花就是会动的背景，是 v1 定下来的。Owner 第 4 轮定了措辞，本 PR 已改成「纸面不动，背景里只有 fireworks 会动」；reduced motion 下画不画还在 Q11。
+3. **现有调色板不是 v1 的颜色**。现在的 `paper` / `ink` 是上一版方向的「墨分五色 + 浅绛」，`ink` 主题偏蓝（`#13161b`）；v1 的是暖纸色，黑主题偏暖（`#1a1917`），还多了 desk（底）和 sheet（纸）两层。按 v1 换（Q5 已定）；纸本身的颜色是 Q13。
 4. **字体**。v1 的 header 用 Inter Tight，rail 标签用 IBM Plex Mono，section 标题用 Helvetica（About 用 Source Serif 4）；站点现在加载的是 Geist / Geist Mono / Source Serif 4。Q7。
 
 ### v1 颜色的对比度
 
-按 `design/design-language/README.md` › Contrast method & bars 量的（WCAG 对比度；文字的线是 4.5:1）：
+按 `design/design-language/README.md` › Contrast method & bars 量的（WCAG 对比度；4.5:1 是参照，owner 第 4 轮定了不是硬线，读着舒服就行）：
 
 | 颜色 | 用在 | 在 sheet 上 | 在 desk 上 |
 | --- | --- | --- | --- |
@@ -118,10 +127,10 @@ Owner 2026-11-24 把整页 mockup 定档为 v1，开了 portfolio-engineering �
 | muted `#77726a` / `#9b968e` | 链接、rail 标签 | 4.6 / 5.4 | **3.9** / 6.0 |
 | red `#b3262a` / `#d8443f` | 红点、下划线、rail | 6.2 / **3.6** | 5.3 / **4.0** |
 
-两处不过线：
+两处低于 4.5:1 的参照：
 
-- 白主题的 muted 在 desk 上 3.9。Header 的底是半透明的 desk，链接就压在上面。改成 `#6b665e` 是 4.66（sheet 上 5.45），肉眼几乎看不出差别。
-- 黑主题的红在 sheet 上 3.6。骨架里红都不是文字（点、线、填充，非文字的线是 3:1），所以这次不碍事；以后红要做文字（Work 的 “View case”、Contact 的 “05 / 05”）时用 `#e8695a`（现在的 `--seal`，5.0）。
+- 白主题的 muted 在 desk 上 3.9。Header 的底是半透明的 desk，链接就压在上面。改成 `#6b665e` 是 4.66（sheet 上 5.45），肉眼几乎看不出差别；按 owner 第 4 轮的话保留这个改动（Q5）。
+- 黑主题的红在 sheet 上 3.6。骨架里红都不是文字（点、线、填充，非文字的线是 3:1），所以这次不碍事；以后红要做文字（Work 的 “View case”、Contact 的 “05 / 05”）时再看读着舒不舒服，`#e8695a`（现在的 `--seal`，5.0）是备选。
 
 ## 技术问题
 
@@ -222,7 +231,7 @@ src/
 - **Hydration**：位置和颜色是随机的，只在浏览器里、`useEffect` 之后生成；服务端只输出一个空 canvas，不会不一致。
 - **主题**：铅笔的颜色按当前主题算（`ink` 下更亮）；`data-theme` 变了（`MutationObserver`）或系统主题变了（`matchMedia`）就重算。
 - **手机上避开文字**：mockup 用类名找文字块；建站时改成一个 data 属性（比如 `data-fireworks-avoid`），section 的标题区挂上它，`Fireworks` 读这些元素的位置。这个属性是组件对外的约定，不是只给测试用的。
-- **Reduced motion**（Q11）：mockup 的做法是静止的烟花铺满整页，滚动时重画。现有 Motion 规则说 reduced motion 关掉动效，静止的画不算动效，所以两者不冲突；另一种选择是 reduced motion 下干脆不画。
+- **Reduced motion**（Q11）：mockup 的做法是静止的烟花铺满整页，滚动时重画。Motion 规则说 reduced motion 关掉动效，静止的画不算动效，所以两者不冲突；另一种选择是 reduced motion 下干脆不画。
 - **颜色规则**：烟花的随机色相正好是 owner 说的「其他颜色只做点缀」。它们在 JS 里按 HSL 算，不是主题变量，也不是 Tailwind 类，所以不碰 `check:themes`；在 design language 里写一句「fireworks 的颜色是唯一不走主题变量的」就够。
 
 ### 7. 两个宽度和断点
@@ -238,10 +247,10 @@ v1 用了三个断点：900px（以上是 sheet 版式，以下 sheet 铺满）�
 
 | | 做法 | 好处 | 代价 |
 | --- | --- | --- | --- |
-| **A** · 换成 v1 的颜色 ✓ | 变量按角色重排成 v1 的：`--desk`（底）、`--sheet`（纸）、`--ink`（字和黑）、`--ink-muted`（次要的字）、`--hairline`、`--red`（强调）；值用 mockup 的，muted 加深到 `#6b665e` 过线；`--indigo`、`--umber` 留着给以后的图做点缀；`--ink-strong`、`--ink-light`、`--ink-faint` 等 section 真用到再加 | 和 v1 一模一样；名字直接对应 owner 的「黑白做背景和文字、红色强调」 | 改名要改 `globals.css` 三处、主题表、`icon.svg` 的红（Sync points）；主题表整张重量 |
+| **A** · 换成 v1 的颜色 ✓ | 变量按角色重排成 v1 的：`--desk`（底）、`--sheet`（纸）、`--ink`（字和黑）、`--ink-muted`（次要的字）、`--hairline`、`--red`（强调）；值用 mockup 的，muted 用 `#6b665e`；`--indigo`、`--umber` 留着给以后的图做点缀；`--ink-strong`、`--ink-light`、`--ink-faint` 等 section 真用到再加 | 和 v1 一模一样；名字直接对应 owner 的「黑白做背景和文字、红色强调」 | 改名要改 `globals.css` 三处、主题表、`icon.svg` 的红（Sync points）；主题表整张重量 |
 | B · 保留现在的颜色 | v1 的 desk 用 `--paper-2`、sheet 用 `--paper`，红用 `--seal` | 不动现有变量 | 看起来和 v1 不一样：白主题的 sheet 更灰，黑主题偏蓝；违反 Build it exactly |
 
-**按 v1，A。**剩下要问的只有 muted 加深到 `#6b665e`（为了过对比度线，偏离 v1，Q5）。主题名照旧叫 `paper` / `ink`（mockup 里是 `light` / `dark`，只是草稿里的名字）。
+**按 v1，A。**Muted 用 `#6b665e`，owner 第 4 轮定的（Q5）。desk 和 sheet 的值等 Q13。主题名照旧叫 `paper` / `ink`（mockup 里是 `light` / `dark`，只是草稿里的名字）。
 
 **字体**（Q7）：
 
@@ -264,11 +273,11 @@ v1 是 source of truth，所以**默认 A**。B 和 owner 的「keep visual cons
 
 ## 实施计划
 
-1. **本 PR**：这份 spike；`design/design-language/README.md` 加 Colour 一节（owner 的原话），改掉「唯一的红」；tracker 加一条；同步 harness 和 `check:spec`（Q4）。不动页面代码。
+1. **本 PR**：这份 spike；`design/design-language/README.md` 加 Colour 一节（owner 的原话，包括「黑白是对比」和信纸），改掉「唯一的红」，Motion 改成「只有 fireworks 会动」，对比度的线改成参照；tracker 加一条；同步 harness 和 `check:spec`（Q4）。不动页面代码。
 2. **Spec PR**（owner approve 本 spike 之后，从 `main` 开）：
    - 把 v1 mockup 放进仓库（Q3），标上 decided。
    - 用 `write-spec` 写 `design/specs/home.md`：States（第一次来跟系统主题 / 选过主题；reduced motion）、Header、Rail、Sections、Fireworks、Actions（点链接、点点、切主题）、Rules、Journeys（桌面一条，手机一条只写不同的步骤）；全部 *(pending)*。`write-spec-reviewer` 检查。
-3. **Implementation PR**（owner approve spec 之后）：`implement-spec`，测试先行；同步改 `globals.css` 和主题表、design language 的 Motion（Q11）、README Current State；`ui-verifier` 跑一次浏览器检查；删掉 mockup 里已经建好的部分（mockup 还有各 section 的内容没建，所以文件留着）。
+3. **Implementation PR**（owner approve spec 之后）：`implement-spec`，测试先行；同步改 `globals.css` 和主题表、README Current State；`ui-verifier` 跑一次浏览器检查；删掉 mockup 里已经建好的部分（mockup 还有各 section 的内容没建，所以文件留着）。
 
 ## 待拍板 · Open questions
 
@@ -276,14 +285,18 @@ v1 是 source of truth，所以**默认 A**。B 和 owner 的「keep visual cons
 2. ~~旧的设计文档~~：已定，本 PR 已移除。
 3. ~~v1 mockup 进仓库~~：已定，v1 是 source of truth，spec PR 存进仓库并标 decided。
 4. ~~同步 harness~~：已定，先同步，本 PR 已做。
-5. **对比度**：颜色照 v1。只有白主题的 muted 灰在底色上 3.9，不过 4.5 的线：加深到 `#6b665e`（4.66，肉眼几乎看不出），还是照 v1 原样？
+5. ~~对比度~~：已定，看着舒服就行，4.5:1 不是硬线；muted 用 `#6b665e`。
 6. ~~红用在哪~~：已定，照 v1。
 7. **字体**：默认照 v1（header Inter Tight、rail 标签 IBM Plex Mono、section 标题 Helvetica）。要不要改成站点已有的 Geist + Geist Mono，换一家字体的统一？
 8. **主题按钮**：先用红印章（`paper` 下「墨」、`ink` 下「纸」），放在 header 最右边，spec 只写「在 header 里」？
 9. **记住主题**：A 记住（`localStorage`，下次来还是选过的那套），还是 B 像 mockup 一样只对这一次有效？
 10. **Radix**：主题按钮用 Radix 的 `Toggle`（按规则，也是第一个 Radix 依赖），还是当作普通按钮、不装 Radix？
-11. **Reduced motion 和 Motion 规则**：reduced motion 下照 mockup 画静止的烟花（推荐），还是不画？Motion 里「backgrounds never move」改成「纸面不动，背景里只有 fireworks 会动」？
-12. **Workbench 这个 section 的名字**：header 链接已改成 “Product”。Section 的标题和 rail 的 hover 标签（“02 …”）照 v1 仍叫 “Mars Workbench”，还是也改成 “Product”？页内锚点的 id 读者看不见，默认照 v1，跟着 section 走；你要网址里是 `#product` 也可以改。
+11. **Reduced motion**：reduced motion 下照 mockup 画静止的烟花（推荐），还是不画？（Motion 的措辞已定，本 PR 已改。）
+12. ~~Workbench 这个 section 的名字~~：已定，照 v1：标题、rail 标签仍是 “Mars Workbench”，锚点 `#workbench`；只有 header 链接叫 “Product”。
+13. **纸的颜色**：你说 section 的背景像信纸，桌面上中间是信纸色、两边白。v1 正好反过来：两边的 desk 是 `#ece8df`（暖纸色，偏深），中间的 sheet 是 `#fbfaf6`（接近白，更亮）；手机整页是 `#fbfaf6`。v1 里另一处信纸色是 Contact 那张信的 `#f4eddf`。按哪个？
+    - **A · 照 v1**：两边 `#ece8df`，中间 `#fbfaf6`。
+    - **B · 照你说的**：两边白 `#ffffff`，中间信纸色（比如 `#f4eddf`）。那 Contact 的信和 sheet 同色，要再分开；手机整页用信纸色还是白也要定。
+    - 黑主题 v1 是两边 `#1a1917`、中间 `#232220`（中间稍亮）。选 B 的话，黑主题要不要也跟着改？
 
 ## 风险
 

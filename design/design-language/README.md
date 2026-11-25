@@ -1,6 +1,6 @@
 # Design Language
 
-The site's visual language: two themes over one variable contract, its type and its few motifs, and the owner's Principles that every design is judged by. Implemented in `src/app/globals.css`. The page it serves is the v1 mockup (`design/spike/page-skeleton.md`); the palette and type below predate it, and how they map onto v1 is still open there (Q5, Q7).
+The site's visual language: two themes over one variable contract, its type and its few motifs, and the owner's Principles that every design is judged by. Implemented in `src/app/globals.css`. The page it serves is the v1 mockup (`design/spike/page-skeleton.md`); the palette and type below predate it. The palette gives way to v1's in the page's implementation (the spike's Q5); the paper's two colours and the fonts are still open there (Q13, Q7).
 
 ## Colour
 
@@ -14,7 +14,14 @@ The owner's rules (2026-11-24), which every page and every theme follows:
 
 > 主体色是黑白红，黑白做背景和文字互为对比，红色是强调色。其他颜色只做点缀，细节可以精致比如那些role，但是主体要简单并且keep visual consistency。
 
-How the palette below maps onto the v1 page's colours is still open (`design/spike/page-skeleton.md` Q5).
+What "black and white" means (the owner, 2026-11-25):
+
+- Black and white name the contrast between the background and the text, not the page's literal colours.
+- The background of the sections is like letter paper, above all on desktop: the sheet in the middle is a letter-paper colour, and the two sides are white.
+
+> 我说黑白，但其实section的背景是类似信纸那样尤其是在desktop，中间是信纸那种颜色，两边白
+
+The v1 mockup draws the two layers the other way round: its sides are the warmer, darker paper and its sheet the brighter one. Which colours the paper takes is still open (`design/spike/page-skeleton.md` Q13).
 
 ## Themes
 
@@ -241,11 +248,11 @@ phone width (#115 R2).
 
 ## Motion
 
-One easing: `cubic-bezier(0.2, 0, 0, 1)`. Timings: 150 ms for a control's own feedback, 240 ms structural, 420 ms for the seal. Opacity and transform only; backgrounds never move; `prefers-reduced-motion` turns motion off.
+One easing: `cubic-bezier(0.2, 0, 0, 1)`. Timings: 150 ms for a control's own feedback, 240 ms structural, 420 ms for the seal. Opacity and transform only. The paper never moves: in the background, only the fireworks move (the owner, 2026-11-25). `prefers-reduced-motion` turns motion off.
 
 ## Contrast method & bars
 
-Every palette value is measured, never judged by eye: the WCAG contrast ratio of each colour on each paper. Bars: a colour used for text is at least 4.5:1 on both papers; `--ink-light` and `--ink-faint` are never text. A palette change re-measures and updates the table above in the same change.
+Every palette value is measured: the WCAG contrast ratio of each colour on each paper. The ratio informs the choice and isn't a hard bar: text has to read comfortably on both papers, as the owner judges it (2026-11-25), and 4.5:1 is the reference a colour below it is checked against. `--ink-light` and `--ink-faint` are never text. A palette change re-measures and updates the table above in the same change.
 
 ## Sync points
 
