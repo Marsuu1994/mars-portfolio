@@ -205,7 +205,7 @@ src/
 
 | | 做法 | 好处 | 代价 |
 | --- | --- | --- | --- |
-| **A** · 一个 scroll 监听 ✓ | `passive` 的 scroll 事件，`requestAnimationFrame` 节流；每帧算 `scrollY / (scrollHeight − innerHeight)` 当进度，用视口 45% 高度那条线落在哪个 section 定当前（mockup 的算法）；滚到底时当前是最后一个。section 的位置在 resize、页面和字体加载完、任何 section 尺寸变化时重算 | 一套代码管进度和当前两件事；就是 mockup 的行为，一模一样；算法是纯函数，好测 | 要在布局变化时重算位置：section 以后有图片、高度会变，所以加 `ResizeObserver` 看每个 section（比 v1 多的一步，第 7 轮 owner 定） |
+| **A** · 一个 scroll 监听 ✓ | `passive` 的 scroll 事件，`requestAnimationFrame` 节流；每帧算 `scrollY / (scrollHeight − innerHeight)` 当进度，用视口 45% 高度那条线落在哪个 section 定当前（mockup 的算法）；滚到底时当前是最后一个。section 的位置在 resize、页面和字体加载完、任何 section 尺寸变化时重算 | 一套代码管进度和当前两件事；就是 mockup 的行为，只多了 section 尺寸变化时重算；算法是纯函数，好测 | 要在布局变化时重算位置：section 以后有图片、高度会变，所以加 `ResizeObserver` 看每个 section（比 v1 多的一步，第 7 轮 owner 定） |
 | B · IntersectionObserver 管当前，scroll 管进度 | 每个 section 一个 observer，`rootMargin` 切出 45% 那条线 | 当前 section 不用自己算位置 | 进度条还是要 scroll 监听，两套机制做一件事；「滚到底算最后一个」要另外处理 |
 | C · 纯 CSS | 进度用 scroll-driven animations（`animation-timeline: scroll()`），当前用 `scroll-target-group` / `:target-current` | 零 JS | `:target-current` 只有新版 Chromium 支持，Safari、Firefox 不行，还得写一套 JS 兜底；进度点的「走过 / 当前」样式也做不了 |
 
