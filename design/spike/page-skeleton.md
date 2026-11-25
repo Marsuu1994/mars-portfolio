@@ -1,6 +1,6 @@
 # Spike: 整页骨架——header、五个 section 占位、滚动进度条、两套主题、背景烟花
 
-**Status: awaiting owner review** · 第 9 轮 2026-11-25（Q1–Q6、Q8–Q10、Q12–Q14 已答，滚动的行为已定，Q11 的规则措辞已定，新开 Q15）· 设计：v1 mockup（2026-11-24 定档），私有页面 [claude.ai/artifact/6ouKG7ihv9DbuUNAdVK95b](https://claude.ai/artifact/6ouKG7ihv9DbuUNAdVK95b)，还不在仓库里（Q3）
+**Status: awaiting owner review** · 第 10 轮 2026-11-25（Q1–Q6、Q8–Q15 已答，滚动的行为已定；只剩 Q7）· 设计：v1 mockup（2026-11-24 定档），私有页面 [claude.ai/artifact/6ouKG7ihv9DbuUNAdVK95b](https://claude.ai/artifact/6ouKG7ihv9DbuUNAdVK95b)，还不在仓库里（Q3）
 
 > 语言约定：叙述用中文；站点的文案、区块名和代码标识保留英文（header、section、rail、sheet、`data-theme`、`paper` / `ink`），和 mockup、spec、代码一一对应。**sheet** 是桌面端页面中间那张更亮的纸；**rail** 是右边的滚动进度条和它的点；**fireworks** 是背景里的铅笔烟花。
 
@@ -44,7 +44,7 @@ Owner 2026-11-24 把整页 mockup 定档为 v1，开了 portfolio-engineering �
 
 > 背景的话只有烟花动，对比度这个看着舒服就可以，我说黑白，但其实section的背景是类似信纸那样尤其是在desktop，中间是信纸那种颜色，两边白，workbench这个section照v1不动
 
-- **Q11 的规则措辞**：Motion 那句改成「纸面不动，背景里只有 fireworks 会动」，本 PR 已改。Reduced motion 下画不画静止的烟花还没定，留在 Q11。
+- **Q11 的规则措辞**：Motion 那句改成「纸面不动，背景里只有 fireworks 会动」，本 PR 已改。Reduced motion 下画不画静止的烟花，第 10 轮定了（Q11）。
 - **Q5**：对比度看着舒服就可以，4.5:1 不是硬线。Design language › Contrast method & bars 已改成「4.5:1 是参照，读着舒服由 owner 判断」。白主题的 muted 用 `#6b665e`：肉眼和 v1 的 `#77726a` 几乎一样，读着更稳，保留；黑主题的红照 v1。
 - **黑白是对比，不是页面的颜色**：section 的背景像信纸，尤其桌面，中间是信纸色、两边白。已写进 design language › Colour。这和 v1 对不上，问了 Q13（第 5 轮定：照 v1）。
 - **Q12**：Workbench 这个 section 照 v1 不动：标题和 rail 的 hover 标签仍是 “Mars Workbench”，锚点仍是 `#workbench`；只有 header 的链接叫 “Product”。
@@ -95,7 +95,18 @@ Section 后来变高（比如图片晚加载）时要不要重算点的位置，
 - **Q14**：rail 的 hover 标签用 Radix 的 `Tooltip`。这次装两个 Radix 包：`Toggle` 和 `Tooltip`。
 - **Q8**：主题按钮是红印章，先放在 header 最右边，链接后面。
 - **手机上完全不横向滑**（偏离 v1，owner 定）：v1 在 ≤560px 让 header 的链接条放不下就横向滚，这条不要了。页面任何地方在手机上都不能横向滑。
-- 量过了，按现在的 header 放得下，不用改版式（技术问题 7 › Header 放不放得下）。只有比 360px 更窄的手机要定（Q15）。
+- 量过了，按现在的 header 放得下，不用改版式（技术问题 7 › Header 放不放得下）。比 360px 更窄的手机第 10 轮定了不管（Q15）。
+
+## Owner 的回答（第 10 轮，2026-11-25）
+
+> 不管320，然后什么叫减少动效？
+
+> 画静止的
+
+第一句回的是「320px 要不要管」，第二句回的是「reduced motion 下背景烟花画静止的，还是什么都不画」。
+
+- **Q15**：只保证 360px 及以上的手机。比 360px 更窄的（比如 320px）不管，header 照 v1 不收紧，那里放不下也不改。Spec 里那条用 `Left open on purpose` 写明（`design/specs/README.md` › Ordinary use first），以后的 session 不再提。
+- **Q11**：系统打开「减弱动态效果」（`prefers-reduced-motion: reduce`）时，照 v1 画静止的烟花：数量按 section 的个数铺满整页，每个一次画完、不动，跟着页面一起滚。
 
 ## 用了哪些标准
 
@@ -161,7 +172,7 @@ Section 后来变高（比如图片晚加载）时要不要重算点的位置，
 和现有文档对不上的地方：
 
 1. **「印章是页面上唯一的红」**（Motifs、主题表 `--seal` 那一行）。v1 里红不只在印章上：品牌红点、当前链接的下划线、rail 的填充和点、焦点框。按 owner 的「红色是强调色」，本 PR 把这两处改成「红是强调色」，不再说唯一。
-2. **「backgrounds never move」**（Motion）。烟花就是会动的背景，是 v1 定下来的。Owner 第 4 轮定了措辞，本 PR 已改成「纸面不动，背景里只有 fireworks 会动」；reduced motion 下画不画还在 Q11。
+2. **「backgrounds never move」**（Motion）。烟花就是会动的背景，是 v1 定下来的。Owner 第 4 轮定了措辞，本 PR 已改成「纸面不动，背景里只有 fireworks 会动」；reduced motion 下画静止的烟花（Q11，第 10 轮）。
 3. **现有调色板不是 v1 的颜色**。现在的 `paper` / `ink` 是上一版方向的「墨分五色 + 浅绛」，`ink` 主题偏蓝（`#13161b`）；v1 的是暖纸色，黑主题偏暖（`#1a1917`），还多了 desk（底）和 sheet（纸）两层。按 v1 换（Q5、Q13 已定）。
 4. **字体**。v1 的 header 用 Inter Tight，rail 标签用 IBM Plex Mono，section 标题用 Helvetica（About 用 Source Serif 4）；站点现在加载的是 Geist / Geist Mono / Source Serif 4。Q7。
 
@@ -270,7 +281,7 @@ src/
 - **Hydration**：位置和颜色是随机的，只在浏览器里、`useEffect` 之后生成；服务端只输出一个空 canvas，不会不一致。
 - **主题**：铅笔的颜色按当前主题算（`ink` 下更亮）；`data-theme` 变了（`MutationObserver`）或系统主题变了（`matchMedia`）就重算。
 - **手机上避开文字**：mockup 用类名找文字块；建站时改成一个 data 属性（比如 `data-fireworks-avoid`），section 的标题区挂上它，`Fireworks` 读这些元素的位置。这个属性是组件对外的约定，不是只给测试用的。
-- **Reduced motion**（Q11）：mockup 的做法是静止的烟花铺满整页，滚动时重画。Motion 规则说 reduced motion 关掉动效，静止的画不算动效，所以两者不冲突；另一种选择是 reduced motion 下干脆不画。
+- **Reduced motion**（Q11，已定）：照 mockup，静止的烟花铺满整页，滚动时重画，让它们跟着页面走。Motion 规则说 reduced motion 关掉动效，静止的画不算动效，所以两者不冲突。
 - **颜色规则**：烟花的随机色相正好是 owner 说的「其他颜色只做点缀」。它们在 JS 里按 HSL 算，不是主题变量，也不是 Tailwind 类，所以不碰 `check:themes`；在 design language 里写一句「fireworks 的颜色是唯一不走主题变量的」就够。
 
 ### 7. 两个宽度和断点
@@ -287,7 +298,7 @@ v1 用了三个断点：900px（以上是 sheet 版式，以下 sheet 铺满）�
 | 360px | 11.5px，间距 11px | 256px | 218 / 229px | 38 / 27px |
 | 320px | 11.5px，间距 11px | 216px | 218 / 229px | **−2 / −13px** |
 
-360px 和以上都放得下，不用改版式，也不用菜单。320px（第一代 iPhone SE 那样的老手机）放不下，要定（Q15）。e2e 里现有的「不横向滚动」断言在 390px 跑；spec 写成「手机上任何宽度都不横向滑」。
+360px 和以上都放得下，不用改版式，也不用菜单。320px（第一代 iPhone SE 那样的老手机）放不下，owner 定了不管（Q15，第 10 轮）。e2e 里现有的「不横向滚动」断言在 390px 跑；spec 写成「360px 及以上的手机都不横向滑」。
 - 测试的两个宽度用现成的 Playwright project：`desktop` 1280×800（sheet 宽 640px，两边各 320px 放烟花）和 `mobile` 390×844（紧凑 header、sheet 铺满）。900px 到 1280px 之间、560px 到 900px 之间只要「不坏」，不单独测。
 
 ### 8. 调色板和字体怎么对上 v1
@@ -340,11 +351,11 @@ v1 是 source of truth，所以**默认 A**。B 和 owner 的「keep visual cons
 8. ~~主题按钮~~：已定，红印章，先放 header 最右边；spec 只写「在 header 里」。
 9. ~~记住主题~~：已定，不记住，和 v1 一样。
 10. ~~Radix~~：已定，主题按钮用 Radix 的 `Toggle`。
-11. **Reduced motion**：reduced motion 下照 mockup 画静止的烟花（推荐），还是不画？（Motion 的措辞已定，本 PR 已改。）
+11. ~~Reduced motion~~：已定，照 v1 画静止的烟花。
 12. ~~Workbench 这个 section 的名字~~：已定，照 v1：标题、rail 标签仍是 “Mars Workbench”，锚点 `#workbench`；只有 header 链接叫 “Product”。
 13. ~~纸的颜色~~：已定，照 v1：桌面两边 `#ece8df`、中间 `#fbfaf6`；手机整页是 sheet 色，不要两边的对比。
 14. ~~Rail 的 hover 标签~~：已定，用 Radix 的 `Tooltip`。
-15. **比 360px 更窄的手机**：320px 时五个链接比可用宽度多 2px（Inter Tight），用 Geist 多 13px。推荐：≤360px 时链接间距从 11px 收到 8px，Inter Tight 在 320px 就剩 10px；如果 Q7 选了 Geist，320px 还要再把字号收到 11px。另一种是只保证 360px 及以上，320px 不管（这么窄的手机现在很少见）。
+15. ~~比 360px 更窄的手机~~：已定，不管；只保证 360px 及以上。
 
 ## 风险
 
