@@ -6,7 +6,7 @@ This file is the one home of the rules for writing a test. The `implement-spec` 
 
 | Layer | Runner | Lives in | Talks to |
 | --- | --- | --- | --- |
-| unit | Vitest | `src/**/x.unit.test.ts`, next to the module | nothing — pure functions (a figure's geometry, the mountain generator, content helpers) |
+| unit | Vitest | `src/**/x.unit.test.ts`, next to the module | nothing — pure functions (a figure's geometry, the fireworks' geometry, content helpers) |
 | e2e | Playwright | `e2e/`, one spec per page | the production build, at desktop and phone width, in both themes |
 
 ## Commands

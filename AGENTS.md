@@ -24,7 +24,7 @@ Directory responsibilities only — for concrete file and component names, read 
 src/
 ├── app/                           # Routes, the root layout, globals.css (the two themes)
 └── components/                    # Two layers (Component placement), added with the first component
-    ├── ui/                        # Primitives with no content types: the seal, the mountains, a figure's frame
+    ├── ui/                        # Primitives with no content types: the seal, the fireworks, a figure's frame
     └── site/                      # Blocks that take the site's content: cards, a case page's sections
 e2e/                               # Playwright specs, one per page
 test/                              # Test conventions (README) and helpers

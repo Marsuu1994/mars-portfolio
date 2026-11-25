@@ -1,6 +1,6 @@
 # Design Language
 
-The site's visual language: two themes over one variable contract, its type and its few motifs, and the owner's Principles that every design is judged by. Implemented in `src/app/globals.css`. How it was chosen, with its research: `design/spike/personal-site.md` › 视觉语言.
+The site's visual language: two themes over one variable contract, its type and its few motifs, and the owner's Principles that every design is judged by. Implemented in `src/app/globals.css`. The page it serves is the v1 mockup (`design/spike/page-skeleton.md`); the palette and type below predate it, and how they map onto v1 is still open there (Q5, Q7).
 
 ## Colour
 
@@ -27,8 +27,8 @@ Two themes, **paper** (light) and **ink** (dark), declaring the same variables (
 | `--ink-strong` | `#42454a` | 8.7 | `#c3c0ba` | 10.0 | body text |
 | `--ink-mid` | `#606266` | 5.5 | `#a09f9b` | 6.8 | notes, meta, a figure's lines |
 | `--ink-light` | `#a8a8a6` | 2.2 | `#606161` | 2.9 | rules and marks; never text |
-| `--ink-faint` | `#d7d6d2` | 1.3 | `#313336` | 1.4 | hairlines, far mountains; never text |
-| `--indigo` | `#3d5a6c` | 6.6 | `#9dbccd` | 9.1 | far mountains; a figure's direction |
+| `--ink-faint` | `#d7d6d2` | 1.3 | `#313336` | 1.4 | hairlines; never text |
+| `--indigo` | `#3d5a6c` | 6.6 | `#9dbccd` | 9.1 | a figure's direction |
 | `--umber` | `#8a5a3c` | 5.3 | `#d1a283` | 7.9 | the messy side of a figure |
 | `--seal` | `#b8322a` | 5.4 | `#e8695a` | 5.7 | the red: the accent (Colour) |
 
@@ -43,7 +43,6 @@ The five ink tones are 墨分五色 (焦 浓 重 淡 清); indigo and umber are 
 
 ## Motifs
 
-- **Mountains drawn by code**: layered ridges, dark at the top fading to paper; one set of parameters per distance (高远, 平远). Never behind running text.
 - **The seal**: the page's signature, in the accent red.
 - **Complexity figures**: one per case, Before → After, drawn in the same ink as the page (React SVG components, not images, so they follow the theme and the fonts).
 

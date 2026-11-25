@@ -1,6 +1,6 @@
 # Spike: 整页骨架——header、五个 section 占位、滚动进度条、两套主题、背景烟花
 
-**Status: awaiting owner review** · 2026-11-24 · 设计：v1 mockup（2026-11-24 定档），私有页面 [claude.ai/artifact/6ouKG7ihv9DbuUNAdVK95b](https://claude.ai/artifact/6ouKG7ihv9DbuUNAdVK95b)，还不在仓库里（Q3）
+**Status: awaiting owner review** · 第 2 轮 2026-11-25（Q1–Q3、Q6 已答）· 设计：v1 mockup（2026-11-24 定档），私有页面 [claude.ai/artifact/6ouKG7ihv9DbuUNAdVK95b](https://claude.ai/artifact/6ouKG7ihv9DbuUNAdVK95b)，还不在仓库里（Q3）
 
 > 语言约定：叙述用中文；站点的文案、区块名和代码标识保留英文（header、section、rail、sheet、`data-theme`、`paper` / `ink`），和 mockup、spec、代码一一对应。**sheet** 是桌面端页面中间那张更亮的纸；**rail** 是右边的滚动进度条和它的点；**fireworks** 是背景里的铅笔烟花。
 
@@ -17,6 +17,19 @@ Owner 2026-11-24 把整页 mockup 定档为 v1，开了 portfolio-engineering �
 1. **Spike**（本 PR）：这份文档，回答技术上的开放问题；design language 加上 owner 的颜色规则。
 2. **Spec**（`write-spec` skill，`write-spec-reviewer` 检查）：把骨架写进 `design/specs/home.md`，每条标 *(pending)*。
 3. **Implementation**（`implement-spec` skill，`implement-spec-reviewer` 检查）：按 spec 建，测试先行。
+
+## Owner 的回答（第 2 轮，2026-11-25）
+
+> 首先你说的mockup到底是哪一个？我们现在主页host的那个静态html mockup是上一版，完全废弃，你再update一下，和那个有关的所有东西全部移除掉就好，包括spike，然后你把我们新做的骨架当做source of truth
+
+> 不是我的意思是主页还是那个不变，但和它相关的设计都拿掉，计划是v1做好之前那个还留着
+
+- 这份 spike 说的 mockup 一直是 v1（上面的 artifact 链接），不是现在 `/` 上那个静态页。
+- **Q1**：`/` 上的静态页（`public/home.html`）不变，留到 v1 做好；骨架建在 `/v1`。
+- **Q2**：和静态页有关的设计都已在本 PR 移除：`design/spike/personal-site.md`、`design/mockup/` 里的四个旧 mockup、tracker 里山水 Helvetica / 缩略图首页 / 首页手机版三条，以及 design language 里的「山」（Mountains motif 和表里的 far mountains）。静态页本身、它的 rewrite 和测试照旧。`design/brainstorm/` 不是站点的一部分，没动，那里还有几处指向已删 spike 的链接。
+- **Q3**：v1 是 source of truth。Spec PR 把它存进仓库，标 decided。
+- **Q6**：v1 是 source of truth，红照 v1 用。
+- 因为 v1 是 source of truth，Q5 和 Q7 的默认都变成「照 v1」，只剩偏离 v1 的地方要问（见下）。
 
 ## 用了哪些标准
 
@@ -47,12 +60,12 @@ Owner 2026-11-24 把整页 mockup 定档为 v1，开了 portfolio-engineering �
 
 ## 现在有什么
 
-- **`/` 是一个临时页**：`public/home.html`，山水 Helvetica mockup 拷出来的静态文件，`next.config.ts` 的 rewrite 把 `/` 指过去。它不用站点的组件，e2e（`e2e/home.spec.ts`）测的就是它。
+- **`/` 是一个临时页**：`public/home.html`，上一版设计拷出来的静态文件，`next.config.ts` 的 rewrite 把 `/` 指过去。它不用站点的组件，e2e（`e2e/home.spec.ts`）测的就是它。按 owner 的回答，它留到 v1 做好。
 - **主题**：`globals.css` 有 `paper`、`ink` 两套变量和「没有 `data-theme` 就跟系统」的默认；没有切换按钮，没有 `localStorage`。
 - **字体**：`layout.tsx` 加载 Geist、Geist Mono、Source Serif 4。
 - **组件**：还没有，`src/components/` 不存在。交互组件按规则用 Radix Primitives，一个都没装。
 - **测试**：Vitest 单元测试（还没有一个），Playwright 四个 project：`desktop` 1280×800、`mobile` 390×844，各有 dark 版（`colorScheme: 'dark'`）。
-- **旧的设计文档**：`design/spike/personal-site.md`（awaiting owner review，第 6 轮）、`design/mockup/` 四个旧 mockup、tracker 里山水 Helvetica / 缩略图首页 / 首页手机版三条，都是 v1 之前的方向（Q2）。
+- **旧的设计文档**：上一版的 spike、四个旧 mockup 和三条 tracker 已在本 PR 移除（Q2）。
 
 ## v1 mockup 里的骨架（要照着建的部分）
 
@@ -83,7 +96,7 @@ Owner 2026-11-24 把整页 mockup 定档为 v1，开了 portfolio-engineering �
 
 1. **「印章是页面上唯一的红」**（Motifs、主题表 `--seal` 那一行）。v1 里红不只在印章上：品牌红点、当前链接的下划线、rail 的填充和点、焦点框。按 owner 的「红色是强调色」，本 PR 把这两处改成「红是强调色」，不再说唯一。
 2. **「backgrounds never move」**（Motion）。烟花就是会动的背景，是 v1 定下来的。建议改成「纸面不动；背景里只有 fireworks 会动，reduced motion 下静止」（Q11）。这句是规则的改动，等 owner 点头再改。
-3. **现有调色板不是 v1 的颜色**。现在的 `paper` / `ink` 是山水方向的「墨分五色 + 浅绛」，`ink` 主题偏蓝（`#13161b`）；v1 的是暖纸色，黑主题偏暖（`#1a1917`），还多了 desk（底）和 sheet（纸）两层。怎么对上是 Q5。
+3. **现有调色板不是 v1 的颜色**。现在的 `paper` / `ink` 是上一版方向的「墨分五色 + 浅绛」，`ink` 主题偏蓝（`#13161b`）；v1 的是暖纸色，黑主题偏暖（`#1a1917`），还多了 desk（底）和 sheet（纸）两层。怎么对上是 Q5。
 4. **字体**。v1 的 header 用 Inter Tight，rail 标签用 IBM Plex Mono，section 标题用 Helvetica（About 用 Source Serif 4）；站点现在加载的是 Geist / Geist Mono / Source Serif 4。Q7。
 
 ### v1 颜色的对比度
@@ -103,14 +116,9 @@ Owner 2026-11-24 把整页 mockup 定档为 v1，开了 portfolio-engineering �
 
 ## 技术问题
 
-### 1. 放在哪个 route
+### 1. 放在哪个 route（已定：`/v1`）
 
-| | 做法 | 好处 | 代价 |
-| --- | --- | --- | --- |
-| **A** · 直接替换 `/` | 实现 PR 删掉 `public/home.html`、`next.config.ts` 的 rewrite、`.prettierignore` 那一行，`src/app/page.tsx` 就是骨架 | 一步到位；tracker 里「替换临时页」那条一起关掉 | 合并后 production 的 `/` 是五个只有标题的空 section，直到各 section 做完 |
-| **B** · 先放 `/v1` | 骨架建在 `src/app/v1/page.tsx`，`robots: noindex`；`/` 继续是临时页；所有 section 做完那个 PR 把它挪到 `/`，删临时页 | production 一直有完整的页面；每个 section 的 PR 都能在 `/v1` 的 preview 和 production 上看 | 最后多一次挪 route；中间两套首页并存 |
-
-这是 owner 的决定（Q1）。我倾向 B：production 的样子不变，代价只是最后一次 `git mv`。
+骨架建在 `src/app/v1/page.tsx`，`robots: noindex`；`/` 继续是临时页。所有 section 做完的那个 PR 把页面挪到 `/`，并删掉临时页（`public/home.html`、`next.config.ts` 的 rewrite、`.prettierignore` 那一行、`e2e/home.spec.ts`、`HOME_HEADLINE`）。每个 section 的 PR 都能在 `/v1` 上看，preview 和 production 都行。下面的路径按 `/v1` 写；`page.tsx` 指 `src/app/v1/page.tsx`。
 
 ### 2. 文件结构
 
@@ -119,7 +127,7 @@ Owner 2026-11-24 把整页 mockup 定档为 v1，开了 portfolio-engineering �
 ```text
 src/
 ├── app/
-│   ├── page.tsx                          # 读 sections，渲染骨架（Server Component）
+│   ├── v1/page.tsx                       # 读 sections，渲染骨架（Server Component）
 │   ├── layout.tsx                        # 加 no-flash 脚本、suppressHydrationWarning
 │   ├── themeScript.ts                    # 那段内联脚本，一个字符串常量
 │   └── globals.css                       # 主题变量（Q5）、断点
@@ -224,7 +232,7 @@ v1 用了三个断点：900px（以上是 sheet 版式，以下 sheet 铺满）�
 | **A** · 换成 v1 的颜色 ✓ | 变量按角色重排成 v1 的：`--desk`（底）、`--sheet`（纸）、`--ink`（字和黑）、`--ink-muted`（次要的字）、`--hairline`、`--red`（强调）；值用 mockup 的，muted 加深到 `#6b665e` 过线；`--indigo`、`--umber` 留着给以后的图做点缀；`--ink-strong`、`--ink-light`、`--ink-faint` 等 section 真用到再加 | 和 v1 一模一样；名字直接对应 owner 的「黑白做背景和文字、红色强调」 | 改名要改 `globals.css` 三处、主题表、`icon.svg` 的红（Sync points）；主题表整张重量 |
 | B · 保留现在的颜色 | v1 的 desk 用 `--paper-2`、sheet 用 `--paper`，红用 `--seal` | 不动现有变量 | 看起来和 v1 不一样：白主题的 sheet 更灰，黑主题偏蓝；违反 Build it exactly |
 
-**推荐 A。**主题名照旧叫 `paper` / `ink`（mockup 里是 `light` / `dark`，只是草稿里的名字）。
+**按 v1，A。**剩下要问的只有 muted 加深到 `#6b665e`（为了过对比度线，偏离 v1，Q5）。主题名照旧叫 `paper` / `ink`（mockup 里是 `light` / `dark`，只是草稿里的名字）。
 
 **字体**（Q7）：
 
@@ -233,7 +241,7 @@ v1 用了三个断点：900px（以上是 sheet 版式，以下 sheet 铺满）�
 | **A** · 照 v1 | header 用 Inter Tight，rail 标签用 IBM Plex Mono，section 标题用 Helvetica | 和 mockup 一样 | 再加载两个字体，页面上同时有五六种字体；mockup 自己也记着「标题风格还没统一」 |
 | **B** · 用站点已有的 ✓ | header 和 section 标题用 Geist（和 Inter Tight 同类的无衬线），rail 标签用 Geist Mono；Source Serif 4 留给以后 About 的 punchline | 一家字体，正合 owner 的「主体简单、keep visual consistency」；不多加载 | 和 mockup 有细微出入，要 owner 点头才算偏离 mockup |
 
-**推荐 B。**这是对 mockup 的改动，按规则要 owner 同意。
+v1 是 source of truth，所以**默认 A**。B 和 owner 的「keep visual consistency」更合，但它偏离 v1，只有 owner 说要才换（Q7）。
 
 **标题**：五个 section 的标题这次用同一个样式（mockup 里 Workbench、Projects、Work 共用的那个：粗体，`clamp(28px, 5vw, 48px)`），文字就是 section 名。页面的 `<h1>` 是视觉上隐藏的 “Mars Chu”，五个标题是 `<h2>`。以后 About 有了 punchline，`<h1>` 换成它。
 
@@ -242,7 +250,7 @@ v1 用了三个断点：900px（以上是 sheet 版式，以下 sheet 铺满）�
 按 `test/README.md`：纯函数是单元测试，页面行为是 e2e，四个 project（两个宽度 × 两个主题）都跑。
 
 - **单元**：`scrollPosition.ts`（给定 section 位置和滚动位置，当前是哪个、进度多少、点在哪；滚到底是最后一个）；`fireworkGeometry.ts`（固定种子下：颜色的亮度规则、位置落在允许的区域里、不和文字块重叠、不和别的烟花挤在一起、一生的各阶段时长）。
-- **e2e**（`e2e/home.spec.ts` 重写，或 Q1 选 B 时新开 `e2e/v1.spec.ts`）：header 有五个链接，顺序对，手机上是 “Workbench”；五个 section 各有标题；点 rail 的点和 header 的链接，那个 section 滚进视口，链接和点带 `aria-current`；往下滚，当前跟着变，填充变长；点主题按钮，`<html data-theme>` 变，刷新后还在（Q9 选记住的话）；读者选过 `ink` 时第一帧就是 `ink`（`addInitScript` 先写 `localStorage`，在 `DOMContentLoaded` 时读 `data-theme`）；canvas 在、`aria-hidden`；reduced motion 下（`page.emulateMedia({reducedMotion: 'reduce'})`）没有平滑滚动；不横向滚动、控制台没有报错（现有的通用断言）。
+- **e2e**（新开 `e2e/v1.spec.ts`，`e2e/home.spec.ts` 留给临时页）：header 有五个链接，顺序对，手机上是 “Workbench”；五个 section 各有标题；点 rail 的点和 header 的链接，那个 section 滚进视口，链接和点带 `aria-current`；往下滚，当前跟着变，填充变长；点主题按钮，`<html data-theme>` 变，刷新后还在（Q9 选记住的话）；读者选过 `ink` 时第一帧就是 `ink`（`addInitScript` 先写 `localStorage`，在 `DOMContentLoaded` 时读 `data-theme`）；canvas 在、`aria-hidden`；reduced motion 下（`page.emulateMedia({reducedMotion: 'reduce'})`）没有平滑滚动；不横向滚动、控制台没有报错（现有的通用断言）。
 - **浏览器检查**：新的版式和断点，按 AGENTS.md › UI Workflow 交给 `ui-verifier` 跑一次。
 
 ## 实施计划
@@ -252,18 +260,17 @@ v1 用了三个断点：900px（以上是 sheet 版式，以下 sheet 铺满）�
    - 先同步 harness（Q4）：`design/specs/README.md`、`implement-spec` skill、它的 reviewer 和 context 对齐 `mars-workbench` 的 `main`，复制 `check:spec` 里检查 spec v2 ID 的那部分。
    - 把 v1 mockup 放进仓库（Q3），标上 decided。
    - 用 `write-spec` 写 `design/specs/home.md`：States（第一次来跟系统主题 / 选过主题；reduced motion）、Header、Rail、Sections、Fireworks、Actions（点链接、点点、切主题）、Rules、Journeys（桌面一条，手机一条只写不同的步骤）；全部 *(pending)*。`write-spec-reviewer` 检查。
-   - 按 Q2 的答案处理旧文档。
 3. **Implementation PR**（owner approve spec 之后）：`implement-spec`，测试先行；同步改 `globals.css` 和主题表、design language 的 Motion（Q11）、README Current State；`ui-verifier` 跑一次浏览器检查；删掉 mockup 里已经建好的部分（mockup 还有各 section 的内容没建，所以文件留着）。
 
 ## 待拍板 · Open questions
 
-1. **骨架放在哪**：A 直接替换 `/`（production 合并后就是空 section），还是 B 先放 `/v1`，`/` 继续是临时页，所有 section 做完再换？我倾向 B。
-2. **旧的设计文档**：`design/spike/personal-site.md`、`design/mockup/` 里四个旧 mockup、tracker 里山水 Helvetica / 缩略图首页 / 首页手机版三条，都在 v1 之前。建议在 spec PR 里：spike 标 superseded 归档，旧 mockup 删掉（git 历史里有），tracker 那三条删掉；`design/brainstorm/` 不动。可以吗？
-3. **v1 mockup 进仓库**：spec 要从仓库里的 mockup 写（`design/README.md` › Mockups）。建议 spec PR 把 v1 存成 `design/mockup/mockup-site-v1.html`，顶上标 `final version · decided 2026-11-24`，并注明 About 的 A/B 版式和 Contact 的动画还没定、不在骨架里。你 11-24 在 portfolio-orchestrator 把 v1 定档，这算不算对骨架这部分的 approve？
+1. ~~骨架放在哪~~：已定，`/v1`；`/` 的静态页留到 v1 做好。
+2. ~~旧的设计文档~~：已定，本 PR 已移除。
+3. ~~v1 mockup 进仓库~~：已定，v1 是 source of truth，spec PR 存进仓库并标 decided。
 4. **同步 harness**：spec PR 先把 `design/specs/README.md`、`implement-spec` skill、它的 reviewer 和 context 对齐 `mars-workbench` 的 `main`，并复制 `check:spec` 的 spec v2 部分？
-5. **调色板**：A 换成 v1 的颜色（推荐，muted 加深到 `#6b665e` 过对比度线），还是 B 保留现在的？
-6. **红用在哪**：v1 的骨架里红出现在品牌红点、当前链接的下划线、rail 的填充和点、焦点框、主题印章。这些都算「强调」，照建？
-7. **字体**：A 照 v1（Inter Tight + IBM Plex Mono + Helvetica），还是 B 用站点已有的 Geist + Geist Mono（推荐）？
+5. **对比度**：颜色照 v1。只有白主题的 muted 灰在底色上 3.9，不过 4.5 的线：加深到 `#6b665e`（4.66，肉眼几乎看不出），还是照 v1 原样？
+6. ~~红用在哪~~：已定，照 v1。
+7. **字体**：默认照 v1（header Inter Tight、rail 标签 IBM Plex Mono、section 标题 Helvetica）。要不要改成站点已有的 Geist + Geist Mono，换一家字体的统一？
 8. **主题按钮**：先用红印章（`paper` 下「墨」、`ink` 下「纸」），放在 header 最右边，spec 只写「在 header 里」？
 9. **记住主题**：A 记住（`localStorage`，下次来还是选过的那套），还是 B 像 mockup 一样只对这一次有效？
 10. **Radix**：主题按钮用 Radix 的 `Toggle`（按规则，也是第一个 Radix 依赖），还是当作普通按钮、不装 Radix？

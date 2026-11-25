@@ -1,6 +1,6 @@
 # Spike: 站点的工程骨架——从 mars-workbench 复制 harness
 
-**Status: decided · implemented** · 2026-11-19（owner 在 Round 17–18 回答；同一个 PR 搭好骨架后归档）· 起因和 owner 的原话：`design/brainstorm/sessions/2026-11-06-media-lab-fit.md` Round 13–18 · 设计本身见 [`personal-site.md`](../personal-site.md)
+**Status: decided · implemented** · 2026-11-19（owner 在 Round 17–18 回答；同一个 PR 搭好骨架后归档）· 起因和 owner 的原话：`design/brainstorm/sessions/2026-11-06-media-lab-fit.md` Round 13–18 · 当时的设计 spike `personal-site.md` 已在 2026-11-25 随旧首页设计移除，见 git 历史
 
 > 语言约定：叙述用中文；文件名、命令和代码标识保留英文。**harness** 指让 agent 按规则把活干好的那一整套东西：规则文件、设计文档的结构、spike 和 mockup 流程、skills 和 agents、CI 检查、review log。
 
