@@ -1,6 +1,6 @@
 # Spike: 整页骨架——header、五个 section 占位、滚动进度条、两套主题、背景烟花
 
-**Status: decided** · 2026-11-25（owner 第 13 轮批准：「批准 spike」）· 设计：v1 mockup（2026-11-24 定档），spec PR 会把它存进仓库为 `design/mockup/mockup-home.html`（Q3），私有页面 [claude.ai/artifact/6ouKG7ihv9DbuUNAdVK95b](https://claude.ai/artifact/6ouKG7ihv9DbuUNAdVK95b)
+**Status: decided** · 2026-11-25（owner 第 13 轮批准：「批准 spike」）· 设计：v1 mockup（2026-11-24 定档），私有页面 [claude.ai/artifact/6ouKG7ihv9DbuUNAdVK95b](https://claude.ai/artifact/6ouKG7ihv9DbuUNAdVK95b)；骨架单独的 mockup `design/mockup/mockup-home-skeleton.html`（第 14 轮，待 owner 定档），私有页面 [claude.ai/artifact/J6ZMbhqDTJyentz9suEHpp](https://claude.ai/artifact/J6ZMbhqDTJyentz9suEHpp)
 
 > 语言约定：叙述用中文；站点的文案、区块名和代码标识保留英文（header、section、rail、sheet、`data-theme`、`paper` / `ink`），和 mockup、spec、代码一一对应。**sheet** 是桌面端页面中间那张更亮的纸；**rail** 是右边的滚动进度条和它的点；**fireworks** 是背景里的铅笔烟花。
 
@@ -27,7 +27,7 @@ Owner 2026-11-24 把整页 mockup 定档为 v1，开了 portfolio-engineering �
 - 这份 spike 说的 mockup 一直是 v1（上面的 artifact 链接），不是现在 `/` 上那个静态页。
 - **Q1**：`/` 上的静态页（`public/home.html`）不变，留到 v1 做好；骨架建在 `/v1`。
 - **Q2**：和静态页有关的设计都已在本 PR 移除：`design/spike/personal-site.md`、`design/mockup/` 里的四个旧 mockup、tracker 里山水 Helvetica / 缩略图首页 / 首页手机版三条，以及 design language 里的「山」（Mountains motif 和表里的 far mountains）。静态页本身、它的 rewrite 和测试照旧。`design/brainstorm/` 不是站点的一部分，没动，那里还有几处指向已删 spike 的链接。
-- **Q3**：v1 是 source of truth。Spec PR 把它存进仓库，标 decided。
+- **Q3**：v1 是 source of truth。Spec PR 把它存进仓库，标 decided。（第 14 轮改了：进仓库的是骨架单独的 mockup，见「定了之后的改动」。）
 - **Q6**：v1 是 source of truth，红照 v1 用。
 - 因为 v1 是 source of truth，Q5 和 Q7 的默认都变成「照 v1」，只剩偏离 v1 的地方要问（见下）。
 
@@ -130,7 +130,7 @@ Section 后来变高（比如图片晚加载）时要不要重算点的位置，
 
 第 13 轮 owner 批准了这份 spike，Q1–Q15 都已答。从这里起 spike 不再改；以后的决定记在 tracker 和做出决定的 PR 里。
 
-- **范围**：整页骨架，建在 `/v1`（Q1）；`/` 的静态页留到 v1 做好（Q2）。v1 mockup 是 source of truth（Q3），spec PR 把它存进仓库为 `design/mockup/mockup-home.html`，标 decided。
+- **范围**：整页骨架，建在 `/v1`（Q1）；`/` 的静态页留到 v1 做好（Q2）。v1 mockup 是 source of truth（Q3）；骨架的部分单独做成 `design/mockup/mockup-home-skeleton.html`，偏离画进去（第 14 轮）。
 - **Harness**：先同步 `mars-workbench` 的 spec 规则、`implement-spec` 和 `check:spec`（Q4），本 PR 已做。
 - **颜色**：照 v1。桌面两边 desk、中间 sheet，手机整页 sheet 色（Q13）；白主题的 muted 用 `#6b665e`，对比度看着舒服就行（Q5）；红照 v1 用作强调（Q6）。
 - **字体**：骨架全用 Geist / Geist Mono；印章的「墨」「纸」用只带这两个字的思源宋体（Q7）。
@@ -148,6 +148,17 @@ Section 后来变高（比如图片晚加载）时要不要重算点的位置，
 3. 骨架全用 Geist，不用 v1 的 Inter Tight、IBM Plex Mono 和 Helvetica（第 11 轮）。
 4. 除了 v1 的窗口缩放、加载完、字体加载完，任何 section 尺寸变了也重算 rail（第 7 轮）。
 5. 主题按钮从 About 的角落挪到 header（owner 第一轮的范围）；rail 的点是页内链接而不是按钮（技术问题 4）。
+
+## 定了之后的改动（第 14 轮，2026-11-26，owner 特许）
+
+> 没问题这是一个exception，把现在这个mockup改掉，然后把spike里面骨架的范围单拿出来做一个mockup就好我们再来一轮
+
+Spike 定了之后本来不再改，这一处是 owner 特许的。起因：v1 mockup 比骨架多（各 section 的内容、About 的 A/B），骨架的部分又和上面五处偏离对不上，spec 和实现会拿到两个互相矛盾的来源。
+
+- **骨架单独一个 mockup**：`design/mockup/mockup-home-skeleton.html`，从 v1 只取 Scope 里「做」的那一栏，偏离直接画进去：header 的 Product、全用 Geist / Geist Mono、印章在 header 最右、手机不横向滑、rail 的点是页内链接、muted `#6b665e`、主题叫 `paper` / `ink` 且不记住。Section 尺寸变了重算 rail 是行为，画不出来，只写进 spec（mockup 里也已经这样做）。
+- **v1 不进仓库**：继续是私有 artifact，当整页的方向；轮到某个 section 时，从 v1 抽出那一部分另做 mockup。
+- **骨架 mockup 定档之后**，spec 从它写；它全部建完就删掉（`design/README.md` › Mockups），不再「删掉 mockup 里已经建好的部分」。
+- **还要 owner 确认的**：印章照 v1 留着 stamp 动画和 hover 时歪一点，切主题时纸和字的颜色 0.45s 渐变；reduced motion 下都没有。
 
 ## 用了哪些标准
 
@@ -407,17 +418,16 @@ v1 用了三个断点：900px（以上是 sheet 版式，以下 sheet 铺满）�
 
 ## 实施计划
 
-1. **本 PR**：这份 spike；`design/design-language/README.md` 加 Colour 一节（owner 的原话，包括「黑白是对比」和信纸），改掉「唯一的红」，Motion 改成「只有 fireworks 会动」，对比度的线改成参照；tracker 加一条；同步 harness 和 `check:spec`（Q4）。不动页面代码。
+1. **本 PR**：这份 spike；`design/design-language/README.md` 加 Colour 一节（owner 的原话，包括「黑白是对比」和信纸），改掉「唯一的红」，Motion 改成「只有 fireworks 会动」，对比度的线改成参照；tracker 加一条；同步 harness 和 `check:spec`（Q4）；骨架单独的 mockup（第 14 轮），owner 定档后标 decided。不动页面代码。
 2. **Spec PR**（本 PR merge 之后，从 `main` 开，owner 2026-11-26 定的）：
-   - 把 v1 mockup 放进仓库（Q3），标上 decided。
-   - 用 `write-spec` 写 `design/specs/home.md`：States（第一次来跟系统主题 / 选过主题；reduced motion）、Header、Rail、Sections、Fireworks、Actions（点链接、点点、切主题）、Rules、Journeys（桌面一条，手机一条只写不同的步骤）；全部 *(pending)*。`write-spec-reviewer` 检查。
-3. **Implementation PR**（owner approve spec 之后）：`implement-spec`，测试先行；同步改 `globals.css` 和主题表、README Current State；`ui-verifier` 跑一次浏览器检查；删掉 mockup 里已经建好的部分（mockup 还有各 section 的内容没建，所以文件留着）。
+   - 用 `write-spec` 从定档的骨架 mockup 写 `design/specs/home.md`：States（第一次来跟系统主题 / 选过主题；reduced motion）、Header、Rail、Sections、Fireworks、Actions（点链接、点点、切主题）、Rules、Journeys（桌面一条，手机一条只写不同的步骤）；全部 *(pending)*。`write-spec-reviewer` 检查。
+3. **Implementation PR**（owner approve spec 之后）：`implement-spec`，测试先行；同步改 `globals.css` 和主题表、README Current State；`ui-verifier` 跑一次浏览器检查；骨架全部建完，删掉 `mockup-home-skeleton.html`。
 
 ## 待拍板 · Open questions
 
 1. ~~骨架放在哪~~：已定，`/v1`；`/` 的静态页留到 v1 做好。
 2. ~~旧的设计文档~~：已定，本 PR 已移除。
-3. ~~v1 mockup 进仓库~~：已定，v1 是 source of truth，spec PR 存进仓库并标 decided。
+3. ~~v1 mockup 进仓库~~：已定，v1 是 source of truth；第 14 轮改成骨架单独一个 mockup 进仓库，v1 留在私有 artifact。
 4. ~~同步 harness~~：已定，先同步，本 PR 已做。
 5. ~~对比度~~：已定，看着舒服就行，4.5:1 不是硬线；muted 用 `#6b665e`。
 6. ~~红用在哪~~：已定，照 v1。
