@@ -1,10 +1,10 @@
 # Design Language
 
-The site's visual language: two themes over one variable contract, its type and its few motifs, and the owner's Principles that every design is judged by. Implemented in `src/app/globals.css`. The page it serves is the v1 mockup (`design/spike/page-skeleton.md`); the palette and type below predate it. The palette gives way to v1's in the page's implementation (the spike's Q5, Q13); for the skeleton, the owner chose Geist and Geist Mono throughout, section titles included, and the fonts of the later sections are decided when they are built (Q7).
+The site's visual language: two themes over one variable contract, its type and its few motifs, and the owner's Principles that every design is judged by. Implemented in `src/app/globals.css`. The page it serves is the v1 mockup (`design/spike/page-skeleton.md`); the palette and type below predate it. The palette gives way to v1's in the page's implementation. The skeleton is set in Geist and Geist Mono throughout, section titles included; each later section's fonts are decided when it is designed.
 
 ## Colour
 
-The owner's rules (2026-11-24), which every page and every theme follows:
+Every page and every theme follows these rules:
 
 - The main colours are black, white and red.
 - Black and white are the background and the text, each the other's contrast.
@@ -12,19 +12,11 @@ The owner's rules (2026-11-24), which every page and every theme follows:
 - Every other colour is only a small touch.
 - Details may be refined, such as the role words in About, but the body stays simple and keeps visual consistency.
 
-> 主体色是黑白红，黑白做背景和文字互为对比，红色是强调色。其他颜色只做点缀，细节可以精致比如那些role，但是主体要简单并且keep visual consistency。
-
-What "black and white" means (the owner, 2026-11-25):
+What "black and white" means:
 
 - Black and white name the contrast between the background and the text, not the page's literal colours.
 - The sections sit on paper, above all on desktop, in v1's two layers: the desk at the sides is the warmer, darker paper, and the sheet in the middle is the brighter one.
 - A phone has no sides, so the whole page is the sheet, with no contrast between layers.
-
-> 我说黑白，但其实section的背景是类似信纸那样尤其是在desktop，中间是信纸那种颜色，两边白
-
-> 照v1来吧，手机的话就不需要两边的对比
-
-The owner's first description had a letter-paper sheet between white sides; the v1 mockup draws the layers the other way round, and the owner chose v1's (`design/spike/page-skeleton.md` Q13).
 
 ## Themes
 
@@ -251,11 +243,11 @@ phone width (#115 R2).
 
 ## Motion
 
-One easing: `cubic-bezier(0.2, 0, 0, 1)`. Timings: 150 ms for a control's own feedback, 240 ms structural, 420 ms for the seal. Opacity and transform only. The paper never moves: in the background, only the fireworks move (the owner, 2026-11-25). `prefers-reduced-motion` turns motion off.
+One easing: `cubic-bezier(0.2, 0, 0, 1)`. Timings: 150 ms for a control's own feedback, 240 ms structural, 420 ms for the seal. Opacity and transform only. The paper never moves: in the background, only the fireworks move. `prefers-reduced-motion` turns motion off.
 
 ## Contrast method & bars
 
-Every palette value is measured: the WCAG contrast ratio of each colour on each paper. The ratio informs the choice and isn't a hard bar: text has to read comfortably on both papers, as the owner judges it (2026-11-25), and 4.5:1 is the reference a colour below it is checked against. `--ink-light` and `--ink-faint` are never text. A palette change re-measures and updates the table above in the same change.
+Every palette value is measured: the WCAG contrast ratio of each colour on each paper. The ratio informs the choice and isn't a hard bar: text has to read comfortably on both papers, as the owner judges it, and 4.5:1 is the reference a colour below it is checked against. `--ink-light` and `--ink-faint` are never text. A palette change re-measures and updates the table above in the same change.
 
 ## Sync points
 
