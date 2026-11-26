@@ -1,6 +1,6 @@
 # Spike: 整页骨架——header、五个 section 占位、滚动进度条、两套主题、背景烟花
 
-**Status: decided** · 2026-11-25（owner 第 13 轮批准：「批准 spike」）· 设计：v1 mockup（2026-11-24 定档），已存进仓库 `design/mockup/mockup-home.html`，私有页面 [claude.ai/artifact/6ouKG7ihv9DbuUNAdVK95b](https://claude.ai/artifact/6ouKG7ihv9DbuUNAdVK95b)
+**Status: decided** · 2026-11-25（owner 第 13 轮批准：「批准 spike」）· 设计：v1 mockup（2026-11-24 定档），spec PR 会把它存进仓库为 `design/mockup/mockup-home.html`（Q3），私有页面 [claude.ai/artifact/6ouKG7ihv9DbuUNAdVK95b](https://claude.ai/artifact/6ouKG7ihv9DbuUNAdVK95b)
 
 > 语言约定：叙述用中文；站点的文案、区块名和代码标识保留英文（header、section、rail、sheet、`data-theme`、`paper` / `ink`），和 mockup、spec、代码一一对应。**sheet** 是桌面端页面中间那张更亮的纸；**rail** 是右边的滚动进度条和它的点；**fireworks** 是背景里的铅笔烟花。
 
@@ -12,10 +12,10 @@ Owner 2026-11-24 把整页 mockup 定档为 v1，开了 portfolio-engineering �
 
 > ok，我要你去看mars- workbench，按那边的标准来做，包括spec相关的那两个skill。计划是先写spike，我approve之后你写spec，我approve之后，你再implement base on spec。然后第一步咱们要做的就是写spike，这次的scope是把整个页面的骨架做出来，heading，五个section的place holder，暂时只需要文字标题，右边的可点击的scroll进度条，然后黑白两色主题，切换主题的button放heading，随便找个空位就好，我还在想位置，还有背景的烟花。这次要做desktop和mobile的两个width。然后关于design language我想你加几条，主体色是黑白红，黑白做背景和文字互为对比，红色是强调色。其他颜色只做点缀，细节可以精致比如那些role，但是主体要简单并且keep visual consistency。去做吧
 
-所以三步，每步等 owner approve：
+所以三步，每步一个 PR，每步等 owner approve：
 
 1. **Spike**（PR #3）：这份文档，回答技术上的开放问题；design language 加上 owner 的颜色规则。
-2. **Spec**（`write-spec` skill，`write-spec-reviewer` 检查）：把骨架写进 `design/specs/home.md`，每条标 *(pending)*。落在同一个 PR #3 上（见实施计划）。
+2. **Spec**（`write-spec` skill，`write-spec-reviewer` 检查）：把骨架写进 `design/specs/home.md`，每条标 *(pending)*。本 PR merge 之后，从 `main` 另开一个 PR。
 3. **Implementation**（`implement-spec` skill，`implement-spec-reviewer` 检查）：按 spec 建，测试先行。
 
 ## Owner 的回答（第 2 轮，2026-11-25）
@@ -130,7 +130,7 @@ Section 后来变高（比如图片晚加载）时要不要重算点的位置，
 
 第 13 轮 owner 批准了这份 spike，Q1–Q15 都已答。从这里起 spike 不再改；以后的决定记在 tracker 和做出决定的 PR 里。
 
-- **范围**：整页骨架，建在 `/v1`（Q1）；`/` 的静态页留到 v1 做好（Q2）。v1 mockup 是 source of truth（Q3），存进仓库为 `design/mockup/mockup-home.html`，标 decided。
+- **范围**：整页骨架，建在 `/v1`（Q1）；`/` 的静态页留到 v1 做好（Q2）。v1 mockup 是 source of truth（Q3），spec PR 把它存进仓库为 `design/mockup/mockup-home.html`，标 decided。
 - **Harness**：先同步 `mars-workbench` 的 spec 规则、`implement-spec` 和 `check:spec`（Q4），本 PR 已做。
 - **颜色**：照 v1。桌面两边 desk、中间 sheet，手机整页 sheet 色（Q13）；白主题的 muted 用 `#6b665e`，对比度看着舒服就行（Q5）；红照 v1 用作强调（Q6）。
 - **字体**：骨架全用 Geist / Geist Mono；印章的「墨」「纸」用只带这两个字的思源宋体（Q7）。
@@ -408,7 +408,7 @@ v1 用了三个断点：900px（以上是 sheet 版式，以下 sheet 铺满）�
 ## 实施计划
 
 1. **本 PR**：这份 spike；`design/design-language/README.md` 加 Colour 一节（owner 的原话，包括「黑白是对比」和信纸），改掉「唯一的红」，Motion 改成「只有 fireworks 会动」，对比度的线改成参照；tracker 加一条；同步 harness 和 `check:spec`（Q4）。不动页面代码。
-2. **Spec**（owner approve 本 spike 之后）：落在 PR #3 上，不另开 PR。这个 session 只能推这一个分支，而 `main` 还没有本 PR 同步的 spec 规则和 `check:spec`；`write-spec` 允许 spec 落在 design PR 上。
+2. **Spec PR**（本 PR merge 之后，从 `main` 开，owner 2026-11-26 定的）：
    - 把 v1 mockup 放进仓库（Q3），标上 decided。
    - 用 `write-spec` 写 `design/specs/home.md`：States（第一次来跟系统主题 / 选过主题；reduced motion）、Header、Rail、Sections、Fireworks、Actions（点链接、点点、切主题）、Rules、Journeys（桌面一条，手机一条只写不同的步骤）；全部 *(pending)*。`write-spec-reviewer` 检查。
 3. **Implementation PR**（owner approve spec 之后）：`implement-spec`，测试先行；同步改 `globals.css` 和主题表、README Current State；`ui-verifier` 跑一次浏览器检查；删掉 mockup 里已经建好的部分（mockup 还有各 section 的内容没建，所以文件留着）。
