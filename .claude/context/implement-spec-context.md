@@ -15,5 +15,5 @@ What the `implement-spec` skill and the `implement-spec-reviewer` agent both rea
 
 - **The page's spec**, `design/specs/<page>.md`: its items still marked *(pending)* or *(removing)* are the change's scope.
 - **The decided mockup**, `design/mockup/mockup-<area>.html`, for what the spec leaves to it (`design/specs/README.md` › What a spec doesn't say): the layout, the copy, the spacing, the colours, the icons.
-- **The questions the spec left open**: the feature's item in `design/tracker.md`, and the review log of the PR that wrote the spec, `reviews/pr-<NNN>.md`.
+- **The questions the spec left open**: the `feature-implement` issue, and the review log of the PR that wrote the spec, `reviews/pr-<NNN>.md`.
 - **The change**: `git diff <base>`, where the base is usually `main`.

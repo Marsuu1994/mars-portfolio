@@ -12,7 +12,6 @@ The site's design: what it looks like, why, and what is still open. The code liv
 | [specs/](./specs/README.md) | One spec per page, in spec v2; how a spec is written is its README. |
 | [spike/](./spike/README.md) | Point-in-time proposals for open questions; lifecycle and shape in its README. Implemented spikes move to [spike/archived/](./spike/archived/). |
 | [mockup/](./mockup/) | Self-contained HTML mockups of designs **not yet built** (see Mockups below). |
-| [tracker.md](./tracker.md) | Open items only; its rules are in its Conventions section. |
 | [brainstorm/](./brainstorm/README.md) | The application brainstorm — not part of the site (see the note above). |
 
 ## Mockups
@@ -21,7 +20,7 @@ The site's design: what it looks like, why, and what is still open. The code liv
 
 A file in `mockup/` is a design that isn't built yet: self-contained HTML, inline styles, no shared stylesheets.
 
-- Name it `mockup/mockup-<area>.html` from the first draft and keep that name through every round. Publish it as a private Claude artifact from the same path each round, so its link never changes; link it from its spike, its tracker item and its PR's description.
+- Name it `mockup/mockup-<area>.html` from the first draft and keep that name through every round. Publish it as a private Claude artifact from the same path each round, so its link never changes; link it from its spike, its issue and its PR's description.
 - When the owner has to choose, draw every option side by side, each at desktop and phone width where the design needs both. Rank them by `design-language/README.md` › Principles, and say which you recommend.
 - Back a choice with research: how others solve it, each point with its source.
 - A mockup settles how a design looks and feels. What it implies about behaviour — an order, what a count counts, an edge case — goes into the spec, not decided on the drawing.
