@@ -1,6 +1,6 @@
 # Spike: 整页骨架——header、五个 section 占位、滚动进度条、两套主题、背景烟花
 
-**Status: decided** · 2026-11-25（owner 第 13 轮批准：「批准 spike」）· 设计：v1 mockup（2026-11-24 定档），私有页面 [claude.ai/artifact/6ouKG7ihv9DbuUNAdVK95b](https://claude.ai/artifact/6ouKG7ihv9DbuUNAdVK95b)；骨架单独的 mockup `design/mockup/mockup-home-skeleton.html`（第 14 轮，待 owner 定档），私有页面 [claude.ai/artifact/J6ZMbhqDTJyentz9suEHpp](https://claude.ai/artifact/J6ZMbhqDTJyentz9suEHpp)
+**Status: decided** · 2026-11-25（owner 第 13 轮批准：「批准 spike」）· 设计：v1 mockup（2026-11-24 定档），私有页面 [claude.ai/artifact/6ouKG7ihv9DbuUNAdVK95b](https://claude.ai/artifact/6ouKG7ihv9DbuUNAdVK95b)；骨架单独的 mockup `design/mockup/mockup-home-skeleton.html`（第 14 轮，2026-11-26 owner 定档），私有页面 [claude.ai/artifact/J6ZMbhqDTJyentz9suEHpp](https://claude.ai/artifact/J6ZMbhqDTJyentz9suEHpp)
 
 > 语言约定：叙述用中文；站点的文案、区块名和代码标识保留英文（header、section、rail、sheet、`data-theme`、`paper` / `ink`），和 mockup、spec、代码一一对应。**sheet** 是桌面端页面中间那张更亮的纸；**rail** 是右边的滚动进度条和它的点；**fireworks** 是背景里的铅笔烟花。
 
@@ -158,7 +158,7 @@ Spike 定了之后本来不再改，这一处是 owner 特许的。起因：v1 m
 - **骨架单独一个 mockup**：`design/mockup/mockup-home-skeleton.html`，从 v1 只取 Scope 里「做」的那一栏，偏离直接画进去：header 的 Product、全用 Geist / Geist Mono、印章在 header 最右、手机不横向滑、rail 的点是页内链接、muted `#6b665e`、主题叫 `paper` / `ink` 且不记住。Section 尺寸变了重算 rail 是行为，画不出来，只写进 spec（mockup 里也已经这样做）。
 - **v1 不进仓库**：继续是私有 artifact，当整页的方向；轮到某个 section 时，从 v1 抽出那一部分另做 mockup。
 - **骨架 mockup 定档之后**，spec 从它写；它全部建完就删掉（`design/README.md` › Mockups），不再「删掉 mockup 里已经建好的部分」。
-- **还要 owner 确认的**：印章照 v1 留着 stamp 动画和 hover 时歪一点，切主题时纸和字的颜色 0.45s 渐变；reduced motion 下都没有。
+- **定档**（第 15 轮，owner：「没问题可以定档」）：骨架 mockup 照画的定了，包括印章照 v1 留着的 stamp 动画、hover 时歪一点，以及切主题时纸和字的颜色 0.45s 渐变；reduced motion 下都没有。
 
 ## 用了哪些标准
 
@@ -418,7 +418,7 @@ v1 用了三个断点：900px（以上是 sheet 版式，以下 sheet 铺满）�
 
 ## 实施计划
 
-1. **本 PR**：这份 spike；`design/design-language/README.md` 加 Colour 一节（owner 的原话，包括「黑白是对比」和信纸），改掉「唯一的红」，Motion 改成「只有 fireworks 会动」，对比度的线改成参照；tracker 加一条；同步 harness 和 `check:spec`（Q4）；骨架单独的 mockup（第 14 轮），owner 定档后标 decided。不动页面代码。
+1. **本 PR**：这份 spike；`design/design-language/README.md` 加 Colour 一节（owner 的原话，包括「黑白是对比」和信纸），改掉「唯一的红」，Motion 改成「只有 fireworks 会动」，对比度的线改成参照；tracker 加一条；同步 harness 和 `check:spec`（Q4）；骨架单独的 mockup（第 14 轮，第 15 轮定档）。不动页面代码。
 2. **Spec PR**（本 PR merge 之后，从 `main` 开，owner 2026-11-26 定的）：
    - 用 `write-spec` 从定档的骨架 mockup 写 `design/specs/home.md`：States（第一次来跟系统主题 / 选过主题；reduced motion）、Header、Rail、Sections、Fireworks、Actions（点链接、点点、切主题）、Rules、Journeys（桌面一条，手机一条只写不同的步骤）；全部 *(pending)*。`write-spec-reviewer` 检查。
 3. **Implementation PR**（owner approve spec 之后）：`implement-spec`，测试先行；同步改 `globals.css` 和主题表、README Current State；`ui-verifier` 跑一次浏览器检查；骨架全部建完，删掉 `mockup-home-skeleton.html`。
