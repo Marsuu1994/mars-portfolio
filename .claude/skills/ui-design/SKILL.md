@@ -3,7 +3,7 @@ name: ui-design
 description: Designing UI in this repository — a mockup of a new screen, state, layout or interaction, researched, drawn as options side by side, reviewed by the owner round by round until decided. Use whenever the owner asks for a mockup, a design, 设计, 画个 mockup, a new screen or a changed layout or interaction that isn't built yet — before any component code. Not for copy, colour or spacing tweaks the owner described exactly, and not for building a design that is already decided.
 ---
 
-> Adapted from `mars-workbench`@`3f741cc`; the site has no Design Console, no data layer and no `check:spec` yet.
+> Adapted from `mars-workbench`@`3f741cc`; the site has no Design Console and no data layer.
 
 # UI design — from idea to a decided mockup
 

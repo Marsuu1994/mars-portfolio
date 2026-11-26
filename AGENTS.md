@@ -24,11 +24,11 @@ Directory responsibilities only — for concrete file and component names, read 
 src/
 ├── app/                           # Routes, the root layout, globals.css (the two themes)
 └── components/                    # Two layers (Component placement), added with the first component
-    ├── ui/                        # Primitives with no content types: the seal, the mountains, a figure's frame
+    ├── ui/                        # Primitives with no content types: the seal, the fireworks, a figure's frame
     └── site/                      # Blocks that take the site's content: cards, a case page's sections
 e2e/                               # Playwright specs, one per page
 test/                              # Test conventions (README) and helpers
-scripts/                           # Repo checks run in CI: the theme contract, the review log
+scripts/                           # Repo checks run in CI: the theme contract, the review log, spec coverage
 reviews/                           # The owner's code reviews, one file per PR — README for people, rules in its AGENTS.md
 .claude/                           # Claude Code skills (ui-design, write-spec, implement-spec), subagents and their shared context
 design/                            # Design docs — index in design/README.md
@@ -148,7 +148,7 @@ Delegate to a subagent only work whose tool output would outgrow the brief and t
 ## Tooling
 
 - **Prettier owns formatting** (`.prettierrc.json`; code only — Markdown and `design/` are ignored). **ESLint owns correctness**: no `any`, no `console.log` (`console.error` / `warn` allowed), named exports and `const` arrow components (Next.js convention files excepted), one component per file, no single-letter names.
-- CI runs `format:check`, `lint`, `typecheck`, `knip`, `check:themes`, the Vitest suite and the Playwright suite — run all but Playwright before pushing (Version Control).
+- CI runs `format:check`, `lint`, `typecheck`, `knip`, `check:themes`, `check:spec`, the Vitest suite and the Playwright suite — run all but Playwright before pushing (Version Control).
 
 ## Version Control
 
@@ -160,7 +160,7 @@ Delegate to a subagent only work whose tool output would outgrow the brief and t
   1. `design/tracker.md`: delete finished items.
   2. README Current State: rewrite the sections the change touches.
   3. AGENTS.md, or a README it indexes: only when a rule or a directory's responsibility changed.
-  4. Run `npm run format`, then `lint`, `typecheck`, `knip`, `npm test` (and `check:themes` when CSS variables changed); run `npm run test:e2e` when a page changed.
+  4. Run `npm run format`, then `lint`, `typecheck`, `knip`, `check:spec`, `npm test` (and `check:themes` when CSS variables changed); run `npm run test:e2e` when a page changed.
 - **Act on submitted reviews only.** A pending review can still change: don't reply to, resolve or push for its comments.
 
 ## Commands
@@ -175,6 +175,7 @@ npm run format       # Format all code with Prettier
 npm run format:check # Verify formatting (CI)
 npm run check:themes # Both themes declare the same CSS variables (CI)
 npm run check:review-log  # Every owner review on a PR has its entry in reviews/ (CI; GITHUB_REPOSITORY and PR_NUMBER locally)
+npm run check:spec   # Every item in a spec is held by a test that names it (CI); `-- --list <page>` lists each item's tests
 npm test             # Unit tests in UTC and Los Angeles time (CI)
 npm run test:e2e     # Playwright: every page, both widths, both themes (CI); reuses a running dev server
 ```

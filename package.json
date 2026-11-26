@@ -23,6 +23,7 @@
     "format:check": "prettier --check .",
     "check:themes": "node scripts/check-theme-vars.mjs",
     "check:review-log": "node scripts/check-review-log.mjs",
+    "check:spec": "node scripts/checkSpec.mts",
     "test": "vitest run",
     "test:e2e": "playwright test"
   },

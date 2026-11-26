@@ -1,4 +1,4 @@
-> Adapted from `mars-workbench`@`3f741cc`; the site has no Design Console, no data layer and no `check:spec` yet.
+> Adapted from `mars-workbench`@`368bed5`; the site has no Design Console and no data layer.
 
 # Implementation context
 
@@ -8,6 +8,7 @@ What the `implement-spec` skill and the `implement-spec-reviewer` agent both rea
 
 - `test/README.md`, in full: which layer tests an item, how every test is written, and how a test holds a spec ID.
 - AGENTS.md › Page structure, › Coding Conventions and › UI Workflow: where the code goes, how it is written, and how a decided mockup is built (exactly).
+- `design/design-language/README.md`, in full: how a theme's look reaches a component, what a `globals.css` change updates with it, how anything that moves is timed, and how copy reads.
 - `design/specs/README.md` › Items and IDs: what the markers mean, and when an implementation PR is done.
 
 ## The inputs

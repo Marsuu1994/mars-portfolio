@@ -1,4 +1,4 @@
-> Adapted from `mars-workbench`@`3f741cc`; the site has no Design Console, no data layer and no `check:spec` yet.
+> Adapted from `mars-workbench`@`3f741cc`; the site has no Design Console and no data layer.
 
 # Write spec context
 
@@ -11,7 +11,7 @@ What the `write-spec` skill and the `write-spec-reviewer` agent both read: the s
 
 ## The inputs
 
-- **The page's spec**, `design/specs/<page>.md`.
+- **The page's spec**, `design/specs/<page>.md`, and `npm run check:spec -- --list <page>`, which prints each item with where it stands and the tests holding it.
 - **The decided mockup**, `design/mockup/mockup-<area>.html`; what counts as decided is `design/README.md` › Mockups. Read its text and its script:
   - the text: strip the tags with a short script rather than reading the whole HTML;
   - the script: its state and its handlers are the mockup's behaviour model, saying what a click changes, what a count counts and what happens to the last one. Read its functions directly.

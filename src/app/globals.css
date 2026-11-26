@@ -3,8 +3,8 @@
 /*
  * Two themes, one variable contract (AGENTS.md › Themes; `npm run check:themes`).
  * paper is the light page, ink the dark one; with no data-theme on <html> the
- * page follows the system. The values and their contrast come from the decided
- * visual language (design/spike/personal-site.md › 视觉语言).
+ * page follows the system. The values and their contrast are in
+ * design/design-language/README.md › Themes.
  */
 :root,
 [data-theme='paper'] {

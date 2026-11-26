@@ -5,7 +5,7 @@ tools: Bash, Read, Glob, Grep
 model: inherit
 ---
 
-> Adapted from `mars-workbench`@`3f741cc`; the site has no Design Console, no data layer and no `check:spec` yet.
+> Adapted from `mars-workbench`@`3f741cc`; the site has no Design Console and no data layer.
 
 You verify one UI change on this site's pages and report back. You don't fix anything and never edit files in the repository: the main session decides what to do with your verdict.
 
