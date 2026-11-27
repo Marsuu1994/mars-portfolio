@@ -20,7 +20,7 @@ What "black and white" means:
 
 ## Themes
 
-Two themes, **paper** (light) and **ink** (dark), declaring the same variables (`npm run check:themes`). With no `data-theme` on `<html>`, the page follows the system. Colour is by role, never by palette: the body text is `ink-strong`, a note is `ink-mid`, a rule is `ink-faint`.
+Two themes, **paper** (light) and **ink** (dark). One theme per page: it lives only on `<html data-theme>`, a `data-theme` scope is never nested, and with none the page follows the system. Both themes declare the same custom properties in `globals.css`, and so does the system-dark default; a new variable lands in all three in the same change, named by role (`npm run check:themes`). Colour is by role, never by palette: the body text is `ink-strong`, a note is `ink-mid`, a rule is `ink-faint`.
 
 | Variable | paper | contrast on paper | ink | contrast on ink | Role |
 | --- | --- | --- | --- | --- | --- |

@@ -29,5 +29,5 @@ When the decided mockup leaves out a case the items need — a state it doesn't 
 ## 4. Report and hand off
 
 1. Report to the owner: the items added and marked *(removing)*, by ID, one line each; the reviewer's verdict; and the questions, each with your recommendation.
-2. The spec lands with no code, on the design PR or a spec PR of its own (AGENTS.md › UI Workflow). Rewrite the feature's tracker item to say the spec is written and list the questions still open: the implementing session reads them there.
+2. The spec lands with no code, on the design PR or a spec PR of its own (AGENTS.md › UI Workflow). The spec PR closes the `feature-spec` issue; the questions still open go on the `feature-implement` issue, where the implementing session reads them (AGENTS.md › Issues).
 3. The implementation starts from `main` with the `implement-spec` skill, from the spec and the mockup, not from this session's context.

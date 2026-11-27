@@ -2,7 +2,7 @@
 
 The shared rulebook every agent session loads (Claude Code imports it through `CLAUDE.md`). It holds the rules every task needs, plus an index of where the rest live (Workflow › Where the rules live).
 
-> Adapted from `mars-workbench`@`3f741cc` `AGENTS.md`. The site is front-end only: the product's Layers, Data & State and i18n rules are left out, and come back from there if the site ever gets data. Every file copied from `mars-workbench` says so at its top; `package.json`, `tsconfig.json`, `.prettierrc.json` and `.nvmrc`, which can't hold a comment, are copied too.
+> Adapted from `mars-workbench`@`3f741cc` `AGENTS.md`. The site is front-end only: the product's Layers, Data & State and i18n rules are left out, and come back from there if the site ever gets data. Every file copied from `mars-workbench` says so at its top, naming the commit it came from; `package.json`, `tsconfig.json`, `.prettierrc.json` and `.nvmrc`, which can't hold a comment, are copied too. When the product's harness improves, port what applies here and update the commit the file names.
 
 ## Project Overview
 
@@ -12,7 +12,7 @@ Mars Chu's personal site and portfolio: a few case studies, each a problem, what
 
 - Framework: Next.js 16 (App Router), React Compiler on; every page static
 - UI: React 19, Tailwind CSS 4 over the site's own theme variables (`design/design-language/`)
-- Interactive components: Radix Primitives (Styling), none installed yet
+- Interactive components: Radix Primitives (Styling)
 - Tests: Vitest (unit) + Playwright (e2e, both widths, both themes)
 - Language: TypeScript
 
@@ -23,9 +23,9 @@ Directory responsibilities only — for concrete file and component names, read 
 ```text
 src/
 ├── app/                           # Routes, the root layout, globals.css (the two themes)
-└── components/                    # Two layers (Component placement), added with the first component
-    ├── ui/                        # Primitives with no content types: the seal, the fireworks, a figure's frame
-    └── site/                      # Blocks that take the site's content: cards, a case page's sections
+└── components/                    # Two layers (Component placement)
+    ├── ui/                        # Primitives that know nothing of the site's content
+    └── site/                      # Blocks that take the site's content
 e2e/                               # Playwright specs, one per page
 test/                              # Test conventions (README) and helpers
 scripts/                           # Repo checks run in CI: the theme contract, the review log, spec coverage
@@ -36,7 +36,6 @@ design/                            # Design docs — index in design/README.md
 ├── specs/                         # One spec per page, spec v2
 ├── spike/                         # Spikes for open questions; archived/ = implemented
 ├── mockup/                        # Self-contained HTML mockups of designs not yet built
-├── tracker.md                     # Open items only
 └── brainstorm/                    # The application brainstorm: not part of the site (design/README.md)
 ```
 
@@ -48,7 +47,7 @@ Read the design docs only when the task involves a page's content, layout or beh
 
 - `design/specs/<page>.md`: what the page shows and does
 - `design/design-language/README.md`: themes, type, visual rules, and the Principles
-- `design/tracker.md`: what is open
+- the task's GitHub issue: what is decided and what is still open (Workflow › Issues)
 
 Next.js APIs outrun training data: before using a routing, rendering or `next.config` API you haven't checked for this version, read its page in `node_modules/next/dist/docs/`, the docs of the installed version.
 
@@ -62,12 +61,26 @@ A rule that only one kind of file needs lives with that file. Read it before you
 | --- | --- |
 | a test (`*.unit.test.ts`, `e2e/`, `test/`) | `test/README.md` |
 | a spike (`design/spike/`) | `design/spike/README.md` |
-| `design/tracker.md` | its Conventions section |
 | a spec (`design/specs/`) | `design/specs/README.md` |
 | a mockup (`design/mockup/`) | `design/README.md` › Mockups |
 | `reviews/`, or addressing the owner's review on a PR | `reviews/AGENTS.md` |
 | themes, `globals.css`, visual patterns, how copy reads | `design/design-language/README.md` |
 | `design/brainstorm/` | `design/brainstorm/AGENTS.md` |
+
+### Issues
+
+Open work lives in GitHub issues, one per thing to do, never in a file. A PR names the issue it closes (`Closes #n`), and a spike or a mockup is linked from its issue. Read an issue with `gh issue view <n>` on the owner's machine, or the GitHub tools in a cloud session.
+
+Each issue carries one label:
+
+- `design`: a design or a spike. The owner decides it fully.
+- `feature-spec`: writing a decided design into its page's spec.
+- `feature-implement`: building spec items, or another change whose design is settled.
+- `enhancement`: a small improvement that needs no design.
+- `question`: an open question for the owner.
+- `harness`: a change to how the work is done: the rules, skills, agents, CI checks.
+
+New UI runs through three issues in order, each closed by its own PR: `design`, then `feature-spec`, then `feature-implement` (UI Workflow). The open questions a step leaves travel on the next step's issue.
 
 ### Adding a rule
 
@@ -97,7 +110,8 @@ Delegate to a subagent only work whose tool output would outgrow the brief and t
 
 ## Documentation Style
 
-- **Living docs are for the owner to re-orient, not the agent's work record.** README Current State, `design/tracker.md` and everything under `design/` say what the site is now and what's still open. Write at the doc's altitude; length doesn't scale with diff size; rewrite the sentence that is now wrong instead of appending a paragraph. Completeness lives in PR descriptions and the git history.
+- **Living docs are for the owner to re-orient, not the agent's work record.** README Current State and everything under `design/` say what the site is now; what's still open is in the issues. Write at the doc's altitude; length doesn't scale with diff size; rewrite the sentence that is now wrong instead of appending a paragraph. Completeness lives in PR descriptions and the git history.
+- **A living doc states its rules as a summary.** It quotes no message of the owner's and dates nothing as "the owner, <date>"; where a rule came from lives in its spike and the PR's review log.
 - **Docs and code comments are written for a person.** Whole sentences: say who does what and when, not noun phrases or shorthand; give a term its meaning the first time it appears. When a description runs long and splits along its own structure, make it a list with `name: description` per item.
 
 ## Page structure
@@ -114,6 +128,7 @@ Delegate to a subagent only work whose tool output would outgrow the brief and t
 
 - **DRY — one definition per piece of logic, markup or type.** Markup that repeats with only data or colour differences becomes one parameterized sub-component; a colour difference comes from a `Record<Key, string>` of literal Tailwind classes (never `` `bg-${accent}` `` — Tailwind can't see it). Identical type shapes collapse to one, and shapes sharing a core extend a base.
 - **Components that belong together share a kebab-case folder** named for the group, each in a file named after it (one component per file is linted; a one-off block that needs the parent's scope is a render function instead).
+- Props are explicitly typed, preferably with an `interface`.
 - **Destructure** when two or more properties of the same object are used, instead of repeating `obj.a`, `obj.b`; a single one-off access can stay.
 - **Name things plainly — clear and boring beats short or clever.** A function says what it returns or does; a variable or parameter — callback parameters included — says what it holds. Full words only: `id` and `prev` (setState updater) are fine, single letters are linted (allowed ones in `eslint.config.mjs`).
 - **A workaround is fine, but marked.** Code that exists only to get around someone else's bug or quirk opens its comment with `Workaround (<whose>):`, says what goes wrong without it, and links the upstream issue when there is one.
@@ -126,24 +141,19 @@ Delegate to a subagent only work whose tool output would outgrow the brief and t
 ### Styling
 
 - Tailwind utility classes, no inline styles — `style` only carries dynamic values (a CSS variable, a computed width).
-- Theme variables by role (`text-ink-strong`, `bg-paper`), never hardcoded colours like `text-gray-600`; what each variable is for is in `design/design-language/README.md`.
-- **Interactive components use Radix Primitives**, styled with the site's variables; no hand-rolled dialog, menu, toggle or tooltip. Install each primitive with the first widget that needs it.
+- Colours come from the theme's variables, named by role, never hardcoded colours like `text-gray-600`; the variables and what each is for are in `design/design-language/README.md`.
+- **Interactive components use Radix Primitives**, styled with the site's variables; no hand-rolled dialog, menu, toggle or tooltip. Each primitive is a package of its own, added by the change that first uses it.
 - Icons, when the site needs them, come from one icon package chosen in a spike; brand marks and figures draw their own SVG.
 
 ### Themes
 
-- **One theme per page.** The theme lives only on `<html data-theme>`; with none, the page follows the system. Never nest a `data-theme` scope.
-- **One variable contract.** `paper` and `ink` declare the same custom properties in `globals.css`, and so does the system-dark default; a new variable lands in all of them in the same change, named by role (`npm run check:themes`, CI).
+- One theme per page, and one variable contract that every theme declares (`npm run check:themes`, CI): `design/design-language/README.md` › Themes.
 
 ### JSX & components
 
 - **Keep the return statement an outline.** Conditional or complex JSX becomes a named render function with access to the component's scope; reusable pieces become sub-components.
 - **No magic literals.** Fixed, non-user-facing literals — routes, numbers, durations, style tokens — go into an exported constant in a `constants.ts` next to the component. Copy that a test also reads (a page's heading) lives in a constant or the content file, so the test reads the same string.
 - **The site is in English only**, with no i18n library; its copy comes from the decided mockup and reads by `design/design-language/README.md` › Principles. Copy is sentence case; Title Case is for headings only.
-
-## Code Style
-
-- Props are explicitly typed, preferably with an `interface`.
 
 ## Tooling
 
@@ -157,7 +167,7 @@ Delegate to a subagent only work whose tool output would outgrow the brief and t
 - Never commit or push to `main`; changes land through pull requests.
 - **Branch names say what the PR does**: `claude/<feature>-<change>`, kebab-case, a few words.
 - **Before every push**:
-  1. `design/tracker.md`: delete finished items.
+  1. The issues: the PR names the issue it closes, and an issue whose plan the change alters says so.
   2. README Current State: rewrite the sections the change touches.
   3. AGENTS.md, or a README it indexes: only when a rule or a directory's responsibility changed.
   4. Run `npm run format`, then `lint`, `typecheck`, `knip`, `check:spec`, `npm test` (and `check:themes` when CSS variables changed); run `npm run test:e2e` when a page changed.

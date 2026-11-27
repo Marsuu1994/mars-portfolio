@@ -15,6 +15,6 @@ What the `write-spec` skill and the `write-spec-reviewer` agent both read: the s
 - **The decided mockup**, `design/mockup/mockup-<area>.html`; what counts as decided is `design/README.md` › Mockups. Read its text and its script:
   - the text: strip the tags with a short script rather than reading the whole HTML;
   - the script: its state and its handlers are the mockup's behaviour model, saying what a click changes, what a count counts and what happens to the last one. Read its functions directly.
-- **The design PR's review log**, `reviews/pr-<NNN>.md`, and the feature's item in `design/tracker.md`: what the owner decided in words that the drawing doesn't show.
+- **The design PR's review log**, `reviews/pr-<NNN>.md`, and the design's issue and the `feature-spec` issue: what the owner decided in words that the drawing doesn't show.
 - **The owner's answers in the session** that the review log doesn't hold yet, and **the questions still open for the owner**.
 - **The change**: `git diff <base> -- design/specs/<page>.md`, where the base is usually `main`.
